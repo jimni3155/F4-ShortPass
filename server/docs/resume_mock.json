@@ -1,0 +1,46 @@
+{
+  "personal_info": {
+    "name": "이준호",
+    "email": "junho.lee.dev@example.com",
+    "phone": "010-1234-5678",
+    "birthdate": "1995-03-15",
+    "gender": "male",
+    "education": "OO대학교 컴퓨터공학과 학사 졸업 (2020.02)"
+  },
+  "profile_urls": {
+    "github": "https://github.com/junho-lee-dev",
+    "portfolio_blog": "https://junho-dev.tistory.com"
+  },
+  "apply_job_id": 101, 
+  "resume_s3_key": "resumes/a1b2c3d4-junho-resume.pdf", 
+  "skills": [
+    "Python",
+    "Django",
+    "FastAPI",
+    "AWS (EC2, S3, RDS)",
+    "Docker",
+    "PostgreSQL",
+    "Redis",
+    "Git"
+  ],
+  "projects": [
+    {
+      "title": "OO쇼핑몰 백엔드 시스템 구축 (팀 프로젝트)",
+      "period": "2023.01 - 2023.06",
+      "problem": "기존 모놀리식 커머스 시스템의 잦은 장애 및 트래픽 확장성 한계 발생.",
+      "action": "Django Rest Framework(DRF) 기반의 MSA 구조로 백엔드 재설계. 주문/결제(PG) 시스템 분리. Celery를 이용한 비동기 태스크(쿠폰 발송) 처리. AWS RDS(PostgreSQL) 쿼리 최적화.",
+      "result": "API 평균 응답 시간 800ms -> 150ms로 단축. 월 10만 건의 주문 트래픽 안정적 처리.",
+      "metrics": "응답 시간 82% 개선, 월 10만 건 주문 처리",
+      "proof_link": "https://github.com/junho-lee-dev/oo-shopping"
+    },
+    {
+      "title": "실시간 로그 수집 파이프라인 (개인 프로젝트)",
+      "period": "2024.01 - 2024.03",
+      "problem": "분산된 서버 로그를 효율적으로 수집하고 검색할 필요성 대두.",
+      "action": "FastAPI로 경량 로그 수집 API 서버 개발. 수집된 로그를 Kafka 토픽으로 전송하여 버퍼링 및 데이터 유실 방지. ELK 스택(Elasticsearch)에 최종 적재.",
+      "result": "일 1GB 로그의 실시간 수집 및 3초 이내 검색 가능한 시스템 구축.",
+      "metrics": "3초 이내 검색, 일 1GB 로그 처리",
+      "proof_link": null
+    }
+  ]
+}

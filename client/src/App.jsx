@@ -1,0 +1,34 @@
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
+import Start from '@pages/Start';
+import CandidateInfo from '@pages/CandidateInfo';
+import CandidateDone from '@pages/CandidateDone';
+import AIInterview from '@pages/AIInterview';
+import InterviewPage from '@pages/InterviewPage/InterviewPage';
+import InterviewStart from '@pages/InterviewStart';
+import CompanyInfo from '@pages/CompanyInfo';
+import CompanyResult from '@pages/CompanyResult';
+import Layout from '@layout/Layout';
+
+const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Start />} />
+        <Route path='/candidate/info' element={<CandidateInfo />} />
+        <Route path='/candidate/start' element={<InterviewStart />} />
+        <Route path='/candidate/interview' element={<InterviewPage />} />
+        <Route path='/candidate/done' element={<CandidateDone />} />
+        <Route path='/company/info' element={<CompanyInfo />} />
+        <Route path='/company/result' element={<CompanyResult />} />
+      </Route>
+    )
+  );
+  return <RouterProvider router={router} />;
+};
+
+export default App;
