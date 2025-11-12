@@ -14,3 +14,5 @@ client/.env.*.local
 __pycache__/
 .pytest_cache/
 .env
+server/.env
+server/.env.example
