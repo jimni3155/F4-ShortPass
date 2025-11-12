@@ -1,0 +1,23 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import 'tailwindcss';
+
+:root {
+  font-family: Pretendard;
+  background-color: #ffff;
+  box-sizing: border-box;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme {
+  --color-primary: #8b5cf6;
+  --color-grey: #6b7280;
+  --color-dark: #111827;
+  --color-red: oklch(63.7% 0.237 25.331);
+  --color-green: #68ed68;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}

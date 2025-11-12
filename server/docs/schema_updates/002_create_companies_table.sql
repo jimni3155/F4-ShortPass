@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS companies (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    size VARCHAR NOT NULL,
+    jd JSONB NOT NULL,
+    values TEXT NOT NULL,
+    questions JSONB NOT NULL,
+    blind BOOLEAN DEFAULT FALSE
+);
