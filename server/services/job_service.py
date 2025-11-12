@@ -7,6 +7,10 @@ from typing import Optional, Dict, Any, List
 from datetime import datetime
 
 from models.job import Job, JobChunk
+try:
+    from models.company import Company
+except ImportError:
+    Company = None  # fallback if company model doesn't exist
 from services.s3_service import S3Service
 from services.embedding_service import EmbeddingService
 from ai.parsers.jd_parser import JDParser
@@ -29,7 +33,7 @@ class JobService:
         self.s3_service = S3Service()
         self.embedding_service = EmbeddingService()
         self.jd_parser = JDParser(chunk_size=1000, chunk_overlap=200)
-        self.prompt_builder = ParsingPromptBuilder()
+        # self.prompt_builder = ParsingPromptBuilder()  # 임시 비활성화
         self.llm_client = LLMClient()
 
     async def process_jd_pdf(
@@ -90,20 +94,23 @@ class JobService:
             print("\n[Step 2-1/6] Extracting company weights from JD...")
             weights_data = await self._extract_company_weights(full_text)
 
-            if weights_data and "weights" in weights_data:
-                # Company 테이블 업데이트
-                company = db.query(Company).filter(Company.id == company_id).first()
-                if company:
-                    company.category_weights = weights_data["weights"]
-                    # reasoning도 저장 (선택사항)
-                    if not company.company_culture_desc and "reasoning" in weights_data:
-                        company.company_culture_desc = str(weights_data.get("reasoning", {}))
-                    db.flush()
-                    print(f"  ✓ Company weights updated: {weights_data['weights']}")
-                else:
-                    print(f"  ⚠ Company {company_id} not found, skipping weight update")
+            if weights_data and "weights" in weights_data and Company:
+                # Company 테이블 업데이트 (Company 모델이 있는 경우에만)
+                try:
+                    company = db.query(Company).filter(Company.id == company_id).first()
+                    if company:
+                        company.category_weights = weights_data["weights"]
+                        # reasoning도 저장 (선택사항)
+                        if not company.company_culture_desc and "reasoning" in weights_data:
+                            company.company_culture_desc = str(weights_data.get("reasoning", {}))
+                        db.flush()
+                        print(f"  ✓ Company weights updated: {weights_data['weights']}")
+                    else:
+                        print(f"  ⚠ Company {company_id} not found, skipping weight update")
+                except Exception as e:
+                    print(f"  ⚠ Failed to update company weights: {e}")
             else:
-                print("  ⚠ Failed to extract weights, continuing without weight update")
+                print("  ⚠ Skipping company weight update (no Company model or no weight data)")
 
             # 3. Job 생성
             print("\n[Step 3/5] Creating Job record...")
