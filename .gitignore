@@ -1,2 +1,4 @@
 venv1/
 client/.vite/
+server/.env
+server/.env.example
