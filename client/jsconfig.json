@@ -9,7 +9,8 @@
       "@assets/*": ["assets/*"],
       "@constants/*": ["constants/*"],
       "@layout/*": ["layout/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@mock/*": ["mock/*"]
     }
   }
 }

@@ -13,6 +13,7 @@ import InterviewStart from '@pages/InterviewStart';
 import CompanyInfo from '@pages/CompanyInfo';
 import CompanyResult from '@pages/CompanyResult';
 import Layout from '@layout/Layout';
+import InterviewResult from '@pages/InterviewResult';
 
 const App = () => {
   const router = createBrowserRouter(
@@ -24,7 +25,7 @@ const App = () => {
         <Route path='/candidate/interview' element={<InterviewPage />} />
         <Route path='/candidate/done' element={<CandidateDone />} />
         <Route path='/company/info' element={<CompanyInfo />} />
-        <Route path='/company/result' element={<CompanyResult />} />
+        <Route path='/company/result' element={<InterviewResult />} />
       </Route>
     )
   );

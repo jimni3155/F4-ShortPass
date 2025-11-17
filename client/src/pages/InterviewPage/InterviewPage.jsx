@@ -4,33 +4,14 @@ import InterviewPageLayout from './InterviewPageLayout';
 import useAudioStreaming from '@lib/useAudioStreaming';
 import QuestionPanel from './QuestionPanel';
 import {useInterviewFlow} from '@lib/useInterviewFlow';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import Button from '@components/Button';
 import EndButton from './EndButton';
+import QuestionBar from './QuestionBar';
+import SideBar from './SideBar';
+import InterviewLog from './InterviewLog';
 
 const InterviewPage = () => {
-  // const {phase, currentQuestion, transcript, startInterview, index} =
-  //   useInterviewFlow();
-
-  // useEffect(() => {
-  //   startInterview();
-  // }, []);
-
-  // return (
-  //   <InterviewPageLayout>
-  //     <QuestionPanel
-  //       phase={phase}
-  //       currentQuestion={currentQuestion}
-  //       currentQuestionIndex={index + 1}
-  //     />
-  //     <section className='w-full flex my-auto gap-10'>
-  //       <AgentPanel />
-  //       <CameraPreview />
-  //     </section>
-
-  //     {phase === 'done' && <EndButton />}
-  //   </InterviewPageLayout>
-  // );
   const {status, rms, startRecording, stopRecording, STATUS} =
     useAudioStreaming();
 
@@ -53,7 +34,7 @@ const InterviewPage = () => {
 
   return (
     <InterviewPageLayout>
-      {/* <SideBar /> */}
+      <SideBar />
 
       {/* Center Content */}
       <main className='flex flex-1 flex-col p-6'>
@@ -72,10 +53,11 @@ const InterviewPage = () => {
           onClick={stopRecording}>
           CLOSE
         </button>
-        {/* <QuestionBar /> */}
+        <EndButton />
+        <QuestionBar />
       </main>
 
-      {/* <InterviewLog /> */}
+      <InterviewLog />
     </InterviewPageLayout>
   );
 };

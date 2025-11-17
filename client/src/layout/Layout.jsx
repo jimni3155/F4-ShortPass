@@ -8,16 +8,16 @@ const Layout = () => {
           className='absolute inset-0 opacity-60'
           style={{
             background:
-              'radial-gradient(circle at top left, #f7e0da 0%, transparent 50%)',
+              'radial-gradient(circle at top left, #dae7f7 0%, transparent 50%)',
           }}
         />
-        <div
+        {/* <div
           className='absolute inset-0 opacity-60'
           style={{
             background:
               'radial-gradient(circle at top right, #e2defc 0%, transparent 50%)',
           }}
-        />
+        /> */}
         <div
           className='absolute inset-0'
           style={{
