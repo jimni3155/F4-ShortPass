@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from api import interview, evaluation, job, applicant, company, persona, interview_report, jd_persona
-from api import interview, jd_persona
+from api import interview, jd_persona, job
 import os
 import sys
 
@@ -33,8 +33,8 @@ app.add_middleware(
 # API 라우터 포함
 app.include_router(interview.router, prefix="/api/v1", tags=["Interview"])
 app.include_router(jd_persona.router, prefix="/api/v1", tags=["JD Persona"])
+app.include_router(job.router, prefix="/api/v1", tags=["Job"])
 # app.include_router(interview_report.router, prefix="/api/v1", tags=["Interview Report"])
-# app.include_router(job.router, prefix="/api/v1", tags=["Job"])
 # app.include_router(applicant.router, prefix="/api/v1", tags=["Applicant"])
 # app.include_router(company.router, prefix="/api/v1", tags=["Company"])
 # app.include_router(persona.router, prefix="/api/v1/personas", tags=["Persona"])

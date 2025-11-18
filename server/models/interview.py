@@ -20,10 +20,11 @@ class InterviewStatus(enum.Enum):
 class Company(Base):
     """
     Company 테이블 - 회사 정보
-    
+
     Attributes:
         id: 회사 ID (PK)
         name: 회사명
+        company_url: 회사 소개 URL (핵심 가치 분석용)
         company_values_text: 인재상/핵심 가치 텍스트
         company_culture_desc: 조직 문화 설명
         core_values: 핵심 가치 리스트 (JSONB)
@@ -34,10 +35,11 @@ class Company(Base):
         updated_at: 수정 시각
     """
     __tablename__ = "companies"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(200), nullable=False, index=True)
-    
+    company_url = Column(String(500), nullable=True)  # 회사 소개 URL
+
     # 회사 정보
     company_values_text = Column(Text, nullable=True)
     company_culture_desc = Column(Text, nullable=True)
