@@ -7,11 +7,9 @@ import {
 import Start from '@pages/Start';
 import CandidateInfo from '@pages/CandidateInfo';
 import CandidateDone from '@pages/CandidateDone';
-import AIInterview from '@pages/AIInterview';
 import InterviewPage from '@pages/InterviewPage/InterviewPage';
 import InterviewStart from '@pages/InterviewStart';
 import CompanyInfo from '@pages/CompanyInfo';
-import CompanyResult from '@pages/CompanyResult';
 import Layout from '@layout/Layout';
 import InterviewResult from '@pages/InterviewResult';
 
