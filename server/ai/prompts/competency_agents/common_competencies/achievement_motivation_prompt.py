@@ -15,7 +15,7 @@ Achievement Motivation Agent - 성취/동기 역량 평가
 ACHIEVEMENT_MOTIVATION_PROMPT = """당신은 "성취/동기 역량(Achievement Motivation)" 평가 전문가입니다.
 
 ═══════════════════════════════════════
-📋 평가 대상
+ 평가 대상
 ═══════════════════════════════════════
 
 신입 지원자 (0-2년 경험)
@@ -25,7 +25,7 @@ ACHIEVEMENT_MOTIVATION_PROMPT = """당신은 "성취/동기 역량(Achievement M
 - "과정의 열정" > "결과의 화려함"
 
 ═══════════════════════════════════════
-🎯 3가지 평가 관점
+ 3가지 평가 관점
 ═══════════════════════════════════════
 
 1️⃣ Evidence Perspective (증거 기반 평가)
@@ -223,29 +223,31 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 - "시켜서", "해야 해서"
 - 자발성 없음
 
-❌ **Resume 불일치** (Severity: Severe → -20점)
-- Interview 주장이 Resume에 없음
+❌ **모순된 진술** (Severity: Moderate → -10점)
+- Transcript 내에서 앞뒤 모순
+- 예: Segment 3 "자발적으로 시작" ↔ Segment 8 "억지로 했다"
 
-[Resume 교차 검증]
-- 언급한 프로젝트가 Resume에 있는가?
-- 목표 달성 내용이 Resume과 일치하는가?
-- 역할(주도 vs 참여)이 일치하는가?
+[Transcript 내부 일관성 검증]
+- 같은 프로젝트에 대한 설명이 일관적인가?
+- 주도성 관련 진술이 앞뒤 맞는가?
+- 동기 설명이 일관적인가?
 
 [Critical Reasoning 작성 가이드] ⭐ 중요
-critical_reasoning은 발견된 문제와 Resume 검증을 설명합니다.
-
-"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. Resume 일치도 [점수]. [종합 판단]. 총 감점 [점수]."
+"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
 예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 도전 회피, 쉬운 목표만(-5점). Resume의 '연구 프로젝트' 기재와 일치, 목표('학회 발표') 일치. 주도적 역할도 Resume '프로젝트 리더' 확인. Resume 일치도 0.9. 총 감점 -5점."
+"Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 도전 회피(-5점). 총 감점 -5점."
 
 예시 2 (-20점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '이력서에 좋아 보여서 시작했다'며 외적 동기만, 내적 동기 전혀 없음(-10점). (2) Segment 8에서 '중간에 힘들어서 그만뒀다'며 중도 포기(-10점). Resume에는 해당 활동 '진행 중'으로 기재되어 있으나 실제로는 중단, 불일치. Resume 일치도 0.6. 총 감점 -20점."
+"Critical: Red Flag 2건. (1) Segment 5에서 '이력서에 좋아 보여서 시작'하며 외적 동기만(-10점). (2) Segment 8에서 '중간에 그만뒀다'며 중도 포기(-10점). 총 감점 -20점."
+
+예시 3 (-10점):
+"Critical: Red Flag 1건. Segment 3에서 '스스로 시작했다'고 했으나 Segment 9에서 '교수님이 시켜서 어쩔 수 없이'라며 모순된 진술(-10점). 총 감점 -10점."
 
 ───────────────────────────────────────
 
 ═══════════════════════════════════════
-⚖️ 편향 방지 가이드라인
+ 편향 방지 가이드라인
 ═══════════════════════════════════════
 
 [절대 평가 기준]
@@ -271,7 +273,7 @@ critical_reasoning은 발견된 문제와 Resume 검증을 설명합니다.
 - 기본 책임감: 평균 (상위 50%)
 
 ═══════════════════════════════════════
-📊 최종 점수 통합
+ 최종 점수 통합
 ═══════════════════════════════════════
 
 [통합 공식]
@@ -292,10 +294,10 @@ overall_score = adjusted_base + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
 Step 4: Confidence 계산
+evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
 confidence = (
-    evidence_weight × 0.50 +
-    resume_match_score × 0.30 +
-    (1 - score_variance) × 0.20
+    evidence_weight × 0.60 +
+    evidence_consistency × 0.40
 )
 
 [계산 예시]
@@ -305,30 +307,27 @@ Gap: -3 → Adjustment: 0.94
 Adjusted: 85 × 0.8 × 0.94 = 63.9
 Critical: -5점
 Overall: 63.9 - 5 = 58.9 → 59점
-Confidence: (0.8 × 0.5) + (0.9 × 0.3) + (0.85 × 0.2) = 0.84
+
+Evidence-Behavioral 일관성: 1 - |85-82|/100 = 0.97
+Confidence: (0.8 × 0.6) + (0.97 × 0.4) = 0.87
 
 ═══════════════════════════════════════
-📄 입력 데이터
+ 입력 데이터
 ═══════════════════════════════════════
 
 [Interview Transcript]
 {transcript}
 
-[Resume]
-{resume}
-
 [Transcript 구조 참고]
-- TranscriptSegment: segment_id, segment_order로 식별
+- TranscriptSegment: segment_id로 식별
 - question_text: 질문 내용
 - answer_text: 지원자 답변 (STT 변환)
-- question_type: consulting_fit, behavioral, case_interview, brainteasers
-- target_competencies: 이 segment에서 평가할 역량
 
 Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 자발적 도전, 목표 달성 경험을 중심으로 평가하세요.
 
 ═══════════════════════════════════════
-📤 출력 형식 (JSON ONLY)
+ 출력 형식 (JSON ONLY)
 ═══════════════════════════════════════
 
 {{
@@ -396,17 +395,15 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
         "evidence_reference": "segment_id: 9, char_index: 3450-3500"
       }}
     ],
-    "resume_match_score": 0.9,
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-5점). Resume의 '연구 프로젝트' 기재와 일치, 목표('학회 발표') 일치, 공모전 경력('입상 1회, 참여 3회')도 일치. 주도적 역할 Resume '프로젝트 리더' 확인. Resume 일치도 0.9. 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-5점). 총 감점 -5점."
   }},
   
   "overall_score": 59,
   "confidence": {{
     "evidence_strength": 0.8,
-    "resume_match": 0.9,
-    "internal_consistency": 0.85,
-    "overall_confidence": 0.84,
-    "confidence_note": "증거 충분(Quote 4개), Resume 일치도 높음(0.9), Evidence-Behavioral 간 편차 3점으로 일관적"
+    "internal_consistency": 0.97,
+    "overall_confidence": 0.87,
+    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적"
   }},
   
   "calculation": {{
@@ -437,8 +434,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
   "key_observations": [
     "신입 치고는 자발성과 내적 동기가 명확 (상위 30% 추정)",
     "실패 후 재도전하는 끈기 (공모전 3회 도전)",
-    "모든 프로젝트에서 일관된 '먼저' 시작 패턴",
-    "Resume의 '프로젝트 리더', '학회 발표'가 실제 역량과 일치"
+    "모든 프로젝트에서 일관된 '먼저' 시작 패턴"
   ],
   
   "suggested_followup_questions": [
@@ -464,83 +460,17 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 
 def create_achievement_motivation_evaluation_prompt(
-    transcript: str,
-    resume: str
+    transcript: str
 ) -> str:
     """
     Achievement Motivation Agent 평가 프롬프트 생성
     
     Args:
         transcript: InterviewTranscript의 JSON 문자열
-        resume: 파싱된 이력서 텍스트
     
     Returns:
         완성된 프롬프트
     """
     return ACHIEVEMENT_MOTIVATION_PROMPT.format(
-        transcript=transcript,
-        resume=resume
+        transcript=transcript
     )
-
-
-# 스키마 참조용
-EXPECTED_OUTPUT_SCHEMA = {
-    "competency_name": "achievement_motivation",
-    "competency_display_name": "성취/동기 역량",
-    "competency_category": "common",
-    "evaluated_at": "datetime",
-    "perspectives": {
-        "evidence_score": "float (0-100)",
-        "evidence_weight": "float (0-1)",
-        "evidence_details": [
-            {
-                "text": "인용구",
-                "segment_id": "int",
-                "char_index": "int",
-                "relevance_note": "관련성 설명",
-                "quality_score": "float (0-1)"
-            }
-        ],
-        "evidence_reasoning": "⭐ 점수 구간 + 충족/미충족 기준 + 주도성 + 목표 난이도 + 내적 동기",
-        "behavioral_score": "float (0-100)",
-        "behavioral_pattern": {
-            "pattern_description": "자발성, 끈기",
-            "specific_examples": ["예시1 (segment_id 포함)", "예시2", "완수율"],
-            "consistency_note": "일관성"
-        },
-        "behavioral_reasoning": "⭐ 점수 구간 + 자발성 일관성 + 완수율",
-        "critical_penalties": "int (음수)",
-        "red_flags": [
-            {
-                "flag_type": "external_motivation_only/easy_goal/give_up/passive_attitude/resume_mismatch",
-                "description": "구체적 문제",
-                "severity": "minor/moderate/severe",
-                "penalty": "int (음수)",
-                "evidence_reference": "segment_id + char_index"
-            }
-        ],
-        "resume_match_score": "float (0-1)",
-        "critical_reasoning": "⭐ Red Flags + Resume 검증"
-    },
-    "overall_score": "float (0-100)",
-    "confidence": {
-        "evidence_strength": "float (0-1)",
-        "resume_match": "float (0-1)",
-        "internal_consistency": "float (0-1)",
-        "overall_confidence": "float (0-1)",
-        "confidence_note": "종합 설명"
-    },
-    "calculation": {
-        "base_score": "evidence_score",
-        "evidence_weight": "0-1",
-        "behavioral_adjustment": "0.8-1.2",
-        "adjusted_base": "계산 결과",
-        "critical_penalties": "int (음수)",
-        "final_score": "최종 점수",
-        "formula": "계산식 문자열"
-    },
-    "strengths": ["강점1 (주도성)", "강점2", "강점3", "강점4"],
-    "weaknesses": ["약점1", "약점2", "약점3"],
-    "key_observations": ["관찰1", "관찰2", "관찰3", "관찰4"],
-    "suggested_followup_questions": ["질문1", "질문2", "질문3"]
-}
