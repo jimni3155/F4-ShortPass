@@ -1,7 +1,5 @@
 venv1/
 client/.vite/
-/__pycache__/
-\__pycache__
 node_modules/
 dist/
 dist-ssr/
@@ -11,8 +9,8 @@ client/.env
 client/.env.local
 client/.env.*.local
 .pytest_cache/
-__pycache__/
-.pytest_cache/
 .env
 server/.env
 server/.env.example
+__pycache__/
+*.pyc

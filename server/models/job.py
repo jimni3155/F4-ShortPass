@@ -15,6 +15,17 @@ class Job(Base):
         company_id: 회사 ID
         title: 채용 공고 제목
         description: 원본 채용 공고 전체 내용
+
+        # RAG Agent 파싱 결과
+        required_skills: 필수 기술 리스트 (JSON)
+        preferred_skills: 우대 기술 리스트 (JSON)
+        domain_requirements: 도메인 요구사항 (JSON)
+        dynamic_evaluation_criteria: 동적 평가 기준 (JSON, 5개)
+        competency_weights: 역량별 가중치 (JSON)
+        position_type: 포지션 타입 (backend, frontend 등)
+        seniority_level: 시니어리티 (junior, mid, senior 등)
+        main_responsibilities: 주요 업무 (JSON)
+
         created_at: 생성 시각
         updated_at: 수정 시각
     """
@@ -25,9 +36,16 @@ class Job(Base):
     title = Column(String(500), nullable=False)
     description = Column(Text, nullable=True)
 
+    # RAG Agent 파싱 결과
+    required_skills = Column(JSON, nullable=True)
+    preferred_skills = Column(JSON, nullable=True)
+    domain_requirements = Column(JSON, nullable=True)
+    dynamic_evaluation_criteria = Column(JSON, nullable=True)
     competency_weights = Column(JSON, nullable=True)
     weights_reasoning = Column(JSON, nullable=True)
     position_type = Column(String(100), nullable=True)
+    seniority_level = Column(String(50), nullable=True)
+    main_responsibilities = Column(JSON, nullable=True)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)

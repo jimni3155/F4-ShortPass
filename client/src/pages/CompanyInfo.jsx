@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import Toggle from '../components/Toggle';
 import Select from '../components/Select';
 import {useNavigate} from 'react-router-dom';
-import {uploadPersonaPdf, getPersonasByCompany} from '../apis/persona';
+import {uploadJDAndAnalyze} from '../apis/jdPersona';
 
 const sizeOptions = [
   {id: 0, name: '1-10명'},
@@ -24,15 +24,13 @@ const CompanyInfo = () => {
     name: '',
     size: '',
     jdPdf: null,
-    personaPdf: null,
     questions: [],
     blind: false,
   });
 
   const [newQuestion, setNewQuestion] = useState('');
-  const [personaUploadStatus, setPersonaUploadStatus] = useState(null);
-  const [companyId, setCompanyId] = useState(null);
-  const [personas, setPersonas] = useState([]);
+  const [companyId, setCompanyId] = useState(1); // 임시 하드코딩
+  const [jobId, setJobId] = useState(null); // JD 업로드 후 받는 Job ID
 
   useEffect(() => {
     const loadCompany = async () => {
@@ -67,41 +65,23 @@ const CompanyInfo = () => {
   };
 
   const handleSave = async () => {
+    if (!formData.jdPdf) {
+      alert('JD PDF를 업로드해주세요.');
+      return;
+    }
+
     setLoading(true);
     try {
-      // TODO: saveCompany 함수 구현 필요
-      // await saveCompany(formData);
-      // setToast({message: '저장되었습니다.', type: 'success'});
+      // 1. JD PDF 업로드 및 분석
+      console.log('📤 JD 업로드 중...');
+      const result = await uploadJDAndAnalyze(
+        formData.jdPdf,
+        companyId,
+        formData.name || 'Untitled Position'
+      );
 
-      // 임시: 회사 ID를 1로 설정 (실제로는 saveCompany에서 반환된 ID 사용)
-      const tempCompanyId = 1;
-      setCompanyId(tempCompanyId);
-
-      console.log('회사 정보 저장:', formData);
-      alert('저장되었습니다. 결과 페이지로 이동합니다.');
-
-      // 저장 후 회사 결과 페이지로 이동 (jobId로 tempCompanyId 사용)
-      navigate(`/company/result/${tempCompanyId}`);
-    } catch (err) {
-      // setToast({message: '저장 중 오류가 발생했습니다.', type: 'error'});
-      alert('저장 중 오류가 발생했습니다.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePersonaUpload = async () => {
-    if (!formData.personaPdf) {
-      alert('페르소나 PDF 파일을 선택해주세요.');
-      return;
-    }
-
-    if (!companyId) {
-      alert('먼저 회사 정보를 저장해주세요.');
-      return;
-    }
-
-    setLoading(true);
+      const uploadedJobId = result.job_id;
+      setJobId(uploadedJobId);
     setPersonaUploadStatus('업로드 중...');
 
     try {
@@ -114,11 +94,16 @@ const CompanyInfo = () => {
       const personaList = await getPersonasByCompany(companyId);
       setPersonas(personaList.personas);
 
-      console.log('생성된 페르소나:', result);
-      alert(result.message);
+      console.log('✅ JD 업로드 완료:', result);
+      console.log('회사 정보 저장:', formData);
+
+      alert('JD 업로드가 완료되었습니다. 페르소나 생성 페이지로 이동합니다.');
+
+      // 2. 페르소나 생성 페이지로 이동
+      navigate(`/company/persona/${uploadedJobId}`);
     } catch (err) {
-      setPersonaUploadStatus(`✗ 업로드 실패: ${err.message}`);
-      alert(`페르소나 업로드 실패: ${err.message}`);
+      console.error('저장 실패:', err);
+      alert(`저장 중 오류가 발생했습니다: ${err.message}`);
     } finally {
       setLoading(false);
     }
@@ -165,16 +150,14 @@ const CompanyInfo = () => {
               페르소나 생성 (PDF 업로드)
             </h2>
             <p className='text-sm text-gray-600 mb-4'>
-              면접관 페르소나를 생성하기 위한 질문 PDF를 업로드하세요. PDF에서
-              질문을 자동으로 추출하여 페르소나를 생성합니다.
+              면접관 페르소나를 생성하기 위한 질문 PDF를 업로드하세요.
+              PDF에서 질문을 자동으로 추출하여 페르소나를 생성합니다.
             </p>
 
             <PdfUpload
               label='페르소나 질문 PDF'
               file={formData.personaPdf}
-              onFileChange={(file) =>
-                setFormData({...formData, personaPdf: file})
-              }
+              onFileChange={(file) => setFormData({...formData, personaPdf: file})}
               onRemove={() => setFormData({...formData, personaPdf: null})}
             />
 
@@ -187,9 +170,7 @@ const CompanyInfo = () => {
                 페르소나 생성
               </Button>
               {personaUploadStatus && (
-                <span className='text-sm text-gray-700'>
-                  {personaUploadStatus}
-                </span>
+                <span className='text-sm text-gray-700'>{personaUploadStatus}</span>
               )}
             </div>
 
@@ -216,12 +197,11 @@ const CompanyInfo = () => {
                             <span className='text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded'>
                               {persona.archetype}
                             </span>
-                            {persona.focus_keywords &&
-                              persona.focus_keywords.length > 0 && (
-                                <span className='text-xs text-gray-500'>
-                                  키워드: {persona.focus_keywords.join(', ')}
-                                </span>
-                              )}
+                            {persona.focus_keywords && persona.focus_keywords.length > 0 && (
+                              <span className='text-xs text-gray-500'>
+                                키워드: {persona.focus_keywords.join(', ')}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>

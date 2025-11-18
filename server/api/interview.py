@@ -9,6 +9,8 @@ from services import interview_service_v2 as interview_service
 from models.interview import InterviewSession, InterviewStatus
 from schemas.interview import PrepareInterviewRequest, PrepareInterviewResponse # (수정된 스키마 임포트)
 from datetime import datetime
+import os
+import json
 
 router = APIRouter()
 
@@ -111,6 +113,72 @@ async def websocket_endpoint(websocket: WebSocket, interview_id: int = Path(...)
             "message": f"WebSocket 연결 성공! (Interview ID: {interview_id})"
         })
 
+        # 2. (추가) 'start_interview' 신호를 기다리는 루프
+        start_signal_received = False
+        while not start_signal_received:
+            message = await websocket.receive()
+            if "text" in message:
+                try:
+                    data = json.loads(message["text"])
+                    if data.get("type") == "start_interview":
+                        print("API: 'start_interview' 신호 수신. 테스트 질문 전송 시작.")
+                        start_signal_received = True # 루프 탈출
+                        await websocket.send_json({
+                            "type": "ack_start", # (응답) 시작 신호 잘 받았음
+                            "message": "서버가 'start_interview' 신호를 받았습니다. 면접을 시작합니다."
+                        })
+                    else:
+                         print(f"API: 'start_interview' 대기 중... 알 수 없는 텍스트 수신: {message['text']}")
+                except json.JSONDecodeError:
+                    print(f"API: 'start_interview' 대기 중... 비-JSON 텍스트 수신: {message['text']}")
+            elif "bytes" in message:
+                print("API: 'start_interview' 대기 중... 오디오 바이트가 먼저 수신됨 (무시).")
+
+        # 3. 테스트 질문(TTS) 전송
+        await websocket.send_json({ # (수정) await 누락 수정
+            "type": "question",
+            "text": "안녕하세요. 자기소개를 해 주세요."
+        })
+        TEST_MP3_PATH = "./test_polly_output.mp3"
+
+        connection_lost = False # (수정) 연결 끊김 플래그 변수
+
+        if os.path.exists(TEST_MP3_PATH):
+            # 파일을 바이너리(rb) 모드로 엽니다
+            with open(TEST_MP3_PATH, 'rb') as f:
+                chunk_size = 1024 # 1KB씩 쪼개서 보냄
+                # while True:
+                    # chunk = f.read(chunk_size)
+                    # if not chunk:
+                    #     break # 파일 끝
+                data = f.read()
+
+
+                if websocket.state == WebSocketState.CONNECTED:
+                    await websocket.send_bytes(chunk)
+                else:
+                    print("API: MP3 전송 중 클라이언트 연결 끊김.")
+                    connection_lost = True # (수정) 플래그 설정
+                    # break
+            
+            # (수정) 로그 메시지를 명확하게 분기
+            if not connection_lost:
+                print("API: MP3 파일 전송 완료.")
+            else:
+                print("API: MP3 전송 루프 중단됨 (연결 끊김).")
+        else:
+            print(f"!!! 경고: 테스트 MP3 파일({TEST_MP3_PATH})을 찾을 수 없습니다. MP3 전송을 건너뜁니다.")
+            # (파일이 없으면 그냥 텍스트만 보낸 셈이 됨)
+
+        # (수정) 연결이 끊겼다면, question_end를 보내지 말고 예외 발생
+        if connection_lost:
+            print("API: 클라이언트 연결이 끊겨 question_end 전송 스킵.")
+            # except WebSocketDisconnect 블록으로 바로 이동시킴
+            raise WebSocketDisconnect("MP3 전송 중 클라이언트 연결 끊김") 
+
+        # 4. 질문 음성(TTS)이 끝났다는 신호 전송
+        await websocket.send_json({"type": "question_end"})
+        print("API: 테스트 질문 전송 완료. 답변 대기 중...")
         
         while True:
             # (주의) React가 오디오(bytes)를 보낼 경우:
@@ -134,8 +202,8 @@ async def websocket_endpoint(websocket: WebSocket, interview_id: int = Path(...)
 
 
     except WebSocketDisconnect:
-        print("API: 클라이언트 연결 종료됨.")
+        print(f"API: 클라이언트 연결 종료됨. (ID: {interview_id})")
     except Exception as e:
-        print(f"API: 예외 발생 - {e}")
+        print(f"API: 예외 발생 (ID: {interview_id}) - {e}")
         if websocket.state == WebSocketState.CONNECTED:
              await websocket.close(code=1011) # 서버 에러

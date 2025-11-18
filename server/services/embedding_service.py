@@ -5,6 +5,7 @@
 import boto3
 import json
 from typing import List, Optional
+from botocore.config import Config
 from core.config import BEDROCK_REGION
 
 
@@ -16,9 +17,16 @@ class EmbeddingService:
     """
 
     def __init__(self):
+        # Configure with timeout settings
+        config = Config(
+            read_timeout=30,
+            connect_timeout=10,
+            retries={'max_attempts': 3, 'mode': 'adaptive'}
+        )
         self.bedrock_runtime = boto3.client(
             service_name='bedrock-runtime',
-            region_name=BEDROCK_REGION
+            region_name=BEDROCK_REGION,
+            config=config
         )
         # Amazon Titan Text Embeddings V2 모델 ID
         self.model_id = "amazon.titan-embed-text-v2:0"
@@ -41,7 +49,7 @@ class EmbeddingService:
             max_chars = 20000  # 대략적인 제한
             if len(text) > max_chars:
                 text = text[:max_chars]
-                print(f"⚠ Text truncated to {max_chars} characters")
+                print(f"⚠ [EmbeddingService] Text truncated to {max_chars} characters")
 
             # Bedrock 호출
             body = json.dumps({
@@ -50,6 +58,7 @@ class EmbeddingService:
                 "normalize": True     # 정규화된 벡터 (코사인 유사도에 적합)
             })
 
+            print(f"[EmbeddingService] Generating embedding for text ({len(text)} chars)...")
             response = self.bedrock_runtime.invoke_model(
                 modelId=self.model_id,
                 body=body,
@@ -68,10 +77,12 @@ class EmbeddingService:
             if len(embedding) != 1024:
                 raise Exception(f"Expected 1024 dimensions, got {len(embedding)}")
 
+            print(f"[EmbeddingService] ✓ Embedding generated successfully")
             return embedding
 
         except Exception as e:
-            print(f"✗ Embedding generation failed: {e}")
+            print(f"✗ [EmbeddingService] Embedding generation failed: {e}")
+            print(f"   Error type: {type(e).__name__}")
             raise Exception(f"Failed to generate embedding: {str(e)}")
 
     def generate_embeddings_batch(
@@ -89,21 +100,27 @@ class EmbeddingService:
         Returns:
             List[List[float]]: 임베딩 벡터 리스트
         """
+        print(f"[EmbeddingService] Starting batch embedding: {len(texts)} texts, batch_size={batch_size}")
         embeddings = []
+        failed_count = 0
 
         for i in range(0, len(texts), batch_size):
             batch = texts[i:i + batch_size]
 
-            for text in batch:
+            for idx, text in enumerate(batch):
                 try:
                     embedding = self.generate_embedding(text)
                     embeddings.append(embedding)
                 except Exception as e:
-                    print(f"✗ Failed to embed text chunk {i}: {e}")
+                    print(f"✗ [EmbeddingService] Failed to embed text chunk {i + idx}: {e}")
                     # 실패한 경우 None 추가 (혹은 재시도 로직 추가)
                     embeddings.append(None)
+                    failed_count += 1
 
-            print(f"✓ Processed {min(i + batch_size, len(texts))}/{len(texts)} embeddings")
+            print(f"[EmbeddingService] ✓ Processed {min(i + batch_size, len(texts))}/{len(texts)} embeddings")
+
+        if failed_count > 0:
+            print(f"[EmbeddingService] ⚠ Warning: {failed_count}/{len(texts)} embeddings failed")
 
         return embeddings
 
