@@ -8,12 +8,13 @@ const Button = ({
 }) => {
   const variants = {
     primary:
-      'rounded-full bg-black w-28 h-12 text-white font-semibold hover:bg-primary',
+      'px-4 py-2 rounded-lg bg-blue text-white font-semibold hover:bg-blue/90',
     secondary:
       'rounded-full bg-primary h-12 text-white font-semibold hover:bg-primary/90',
-    ghost: 'text-sm text-primary border-none hover:text-primary/80',
+    ghost: 'text-sm font-semibold border-none text-grey hover:text-dark',
     destructive: '',
     sucess: '',
+    icon: 'rounded-full bg-primary hover:bg-primary/90 p-3',
   };
 
   return (
