@@ -3,6 +3,12 @@ import time
 import requests # Transcribe 결과 다운로드용
 import json
 import sys
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+# 이제 'core' 패키지를 절대 경로로 임포트할 수 있습니다.
 import core.config as config
 
 # --- 1. (필수) 설정 ---
@@ -22,7 +28,7 @@ except Exception as e:
 
 # --- 3. (Polly) 텍스트를 음성 파일(MP3)로 변환 ---
 try:
-    test_text = "안녕하세요. AWS Polly와 Transcribe 테스트입니다."
+    test_text = "안녕하세요. 자기소개를 해 주세요."
     print(f"\n[Polly] 텍스트를 MP3로 변환 시작: '{test_text}'")
     
     response = polly_client.synthesize_speech(

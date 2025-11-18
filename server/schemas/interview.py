@@ -4,74 +4,66 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 
 
-class Question(BaseModel):
-    """질문 스키마"""
-    id: int
-    job_id: Optional[int] = None  # NULL이면 공통 질문
-    question_text: str
-    question_type: str 
-    
-    # 평가 관련
-    evaluation_competencies: List[str] = []
-    competency_weights: Dict[str, float] = {}
-    expected_keywords: List[str] = []
-    difficulty_level: int = 3
-    
-    class Config:
-        from_attributes = True
+class SegmentMetadata(BaseModel):
+    """세그먼트 메타데이터"""
+    speaking_speed_wpm: int = Field(..., description="분당 단어 수")
+    pause_count: int = Field(..., description="멈춤 횟수")
+    filler_words: List[str] = Field(default_factory=list)
 
-
-class AnswerEvaluation(BaseModel):
-    """답변 평가 결과"""
+class TranscriptSegment(BaseModel):
+    """인터뷰 세그먼트 (질문-답변 단위)"""
+    segment_id: int
+    segment_order: int
+    segment_type: str = Field(..., description="common or job_specific")
+    
+    # 질문
     question_id: int
     question_text: str
     question_type: str
-    answer_text: str
+    question_language: str = Field(default="ko")
     
-    # 질문의 가중치 정보 (평가 시 Question에서 복사)
-    competencies_weights: Dict[str, float] = {}
+    # 답변
+    answer_text: str = Field(..., description="STT 변환된 전체 답변")
+    answer_duration_sec: int
+    answer_timestamp_start: str
+    answer_timestamp_end: str
+    answer_language: str = Field(default="ko")
     
-    # 평가 결과
-    scores: Dict[str, float]  # {"python": 85, "system_design": 90, ...}
-    evaluation_detail: str = ""
-    matched_keywords: List[str] = []
-    missing_keywords: List[str] = []
-    strengths: List[str] = []
-    weaknesses: List[str] = []
-
-
-class CompetencyScore(BaseModel):
-    """역량 점수 상세 정보"""
-    score: float = Field(0.0, ge=0, le=100, description="역량 점수")
-    sub_scores: Dict[str, float] = Field(default_factory=dict, description="하위 차원 점수")
-    mentioned_items: List[str] = Field(default_factory=list, description="언급된 키워드")
-    evaluation_count: int = Field(0, description="평가된 답변 개수")
-
-
-class AggregatedScores(BaseModel):
-    """6개 역량별 집계 점수"""
-    job_expertise: CompetencyScore = Field(default_factory=CompetencyScore)
-    problem_solving: CompetencyScore = Field(default_factory=CompetencyScore)
-    organizational_fit: CompetencyScore = Field(default_factory=CompetencyScore)
-    growth_potential: CompetencyScore = Field(default_factory=CompetencyScore)
-    interpersonal_skill: CompetencyScore = Field(default_factory=CompetencyScore)
-    achievement_motivation: CompetencyScore = Field(default_factory=CompetencyScore)
+    # 오디오
+    audio_file_path: Optional[str] = None
     
-    def get_competency_score(self, competency_key: str) -> float:
-        """특정 역량 점수 반환"""
-        return getattr(self, competency_key, CompetencyScore()).score
+    # 평가 대상 역량
+    target_competencies: Dict[str, List[str]] = Field(
+        ...,
+        description="평가할 역량 {'common': [...], 'job_specific': [...]}"
+    )
     
-    def get_all_scores(self) -> Dict[str, float]:
-        """모든 역량 점수를 dict로 반환"""
-        return {
-            "job_expertise": self.job_expertise.score,
-            "problem_solving": self.problem_solving.score,
-            "organizational_fit": self.organizational_fit.score,
-            "growth_potential": self.growth_potential.score,
-            "interpersonal_skill": self.interpersonal_skill.score,
-            "achievement_motivation": self.achievement_motivation.score
-        }
+    # STT 메타
+    stt_confidence: float = Field(ge=0, le=1)
+    stt_provider: str = Field(default="AWS Transcribe")
+    
+    metadata: Optional[SegmentMetadata] = None
 
+
+class InterviewTranscript(BaseModel):
+    """전체 인터뷰 Transcript"""
+    interview_id: int
+    applicant_id: int
+    job_id: int
+    company_id: int
+    
+    total_duration_sec: int
+    started_at: str
+    completed_at: str
+    
+    segments: List[TranscriptSegment]
+    
+    full_transcript: str = Field(..., description="전체 대화 내용 (검색용)")
+    
+    interview_metadata: Dict = Field(
+        default_factory=dict,
+        description="전체 인터뷰 통계"
+    )
 
 
 # ========== Request/Response ==========

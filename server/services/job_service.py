@@ -291,3 +291,126 @@ class JobService:
             db.rollback()
             print(f"✗ Failed to delete job {job_id}: {e}")
             return False
+
+    async def _extract_company_weights(self, jd_text: str) -> Optional[Dict[str, Any]]:
+        """
+        JD 텍스트에서 회사의 핵심 역량 가중치 추출
+
+        멀티에이전트 평가 시스템과 연동을 위해 5개 고정 컨설팅 역량으로 매핑
+
+        Args:
+            jd_text: JD 전체 텍스트
+
+        Returns:
+            Dict: {
+                "weights": {...},
+                "reasoning": {...},
+                "competencies": [5개 고정 역량]
+            }
+        """
+        try:
+            # 5개 고정 컨설팅 역량 (멀티에이전트 평가와 동일)
+            FIXED_COMPETENCIES = [
+                "Strategic Planning & Analysis (전략 기획 및 분석력)",
+                "Stakeholder Management (이해관계자 관리)",
+                "Project & Timeline Management (프로젝트 실행 관리)",
+                "Business Insight & Market Research (시장 조사 및 인사이트)",
+                "Data Management & Reporting (데이터 관리 및 보고)"
+            ]
+
+            prompt = f"""
+당신은 채용 공고(JD)를 분석하여 회사가 요구하는 역량을 평가하는 전문가입니다.
+
+다음 JD를 분석하여, 아래 **5개 컨설팅 직무 역량** 각각에 대해 이 JD가 얼마나 중요하게 요구하는지 점수(0-100)를 매기세요.
+
+**분석할 5개 역량:**
+1. Strategic Planning & Analysis (전략 기획 및 분석력)
+   - 전략 수립, 문제 분석, 의사결정, 논리적 사고
+2. Stakeholder Management (이해관계자 관리)
+   - 커뮤니케이션, 협업, 설득력, 관계 구축
+3. Project & Timeline Management (프로젝트 실행 관리)
+   - 일정 관리, 업무 조율, 실행력, 리소스 관리
+4. Business Insight & Market Research (시장 조사 및 인사이트)
+   - 시장 분석, 트렌드 파악, 고객 이해, 인사이트 도출
+5. Data Management & Reporting (데이터 관리 및 보고)
+   - 데이터 분석, 보고서 작성, 지표 관리, 결과 정리
+
+**JD:**
+{jd_text[:3000]}
+
+**응답 형식 (JSON):**
+{{
+  "competencies": [
+    {{
+      "name": "Strategic Planning & Analysis (전략 기획 및 분석력)",
+      "category": "technical",
+      "score": 85,
+      "description": "이 JD에서 이 역량이 중요한 이유"
+    }},
+    {{
+      "name": "Stakeholder Management (이해관계자 관리)",
+      "category": "cultural",
+      "score": 75,
+      "description": "..."
+    }},
+    ... (5개 모두)
+  ],
+  "category_weights": {{
+    "technical": 0.35,
+    "cultural": 0.30,
+    "experience": 0.20,
+    "leadership": 0.15
+  }},
+  "reasoning": "JD 전체 분석 요약"
+}}
+
+**중요:**
+- 반드시 위 5개 역량 모두에 대해 점수를 매기세요
+- 유효한 JSON만 반환하세요
+- category_weights의 합은 1.0이어야 합니다
+"""
+
+            response = await self.llm_client.generate(
+                prompt=prompt,
+                max_tokens=2000,
+                temperature=0.3
+            )
+
+            # JSON 파싱
+            import json
+            import re
+
+            # JSON 추출 (```json ... ``` 형태인 경우 처리)
+            json_match = re.search(r'```json\s*(.*?)\s*```', response, re.DOTALL)
+            if json_match:
+                json_str = json_match.group(1)
+            else:
+                # JSON 블록이 없으면 전체를 JSON으로 파싱 시도
+                json_str = response
+
+            result = json.loads(json_str)
+
+            # 5개 역량이 모두 있는지 검증
+            competencies = result.get("competencies", [])
+            if len(competencies) != 5:
+                print(f"⚠ Warning: Expected 5 competencies, got {len(competencies)}")
+                # 부족한 역량은 기본값으로 채우기
+                existing_names = {c.get("name", "") for c in competencies}
+                for fixed_comp in FIXED_COMPETENCIES:
+                    if fixed_comp not in existing_names:
+                        competencies.append({
+                            "name": fixed_comp,
+                            "category": "technical",
+                            "score": 50,
+                            "description": "분석되지 않음"
+                        })
+
+            return {
+                "weights": result.get("category_weights", {}),
+                "competencies": competencies[:5],  # 최대 5개만
+                "reasoning": result.get("reasoning", "")
+            }
+
+        except Exception as e:
+            print(f"⚠ Failed to extract company weights: {e}")
+            return None

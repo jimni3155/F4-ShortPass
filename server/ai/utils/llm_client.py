@@ -116,3 +116,44 @@ class LLMClient:
         except Exception as e:
             print(f"ERROR in chat_completion Bedrock call: {e}")
             return f"Error: {str(e)}"
+
+    async def ainvoke(self, prompt: str, temperature: float = 0.7, max_tokens: int = 4096) -> str:
+        """
+        Async invocation for simple prompt-response interaction
+
+        Args:
+            prompt: The prompt to send to the LLM
+            temperature: Sampling temperature
+            max_tokens: Maximum tokens to generate
+
+        Returns:
+            str: Generated text response
+        """
+        try:
+            model_id = "anthropic.claude-3-sonnet-20240229-v1:0"
+
+            body = json.dumps({
+                "anthropic_version": "bedrock-2023-05-31",
+                "max_tokens": max_tokens,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": temperature
+            })
+
+            response = self.bedrock_runtime.invoke_model(
+                modelId=model_id,
+                body=body,
+                contentType="application/json",
+                accept="application/json"
+            )
+
+            response_body = json.loads(response['body'].read().decode('utf-8'))
+
+            # Extract text content from the response
+            if 'content' in response_body and len(response_body['content']) > 0 and 'text' in response_body['content'][0]:
+                return response_body['content'][0]['text'].strip()
+            else:
+                return "No response generated"
+
+        except Exception as e:
+            print(f"ERROR in ainvoke Bedrock call: {e}")
+            raise
