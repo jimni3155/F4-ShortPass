@@ -82,6 +82,17 @@ const CompanyInfo = () => {
 
       const uploadedJobId = result.job_id;
       setJobId(uploadedJobId);
+    setPersonaUploadStatus('업로드 중...');
+
+    try {
+      const result = await uploadPersonaPdf(companyId, formData.personaPdf);
+      setPersonaUploadStatus(
+        `✓ 페르소나 생성 완료! ${result.questions.length}개의 질문이 추출되었습니다.`
+      );
+
+      // 페르소나 목록 새로고침
+      const personaList = await getPersonasByCompany(companyId);
+      setPersonas(personaList.personas);
 
       console.log('✅ JD 업로드 완료:', result);
       console.log('회사 정보 저장:', formData);
@@ -132,6 +143,74 @@ const CompanyInfo = () => {
             onRemove={() => setFormData({...formData, jdPdf: null})}
             required
           />
+
+          {/* Persona PDF Upload Section */}
+          <div className='border border-blue-300 p-5 rounded-lg bg-blue-50'>
+            <h2 className='text-lg font-semibold mb-4 text-blue-900'>
+              페르소나 생성 (PDF 업로드)
+            </h2>
+            <p className='text-sm text-gray-600 mb-4'>
+              면접관 페르소나를 생성하기 위한 질문 PDF를 업로드하세요.
+              PDF에서 질문을 자동으로 추출하여 페르소나를 생성합니다.
+            </p>
+
+            <PdfUpload
+              label='페르소나 질문 PDF'
+              file={formData.personaPdf}
+              onFileChange={(file) => setFormData({...formData, personaPdf: file})}
+              onRemove={() => setFormData({...formData, personaPdf: null})}
+            />
+
+            <div className='mt-4 flex gap-3 items-center'>
+              <Button
+                type='button'
+                onClick={handlePersonaUpload}
+                disabled={loading || !formData.personaPdf || !companyId}
+                className='bg-blue-600 hover:bg-blue-700'>
+                페르소나 생성
+              </Button>
+              {personaUploadStatus && (
+                <span className='text-sm text-gray-700'>{personaUploadStatus}</span>
+              )}
+            </div>
+
+            {/* 생성된 페르소나 목록 */}
+            {personas.length > 0 && (
+              <div className='mt-6'>
+                <h3 className='text-md font-semibold mb-3 text-blue-900'>
+                  생성된 페르소나 ({personas.length}개)
+                </h3>
+                <div className='flex flex-col gap-3'>
+                  {personas.map((persona) => (
+                    <div
+                      key={persona.id}
+                      className='p-4 bg-white rounded-lg border border-blue-200 shadow-sm'>
+                      <div className='flex justify-between items-start'>
+                        <div className='flex-1'>
+                          <h4 className='font-semibold text-gray-900'>
+                            {persona.persona_name}
+                          </h4>
+                          <p className='text-sm text-gray-600 mt-1'>
+                            {persona.description}
+                          </p>
+                          <div className='mt-2 flex gap-2 items-center'>
+                            <span className='text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded'>
+                              {persona.archetype}
+                            </span>
+                            {persona.focus_keywords && persona.focus_keywords.length > 0 && (
+                              <span className='text-xs text-gray-500'>
+                                키워드: {persona.focus_keywords.join(', ')}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Question Set Section */}
           <div>
