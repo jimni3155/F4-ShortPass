@@ -5,6 +5,8 @@
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Query, Depends
 from sqlalchemy.orm import Session
+from typing import Dict, Any, List, Optional
+from pydantic import BaseModel, Field
 
 from services.evaluation.evaluation_service import EvaluationService
 from services.evaluation.evaluation_query_service import EvaluationQueryService
@@ -12,6 +14,92 @@ from services.evaluation.evaluation_stats_service import EvaluationStatsService
 from ai.utils.llm_client import LLMClient
 from db.database import get_db
 
+
+# Pydantic Models for Evaluation Results
+class LinkedUtterance(BaseModel):
+    id: int
+    speaker: str
+    text: str
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
+
+class EvidenceItem(BaseModel):
+    turn: int
+    quote: str
+    observation: str
+    dimension: str
+    impact: str
+    jd_match: Optional[str] = None
+    linked_utterance: Optional[LinkedUtterance] = None
+
+class TriggeredFlag(BaseModel):
+    flag: str
+    turn: int
+    quote: str
+    impact: str
+
+class TriggeredFlags(BaseModel):
+    green: List[TriggeredFlag] = []
+    red: List[TriggeredFlag] = []
+
+class DynamicCriterionScore(BaseModel):
+    name: str
+    score: int
+    standard_comparison: str
+    justification: str
+
+class TechnicalSkillMatch(BaseModel):
+    skill: str
+    experience_years: Optional[int] = None
+    depth: Optional[str] = None
+
+class MissingSkill(BaseModel):
+    skill: str
+    reason: str
+
+class TechnicalSkillsCoverage(BaseModel):
+    required_skills_matched: int
+    required_skills_total: int
+    coverage_percentage: int
+    matched_skills: List[TechnicalSkillMatch] = []
+    missing_skills: List[MissingSkill] = []
+    preferred_skills_matched: List[str] = []
+    preferred_skills_bonus: int = 0
+
+class SubScore(BaseModel):
+    score: int
+    standard_comparison: str
+    justification: str
+
+class KeyObservationPattern(BaseModel):
+    positive_patterns: List[str] = []
+    negative_patterns: List[str] = []
+    portfolio_interview_consistency: Optional[str] = None
+    production_experience_level: Optional[str] = None
+
+class CompetencyReasoningLog(BaseModel):
+    score: int
+    matched_standard: str
+    reasoning: str
+    evidence: List[EvidenceItem]
+    triggered_flags: TriggeredFlags
+    dynamic_criteria_scores: Dict[str, DynamicCriterionScore]
+    technical_skills_coverage: Optional[TechnicalSkillsCoverage] = None
+    sub_scores: Dict[str, SubScore]
+    strengths: List[str]
+    areas_for_improvement: List[str]
+    key_observations: KeyObservationPattern
+    interviewer_notes: str
+
+class EvaluationResultResponse(BaseModel):
+    evaluation_id: int
+    applicant_id: int
+    job_id: int
+    match_score: float
+    normalized_score: Optional[float] = None
+    overall_feedback: Optional[str] = None
+    hiring_recommendation: Optional[str] = None
+    reasoning_log: Dict[str, CompetencyReasoningLog] # This will hold the detailed competency logs
 
 router = APIRouter(prefix="/evaluations", tags=["Evaluations"])
 
@@ -73,7 +161,7 @@ async def execute_evaluation(
 
 # ==================== 2. 구직자용 - 평가 결과 조회 ====================
 
-@router.get("/applicants/{applicant_id}/result/{evaluation_id}")
+@router.get("/applicants/{applicant_id}/result/{evaluation_id}", response_model=EvaluationResultResponse)
 async def get_evaluation_result_for_applicant(
     applicant_id: int,
     evaluation_id: int,
@@ -103,7 +191,7 @@ async def get_evaluation_result_for_applicant(
 
 # ==================== 3. 기업용 - 지원자 평가 조회 ====================
 
-@router.get("/jobs/{job_id}/applicants/{applicant_id}/result")
+@router.get("/jobs/{job_id}/applicants/{applicant_id}/result", response_model=EvaluationResultResponse)
 async def get_applicant_evaluation_for_company(
     job_id: int,
     applicant_id: int,
