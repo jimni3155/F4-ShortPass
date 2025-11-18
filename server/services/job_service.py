@@ -92,7 +92,14 @@ class JobService:
 
             # 2-1. JD에서 회사 가중치 추출 및 업데이트
             print("\n[Step 2-1/6] Extracting company weights from JD...")
-            weights_data = await self._extract_company_weights(full_text)
+            print(f"  - JD text length: {len(full_text)} characters")
+
+            try:
+                weights_data = await self._extract_company_weights(full_text)
+            except Exception as e:
+                print(f"  ✗ Failed to extract company weights: {e}")
+                print(f"  → Continuing without weight extraction...")
+                weights_data = None
 
             if weights_data and "weights" in weights_data and Company:
                 # Company 테이블 업데이트 (Company 모델이 있는 경우에만)
@@ -125,11 +132,17 @@ class JobService:
 
             # 4. 청크별 임베딩 생성
             print("\n[Step 4/5] Generating embeddings for chunks...")
+            print(f"  - Total chunks to embed: {len(chunks)}")
             chunk_texts = [chunk["chunk_text"] for chunk in chunks]
-            embeddings = self.embedding_service.generate_embeddings_batch(
-                texts=chunk_texts,
-                batch_size=5  # API 제한 고려
-            )
+
+            try:
+                embeddings = self.embedding_service.generate_embeddings_batch(
+                    texts=chunk_texts,
+                    batch_size=5  # API 제한 고려
+                )
+            except Exception as e:
+                print(f"  ✗ Embedding generation failed: {e}")
+                raise Exception(f"Failed to generate embeddings: {str(e)}")
 
             # 5. JobChunk 저장
             print("\n[Step 5/5] Saving chunks to database...")
@@ -308,6 +321,7 @@ class JobService:
                 "competencies": [5개 고정 역량]
             }
         """
+        print(f"[_extract_company_weights] Starting competency extraction...")
         try:
             # 5개 고정 컨설팅 역량 (멀티에이전트 평가와 동일)
             FIXED_COMPETENCIES = [
@@ -370,30 +384,50 @@ class JobService:
 - category_weights의 합은 1.0이어야 합니다
 """
 
+            print(f"[_extract_company_weights] Calling LLM with prompt length: {len(prompt)} chars")
             response = await self.llm_client.generate(
                 prompt=prompt,
                 max_tokens=2000,
                 temperature=0.3
             )
+            print(f"[_extract_company_weights] ✓ LLM response received, length: {len(str(response))} chars")
 
             # JSON 파싱
             import json
             import re
 
+            print(f"[_extract_company_weights] Parsing LLM response...")
+
+            # response가 dict인 경우 (generate 메서드가 dict를 반환할 때)
+            if isinstance(response, dict):
+                if 'text' in response:
+                    response_text = response['text']
+                else:
+                    print(f"[_extract_company_weights] ⚠ Unexpected response format: {response}")
+                    response_text = str(response)
+            else:
+                response_text = str(response)
+
             # JSON 추출 (```json ... ``` 형태인 경우 처리)
-            json_match = re.search(r'```json\s*(.*?)\s*```', response, re.DOTALL)
+            json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
             if json_match:
                 json_str = json_match.group(1)
             else:
                 # JSON 블록이 없으면 전체를 JSON으로 파싱 시도
-                json_str = response
+                json_str = response_text
 
-            result = json.loads(json_str)
+            try:
+                result = json.loads(json_str)
+                print(f"[_extract_company_weights] ✓ JSON parsed successfully")
+            except json.JSONDecodeError as e:
+                print(f"[_extract_company_weights] ✗ JSON parsing failed: {e}")
+                print(f"  Response preview: {response_text[:500]}...")
+                raise
 
             # 5개 역량이 모두 있는지 검증
             competencies = result.get("competencies", [])
             if len(competencies) != 5:
-                print(f"⚠ Warning: Expected 5 competencies, got {len(competencies)}")
+                print(f"[_extract_company_weights] ⚠ Warning: Expected 5 competencies, got {len(competencies)}")
                 # 부족한 역량은 기본값으로 채우기
                 existing_names = {c.get("name", "") for c in competencies}
                 for fixed_comp in FIXED_COMPETENCIES:
@@ -405,12 +439,17 @@ class JobService:
                             "description": "분석되지 않음"
                         })
 
-            return {
+            final_result = {
                 "weights": result.get("category_weights", {}),
                 "competencies": competencies[:5],  # 최대 5개만
                 "reasoning": result.get("reasoning", "")
             }
+            print(f"[_extract_company_weights] ✓ Extraction completed: {len(final_result['competencies'])} competencies")
+            return final_result
 
         except Exception as e:
-            print(f"⚠ Failed to extract company weights: {e}")
+            print(f"[_extract_company_weights] ✗ Failed to extract company weights: {e}")
+            print(f"   Error type: {type(e).__name__}")
+            import traceback
+            print(f"   Traceback: {traceback.format_exc()}")
             return None

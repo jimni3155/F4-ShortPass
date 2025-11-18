@@ -283,38 +283,74 @@ async def analyze_jd_competencies(
         )
 
     try:
+        print(f"\n{'='*60}")
+        print(f"[analyze_jd_competencies] Starting JD competency analysis")
+        print(f"{'='*60}")
+        print(f"  - Company ID: {company_id}")
+        print(f"  - Company URL: {company_url or 'Not provided'}")
+        print(f"  - PDF file: {pdf_file.filename}")
+
         job_service = JobService()
 
         # 1. PDF 파싱
+        print("\n[Step 1/3] Parsing PDF...")
         from ai.parsers.jd_parser import JDParser
         jd_parser = JDParser()
-        parsed_result = jd_parser.parse_and_chunk(pdf_content=pdf_content)
-        full_text = parsed_result["full_text"]
 
-        # 2. 핵심 역량 추출
-        print(f"\n[Analyzing JD Competencies]")
-        print(f"  - Company ID: {company_id}")
-        print(f"  - Company URL: {company_url or 'Not provided'}")
-        print(f"  - JD Text Length: {len(full_text)}")
-
-        analysis_result = await job_service._extract_company_weights(full_text)
-
-        if not analysis_result:
+        try:
+            parsed_result = jd_parser.parse_and_chunk(pdf_content=pdf_content)
+            full_text = parsed_result["full_text"]
+            print(f"  ✓ PDF parsed: {len(full_text)} characters")
+        except Exception as e:
+            print(f"  ✗ PDF parsing failed: {e}")
             raise HTTPException(
                 status_code=500,
-                detail="Failed to analyze competencies"
+                detail=f"Failed to parse PDF: {str(e)}"
             )
 
-        # 3. (선택) Company URL이 있으면 DB에 업데이트
-        if company_url:
-            from models.interview import Company
-            company = db.query(Company).filter(Company.id == company_id).first()
-            if company:
-                company.company_url = company_url
-                db.commit()
-                print(f"  ✓ Company URL updated")
+        # 2. 핵심 역량 추출
+        print(f"\n[Step 2/3] Extracting competencies from JD...")
 
-        print(f"  ✓ Analysis completed: {len(analysis_result.get('competencies', []))} competencies found")
+        try:
+            analysis_result = await job_service._extract_company_weights(full_text)
+        except Exception as e:
+            print(f"  ✗ Competency extraction failed: {e}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to extract competencies: {str(e)}"
+            )
+
+        if not analysis_result:
+            print(f"  ✗ No analysis result returned")
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to analyze competencies - no result returned"
+            )
+
+        print(f"  ✓ Competencies extracted: {len(analysis_result.get('competencies', []))} competencies")
+
+        # 3. (선택) Company URL이 있으면 DB에 업데이트
+        print(f"\n[Step 3/3] Updating company information...")
+        if company_url:
+            try:
+                from models.interview import Company
+                company = db.query(Company).filter(Company.id == company_id).first()
+                if company:
+                    company.company_url = company_url
+                    db.commit()
+                    print(f"  ✓ Company URL updated")
+                else:
+                    print(f"  ⚠ Company {company_id} not found")
+            except Exception as e:
+                print(f"  ⚠ Failed to update company URL: {e}")
+                # Continue without failing the entire request
+        else:
+            print(f"  - No company URL to update")
+
+        print(f"\n{'='*60}")
+        print(f"✓ Analysis completed successfully!")
+        print(f"  - Competencies found: {len(analysis_result.get('competencies', []))}")
+        print(f"{'='*60}\n")
 
         return CompetencyAnalysisResponse(
             competencies=analysis_result.get("competencies", []),
@@ -322,8 +358,14 @@ async def analyze_jd_competencies(
             reasoning=analysis_result.get("reasoning", "")
         )
 
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
     except Exception as e:
+        print(f"\n{'='*60}")
         print(f"✗ Competency analysis failed: {e}")
+        print(f"   Error type: {type(e).__name__}")
+        print(f"{'='*60}\n")
         raise HTTPException(
             status_code=500,
             detail=f"Failed to analyze competencies: {str(e)}"

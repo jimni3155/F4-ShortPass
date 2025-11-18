@@ -1,6 +1,7 @@
 import asyncio
 import boto3
 import json
+from botocore.config import Config
 from core.config import AWS_REGION # Import AWS_REGION from core.config
 
 class LLMClient:
@@ -9,25 +10,33 @@ class LLMClient:
     It allows the server to start and provides a basic Bedrock invocation structure.
     """
     def __init__(self):
-        self.bedrock_runtime = boto3.client('bedrock-runtime', region_name=AWS_REGION)
+        # Configure with timeout settings
+        config = Config(
+            read_timeout=60,
+            connect_timeout=10,
+            retries={'max_attempts': 3, 'mode': 'adaptive'}
+        )
+        self.bedrock_runtime = boto3.client('bedrock-runtime', region_name=AWS_REGION, config=config)
 
-    async def generate(self, prompt: str, response_format: dict = None, temperature: float = 0.3) -> dict:
-        print("WARNING: Using placeholder LLMClient for Bedrock invocation.")
+    async def generate(self, prompt: str, response_format: dict = None, temperature: float = 0.3, max_tokens: int = 2000) -> dict:
+        print(f"[LLMClient] Generating with max_tokens={max_tokens}, temperature={temperature}")
         model_id = "anthropic.claude-3-sonnet-20240229-v1:0" # Example model ID, can be configured
 
         body = json.dumps({
             "anthropic_version": "bedrock-2023-05-31",
-            "max_tokens": 512,
+            "max_tokens": max_tokens,  # Use parameter instead of hardcoded value
             "messages": [{"role": "user", "content": prompt}],
             "temperature": temperature
         })
 
         try:
+            print("[LLMClient] Invoking Bedrock API...")
             response = self.bedrock_runtime.invoke_model(
                 modelId=model_id, body=body, contentType="application/json", accept="application/json"
             )
             response_body = json.loads(response['body'].read().decode('utf-8'))
-            
+            print("[LLMClient] ✓ Bedrock API response received")
+
             # Extract text content from the response
             if 'content' in response_body and len(response_body['content']) > 0 and 'text' in response_body['content'][0]:
                 llm_response_text = response_body['content'][0]['text'].strip()
@@ -51,7 +60,8 @@ class LLMClient:
             return {"text": llm_response_text}
 
         except Exception as e:
-            print(f"ERROR in placeholder LLMClient Bedrock invocation: {e}")
+            print(f"✗ ERROR in LLMClient Bedrock invocation: {e}")
+            print(f"   Error type: {type(e).__name__}")
             # Return a dummy error response
             if response_format and response_format.get("type") == "json_schema":
                 return {
@@ -76,6 +86,7 @@ class LLMClient:
         Returns:
             str: Generated text response
         """
+        print(f"[LLMClient] Chat completion with max_tokens={max_tokens}")
         try:
             # Convert messages to single prompt (Claude Bedrock format)
             prompt = ""
@@ -98,6 +109,7 @@ class LLMClient:
                 "temperature": temperature
             })
 
+            print("[LLMClient] Invoking Bedrock API (chat_completion)...")
             response = self.bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body,
@@ -106,6 +118,7 @@ class LLMClient:
             )
 
             response_body = json.loads(response['body'].read().decode('utf-8'))
+            print("[LLMClient] ✓ Chat completion response received")
 
             # Extract text content from the response
             if 'content' in response_body and len(response_body['content']) > 0 and 'text' in response_body['content'][0]:
@@ -114,7 +127,8 @@ class LLMClient:
                 return "No response generated"
 
         except Exception as e:
-            print(f"ERROR in chat_completion Bedrock call: {e}")
+            print(f"✗ ERROR in chat_completion Bedrock call: {e}")
+            print(f"   Error type: {type(e).__name__}")
             return f"Error: {str(e)}"
 
     async def ainvoke(self, prompt: str, temperature: float = 0.7, max_tokens: int = 4096) -> str:
@@ -129,6 +143,7 @@ class LLMClient:
         Returns:
             str: Generated text response
         """
+        print(f"[LLMClient] ainvoke with max_tokens={max_tokens}")
         try:
             model_id = "anthropic.claude-3-sonnet-20240229-v1:0"
 
@@ -139,6 +154,7 @@ class LLMClient:
                 "temperature": temperature
             })
 
+            print("[LLMClient] Invoking Bedrock API (ainvoke)...")
             response = self.bedrock_runtime.invoke_model(
                 modelId=model_id,
                 body=body,
@@ -147,6 +163,7 @@ class LLMClient:
             )
 
             response_body = json.loads(response['body'].read().decode('utf-8'))
+            print("[LLMClient] ✓ ainvoke response received")
 
             # Extract text content from the response
             if 'content' in response_body and len(response_body['content']) > 0 and 'text' in response_body['content'][0]:
@@ -155,5 +172,6 @@ class LLMClient:
                 return "No response generated"
 
         except Exception as e:
-            print(f"ERROR in ainvoke Bedrock call: {e}")
+            print(f"✗ ERROR in ainvoke Bedrock call: {e}")
+            print(f"   Error type: {type(e).__name__}")
             raise
