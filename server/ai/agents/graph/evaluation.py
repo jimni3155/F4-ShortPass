@@ -3,9 +3,9 @@
 LangGraph Evaluation Graph
 배치 평가 → Job/Common 통합 → 검증
 """
-
-from graph.state import EvaluationState
-from graph.nodes import (
+from langgraph.graph import StateGraph, END
+from .state import EvaluationState
+from .nodes import (
     batch_evaluation_node,
     job_aggregator_node,
     common_aggregator_node,

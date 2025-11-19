@@ -6,7 +6,13 @@ import os
 import json
 from datetime import datetime
 from typing import Dict
+from pathlib import Path
+from dotenv import load_dotenv
 from ai.agents.graph.evaluation import create_evaluation_graph
+
+# .env 파일 로드
+env_path = Path(__file__).parent.parent.parent / '.env'
+load_dotenv(env_path)
 
 # 프롬프트 생성 함수 import
 from ai.prompts.competency_agents.common_competencies.problem_solving_prompt import create_problem_solving_evaluation_prompt

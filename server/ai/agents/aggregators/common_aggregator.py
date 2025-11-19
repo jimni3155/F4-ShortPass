@@ -5,7 +5,7 @@ Common 5개 역량 통합
 
 from typing import Dict
 from datetime import datetime
-from aggregators.base_aggregator import BaseAggregator
+from .base_aggregator import BaseAggregator
 
 
 class CommonAggregator(BaseAggregator):

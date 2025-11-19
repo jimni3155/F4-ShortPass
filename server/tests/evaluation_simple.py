@@ -1,6 +1,12 @@
 """
 간단한 테스트 (API 서버 없이 직접 호출)
 """
+import sys
+import os
+
+# Add the parent directory (server) to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 import asyncio
 import json
@@ -82,43 +88,89 @@ async def test_direct_evaluation():
         )
         
         print("\n✅ 평가 완료!\n")
-        
+
         # 결과 출력
         print("="*60)
-        print("Job 역량 평가")
+        print("Job 역량 평가 (상세)")
         print("="*60)
-        
+
         job_agg = result["job_aggregation"]
         print(f"\n종합 점수: {job_agg['overall_job_score']}점\n")
-        
-        for comp in ["structured_thinking", "business_documentation", 
+
+        for comp in ["structured_thinking", "business_documentation",
                      "financial_literacy", "industry_learning", "stakeholder_management"]:
             comp_data = job_agg.get(comp)
             if comp_data:
-                print(f"  - {comp}: {comp_data.get('overall_score', 0)}점")
-        
+                print(f"\n[{comp}]")
+                print(f"  점수: {comp_data.get('overall_score', 0)}점")
+                print(f"  신뢰도: {comp_data.get('confidence', {}).get('overall_confidence', 0)}")
+
+                # 근거 출력
+                evidence = comp_data.get('evidence', [])
+                if evidence:
+                    print(f"  근거:")
+                    for i, ev in enumerate(evidence, 1):
+                        print(f"    {i}. {ev}")
+
+                # 강점 출력
+                strengths = comp_data.get('strengths', [])
+                if strengths:
+                    print(f"  강점:")
+                    for i, strength in enumerate(strengths, 1):
+                        print(f"    {i}. {strength}")
+
+                # 약점 출력
+                weaknesses = comp_data.get('weaknesses', [])
+                if weaknesses:
+                    print(f"  약점:")
+                    for i, weakness in enumerate(weaknesses, 1):
+                        print(f"    {i}. {weakness}")
+
         print(f"\n{'='*60}")
-        print("Common 역량 평가")
+        print("Common 역량 평가 (상세)")
         print("="*60)
-        
+
         common_agg = result["common_aggregation"]
         print(f"\n종합 점수: {common_agg['overall_common_score']}점\n")
-        
-        for comp in ["problem_solving", "organizational_fit", 
+
+        for comp in ["problem_solving", "organizational_fit",
                      "growth_potential", "interpersonal_skills", "achievement_motivation"]:
             comp_data = common_agg.get(comp)
             if comp_data:
-                print(f"  - {comp}: {comp_data.get('overall_score', 0)}점")
-        
+                print(f"\n[{comp}]")
+                print(f"  점수: {comp_data.get('overall_score', 0)}점")
+                print(f"  신뢰도: {comp_data.get('confidence', {}).get('overall_confidence', 0)}")
+
+                # 근거 출력
+                evidence = comp_data.get('evidence', [])
+                if evidence:
+                    print(f"  근거:")
+                    for i, ev in enumerate(evidence, 1):
+                        print(f"    {i}. {ev}")
+
+                # 강점 출력
+                strengths = comp_data.get('strengths', [])
+                if strengths:
+                    print(f"  강점:")
+                    for i, strength in enumerate(strengths, 1):
+                        print(f"    {i}. {strength}")
+
+                # 약점 출력
+                weaknesses = comp_data.get('weaknesses', [])
+                if weaknesses:
+                    print(f"  약점:")
+                    for i, weakness in enumerate(weaknesses, 1):
+                        print(f"    {i}. {weakness}")
+
         print(f"\n{'='*60}")
         print("검증 결과")
         print("="*60)
-        
+
         validation = result["validation"]
         print(f"\n신뢰도 낮은 역량: {validation['low_confidence_competencies']}")
         print(f"검증 노트: {validation['validation_notes']}")
         print(f"재평가 필요: {validation['requires_revaluation']}\n")
-        
+
         print("="*60)
         print("테스트 완료")
         print("="*60 + "\n")
