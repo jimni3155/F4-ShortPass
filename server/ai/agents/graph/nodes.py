@@ -5,6 +5,7 @@ LangGraph Nodes
 """
 
 from typing import Dict
+from datetime import datetime
 from .state import EvaluationState
 from ..competency_agent import CompetencyAgent, evaluate_all_competencies
 from ..aggregators.job_aggregator import JobAggregator
@@ -22,6 +23,8 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
 
     이 Node에서 10개 Agent를 asyncio.gather로 병렬 실행
     """
+    start_time = datetime.now()
+
     print("\n" + "="*60)
     print("[Node] 배치 평가 시작 (10개 역량 병렬 실행)")
     print("="*60)
@@ -35,11 +38,21 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     # 2. 10개 역량 배치 평가
     all_results = await evaluate_all_competencies(
         agent,
-        state["transcript"],
+        state["transcript_content"],
         state["prompts"]
     )
 
-    print("\n[Node] 배치 평가 완료")
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"\n[Node] 배치 평가 완료 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
+        "node": "batch_evaluation",
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "competencies_evaluated": 10
+    }
 
     # 수정된 키만 반환
     return {
@@ -52,7 +65,8 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
         "business_documentation_result": all_results["business_documentation"],
         "financial_literacy_result": all_results["financial_literacy"],
         "industry_learning_result": all_results["industry_learning"],
-        "stakeholder_management_result": all_results["stakeholder_management"]
+        "stakeholder_management_result": all_results["stakeholder_management"],
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
     }
 
 
@@ -62,6 +76,8 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
 
 async def job_aggregator_node(state: EvaluationState) -> Dict:
     """Job 5개 역량 통합 Node"""
+
+    start_time = datetime.now()
 
     print("\n" + "="*60)
     print("[Node] Job 통합 시작")
@@ -79,10 +95,23 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
     # 통합
     job_aggregation = JobAggregator.aggregate(job_results, state["job_weights"])
 
-    print(f"[Node] Job 통합 완료: {job_aggregation['overall_job_score']}점")
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] Job 통합 완료: {job_aggregation['overall_job_score']}점 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
+        "node": "job_aggregator",
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "overall_job_score": job_aggregation['overall_job_score']
+    }
 
     # 수정된 키만 반환
-    return {"job_aggregation_result": job_aggregation}
+    return {
+        "job_aggregation_result": job_aggregation,
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
+    }
 
 
 # ============================================
@@ -91,6 +120,8 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
 
 async def common_aggregator_node(state: EvaluationState) -> Dict:
     """Common 5개 역량 통합 Node"""
+
+    start_time = datetime.now()
 
     print("\n" + "="*60)
     print("[Node] Common 통합 시작")
@@ -108,10 +139,23 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
     # 통합
     common_aggregation = CommonAggregator.aggregate(common_results, state["common_weights"])
 
-    print(f"[Node] Common 통합 완료: {common_aggregation['overall_common_score']}점")
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] Common 통합 완료: {common_aggregation['overall_common_score']}점 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
+        "node": "common_aggregator",
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "overall_common_score": common_aggregation['overall_common_score']
+    }
 
     # 수정된 키만 반환
-    return {"common_aggregation_result": common_aggregation}
+    return {
+        "common_aggregation_result": common_aggregation,
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
+    }
 
 
 # ============================================
@@ -120,6 +164,8 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
 
 async def confidence_validator_node(state: EvaluationState) -> Dict:
     """신뢰도 검증 Node"""
+
+    start_time = datetime.now()
 
     print("\n" + "="*60)
     print("[Node] 신뢰도 검증 시작")
@@ -132,11 +178,24 @@ async def confidence_validator_node(state: EvaluationState) -> Dict:
         threshold=0.7
     )
 
-    print(f"[Node] 검증 완료: {validation['validation_notes']}")
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] 검증 완료: {validation['validation_notes']} ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
+        "node": "confidence_validator",
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "low_confidence_count": len(validation["low_confidence_competencies"]),
+        "requires_revaluation": validation["requires_revaluation"]
+    }
 
     # 수정된 키만 반환
     return {
         "low_confidence_competencies": validation["low_confidence_competencies"],
         "validation_notes": validation["validation_notes"],
-        "requires_revaluation": validation["requires_revaluation"]
+        "requires_revaluation": validation["requires_revaluation"],
+        "execution_logs": state.get("execution_logs", []) + [execution_log],
+        "completed_at": datetime.now()
     }
