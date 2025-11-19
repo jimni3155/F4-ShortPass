@@ -203,26 +203,30 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 ❌ **산업 지식 과장** (Severity: Moderate → -10점)
 - "전문가 수준", "완벽히 이해" (신입이 비현실적 주장)
-- Resume과 불일치
+- 구체적 설명 못함
 
-❌ **Resume 불일치** (Severity: Severe → -20점)
-- Interview에서 언급한 산업/프로젝트가 Resume에 없음
+❌ **모순된 진술** (Severity: Moderate → -10점)
+- Transcript 내에서 앞뒤 모순
+- 예: Segment 3 "체계적 학습" ↔ Segment 8 "무작정 시작"
 
-[Resume 교차 검증]
-- 언급한 산업 학습 경험이 Resume에 기재되었는가?
-- 학습 기간, 프로젝트 기간 일치하는가?
-- 역할(자기주도 vs 수동 참여)이 일치하는가?
+[Transcript 내부 일관성 검증]
+- 산업 학습 경험 설명이 일관적인가?
+- 학습 기간, 방법론이 앞뒤 맞는가?
+- 학습 태도가 일관적인가?
 
 [Critical Reasoning 작성 가이드] ⭐ 중요
-critical_reasoning은 발견된 문제와 Resume 검증을 설명합니다.
+critical_reasoning은 발견된 문제를 설명합니다.
 
-"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. Resume 일치도 [점수]. [종합 판단]. 총 감점 [점수]."
+"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
 예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 4에서 '헬스케어 용어들을 외웠다'고 표현, 깊이 없는 암기 위주 학습 패턴(-5점). Resume의 '헬스케어 스타트업 인턴' 기재와 일치, 기간(3개월) 일치. Resume 일치도 0.9. 총 감점 -5점."
+"Critical: Red Flag 1건. Segment 4에서 '헬스케어 용어들을 외웠다'고 표현, 일부 답변에서 깊이 없는 암기 위주 학습 패턴 보임(-5점). 총 감점 -5점."
 
 예시 2 (-20점):
-"Critical: Red Flag 2건. (1) Segment 6에서 '1주일 만에 핀테크 산업 완벽 이해'라 했으나 구체적 설명 없음, 학습 기간 과장(-10점). (2) Resume에는 '핀테크' 관련 경험 전혀 없음, 불일치(-10점). Resume 일치도 0.5. 총 감점 -20점."
+"Critical: Red Flag 2건. (1) Segment 6에서 '1주일 만에 핀테크 산업 완벽 이해'라 했으나 구체적 설명 없음, 학습 기간 과장(-10점). (2) Segment 9에서 '전문가 수준'이라 했으나 기본 개념도 설명 못함, 산업 지식 과장(-10점). 총 감점 -20점."
+
+예시 3 (-10점):
+"Critical: Red Flag 1건. Segment 5에서 '항상 구조부터 학습한다'고 했으나 Segment 11에서 '일단 용어부터 외웠다'며 모순된 진술(-10점). 총 감점 -10점."
 
 ───────────────────────────────────────
 
@@ -273,10 +277,10 @@ overall_score = adjusted_base + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
 Step 4: Confidence 계산
+evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
 confidence = (
-    evidence_weight × 0.50 +
-    resume_match_score × 0.30 +
-    (1 - score_variance) × 0.20
+    evidence_weight × 0.60 +
+    evidence_consistency × 0.40
 )
 
 [계산 예시]
@@ -286,7 +290,9 @@ Gap: -6 → Adjustment: 0.88
 Adjusted: 88 × 1.0 × 0.88 = 77.4
 Critical: -5점
 Overall: 77.4 - 5 = 72.4 → 72점
-Confidence: (1.0 × 0.5) + (0.9 × 0.3) + (0.85 × 0.2) = 0.92
+
+Evidence-Behavioral 일관성: 1 - |88-82|/100 = 0.94
+Confidence: (1.0 × 0.6) + (0.94 × 0.4) = 0.98
 
 ═══════════════════════════════════════
  입력 데이터
@@ -295,15 +301,10 @@ Confidence: (1.0 × 0.5) + (0.9 × 0.3) + (0.85 × 0.2) = 0.92
 [Interview Transcript]
 {transcript}
 
-[Resume]
-{resume}
-
 [Transcript 구조 참고]
-- TranscriptSegment: segment_id, segment_order로 식별
+- TranscriptSegment: segment_id로 식별
 - question_text: 질문 내용
 - answer_text: 지원자 답변 (STT 변환)
-- question_type: consulting_fit, behavioral, case_interview, brainteasers
-- metadata: 학습 기간, 방법론 등 (학습 속도 평가에 활용 가능)
 
 Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 학습 속도는 명시적 기간("2주", "1개월") 또는 "빠르게", "단기간" 같은 표현으로 평가하되, 반드시 산업 복잡도를 고려하여 상대적으로 평가하세요.
@@ -383,17 +384,15 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
         "evidence_reference": "segment_id: 4, char_index: 1800-1950"
       }}
     ],
-    "resume_match_score": 0.9,
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 4에서 '헬스케어 용어들을 외웠다'고 표현, 일부 답변에서 깊이 없는 암기 위주 학습 패턴 보임(-5점). Resume의 '헬스케어 스타트업 인턴 3개월' 기재와 일치, 기간 일치, 역할(마케팅 분석)도 일치. 핀테크 프로젝트도 Resume '동아리 활동'에 기재. Resume 일치도 0.9. 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 4에서 '헬스케어 용어들을 외웠다'고 표현, 일부 답변에서 깊이 없는 암기 위주 학습 패턴 보임(-5점). 총 감점 -5점."
   }},
   
   "overall_score": 72,
   "confidence": {{
     "evidence_strength": 1.0,
-    "resume_match": 0.9,
-    "internal_consistency": 0.85,
-    "overall_confidence": 0.92,
-    "confidence_note": "증거 충분(Quote 5개), Resume 일치도 높음(0.9), Evidence-Behavioral 간 편차 6점으로 일관적"
+    "internal_consistency": 0.94,
+    "overall_confidence": 0.98,
+    "confidence_note": "증거 충분(Quote 5개), Evidence-Behavioral 간 편차 6점으로 일관적"
   }},
   
   "calculation": {{
@@ -423,8 +422,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
   "key_observations": [
     "헬스케어(중간 복잡도)를 2주 만에 파악, 산업 복잡도 고려 시 상위 10% 추정",
     "자기주도적 학습 태도가 명확 ('직접 찾아봤다' 3회 이상)",
-    "프레임워크(Value Chain) 활용하여 체계적 학습",
-    "인터뷰에서 언급한 3개 산업 모두 Resume에 기재되어 신뢰도 높음"
+    "프레임워크(Value Chain) 활용하여 체계적 학습"
   ],
   
   "suggested_followup_questions": [
@@ -451,83 +449,17 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 
 def create_industry_learning_evaluation_prompt(
-    transcript: str,
-    resume: str
+    transcript: str
 ) -> str:
     """
     Industry Learning Agent 평가 프롬프트 생성
     
     Args:
         transcript: InterviewTranscript의 JSON 문자열
-        resume: 파싱된 이력서 텍스트
     
     Returns:
         완성된 프롬프트
     """
     return INDUSTRY_LEARNING_PROMPT.format(
-        transcript=transcript,
-        resume=resume
+        transcript=transcript
     )
-
-
-# 스키마 참조용
-EXPECTED_OUTPUT_SCHEMA = {
-    "competency_name": "industry_learning",
-    "competency_display_name": "산업 학습 민첩성",
-    "competency_category": "job",
-    "evaluated_at": "datetime",
-    "perspectives": {
-        "evidence_score": "float (0-100)",
-        "evidence_weight": "float (0-1)",
-        "evidence_details": [
-            {
-                "text": "인용구",
-                "segment_id": "int",
-                "char_index": "int",
-                "relevance_note": "관련성 설명",
-                "quality_score": "float (0-1)"
-            }
-        ],
-        "evidence_reasoning": "⭐ 점수 구간 + 충족/미충족 기준 + 산업 복잡도 고려한 학습 속도/체계성/자기주도성",
-        "behavioral_score": "float (0-100)",
-        "behavioral_pattern": {
-            "pattern_description": "학습 시작점, 정보 수집 다양성",
-            "specific_examples": ["예시1 (segment_id 포함)", "예시2", "학습 전이"],
-            "consistency_note": "체계적 학습 비율 + 깊이"
-        },
-        "behavioral_reasoning": "⭐ 점수 구간 + 체계적 학습 비율 + 정보 출처 개수",
-        "critical_penalties": "int (음수)",
-        "red_flags": [
-            {
-                "flag_type": "learning_period_exaggeration/superficial_learning/passive_learning/industry_knowledge_exaggeration/resume_mismatch",
-                "description": "구체적 문제",
-                "severity": "minor/moderate/severe",
-                "penalty": "int (음수)",
-                "evidence_reference": "segment_id + char_index"
-            }
-        ],
-        "resume_match_score": "float (0-1)",
-        "critical_reasoning": "⭐ Red Flags + Resume 검증 + 산업 경험 일치도"
-    },
-    "overall_score": "float (0-100)",
-    "confidence": {
-        "evidence_strength": "float (0-1)",
-        "resume_match": "float (0-1)",
-        "internal_consistency": "float (0-1)",
-        "overall_confidence": "float (0-1)",
-        "confidence_note": "종합 설명"
-    },
-    "calculation": {
-        "base_score": "evidence_score",
-        "evidence_weight": "0-1",
-        "behavioral_adjustment": "0.8-1.2",
-        "adjusted_base": "계산 결과",
-        "critical_penalties": "int (음수)",
-        "final_score": "최종 점수",
-        "formula": "계산식 문자열"
-    },
-    "strengths": ["강점1 (복잡도 대비 학습 속도 명시)", "강점2", "강점3", "강점4"],
-    "weaknesses": ["약점1", "약점2", "약점3"],
-    "key_observations": ["관찰1 (산업 복잡도 언급)", "관찰2", "관찰3", "관찰4"],
-    "suggested_followup_questions": ["질문1", "질문2", "질문3", "질문4"]
-}

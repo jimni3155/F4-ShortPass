@@ -15,7 +15,7 @@ Growth Potential Agent - 성장 잠재력 평가
 GROWTH_POTENTIAL_PROMPT = """당신은 "성장 잠재력(Growth Potential)" 평가 전문가입니다.
 
 ═══════════════════════════════════════
-📋 평가 대상
+ 평가 대상
 ═══════════════════════════════════════
 
 신입 지원자 (0-2년 경험)
@@ -25,7 +25,7 @@ GROWTH_POTENTIAL_PROMPT = """당신은 "성장 잠재력(Growth Potential)" 평�
 - 자기 인식 수준 확인
 
 ═══════════════════════════════════════
-🎯 3가지 평가 관점
+ 3가지 평가 관점
 ═══════════════════════════════════════
 
 1️⃣ Evidence Perspective (증거 기반 평가)
@@ -223,29 +223,33 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 - "하루 만에 마스터"
 - 비현실적 학습 속도
 
-❌ **Resume 불일치** (Severity: Severe → -20점)
-- Interview 주장이 Resume에 없음
+❌ **모순된 진술** (Severity: Moderate → -10점)
+- Transcript 내에서 앞뒤 모순
+- 예: Segment 3 "실패 경험 있다" ↔ Segment 8 "항상 잘했다"
 
-[Resume 교차 검증]
-- 언급한 학습 경험이 Resume에 있는가?
-- 실패 경험이 Resume에서 확인되는가?
-- 성장 패턴이 Resume와 일치하는가?
+[Transcript 내부 일관성 검증]
+- 학습 경험 설명이 일관적인가?
+- 실패 대응 방식이 앞뒤 맞는가?
+- 자기 인식이 일관적인가?
 
 [Critical Reasoning 작성 가이드] ⭐ 중요
-critical_reasoning은 발견된 문제와 Resume 검증을 설명합니다.
+critical_reasoning은 발견된 문제를 설명합니다.
 
-"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. Resume 일치도 [점수]. [종합 판단]. 총 감점 [점수]."
+"Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
 예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 8에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-5점). Resume의 '데이터 분석 독학' 기재와 일치, 기간(3주) 일치. 공모전 탈락 경험도 Resume '활동' 항목에서 확인. Resume 일치도 0.9. 총 감점 -5점."
+"Critical: Red Flag 1건. Segment 8에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-5점). 총 감점 -5점."
 
 예시 2 (-20점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '실패한 적 없다, 항상 잘했다'며 실패 회피(-10점). (2) Segment 9에서 '하루 만에 Python 마스터'라는 비현실적 주장, 학습 과장(-10점). Resume에는 Python 관련 프로젝트 전혀 없음, 불일치. Resume 일치도 0.5. 총 감점 -20점."
+"Critical: Red Flag 2건. (1) Segment 5에서 '실패한 적 없다, 항상 잘했다'며 실패 회피(-10점). (2) Segment 9에서 '하루 만에 Python 마스터'라는 비현실적 주장, 학습 과장(-10점). 총 감점 -20점."
+
+예시 3 (-10점):
+"Critical: Red Flag 1건. Segment 4에서 '실패를 통해 배운다'고 했으나 Segment 10에서 '실패한 적 없다'며 모순된 진술(-10점). 총 감점 -10점."
 
 ───────────────────────────────────────
 
 ═══════════════════════════════════════
-⚖️ 편향 방지 가이드라인
+ 편향 방지 가이드라인
 ═══════════════════════════════════════
 
 [절대 평가 기준]
@@ -270,7 +274,7 @@ critical_reasoning은 발견된 문제와 Resume 검증을 설명합니다.
 - 성장 마인드: 평균 (상위 50%)
 
 ═══════════════════════════════════════
-📊 최종 점수 통합
+ 최종 점수 통합
 ═══════════════════════════════════════
 
 [통합 공식]
@@ -291,10 +295,10 @@ overall_score = adjusted_base + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
 Step 4: Confidence 계산
+evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
 confidence = (
-    evidence_weight × 0.50 +
-    resume_match_score × 0.30 +
-    (1 - score_variance) × 0.20
+    evidence_weight × 0.60 +
+    evidence_consistency × 0.40
 )
 
 [계산 예시]
@@ -304,30 +308,27 @@ Gap: -3 → Adjustment: 0.94
 Adjusted: 83 × 0.8 × 0.94 = 62.4
 Critical: -5점
 Overall: 62.4 - 5 = 57.4 → 57점
-Confidence: (0.8 × 0.5) + (0.9 × 0.3) + (0.85 × 0.2) = 0.84
+
+Evidence-Behavioral 일관성: 1 - |83-80|/100 = 0.97
+Confidence: (0.8 × 0.6) + (0.97 × 0.4) = 0.86
 
 ═══════════════════════════════════════
-📄 입력 데이터
+ 입력 데이터
 ═══════════════════════════════════════
 
 [Interview Transcript]
 {transcript}
 
-[Resume]
-{resume}
-
 [Transcript 구조 참고]
-- TranscriptSegment: segment_id, segment_order로 식별
+- TranscriptSegment: segment_id로 식별
 - question_text: 질문 내용
 - answer_text: 지원자 답변 (STT 변환)
-- question_type: consulting_fit, behavioral, case_interview, brainteasers
-- target_competencies: 이 segment에서 평가할 역량
 
 Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
-Behavioral 질문 중 실패 경험, 학습 경험을 중심으로 평가하세요.
+실패 경험, 학습 경험을 중심으로 평가하세요.
 
 ═══════════════════════════════════════
-📤 출력 형식 (JSON ONLY)
+ 출력 형식 (JSON ONLY)
 ═══════════════════════════════════════
 
 {{
@@ -395,17 +396,15 @@ Behavioral 질문 중 실패 경험, 학습 경험을 중심으로 평가하세�
         "evidence_reference": "segment_id: 8, char_index: 3100-3150"
       }}
     ],
-    "resume_match_score": 0.9,
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-5점). 다만 추가 질문 후 구체화함. Resume의 '데이터 분석 독학' 기재와 일치, 기간(3주) 일치. 공모전 탈락 경험도 Resume '활동' 항목에서 확인 (2회 참여, 1회 입상). Resume 일치도 0.9. 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-5점). 다만 추가 질문 후 구체화함. 총 감점 -5점."
   }},
   
   "overall_score": 57,
   "confidence": {{
     "evidence_strength": 0.8,
-    "resume_match": 0.9,
-    "internal_consistency": 0.85,
-    "overall_confidence": 0.84,
-    "confidence_note": "증거 충분(Quote 4개), Resume 일치도 높음(0.9), Evidence-Behavioral 간 편차 3점으로 일관적"
+    "internal_consistency": 0.97,
+    "overall_confidence": 0.86,
+    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적"
   }},
   
   "calculation": {{
@@ -435,8 +434,7 @@ Behavioral 질문 중 실패 경험, 학습 경험을 중심으로 평가하세�
   "key_observations": [
     "신입 치고는 성장 마인드가 명확 (상위 30% 추정)",
     "실패를 학습 기회로 인식하는 회복 탄력성",
-    "모든 학습에서 일관된 능동적 태도",
-    "Resume의 '공모전 2회 참여, 1회 입상'이 실제 회복 과정과 일치"
+    "모든 학습에서 일관된 능동적 태도"
   ],
   
   "suggested_followup_questions": [
@@ -462,83 +460,17 @@ Behavioral 질문 중 실패 경험, 학습 경험을 중심으로 평가하세�
 
 
 def create_growth_potential_evaluation_prompt(
-    transcript: str,
-    resume: str
+    transcript: str
 ) -> str:
     """
     Growth Potential Agent 평가 프롬프트 생성
     
     Args:
         transcript: InterviewTranscript의 JSON 문자열
-        resume: 파싱된 이력서 텍스트
     
     Returns:
         완성된 프롬프트
     """
     return GROWTH_POTENTIAL_PROMPT.format(
-        transcript=transcript,
-        resume=resume
+        transcript=transcript
     )
-
-
-# 스키마 참조용
-EXPECTED_OUTPUT_SCHEMA = {
-    "competency_name": "growth_potential",
-    "competency_display_name": "성장 잠재력",
-    "competency_category": "common",
-    "evaluated_at": "datetime",
-    "perspectives": {
-        "evidence_score": "float (0-100)",
-        "evidence_weight": "float (0-1)",
-        "evidence_details": [
-            {
-                "text": "인용구",
-                "segment_id": "int",
-                "char_index": "int",
-                "relevance_note": "관련성 설명",
-                "quality_score": "float (0-1)"
-            }
-        ],
-        "evidence_reasoning": "⭐ 점수 구간 + 충족/미충족 기준 + 학습 민첩성 + 실패 대응 + 메타인지",
-        "behavioral_score": "float (0-100)",
-        "behavioral_pattern": {
-            "pattern_description": "학습 태도, 실패 반응",
-            "specific_examples": ["예시1 (segment_id 포함)", "예시2", "마인드"],
-            "consistency_note": "일관성"
-        },
-        "behavioral_reasoning": "⭐ 점수 구간 + 능동성 + 성장 마인드",
-        "critical_penalties": "int (음수)",
-        "red_flags": [
-            {
-                "flag_type": "failure_avoidance/fixed_mindset/metacognition_lack/learning_exaggeration/resume_mismatch",
-                "description": "구체적 문제",
-                "severity": "minor/moderate/severe",
-                "penalty": "int (음수)",
-                "evidence_reference": "segment_id + char_index"
-            }
-        ],
-        "resume_match_score": "float (0-1)",
-        "critical_reasoning": "⭐ Red Flags + Resume 검증"
-    },
-    "overall_score": "float (0-100)",
-    "confidence": {
-        "evidence_strength": "float (0-1)",
-        "resume_match": "float (0-1)",
-        "internal_consistency": "float (0-1)",
-        "overall_confidence": "float (0-1)",
-        "confidence_note": "종합 설명"
-    },
-    "calculation": {
-        "base_score": "evidence_score",
-        "evidence_weight": "0-1",
-        "behavioral_adjustment": "0.8-1.2",
-        "adjusted_base": "계산 결과",
-        "critical_penalties": "int (음수)",
-        "final_score": "최종 점수",
-        "formula": "계산식 문자열"
-    },
-    "strengths": ["강점1 (학습 속도)", "강점2", "강점3", "강점4"],
-    "weaknesses": ["약점1", "약점2", "약점3"],
-    "key_observations": ["관찰1", "관찰2", "관찰3", "관찰4"],
-    "suggested_followup_questions": ["질문1", "질문2", "질문3"]
-}
