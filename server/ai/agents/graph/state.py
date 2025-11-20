@@ -2,6 +2,7 @@
 LangGraph State 정의
 모든 노드가 공유하는 상태
 """
+
 import operator
 from typing import Dict, List, Optional, TypedDict, Any, Annotated
 from datetime import datetime
@@ -14,7 +15,8 @@ class EvaluationState(TypedDict):
     interview_id: int
     applicant_id: int
     job_id: int
-    transcript: Dict  # JSON 형태의 전체 transcript
+    transcript_s3_url: str  # Transcript S3 URL
+    transcript_content: Dict  # JSON 형태의 전체 transcript
     openai_client: Any  
     prompts: Dict[str, str]  # 10개 역량별 프롬프트
     
@@ -87,6 +89,6 @@ class EvaluationState(TypedDict):
     errors: List[str]
     
     # 성능 모니터링
-    execution_logs: Annotated[List[Dict[str, Any]], operator.add]  
 
-    structured_transcript: Optional[List[Dict[str, Any]]]
+    execution_logs: Annotated[List[Dict[str, Any]], lambda x, y: x + y]  # 각 노드 실행 시간 기록
+    structured_transcript: Optional[List[Dict[str, Any]]] # 구조화된 면접 대화록 (발언별 메타데이터 포함)
