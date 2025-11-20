@@ -11,8 +11,10 @@ from schemas.interview import PrepareInterviewRequest, PrepareInterviewResponse 
 from datetime import datetime
 import os
 import json
+import logging
 
 router = APIRouter()
+logger = logging.getLogger("uvicorn")
 
 
 @router.post("/interviews/prepare", response_model=PrepareInterviewResponse)
@@ -27,6 +29,7 @@ async def prepare_interview(
 
     1:1 구조: 1개 회사 + 여러 페르소나 순차 패널
     """
+    logger.info(f"Preparing interview for applicant: {request_data.candidateId}, company: {request_data.companyId}")
     try:
         # 지원자 ID와 회사 ID를 정수로 변환
         applicant_id = int(request_data.candidateId)

@@ -13,9 +13,11 @@ from models.interview import (
 )
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
+import logging
 
 
 router = APIRouter()
+logger = logging.getLogger("uvicorn")
 
 
 # ==================== Schemas ====================
@@ -75,7 +77,7 @@ def get_interview_report(
     - 각 페르소나의 평가 기준별 점수 및 근거
     - 대화 기록 요약
     """
-
+    logger.info(f"Getting interview report for interview ID: {interview_id}")
     # 1. 면접 세션 조회
     session = db.query(InterviewSession).filter(InterviewSession.id == interview_id).first()
     if not session:

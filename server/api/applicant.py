@@ -5,6 +5,7 @@ Applicant 관련 API 엔드포인트
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from typing import Optional, List
+import logging
 
 from db.database import get_db
 from services.applicant_service import ApplicantService
@@ -15,8 +16,8 @@ from schemas.applicant import (
     ApplicantUpdate
 )
 
-
 router = APIRouter(prefix="/applicants", tags=["applicants"])
+logger = logging.getLogger("uvicorn")
 
 
 @router.post("/", response_model=ApplicantResponse)
@@ -52,6 +53,7 @@ async def create_applicant(
     Returns:
         ApplicantResponse: 생성 또는 업데이트된 지원자 정보
     """
+    logger.info(f"Creating or updating applicant with email: {email}")
     try:
         applicant_service = ApplicantService()
 
@@ -118,6 +120,7 @@ async def get_applicant(
     Returns:
         ApplicantDetailResponse: 지원자 상세 정보
     """
+    logger.info(f"Getting applicant with ID: {applicant_id}")
     applicant_service = ApplicantService()
     applicant = applicant_service.get_applicant(db, applicant_id)
 
@@ -144,6 +147,7 @@ async def get_applicants(
     Returns:
         List[ApplicantResponse]: 지원자 목록
     """
+    logger.info(f"Getting applicants with skip: {skip}, limit: {limit}")
     applicant_service = ApplicantService()
     applicants = applicant_service.get_applicants(db, skip=skip, limit=limit)
 
@@ -167,6 +171,7 @@ async def update_applicant(
     Returns:
         ApplicantResponse: 수정된 지원자 정보
     """
+    logger.info(f"Updating applicant with ID: {applicant_id}")
     applicant_service = ApplicantService()
 
     update_data = applicant_update.model_dump(exclude_unset=True)
@@ -197,6 +202,7 @@ async def delete_applicant(
     Returns:
         dict: 삭제 결과
     """
+    logger.info(f"Deleting applicant with ID: {applicant_id}")
     applicant_service = ApplicantService()
     success = applicant_service.delete_applicant(db, applicant_id)
 

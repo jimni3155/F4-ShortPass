@@ -13,9 +13,11 @@ from schemas.persona import (
     QuestionResponse,
     PersonaUploadResponse
 )
+import logging
 
 
 router = APIRouter()
+logger = logging.getLogger("uvicorn")
 
 
 @router.post("/upload", response_model=PersonaUploadResponse, status_code=201)
@@ -36,6 +38,7 @@ async def upload_persona_pdf(
     Returns:
         PersonaUploadResponse: 생성된 페르소나와 질문 리스트
     """
+    logger.info(f"Uploading persona PDF for company ID: {company_id}")
     # 1. 파일 유효성 검사
     if not pdf_file.filename.endswith('.pdf'):
         raise HTTPException(
@@ -93,6 +96,7 @@ async def get_persona(
     Returns:
         PersonaResponse: 페르소나 정보
     """
+    logger.info(f"Getting persona with ID: {persona_id}")
     service = PersonaService(db)
     persona = service.get_persona(persona_id)
 
@@ -116,6 +120,7 @@ async def get_persona_questions(
     Returns:
         List[QuestionResponse]: 질문 리스트
     """
+    logger.info(f"Getting questions for persona ID: {persona_id}")
     service = PersonaService(db)
 
     # 페르소나 존재 확인
@@ -142,6 +147,7 @@ async def get_personas_by_company(
     Returns:
         PersonaListResponse: 페르소나 리스트
     """
+    logger.info(f"Getting personas for company ID: {company_id}")
     service = PersonaService(db)
     personas = service.get_personas_by_company(company_id)
 
@@ -161,6 +167,7 @@ async def get_all_personas(
     Returns:
         PersonaListResponse: 페르소나 리스트
     """
+    logger.info("Getting all personas")
     service = PersonaService(db)
     personas = service.get_all_personas()
 
@@ -181,6 +188,7 @@ async def delete_persona(
     Args:
         persona_id: 페르소나 ID
     """
+    logger.info(f"Deleting persona with ID: {persona_id}")
     service = PersonaService(db)
     success = service.delete_persona(persona_id)
 

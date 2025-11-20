@@ -1,15 +1,15 @@
 # server/services/competency_service.py
 """
-역량 분류 및 분석 서비스
+역량 분류 및 분석 서비스 (전처리 데이터 기반)
 """
 import json
 from typing import Dict, List, Optional, Any
-from ai.utils.llm_client import LLMClient
 
 
 class CompetencyService:
     """
-    JD로부터 역량을 추출하고 분류하는 서비스
+    전처리된 JD 페르소나 데이터로부터 역량을 조회하는 서비스
+    (Bedrock 호출 제거 → 메모리 캐시 기반)
     """
 
     # 고정 공통 역량 (하드코딩)
@@ -23,48 +23,53 @@ class CompetencyService:
     ]
 
     def __init__(self):
-        self.llm_client = LLMClient()
+        pass  # LLMClient 제거 (더 이상 Bedrock 호출 안 함)
 
-    async def analyze_jd_competencies(self, jd_text: str) -> Dict[str, Any]:
+    async def analyze_jd_competencies(self, jd_text: str = None) -> Dict[str, Any]:
         """
-        JD 텍스트에서 직무 역량을 추출하고 분류
+        전처리된 JD 역량 데이터를 반환 (Bedrock 호출 제거)
 
         Args:
-            jd_text: JD 전체 텍스트
+            jd_text: (사용하지 않음, 하위 호환성 유지를 위해 남겨둠)
 
         Returns:
             Dict: 공통 역량과 직무 역량 정보
         """
         try:
-            # LLM 프롬프트 구성
-            prompt = self._build_competency_analysis_prompt(jd_text)
+            # main.py의 PERSONA_DATA_CACHE에서 데이터 조회
+            from main import PERSONA_DATA_CACHE
 
-            # LLM 호출
-            response = await self.llm_client.chat_completion(
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.3,
-                max_tokens=1000
-            )
+            if PERSONA_DATA_CACHE is None:
+                print("⚠️  경고: 페르소나 데이터가 로드되지 않았습니다. 기본값 반환.")
+                return self._get_default_competencies()
 
-            # JSON 파싱
-            result = self._parse_competency_response(response)
-
-            # 공통 역량 추가
-            result["common_competencies"] = self.COMMON_COMPETENCIES
-
-            return result
+            # 캐시된 데이터 사용
+            return {
+                "common_competencies": PERSONA_DATA_CACHE.get("common_competencies", self.COMMON_COMPETENCIES),
+                "job_competencies": PERSONA_DATA_CACHE.get("job_competencies", []),
+                "core_competencies": PERSONA_DATA_CACHE.get("core_competencies", []),
+                "analysis_summary": f"{PERSONA_DATA_CACHE.get('company_name')} - {PERSONA_DATA_CACHE.get('job_title')} 직무의 역량 분석 결과 (사전 처리됨)"
+            }
 
         except Exception as e:
-            print(f"Error analyzing competencies: {e}")
+            print(f"Error loading cached competencies: {e}")
             # 기본값 반환
-            return {
-                "common_competencies": self.COMMON_COMPETENCIES,
-                "job_competencies": [
-                    "문제해결력", "커뮤니케이션", "창의적 사고",
-                    "기술적 이해", "리더십", "분석적 사고"
-                ],
-                "analysis_summary": "JD 분석 중 오류가 발생하여 기본 역량으로 설정되었습니다."
-            }
+            return self._get_default_competencies()
+
+    def _get_default_competencies(self) -> Dict[str, Any]:
+        """기본 역량 반환 (폴백)"""
+        return {
+            "common_competencies": self.COMMON_COMPETENCIES,
+            "job_competencies": [
+                "문제해결력", "커뮤니케이션", "창의적 사고",
+                "기술적 이해", "리더십", "분석적 사고"
+            ],
+            "core_competencies": [
+                "글로벌 시장 분석", "프로젝트 관리", "협상력",
+                "공급망 이해", "리스크 관리"
+            ],
+            "analysis_summary": "페르소나 데이터가 없어 기본 역량으로 설정되었습니다."
+        }
 
     def _build_competency_analysis_prompt(self, jd_text: str) -> str:
         """
@@ -133,45 +138,49 @@ class CompetencyService:
 
     async def generate_persona_data(
         self,
-        jd_text: str,
-        job_competencies: List[str],
-        company_questions: List[str]
+        jd_text: str = None,
+        job_competencies: List[str] = None,
+        company_questions: List[str] = None
     ) -> Dict[str, Any]:
         """
-        페르소나 데이터 생성
+        페르소나 데이터 조회 (전처리된 데이터 사용, Bedrock 호출 제거)
 
         Args:
-            jd_text: JD 전체 텍스트
-            job_competencies: 추출된 직무 역량 리스트
+            jd_text: (사용하지 않음, 하위 호환성 유지)
+            job_competencies: (사용하지 않음)
             company_questions: 기업에서 입력한 필수 질문들
 
         Returns:
             Dict: 페르소나 정보가 포함된 완전한 JSON
         """
         try:
-            prompt = self._build_persona_generation_prompt(
-                jd_text, job_competencies, company_questions
-            )
+            # main.py의 PERSONA_DATA_CACHE에서 데이터 조회
+            from main import PERSONA_DATA_CACHE
 
-            response = await self.llm_client.chat_completion(
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.5,
-                max_tokens=2000
-            )
+            if PERSONA_DATA_CACHE is None:
+                print("⚠️  경고: 페르소나 데이터가 로드되지 않았습니다. 기본값 반환.")
+                return self._get_default_persona_data(job_competencies or [], company_questions or [])
 
-            result = self._parse_persona_response(response)
+            # 캐시된 데이터 사용
+            result = {
+                "company": PERSONA_DATA_CACHE.get("company_name", "Unknown Company"),
+                "common_competencies": PERSONA_DATA_CACHE.get("common_competencies", self.COMMON_COMPETENCIES),
+                "job_competencies": PERSONA_DATA_CACHE.get("job_competencies", []),
+                "core_competencies": PERSONA_DATA_CACHE.get("core_competencies", []),
+                "persona_summary": PERSONA_DATA_CACHE.get("persona_summary", []),
+                "system_prompt": PERSONA_DATA_CACHE.get("system_prompt", "")
+            }
 
-            # 기본 정보 추가
-            result["common_competencies"] = self.COMMON_COMPETENCIES
-            result["job_competencies"] = job_competencies
-            result["core_questions"] = company_questions
+            # 기업 질문이 제공되면 추가
+            if company_questions:
+                result["core_questions"] = company_questions
 
             return result
 
         except Exception as e:
-            print(f"Error generating persona: {e}")
+            print(f"Error loading persona data: {e}")
             # 기본 페르소나 반환
-            return self._get_default_persona_data(job_competencies, company_questions)
+            return self._get_default_persona_data(job_competencies or [], company_questions or [])
 
     def _build_persona_generation_prompt(
         self,

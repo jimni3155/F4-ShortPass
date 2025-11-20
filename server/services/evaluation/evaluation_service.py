@@ -10,7 +10,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import asyncio # Add this
 from ai.agents.graph.evaluation import create_evaluation_graph
-from services.storage.s3_service_v2 import S3ServiceV2
+from services.storage.s3_service import S3Service
 from sqlalchemy.orm import Session # Add this
 from db.database import SessionLocal # Add this
 from models.evaluation import Evaluation # Add this
@@ -53,9 +53,10 @@ class EvaluationService:
         if api_key is None:
             api_key = os.getenv("OPENAI_API_KEY")
         
+        from core.config import S3_BUCKET_NAME, AWS_REGION
         self.openai_client = AsyncOpenAI(api_key=api_key)
         self.graph = create_evaluation_graph()
-        self.s3_service = S3ServiceV2()
+        self.s3_service = S3Service(bucket_name=S3_BUCKET_NAME, region_name=AWS_REGION)
     
     def _load_prompts(self, transcript: Dict) -> Dict[str, str]:
         """프롬프트 로딩"""
@@ -75,8 +76,13 @@ class EvaluationService:
         common_weights: Dict[str, float]
     ) -> Dict:
         """면접 평가 실행"""
-        
-        transcript_content = await self.s3_service.get_json_file(transcript_s3_url)
+        from core.config import S3_BUCKET_NAME
+
+        s3_key = transcript_s3_url.split(f"s3://{S3_BUCKET_NAME}/")[1]
+        transcript_content = self.s3_service.download_json(s3_key)
+        if not transcript_content:
+            raise Exception(f"Failed to download transcript from S3 URL: {transcript_s3_url}")
+            
         prompts = self._load_prompts(transcript_content)
         
         initial_state = {
@@ -116,8 +122,8 @@ class EvaluationService:
 
         # 1. Save execution logs to S3
         execution_logs_s3_key = f"evaluation-logs/{applicant_id}/{interview_id}/{datetime.now().isoformat()}_execution_logs.json"
-        agent_logs_s3_url = await self.s3_service.upload_json_data(
-            result["execution_logs"], execution_logs_s3_key
+        agent_logs_s3_url = self.s3_service.upload_json(
+            execution_logs_s3_key, result["execution_logs"]
         )
 
         # 2. Save evaluation results to DB
@@ -139,6 +145,7 @@ class EvaluationService:
             "job_id": job_id,
             "transcript_s3_url": transcript_s3_url,
             "agent_logs_s3_url": agent_logs_s3_url,
+            "evidence_s3_url": evaluation_record.evidence_s3_url,
             "job_aggregation": result["job_aggregation_result"],
             "common_aggregation": result["common_aggregation_result"],
             "validation": {
@@ -158,6 +165,24 @@ class EvaluationService:
         """
         평가 결과를 DB에 저장
         """
+        # 1. 역량 평가 결과(증거)를 S3에 업로드
+        competency_results = {
+            "problem_solving": state.get("problem_solving_result"),
+            "organizational_fit": state.get("organizational_fit_result"),
+            "growth_potential": state.get("growth_potential_result"),
+            "interpersonal_skills": state.get("interpersonal_skills_result"),
+            "achievement_motivation": state.get("achievement_motivation_result"),
+            "structured_thinking": state.get("structured_thinking_result"),
+            "business_documentation": state.get("business_documentation_result"),
+            "financial_literacy": state.get("financial_literacy_result"),
+            "industry_learning": state.get("industry_learning_result"),
+            "stakeholder_management": state.get("stakeholder_management_result"),
+        }
+        
+        evidence_s3_key = f"evaluations/{state['interview_id']}/evidence.json"
+        evidence_s3_url = self.s3_service.upload_json(evidence_s3_key, competency_results)
+
+
         evaluation_record = Evaluation(
             applicant_id=state["applicant_id"],
             job_id=state["job_id"],
@@ -172,18 +197,20 @@ class EvaluationService:
             # S3 URL
             transcript_s3_url=transcript_s3_url,
             agent_logs_s3_url=agent_logs_s3_url,
+            evidence_s3_url=evidence_s3_url,
 
-            # LangGraph 결과
-            problem_solving=state.get("problem_solving_result"),
-            organizational_fit=state.get("organizational_fit_result"),
-            growth_potential=state.get("growth_potential_result"),
-            interpersonal_skills=state.get("interpersonal_skills_result"),
-            achievement_motivation=state.get("achievement_motivation_result"),
-            structured_thinking=state.get("structured_thinking_result"),
-            business_documentation=state.get("business_documentation_result"),
-            financial_literacy=state.get("financial_literacy_result"),
-            industry_learning=state.get("industry_learning_result"),
-            stakeholder_management=state.get("stakeholder_management_result"),
+            # LangGraph 결과 (점수만 저장)
+            problem_solving=state.get("problem_solving_result")['overall_score'] if state.get("problem_solving_result") else None,
+            organizational_fit=state.get("organizational_fit_result")['overall_score'] if state.get("organizational_fit_result") else None,
+            growth_potential=state.get("growth_potential_result")['overall_score'] if state.get("growth_potential_result") else None,
+            interpersonal_skills=state.get("interpersonal_skills_result")['overall_score'] if state.get("interpersonal_skills_result") else None,
+            achievement_motivation=state.get("achievement_motivation_result")['overall_score'] if state.get("achievement_motivation_result") else None,
+            structured_thinking=state.get("structured_thinking_result")['overall_score'] if state.get("structured_thinking_result") else None,
+            business_documentation=state.get("business_documentation_result")['overall_score'] if state.get("business_documentation_result") else None,
+            financial_literacy=state.get("financial_literacy_result")['overall_score'] if state.get("financial_literacy_result") else None,
+            industry_learning=state.get("industry_learning_result")['overall_score'] if state.get("industry_learning_result") else None,
+            stakeholder_management=state.get("stakeholder_management_result")['overall_score'] if state.get("stakeholder_management_result") else None,
+
             job_aggregation=state.get("job_aggregation_result"),
             common_aggregation=state.get("common_aggregation_result"),
             validation_result={

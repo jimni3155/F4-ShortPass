@@ -35,6 +35,7 @@ class Job(Base):
     company_id = Column(Integer, nullable=False, index=True)
     title = Column(String(500), nullable=False)
     description = Column(Text, nullable=True)
+    company_url = Column(String(500), nullable=True)  # 기업 웹사이트 URL (향후 파싱용)
 
     # RAG Agent 파싱 결과
     required_skills = Column(JSON, nullable=True)

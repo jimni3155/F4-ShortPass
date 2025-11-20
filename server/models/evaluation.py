@@ -73,6 +73,7 @@ class Evaluation(Base):
 
     # ===== S3 참조 (Claim Check Pattern) =====
     agent_logs_s3_url = Column(Text, nullable=True)  # S3 execution logs 경로
+    evidence_s3_url = Column(Text, nullable=True) # S3 filtered evidence 경로
 
     # ===== 근거 저장 (레거시) =====
     reasoning_log = Column(JSON, nullable=True)  # AI 추론 과정 로그 (레거시)

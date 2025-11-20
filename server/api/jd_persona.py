@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, R
 from sqlalchemy.orm import Session
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel
+import logging
 
 from db.database import get_db
 from services.competency_service import CompetencyService
@@ -15,6 +16,7 @@ from ai.parsers.jd_parser import JDParser
 
 
 router = APIRouter(prefix="/jd-persona", tags=["JD Persona"])
+logger = logging.getLogger("uvicorn")
 
 
 # Request/Response Models
@@ -50,6 +52,7 @@ async def upload_jd_and_analyze(
     pdf_file: UploadFile = File(..., description="JD PDF 파일"),
     company_id: int = Form(..., description="회사 ID"),
     title: str = Form(..., description="채용 공고 제목"),
+    company_url: str = Form(None, description="기업 웹사이트 URL (선택)"),
     db: Session = Depends(get_db)
 ):
     """
@@ -68,6 +71,7 @@ async def upload_jd_and_analyze(
     Returns:
         CompetencyAnalysisResponse: 역량 분석 결과
     """
+    logger.info(f"Uploading JD for company ID: {company_id}, title: {title}")
     try:
         # PDF 파일 검증
         if not pdf_file.filename.endswith('.pdf'):
@@ -95,7 +99,8 @@ async def upload_jd_and_analyze(
             pdf_content=pdf_content,
             file_name=pdf_file.filename,
             company_id=company_id,
-            title=title
+            title=title,
+            company_url=company_url  # 기업 URL 전달 (mock, 향후 파싱 예정)
         )
 
         print(f"✅ Job created with ID: {job.id}")
@@ -148,6 +153,7 @@ async def generate_persona(
     Returns:
         PersonaResponse: 생성된 페르소나 정보
     """
+    logger.info(f"Generating persona for job ID: {request.job_id}")
     try:
         print(f"\n🎭 Starting persona generation for Job ID: {request.job_id}")
 
@@ -224,6 +230,7 @@ async def get_competency_analysis(
     Returns:
         CompetencyAnalysisResponse: 역량 분석 결과
     """
+    logger.info(f"Getting competency analysis for job ID: {job_id}")
     try:
         # Job 조회
         job_service = JobService()
@@ -278,6 +285,7 @@ async def get_job_basic_info(
     Returns:
         Dict: Job 기본 정보
     """
+    logger.info(f"Getting basic info for job ID: {job_id}")
     try:
         job_service = JobService()
         job_data = job_service.get_job_with_chunks(db, job_id)
@@ -310,6 +318,7 @@ async def get_sample_competencies():
     """
     테스트용 샘플 역량 데이터
     """
+    logger.info("Getting sample competencies")
     competency_service = CompetencyService()
 
     sample_job_competencies = [

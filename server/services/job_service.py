@@ -42,7 +42,8 @@ class JobService:
         pdf_content: bytes,
         file_name: str,
         company_id: int,
-        title: str
+        title: str,
+        company_url: str = None
     ) -> Job:
         """
         JD PDF 전체 처리 플로우
@@ -124,7 +125,8 @@ class JobService:
             job = Job(
                 company_id=company_id,
                 title=title,
-                description=full_text
+                description=full_text,
+                company_url=company_url  # 기업 URL 저장 (향후 파싱 예정)
             )
             db.add(job)
             db.flush()  # ID 생성을 위해 flush

@@ -5,6 +5,7 @@ Job 관련 API 엔드포인트
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from typing import Optional, List
+import logging
 
 from db.database import get_db
 from services.job_service import JobService
@@ -12,6 +13,7 @@ from pydantic import BaseModel
 
 
 router = APIRouter(prefix="/jobs", tags=["jobs"])
+logger = logging.getLogger("uvicorn")
 
 
 # Response Models
@@ -78,6 +80,7 @@ async def upload_jd_pdf(
     Returns:
         JobResponse: 생성된 Job 정보
     """
+    logger.info(f"Uploading JD for company ID: {company_id}, title: {title}")
     # PDF 파일 검증
     if not pdf_file.filename.endswith('.pdf'):
         raise HTTPException(
@@ -138,6 +141,7 @@ async def get_job(
     Returns:
         JobDetailResponse: Job 상세 정보
     """
+    logger.info(f"Getting job with ID: {job_id}")
     job_service = JobService()
     job_data = job_service.get_job_with_chunks(db, job_id)
 
@@ -181,6 +185,7 @@ async def search_similar_chunks(
     Returns:
         List[SearchResult]: 유사한 청크 리스트
     """
+    logger.info(f"Searching for similar chunks with query: {query}")
     try:
         job_service = JobService()
         results = job_service.search_similar_chunks(
@@ -222,6 +227,7 @@ async def delete_job(
     Returns:
         Dict: 삭제 결과
     """
+    logger.info(f"Deleting job with ID: {job_id}")
     job_service = JobService()
     success = job_service.delete_job(db, job_id)
 
@@ -265,6 +271,7 @@ async def analyze_jd_competencies(
     Returns:
         CompetencyAnalysisResponse: 역량 분석 결과
     """
+    logger.info(f"Analyzing JD competencies for company ID: {company_id}")
     # PDF 파일 검증
     if not pdf_file.filename.endswith('.pdf'):
         raise HTTPException(
