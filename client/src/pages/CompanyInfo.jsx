@@ -6,6 +6,7 @@ import Toggle from '../components/Toggle';
 import Select from '../components/Select';
 import {useNavigate} from 'react-router-dom';
 import {uploadJDAndAnalyze} from '../apis/jdPersona';
+import {uploadPersonaPdf, getPersonasByCompany} from '../apis/persona';
 
 const sizeOptions = [
   {id: 0, name: '1-10명'},
@@ -31,6 +32,8 @@ const CompanyInfo = () => {
   const [newQuestion, setNewQuestion] = useState('');
   const [companyId, setCompanyId] = useState(1); // 임시 하드코딩
   const [jobId, setJobId] = useState(null); // JD 업로드 후 받는 Job ID
+  const [personas, setPersonas] = useState([]);
+  const [personaUploadStatus, setPersonaUploadStatus] = useState('');
 
   useEffect(() => {
     const loadCompany = async () => {
@@ -47,6 +50,22 @@ const CompanyInfo = () => {
     loadCompany();
   }, []);
 
+  useEffect(() => {
+    if (!companyId) return;
+
+    const fetchPersonas = async () => {
+      try {
+        const companyPersonas = await getPersonasByCompany(companyId);
+        setPersonas(companyPersonas);
+      } catch (err) {
+        console.error('회사 페르소나 로딩 실패:', err);
+        // It might be okay if there are no personas yet.
+      }
+    };
+
+    fetchPersonas();
+  }, [companyId]);
+
   const handleAddQuestion = () => {
     if (newQuestion.trim()) {
       setFormData({
@@ -62,6 +81,31 @@ const CompanyInfo = () => {
       ...formData,
       questions: formData.questions.filter((_, i) => i !== index),
     });
+  };
+
+  const handlePersonaUpload = async () => {
+    if (!formData.personaPdf || !companyId) return;
+
+    setPersonaUploadStatus('페르소나 생성 중...');
+    setLoading(true);
+
+    try {
+      const result = await uploadPersonaPdf(companyId, formData.personaPdf);
+      console.log('✅ 페르소나 생성 완료:', result);
+      setPersonaUploadStatus('페르소나 생성 완료!');
+
+      // Refresh persona list
+      const updatedPersonas = await getPersonasByCompany(companyId);
+      setPersonas(updatedPersonas);
+
+      // Reset PDF input
+      setFormData({...formData, personaPdf: null});
+    } catch (err) {
+      console.error('페르소나 생성 실패:', err);
+      setPersonaUploadStatus(`오류: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSave = async () => {
@@ -82,25 +126,14 @@ const CompanyInfo = () => {
 
       const uploadedJobId = result.job_id;
       setJobId(uploadedJobId);
-    setPersonaUploadStatus('업로드 중...');
-
-    try {
-      const result = await uploadPersonaPdf(companyId, formData.personaPdf);
-      setPersonaUploadStatus(
-        `✓ 페르소나 생성 완료! ${result.questions.length}개의 질문이 추출되었습니다.`
-      );
-
-      // 페르소나 목록 새로고침
-      const personaList = await getPersonasByCompany(companyId);
-      setPersonas(personaList.personas);
 
       console.log('✅ JD 업로드 완료:', result);
       console.log('회사 정보 저장:', formData);
 
-      alert('JD 업로드가 완료되었습니다. 페르소나 생성 페이지로 이동합니다.');
+      alert('JD 업로드가 완료되었습니다. 결과 페이지로 이동합니다.');
 
-      // 2. 페르소나 생성 페이지로 이동
-      navigate(`/company/persona/${uploadedJobId}`);
+      // 2. 결과 페이지로 이동
+      navigate(`/company/result/${uploadedJobId}`);
     } catch (err) {
       console.error('저장 실패:', err);
       alert(`저장 중 오류가 발생했습니다: ${err.message}`);

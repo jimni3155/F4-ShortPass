@@ -21,7 +21,7 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     이 Node에서 10개 Agent를 asyncio.gather로 병렬 실행
     """
     start_time = datetime.now()
-    
+
     print("\n" + "="*60)
     print("[Phase 1-1] 배치 평가 시작 (10개 역량 병렬 실행)")
     print("="*60)
@@ -35,32 +35,23 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     # 2. 10개 역량 배치 평가
     all_results = await evaluate_all_competencies(
         agent,
-        state["transcript"],
+        state["transcript_content"],
         state["prompts"]
     )
-    
-    # 4. 실행 시간 계산
-    duration = (datetime.now() - start_time).total_seconds()
 
-    print(f"\n[Phase 1-1] 배치 평가 완료 (소요 시간: {duration:.2f}초)")
-    
-    # 5. 실행 로그 생성 (단일 로그만)
-    new_log = {
-        "phase": "phase_1",
+
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"\n[Node] 배치 평가 완료 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
         "node": "batch_evaluation",
-        "duration_seconds": round(duration, 2),
-        "competencies_evaluated": len([r for r in all_results.values() if r is not None]),
-        "timestamp": datetime.now().isoformat()
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "competencies_evaluated": 10
     }
-    
-    # 기존 로그 가져오기 (있으면)
-    existing_logs = state.get("execution_logs", [])
-    
-    # 중복 방지: 같은 node의 로그가 이미 있으면 제거
-    filtered_logs = [log for log in existing_logs if log.get("node") != "batch_evaluation"]
-    
-    # 새 로그 추가
-    updated_logs = filtered_logs + [new_log]
+
 
     # 수정된 키만 반환
     return {
@@ -74,7 +65,8 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
         "financial_literacy_result": all_results["financial_literacy"],
         "industry_learning_result": all_results["industry_learning"],
         "stakeholder_management_result": all_results["stakeholder_management"],
-        "execution_logs": updated_logs
+
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
     }
 
 
@@ -83,6 +75,8 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
 async def job_aggregator_node(state: EvaluationState) -> Dict:
     """Job 5개 역량 통합 Node"""
     
+    start_time = datetime.now()
+
     start_time = datetime.now()
 
     print("\n" + "="*60)
@@ -100,29 +94,26 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
 
     # 통합
     job_aggregation = JobAggregator.aggregate(job_results, state["job_weights"])
-    
-    duration = (datetime.now() - start_time).total_seconds()
 
-    print(f"[Phase 1-2] Job 통합 완료: {job_aggregation['overall_job_score']}점 (소요 시간: {duration:.2f}초)")
-    
-    # 실행 로그 생성
-    new_log = {
-        "phase": "phase_1",
+
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] Job 통합 완료: {job_aggregation['overall_job_score']}점 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
         "node": "job_aggregator",
-        "duration_seconds": round(duration, 2),
-        "job_score": round(job_aggregation['overall_job_score'], 1),
-        "timestamp": datetime.now().isoformat()
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "overall_job_score": job_aggregation['overall_job_score']
     }
-    
-    # 중복 방지
-    existing_logs = state.get("execution_logs", [])
-    filtered_logs = [log for log in existing_logs if log.get("node") != "job_aggregator"]
-    updated_logs = filtered_logs + [new_log]
+
 
     # 수정된 키만 반환
     return {
         "job_aggregation_result": job_aggregation,
-        "execution_logs": updated_logs
+
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
     }
 
 
@@ -131,6 +122,8 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
 async def common_aggregator_node(state: EvaluationState) -> Dict:
     """Common 5개 역량 통합 Node"""
     
+    start_time = datetime.now()
+
     start_time = datetime.now()
 
     print("\n" + "="*60)
@@ -148,29 +141,27 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
 
     # 통합
     common_aggregation = CommonAggregator.aggregate(common_results, state["common_weights"])
-    
-    duration = (datetime.now() - start_time).total_seconds()
 
-    print(f"[Phase 1-3] Common 통합 완료: {common_aggregation['overall_common_score']}점 (소요 시간: {duration:.2f}초)")
-    
-    # 실행 로그 생성
-    new_log = {
-        "phase": "phase_1",
+
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] Common 통합 완료: {common_aggregation['overall_common_score']}점 ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
         "node": "common_aggregator",
-        "duration_seconds": round(duration, 2),
-        "common_score": round(common_aggregation['overall_common_score'], 1),
-        "timestamp": datetime.now().isoformat()
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
+        "overall_common_score": common_aggregation['overall_common_score']
     }
-    
-    # 중복 방지
-    existing_logs = state.get("execution_logs", [])
-    filtered_logs = [log for log in existing_logs if log.get("node") != "common_aggregator"]
-    updated_logs = filtered_logs + [new_log]
+
 
     # 수정된 키만 반환
     return {
         "common_aggregation_result": common_aggregation,
-        "execution_logs": updated_logs
+
+        "execution_logs": state.get("execution_logs", []) + [execution_log]
+
     }
 
 
@@ -179,6 +170,8 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
 async def confidence_validator_node(state: EvaluationState) -> Dict:
     """신뢰도 검증 Node"""
     
+    start_time = datetime.now()
+
     start_time = datetime.now()
 
     print("\n" + "="*60)
@@ -191,29 +184,28 @@ async def confidence_validator_node(state: EvaluationState) -> Dict:
         state["common_aggregation_result"],
         threshold=0.7
     )
-    
-    duration = (datetime.now() - start_time).total_seconds()
 
-    print(f"[Phase 1-4] 검증 완료: {validation['validation_notes']} (소요 시간: {duration:.2f}초)")
-    
-    # 실행 로그 생성
-    new_log = {
-        "phase": "phase_1",
+
+    execution_time = (datetime.now() - start_time).total_seconds()
+    print(f"[Node] 검증 완료: {validation['validation_notes']} ({execution_time:.2f}초)")
+
+    # 실행 로그 추가
+    execution_log = {
         "node": "confidence_validator",
-        "duration_seconds": round(duration, 2),
+        "execution_time": execution_time,
+        "timestamp": datetime.now().isoformat(),
+        "status": "success",
         "low_confidence_count": len(validation["low_confidence_competencies"]),
-        "timestamp": datetime.now().isoformat()
+        "requires_revaluation": validation["requires_revaluation"]
     }
-    
-    # 중복 방지
-    existing_logs = state.get("execution_logs", [])
-    filtered_logs = [log for log in existing_logs if log.get("node") != "confidence_validator"]
-    updated_logs = filtered_logs + [new_log]
+
 
     # 수정된 키만 반환
     return {
         "low_confidence_competencies": validation["low_confidence_competencies"],
         "validation_notes": validation["validation_notes"],
         "requires_revaluation": validation["requires_revaluation"],
-        "execution_logs": updated_logs
+
+        "execution_logs": state.get("execution_logs", []) + [execution_log],
+        "completed_at": datetime.now()
     }
