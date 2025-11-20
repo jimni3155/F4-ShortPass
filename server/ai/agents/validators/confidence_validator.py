@@ -1,6 +1,12 @@
 """
 Confidence Validator
-낮은 신뢰도 역량 검증
+신뢰도 검증 로직 (Phase 1에서 사용)
+
+Phase 1에서는 간단한 검증만 수행:
+- Low Confidence 역량 목록 추출 (역량명만)
+- 전체 검증 노트 생성
+
+Phase 2 ConfidenceDetector는 더 상세한 분석 수행
 """
 
 from typing import Dict, List
@@ -16,48 +22,38 @@ class ConfidenceValidator:
         threshold: float = 0.7
     ) -> Dict:
         """
-        낮은 신뢰도 역량 검증
+        신뢰도 검증 (Phase 1)
         
         Args:
             job_aggregation: Job 통합 결과
             common_aggregation: Common 통합 결과
-            threshold: 신뢰도 임계값 (기본 0.7)
+            threshold: Confidence 임계값 (기본 0.7)
         
         Returns:
-            검증 결과
-                {
-                    "low_confidence_competencies": [...],
-                    "validation_notes": "...",
-                    "requires_revaluation": bool
-                }
+            {
+                "low_confidence_competencies": ["financial_literacy", ...],
+                "validation_notes": "...",
+                "requires_revaluation": False  # deprecated
+            }
         """
         
-        # 1. 낮은 신뢰도 역량 수집
-        all_low_confidence = []
-        all_low_confidence.extend(job_aggregation.get("low_confidence_competencies", []))
-        all_low_confidence.extend(common_aggregation.get("low_confidence_competencies", []))
+        # 1. Job/Common에서 Low Confidence 역량 추출
+        low_confidence_job = job_aggregation.get("low_confidence_competencies", [])
+        low_confidence_common = common_aggregation.get("low_confidence_competencies", [])
+        
+        low_confidence_competencies = low_confidence_job + low_confidence_common
         
         # 2. 검증 노트 생성
-        if len(all_low_confidence) == 0:
-            validation_notes = "모든 역량 평가의 신뢰도가 충분합니다."
-            requires_revaluation = False
-        elif len(all_low_confidence) <= 2:
-            validation_notes = (
-                f"{len(all_low_confidence)}개 역량의 신뢰도가 낮습니다 "
-                f"({', '.join(all_low_confidence)}). "
-                f"참고용으로 사용 가능하나, 추가 검증 권장."
-            )
-            requires_revaluation = False
+        if not low_confidence_competencies:
+            validation_notes = "모든 역량의 Confidence가 기준치 이상입니다."
         else:
             validation_notes = (
-                f"{len(all_low_confidence)}개 역량의 신뢰도가 낮습니다 "
-                f"({', '.join(all_low_confidence)}). "
-                f"평가 신뢰성이 낮아 재평가 필요."
+                f"{len(low_confidence_competencies)}개 역량에서 낮은 Confidence 탐지됨. "
+                f"Phase 2에서 상세 분석 예정: {', '.join(low_confidence_competencies)}"
             )
-            requires_revaluation = True
         
         return {
-            "low_confidence_competencies": list(set(all_low_confidence)),  # 중복 제거
+            "low_confidence_competencies": low_confidence_competencies,
             "validation_notes": validation_notes,
-            "requires_revaluation": requires_revaluation
+            "requires_revaluation": False  # Phase 2에서 판단
         }
