@@ -6,25 +6,25 @@ import down from '../assets/svg/chevron-down.svg';
 import {useParams} from 'react-router-dom';
 import API_V1 from '../lib/apiConfig';
 
-async function fetchCompanyMatchingResult(jobId, {signal} = {}) {
-  if (!jobId) throw new Error('유효하지 않은 공고 ID');
+// async function fetchCompanyMatchingResult(jobId, {signal} = {}) {
+//   if (!jobId) throw new Error('유효하지 않은 공고 ID');
 
-  const res = await fetch(`${API_V1}/company/jobs/${jobId}`, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-    },
-    signal,
-  });
+//   const res = await fetch(`${API_V1}/company/jobs/${jobId}`, {
+//     method: 'GET',
+//     headers: {
+//       Accept: 'application/json',
+//     },
+//     signal,
+//   });
 
-  if (!res.ok) {
-    // FastAPI 에러 메시지 통과
-    const text = await res.text().catch(() => '');
-    const msg = text || `요청 실패 (${res.status})`;
-    throw new Error(msg);
-  }
-  return res.json();
-}
+//   if (!res.ok) {
+//     // FastAPI 에러 메시지 통과
+//     const text = await res.text().catch(() => '');
+//     const msg = text || `요청 실패 (${res.status})`;
+//     throw new Error(msg);
+//   }
+//   return res.json();
+// }
 
 export default function CompanyResultPage() {
   const {jobId: jobIdParam} = useParams(); // /company/result/:jobId
@@ -62,7 +62,6 @@ export default function CompanyResultPage() {
   }, [jobId]);
 
   const toggleCard = (id) => {
-    console.log('Toggling card for applicant ID:', id);
     const newExpanded = new Set(expandedCards);
     if (newExpanded.has(id)) {
       newExpanded.delete(id);
@@ -116,11 +115,10 @@ export default function CompanyResultPage() {
 
         <div className='space-y-3'>
           {result.applicants.map((applicant) => {
-            console.log('Rendering applicant:', applicant);
-            const isHighScore = applicant?.match_score?.total_score >= 70;
+            const isHighScore = applicant.match_score.total_score >= 70;
             return (
               <div
-                key={applicant?.applicant_id}
+                key={applicant.applicant_id}
                 className={`rounded-lg border overflow-hidden hover:shadow-md transition-all ${
                   isHighScore
                     ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-300 shadow-md'
@@ -131,7 +129,7 @@ export default function CompanyResultPage() {
                   {/* Name with Rank */}
                   <div className='px-2 w-28'>
                     <h3 className='font-medium'>
-                      #{applicant?.rank} {applicant?.applicant_name}
+                      #{applicant.rank} {applicant.applicant_name}
                     </h3>
                   </div>
 
@@ -141,13 +139,13 @@ export default function CompanyResultPage() {
                       매칭 점수
                     </div>
                     <div className='text-lg font-bold text-primary'>
-                      {applicant?.match_score?.total_score?.toFixed(1)}
+                      {applicant.match_score.total_score.toFixed(1)}
                     </div>
                   </div>
 
                   {/* Priority Badge - top 30% are priority */}
                   <div className='w-24'>
-                    {applicant?.match_score?.total_score >= 70 ? (
+                    {applicant.match_score.total_score >= 70 ? (
                       <Badge
                         variant='primary'
                         className='w-full justify-center'>
@@ -168,7 +166,7 @@ export default function CompanyResultPage() {
                           학력
                         </div>
                         <div className='text-sm font-medium text-gray-900'>
-                          {applicant?.education || '-'}
+                          {applicant.education || '-'}
                         </div>
                       </div>
                       <div className='w-28'>
@@ -176,7 +174,7 @@ export default function CompanyResultPage() {
                           나이
                         </div>
                         <div className='text-sm font-medium text-gray-900'>
-                          {applicant?.age ? `${applicant?.age}세` : '-'}
+                          {applicant.age ? `${applicant.age}세` : '-'}
                         </div>
                       </div>
                       <div className='w-16'>
@@ -184,7 +182,7 @@ export default function CompanyResultPage() {
                           성별
                         </div>
                         <div className='text-sm font-medium text-gray-900'>
-                          {applicant?.gender || '-'}
+                          {applicant.gender || '-'}
                         </div>
                       </div>
                     </div>
@@ -198,9 +196,9 @@ export default function CompanyResultPage() {
                     <Button
                       variant='ghost'
                       size='sm'
-                      onClick={() => toggleCard(applicant?.applicant_id)}
+                      onClick={() => toggleCard(applicant.applicant_id)}
                       className='gap-2 w-full'>
-                      {expandedCards.has(applicant?.applicant_id) ? (
+                      {expandedCards.has(applicant.applicant_id) ? (
                         <div className='flex items-center justify-center gap-2'>
                           심사평 닫기
                           <img src={up} alt='닫기' className='w-3 h-3' />
@@ -216,9 +214,8 @@ export default function CompanyResultPage() {
                 </div>
 
                 {/* Expanded Evaluation */}
-                {expandedCards.has(applicant?.applicant_id) && (
+                {expandedCards.has(applicant.applicant_id) && (
                   <div className='px-4 pb-4'>
-                    {console.log('Rendering expanded view for applicant:', applicant)}
                     <div className='bg-gray-50 rounded-lg p-4 border border-gray-200 space-y-4'>
                       {/* Interview Summary */}
                       <div>
@@ -226,18 +223,18 @@ export default function CompanyResultPage() {
                           심사평
                         </h4>
                         <p className='text-sm text-gray-700 leading-relaxed'>
-                          {applicant?.interview_summary}
+                          {applicant.interview_summary}
                         </p>
                       </div>
 
                       {/* Highlights */}
-                      {applicant?.highlights?.length > 0 && (
+                      {applicant.highlights.length > 0 && (
                         <div>
                           <h4 className='font-semibold text-sm mb-2 text-gray-900'>
                             주요 특징
                           </h4>
                           <div className='flex flex-wrap gap-2'>
-                            {applicant?.highlights.map((highlight, idx) => (
+                            {applicant.highlights.map((highlight, idx) => (
                               <div
                                 key={idx}
                                 variant='secondary'
@@ -252,13 +249,13 @@ export default function CompanyResultPage() {
                       {/* Strengths & Weaknesses */}
                       <div className='grid grid-cols-2 gap-4'>
                         {/* Strengths */}
-                        {applicant?.match_score?.strengths?.length > 0 && (
+                        {applicant.match_score.strengths.length > 0 && (
                           <div>
                             <h4 className='font-semibold text-sm mb-2 text-green-700'>
                               강점
                             </h4>
                             <ul className='text-sm text-gray-700 space-y-1'>
-                              {applicant?.match_score?.strengths.map(
+                              {applicant.match_score.strengths.map(
                                 (strength, idx) => (
                                   <li
                                     key={idx}
@@ -275,13 +272,13 @@ export default function CompanyResultPage() {
                         )}
 
                         {/* Weaknesses */}
-                        {applicant?.match_score?.weaknesses?.length > 0 && (
+                        {applicant.match_score.weaknesses.length > 0 && (
                           <div>
                             <h4 className='font-semibold text-sm mb-2 text-orange-700'>
                               개선점
                             </h4>
                             <ul className='text-sm text-gray-700 space-y-1'>
-                              {applicant?.match_score?.weaknesses.map(
+                              {applicant.match_score.weaknesses.map(
                                 (weakness, idx) => (
                                   <li
                                     key={idx}
@@ -307,19 +304,19 @@ export default function CompanyResultPage() {
                           <div className='flex justify-between'>
                             <span className='text-gray-600'>기술 역량</span>
                             <span className='font-medium'>
-                              {applicant?.match_score?.technical_score?.toFixed(1)}
+                              {applicant.match_score.technical_score.toFixed(1)}
                             </span>
                           </div>
                           <div className='flex justify-between'>
                             <span className='text-gray-600'>문화 적합도</span>
                             <span className='font-medium'>
-                              {applicant?.match_score?.cultural_score?.toFixed(1)}
+                              {applicant.match_score.cultural_score.toFixed(1)}
                             </span>
                           </div>
                           <div className='flex justify-between'>
                             <span className='text-gray-600'>경험</span>
                             <span className='font-medium'>
-                              {applicant?.match_score?.experience_score?.toFixed(
+                              {applicant.match_score.experience_score.toFixed(
                                 1
                               )}
                             </span>
@@ -327,7 +324,7 @@ export default function CompanyResultPage() {
                           <div className='flex justify-between'>
                             <span className='text-gray-600'>소프트 스킬</span>
                             <span className='font-medium'>
-                              {applicant?.match_score?.soft_skills_score?.toFixed(
+                              {applicant.match_score.soft_skills_score.toFixed(
                                 1
                               )}
                             </span>
