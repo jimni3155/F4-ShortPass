@@ -38,9 +38,9 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
         state["transcript_content"],
         state["prompts"]
     )
-    
-    # 4. 실행 시간 계산
-    duration = (datetime.now() - start_time).total_seconds()
+
+
+
 
     execution_time = (datetime.now() - start_time).total_seconds()
     print(f"\n[Node] 배치 평가 완료 ({execution_time:.2f}초)")
@@ -96,8 +96,9 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
 
     # 통합
     job_aggregation = JobAggregator.aggregate(job_results, state["job_weights"])
-    
-    duration = (datetime.now() - start_time).total_seconds()
+
+
+
 
     execution_time = (datetime.now() - start_time).total_seconds()
     print(f"[Node] Job 통합 완료: {job_aggregation['overall_job_score']}점 ({execution_time:.2f}초)")
@@ -110,6 +111,9 @@ async def job_aggregator_node(state: EvaluationState) -> Dict:
         "status": "success",
         "overall_job_score": job_aggregation['overall_job_score']
     }
+
+
+
 
     # 수정된 키만 반환
     return {
@@ -143,8 +147,6 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
 
     # 통합
     common_aggregation = CommonAggregator.aggregate(common_results, state["common_weights"])
-    
-    duration = (datetime.now() - start_time).total_seconds()
 
 
     execution_time = (datetime.now() - start_time).total_seconds()
@@ -165,6 +167,9 @@ async def common_aggregator_node(state: EvaluationState) -> Dict:
         "common_aggregation_result": common_aggregation,
 
         "execution_logs": state.get("execution_logs", []) + [execution_log]
+
+
+
     }
 
 
@@ -187,8 +192,6 @@ async def confidence_validator_node(state: EvaluationState) -> Dict:
         state["common_aggregation_result"],
         threshold=0.7
     )
-    
-    duration = (datetime.now() - start_time).total_seconds()
 
 
     execution_time = (datetime.now() - start_time).total_seconds()
