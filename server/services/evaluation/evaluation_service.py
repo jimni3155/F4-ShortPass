@@ -79,12 +79,15 @@ class EvaluationService:
         """면접 평가 실행"""
         from core.config import S3_BUCKET_NAME
 
+
         s3_key = transcript_s3_url.split(f"s3://{S3_BUCKET_NAME}/")[1]
         transcript_content = self.s3_service.download_json(s3_key)
         if not transcript_content:
             raise Exception(f"Failed to download transcript from S3 URL: {transcript_s3_url}")
             
+
         prompts = self._load_prompts(transcript_content)
+
 
         initial_state = {
             # 기본 정보
@@ -95,6 +98,8 @@ class EvaluationService:
             "transcript_s3_url": transcript_s3_url,
             "transcript_content": transcript_content,
             "openai_client": self.openai_client,  
+
+
             "prompts": prompts,
             
             # 가중치
@@ -175,12 +180,15 @@ class EvaluationService:
         
         # 최종 결과 구성
         return {
+
+
             "evaluation_id": evaluation_id,
             "interview_id": interview_id,
             "applicant_id": applicant_id,
             "job_id": job_id,
             "transcript_s3_url": transcript_s3_url,
             "agent_logs_s3_url": agent_logs_s3_url,
+
             "job_aggregation": result["job_aggregation_result"],
             "common_aggregation": result["common_aggregation_result"],
             "validation": {
@@ -295,4 +303,6 @@ class EvaluationService:
         db.commit()
         db.refresh(evaluation_record)
         return evaluation_record
+
+
 

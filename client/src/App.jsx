@@ -14,8 +14,6 @@ import CompanyInfo from '@pages/CompanyInfo';
 import CompanyResult from '@pages/CompanyResult';
 import Layout from '@layout/Layout';
 import InterviewResult from '@pages/InterviewResult';
-import CandidateListPage from '@pages/CandidateListPage';
-import CandidateDetailPage from '@pages/CandidateDetailPage';
 
 const App = () => {
   const router = createBrowserRouter(
@@ -28,8 +26,6 @@ const App = () => {
         <Route path='/candidate/done' element={<CandidateDone />} />
         <Route path='/company/info' element={<CompanyInfo />} />
         <Route path='/company/result' element={<InterviewResult />} />
-        <Route path='/company/applicants/:jobId' element={<CandidateListPage />} />
-        <Route path='/company/applicants/:jobId/:applicantId' element={<CandidateDetailPage />} />
       </Route>
     )
   );
