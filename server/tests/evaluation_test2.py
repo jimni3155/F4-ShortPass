@@ -117,12 +117,12 @@ async def test_full_evaluation():
         "achievement_motivation": 0.15
     }
     
-    # ============================================
+     # ============================================
     # 평가 실행
     # ============================================
     
     print("\n" + "="*80)
-    print("🚀 AI 면접 평가 시스템 - 전체 테스트 (Phase 1-4)")
+    print(" AI 면접 평가 시스템 - 전체 테스트 (Phase 1-4)")
     print("="*80 + "\n")
     
     # 서비스 초기화
@@ -148,7 +148,7 @@ async def test_full_evaluation():
         # ============================================
         
         print("="*80)
-        print("📊 Phase 1: 개별 역량 평가 결과")
+        print(" Phase 1: 개별 역량 평가 결과")
         print("="*80)
         
         # Job 역량
@@ -194,7 +194,7 @@ async def test_full_evaluation():
         # ============================================
         
         print("\n" + "="*80)
-        print("🔍 Phase 2: 문제 탐지 결과")
+        print(" Phase 2: 문제 탐지 결과")
         print("="*80)
         
         issues = result.get("issues_detected", {})
@@ -264,8 +264,8 @@ async def test_full_evaluation():
         reliability_note = result.get("reliability_note", "")
         
         print(f"\n🎯 최종 점수: {final_score:.1f}점")
-        print(f"📊 평균 Confidence: {avg_confidence:.2f}")
-        print(f"🔒 신뢰도 레벨: {final_reliability}")
+        print(f" 평균 Confidence: {avg_confidence:.2f}")
+        print(f" 신뢰도 레벨: {final_reliability}")
         print(f"📝 신뢰도 설명: {reliability_note}")
         
         final_result = result.get("final_result", {})
@@ -283,61 +283,146 @@ async def test_full_evaluation():
         # ============================================
         
         print("\n" + "="*80)
-        print("📋 상세 역량별 평가 (샘플: structured_thinking)")
+        print(" 상세 역량별 평가 (샘플: structured_thinking)")
         print("="*80)
         
         st_data = job_agg.get("structured_thinking")
         if st_data:
             print(f"\n역량명: {st_data.get('competency_display_name', 'N/A')}")
-            print(f"점수: {st_data.get('overall_score', 0)}점")
-            
+            print(f"카테고리: {st_data.get('competency_category', 'N/A')}")
+            print(f"평가 시각: {st_data.get('evaluated_at', 'N/A')}")
+            print(f"최종 점수: {st_data.get('overall_score', 0)}점")
+
+            # Perspectives 상세 출력
+            perspectives = st_data.get('perspectives', {})
+            if perspectives:
+                print(f"\n" + "-"*60)
+                print(" 3-Perspective 평가 상세")
+                print("-"*60)
+
+                # Evidence Perspective
+                print(f"\n[1] Evidence Perspective:")
+                print(f"  ├─ Evidence Score: {perspectives.get('evidence_score', 0)}점")
+                print(f"  ├─ Evidence Weight: {perspectives.get('evidence_weight', 0)}")
+                print(f"  └─ Reasoning: {perspectives.get('evidence_reasoning', 'N/A')[:200]}...")
+
+                evidence_details = perspectives.get('evidence_details', [])
+                if evidence_details:
+                    print(f"\n  증거 Quote ({len(evidence_details)}개):")
+                    for i, ev in enumerate(evidence_details[:3], 1):
+                        seg_id = ev.get('segment_id', 'N/A')
+                        char_idx = ev.get('char_index', 'N/A')
+                        text = ev.get('text', '')[:60]
+                        relevance = ev.get('relevance_note', 'N/A')
+                        quality = ev.get('quality_score', 0)
+                        print(f"    {i}. [Seg {seg_id}, Idx {char_idx}] Quality: {quality:.2f}")
+                        print(f"       \"{text}...\"")
+                        print(f"       관련성: {relevance}")
+
+                # Behavioral Perspective
+                print(f"\n[2] Behavioral Perspective:")
+                print(f"  ├─ Behavioral Score: {perspectives.get('behavioral_score', 0)}점")
+                print(f"  └─ Reasoning: {perspectives.get('behavioral_reasoning', 'N/A')[:200]}...")
+
+                behavioral_pattern = perspectives.get('behavioral_pattern', {})
+                if behavioral_pattern:
+                    print(f"\n  패턴 분석:")
+                    print(f"    ├─ 설명: {behavioral_pattern.get('pattern_description', 'N/A')}")
+
+                    examples = behavioral_pattern.get('specific_examples', [])
+                    if examples:
+                        print(f"    ├─ 구체적 예시 ({len(examples)}개):")
+                        for i, ex in enumerate(examples[:2], 1):
+                            print(f"    │   {i}. {ex}")
+
+                    consistency = behavioral_pattern.get('consistency_note', '')
+                    if consistency:
+                        print(f"    └─ 일관성: {consistency}")
+
+                # Critical Perspective
+                print(f"\n[3] Critical Perspective:")
+                print(f"  ├─ Critical Penalties: {perspectives.get('critical_penalties', 0)}점")
+                print(f"  └─ Reasoning: {perspectives.get('critical_reasoning', 'N/A')[:200]}...")
+
+                red_flags = perspectives.get('red_flags', [])
+                if red_flags:
+                    print(f"\n  Red Flags ({len(red_flags)}개):")
+                    for i, flag in enumerate(red_flags, 1):
+                        flag_type = flag.get('flag_type', 'N/A')
+                        description = flag.get('description', 'N/A')
+                        severity = flag.get('severity', 'N/A')
+                        penalty = flag.get('penalty', 0)
+                        evidence_ref = flag.get('evidence_reference', 'N/A')
+                        print(f"    {i}. Type: {flag_type} | Severity: {severity} | Penalty: {penalty}점")
+                        print(f"       설명: {description}")
+                        print(f"       증거: {evidence_ref}")
+
+            # Calculation 상세
+            calculation = st_data.get('calculation', {})
+            if calculation:
+                print(f"\n" + "-"*60)
+                print("🧮 점수 계산 상세")
+                print("-"*60)
+                print(f"  Base Score: {calculation.get('base_score', 0)}점")
+                print(f"  Evidence Weight: {calculation.get('evidence_weight', 0)}")
+                print(f"  Behavioral Adjustment: {calculation.get('behavioral_adjustment', 0)}")
+                print(f"  Adjusted Base: {calculation.get('adjusted_base', 0)}")
+                print(f"  Critical Penalties: {calculation.get('critical_penalties', 0)}")
+                print(f"  Final Score: {calculation.get('final_score', 0)}점")
+                print(f"  Formula: {calculation.get('formula', 'N/A')}")
+
             # 신뢰도
             confidence = st_data.get('confidence', {})
             if confidence:
+                print(f"\n" + "-"*60)
+                print(" 신뢰도 분석")
+                print("-"*60)
                 overall_conf = confidence.get('overall_confidence', 0)
                 evidence_str = confidence.get('evidence_strength', 0)
                 internal_cons = confidence.get('internal_consistency', 0)
-                
-                print(f"\n신뢰도:")
-                print(f"  ├─ 전체: {overall_conf:.3f}")
-                print(f"  ├─ 증거 강도: {evidence_str:.3f} {'⚠️  (부족)' if evidence_str < 0.6 else '✅' if evidence_str >= 0.8 else ''}")
-                print(f"  └─ 내부 일관성: {internal_cons:.3f}")
-                
+                confidence_note = confidence.get('confidence_note', 'N/A')
+
+                print(f"  ├─ Overall Confidence: {overall_conf:.3f} {'⚠️  (낮음)' if overall_conf < 0.7 else '✅ (높음)' if overall_conf >= 0.8 else ''}")
+                print(f"  ├─ Evidence Strength: {evidence_str:.3f} {'⚠️  (부족)' if evidence_str < 0.6 else '✅' if evidence_str >= 0.8 else ''}")
+                print(f"  ├─ Internal Consistency: {internal_cons:.3f}")
+                print(f"  └─ Note: {confidence_note}")
+
                 # 해석 추가
                 if overall_conf >= 0.8 and evidence_str >= 0.8:
-                    print(f"  💡 해석: 충분한 증거와 일관된 평가")
+                    print(f"\n   해석: 충분한 증거와 일관된 평가 (신뢰도 높음)")
                 elif overall_conf >= 0.7 and evidence_str < 0.6:
-                    print(f"  💡 해석: 증거는 적지만 평가는 일관적 (추가 질문 권장)")
+                    print(f"\n   해석: 증거는 적지만 평가는 일관적 (추가 질문 권장)")
                 elif overall_conf < 0.7:
-                    print(f"  💡 해석: 평가 신뢰도 낮음 (재평가 권장)")
-            
-            # Evidence 상세
-            perspectives = st_data.get('perspectives', {})
-            if perspectives:
-                evidence_details = perspectives.get('evidence_details', [])
-                if evidence_details:
-                    print(f"\n근거 (Evidence):")
-                    for i, ev in enumerate(evidence_details[:3], 1):  # 최대 3개만
-                        seg_id = ev.get('segment_id', 'N/A')
-                        char_idx = ev.get('char_index', 'N/A')
-                        text = ev.get('text', '')[:80] + "..."
-                        quality = ev.get('quality_score', 0)
-                        print(f"  {i}. [Segment {seg_id}, Char {char_idx}]")
-                        print(f"     \"{text}\"")
-                        print(f"     품질: {quality:.2f}")
-            
-            # 강점/약점
+                    print(f"\n   해석: 평가 신뢰도 낮음 (재평가 또는 협업 필요)")
+
+            # 강점/약점/관찰/후속질문
+            print(f"\n" + "-"*60)
+            print("📝 평가 요약")
+            print("-"*60)
+
             strengths = st_data.get('strengths', [])
             if strengths:
-                print(f"\n강점:")
-                for i, s in enumerate(strengths[:3], 1):
+                print(f"\n강점 ({len(strengths)}개):")
+                for i, s in enumerate(strengths, 1):
                     print(f"  {i}. {s}")
-            
+
             weaknesses = st_data.get('weaknesses', [])
             if weaknesses:
-                print(f"\n약점:")
-                for i, w in enumerate(weaknesses[:3], 1):
+                print(f"\n약점 ({len(weaknesses)}개):")
+                for i, w in enumerate(weaknesses, 1):
                     print(f"  {i}. {w}")
+
+            key_observations = st_data.get('key_observations', [])
+            if key_observations:
+                print(f"\n핵심 관찰 ({len(key_observations)}개):")
+                for i, obs in enumerate(key_observations, 1):
+                    print(f"  {i}. {obs}")
+
+            followup_questions = st_data.get('suggested_followup_questions', [])
+            if followup_questions:
+                print(f"\n권장 후속 질문 ({len(followup_questions)}개):")
+                for i, q in enumerate(followup_questions, 1):
+                    print(f"  {i}. {q}")
         
         # ============================================
         # 실행 로그 출력
@@ -373,7 +458,7 @@ async def test_full_evaluation():
         print("✅ 테스트 완료")
         print("="*80)
         
-        print(f"\n📊 요약:")
+        print(f"\n 요약:")
         print(f"  ├─ 최종 점수: {final_score:.1f}점")
         print(f"  ├─ 신뢰도: {final_reliability}")
         print(f"  ├─ 협업 처리: {collab_count}회")

@@ -121,11 +121,14 @@ async def handle_interview_session(websocket: WebSocket, interview_id: int):
                     "round": round_num + 1
                 })
 
-                # 질문 생성
+                # 질문 생성 (임시 주석 처리)
                 await websocket.send_json({"type": "generating_question"})
-                question = await _generate_persona_question(
-                    db, interview_id, persona_instance, applicant_name
-                )
+                # question = await _generate_persona_question(
+                #     db, interview_id, persona_instance, applicant_name
+                # )
+                
+                # 사용자가 요청한 임시 하드코딩 질문
+                question = f"네, 좋습니다. 저는 {persona_instance.instance_name} 역할을 맡고 있습니다. 당신의 경험에 대해 좀 더 자세히 듣고 싶습니다. 가장 성공적이었던 프로젝트에 대해 설명해주시겠어요?"
 
                 # 질문 전송 (TTS)
                 await _send_tts_audio(websocket, question)

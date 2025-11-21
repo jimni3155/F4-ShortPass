@@ -1,21 +1,21 @@
+import os
+import sys
+# Add the project root to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from api import interview, evaluation, job, applicant, company, persona, interview_report, jd_persona
 from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant
-import os
-import sys
 import json
-import logging
+import logging # Import logging
 from pathlib import Path
 from typing import Dict, Any, Optional
 import time
 from fastapi import Request
 
 # 로거 설정
-logger = logging.getLogger("uvicorn")
-
-# Add the project root to the Python path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+logger = logging.getLogger("uvicorn") # Re-insert logger definition
 
 # 전역 캐시: 전처리된 JD 페르소나 데이터
 PERSONA_DATA_CACHE: Optional[Dict[str, Any]] = None

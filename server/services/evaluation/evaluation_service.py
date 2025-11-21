@@ -11,9 +11,11 @@ from dotenv import load_dotenv
 import asyncio # Add this
 from ai.agents.graph.evaluation import create_evaluation_graph
 from services.storage.s3_service import S3Service
-from sqlalchemy.orm import Session # Add this
-from db.database import SessionLocal # Add this
-from models.evaluation import Evaluation # Add this
+from sqlalchemy.orm import Session
+from db.database import SessionLocal
+from models.evaluation import Evaluation
+from models.interview import Applicant, Company, InterviewSession, InterviewStatus
+from models.job import Job
 
 # .env 파일 로드
 env_path = Path(__file__).parent.parent.parent / '.env'
@@ -71,19 +73,18 @@ class EvaluationService:
         interview_id: int,
         applicant_id: int,
         job_id: int,
-        transcript_s3_url: str,
+        transcript: Dict,
         job_weights: Dict[str, float],
         common_weights: Dict[str, float],
         job_common_ratio: Dict[str, float] = None
     ) -> Dict:
         """면접 평가 실행"""
-        from core.config import S3_BUCKET_NAME
 
+        
+        # S3에서 다운로드하는 대신, 인자로 받은 transcript를 직접 사용
+        transcript_content = transcript
+        transcript_s3_url = f"s3://{self.s3_service.bucket_name}/transcripts/{interview_id}_mock.json" # 임시 S3 URL
 
-        s3_key = transcript_s3_url.split(f"s3://{S3_BUCKET_NAME}/")[1]
-        transcript_content = self.s3_service.download_json(s3_key)
-        if not transcript_content:
-            raise Exception(f"Failed to download transcript from S3 URL: {transcript_s3_url}")
             
 
         prompts = self._load_prompts(transcript_content)
@@ -157,7 +158,7 @@ class EvaluationService:
         result = await self.graph.ainvoke(initial_state)
 
         # 1. Save execution logs to S3
-        execution_logs_s3_key = f"evaluation-logs/{applicant_id}/{interview_id}/{datetime.now().isoformat()}_execution_logs.json"
+        execution_logs_s3_key = f"logs/evaluations/{applicant_id}/{interview_id}/{datetime.now().isoformat()}_execution_logs.json"
         agent_logs_s3_url = self.s3_service.upload_json(
             execution_logs_s3_key, result["execution_logs"]
         )
@@ -232,6 +233,50 @@ class EvaluationService:
         """
         평가 결과를 DB에 저장
         """
+        # FK가 없는 경우 테스트 편의를 위해 최소 엔터티를 생성
+        applicant_id = state["applicant_id"]
+        job_id = state["job_id"]
+
+        applicant = db.query(Applicant).filter(Applicant.id == applicant_id).first()
+        if not applicant:
+            applicant = Applicant(
+                id=applicant_id,
+                name=f"Applicant {applicant_id}",
+                email=f"applicant{applicant_id}@example.com"
+            )
+            db.add(applicant)
+
+        job = db.query(Job).filter(Job.id == job_id).first()
+        if not job:
+            # 회사도 없을 수 있으므로 기본 Company 생성
+            company = db.query(Company).filter(Company.id == 1).first()
+            if not company:
+                company = Company(id=1, name="Default Company")
+                db.add(company)
+            job = Job(
+                id=job_id,
+                company_id=company.id,
+                title=f"Job {job_id}",
+                description="Placeholder job for testing"
+            )
+            db.add(job)
+
+        # 인터뷰 세션이 없으면 생성 (FK 보호)
+        interview_id = state.get("interview_id")
+        if interview_id:
+            interview = db.query(InterviewSession).filter(InterviewSession.id == interview_id).first()
+            if not interview:
+                interview = InterviewSession(
+                    id=interview_id,
+                    applicant_id=applicant_id,
+                    company_id=job.company_id,
+                    status=InterviewStatus.COMPLETED
+                )
+                db.add(interview)
+
+        # FK 객체들을 먼저 flush해서 PK를 확정
+        db.flush()
+
         # 1. 역량 평가 결과(증거)를 S3에 업로드
         competency_results = {
             "problem_solving": state.get("problem_solving_result"),
@@ -249,6 +294,8 @@ class EvaluationService:
         evidence_s3_key = f"evaluations/{state['interview_id']}/evidence.json"
         evidence_s3_url = self.s3_service.upload_json(evidence_s3_key, competency_results)
 
+        job_agg = state.get("job_aggregation_result")
+        common_agg = state.get("common_aggregation_result")
 
         evaluation_record = Evaluation(
             applicant_id=state["applicant_id"],
@@ -267,19 +314,19 @@ class EvaluationService:
             evidence_s3_url=evidence_s3_url,
 
             # LangGraph 결과 (점수만 저장)
-            problem_solving=state.get("problem_solving_result")['overall_score'] if state.get("problem_solving_result") else None,
-            organizational_fit=state.get("organizational_fit_result")['overall_score'] if state.get("organizational_fit_result") else None,
-            growth_potential=state.get("growth_potential_result")['overall_score'] if state.get("growth_potential_result") else None,
-            interpersonal_skills=state.get("interpersonal_skills_result")['overall_score'] if state.get("interpersonal_skills_result") else None,
-            achievement_motivation=state.get("achievement_motivation_result")['overall_score'] if state.get("achievement_motivation_result") else None,
-            structured_thinking=state.get("structured_thinking_result")['overall_score'] if state.get("structured_thinking_result") else None,
-            business_documentation=state.get("business_documentation_result")['overall_score'] if state.get("business_documentation_result") else None,
-            financial_literacy=state.get("financial_literacy_result")['overall_score'] if state.get("financial_literacy_result") else None,
-            industry_learning=state.get("industry_learning_result")['overall_score'] if state.get("industry_learning_result") else None,
-            stakeholder_management=state.get("stakeholder_management_result")['overall_score'] if state.get("stakeholder_management_result") else None,
+            problem_solving=state.get("problem_solving_result"),
+            organizational_fit=state.get("organizational_fit_result"),
+            growth_potential=state.get("growth_potential_result"),
+            interpersonal_skills=state.get("interpersonal_skills_result"),
+            achievement_motivation=state.get("achievement_motivation_result"),
+            structured_thinking=state.get("structured_thinking_result"),
+            business_documentation=state.get("business_documentation_result"),
+            financial_literacy=state.get("financial_literacy_result"),
+            industry_learning=state.get("industry_learning_result"),
+            stakeholder_management=state.get("stakeholder_management_result"),
 
-            job_aggregation=state.get("job_aggregation_result"),
-            common_aggregation=state.get("common_aggregation_result"),
+            job_aggregation=job_agg,
+            common_aggregation=common_agg,
             validation_result={
                 "low_confidence_competencies": state.get("low_confidence_competencies", []),
                 "validation_notes": state.get("validation_notes"),
@@ -289,7 +336,11 @@ class EvaluationService:
             # JSON 필드 (임시, 추후 보완)
             competency_scores={},
             individual_evaluations={},
-            aggregated_evaluation={},
+            aggregated_evaluation={
+                "job_aggregation": job_agg,
+                "common_aggregation": common_agg,
+                "raw": state.get("aggregated_evaluation")
+            },
             match_result={},
             reasoning_log={},
             rubric_scores={},
@@ -303,6 +354,4 @@ class EvaluationService:
         db.commit()
         db.refresh(evaluation_record)
         return evaluation_record
-
-
 

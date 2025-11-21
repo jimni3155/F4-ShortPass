@@ -1,6 +1,6 @@
 # JD 페르소나 생성 시스템
 
-## 📋 개요
+##  개요
 
 이 시스템은 채용공고(JD) PDF를 업로드하면 자동으로 역량을 분석하고, 기업의 필수 질문을 바탕으로 AI 페르소나를 생성하는 백엔드 서비스입니다.
 
@@ -28,7 +28,7 @@ PDF Upload → Text Extraction → LLM Analysis → Competency Classification �
 - **pgvector**: 벡터 검색 지원
 - **S3**: PDF 파일 저장
 
-## 🚀 새로 추가된 파일들
+##  새로 추가된 파일들
 
 ### Core Services
 - `server/services/competency_service.py` - 역량 분석 및 페르소나 생성 서비스
@@ -110,7 +110,7 @@ curl -X POST "http://localhost:8002/api/v1/jd-persona/upload" \
   -F "title=데이터 분석가"
 ```
 
-## 📊 API 응답 예시
+##  API 응답 예시
 
 ### 역량 분석 응답
 ```json

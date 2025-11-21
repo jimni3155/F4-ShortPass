@@ -198,10 +198,10 @@ def main():
 
     # 사이드바: 시스템 정보
     with st.sidebar:
-        st.header("📊 시스템 정보")
+        st.header(" 시스템 정보")
 
         if not st.session_state.initialized:
-            if st.button("🚀 PDF 로드 및 페르소나 생성", type="primary"):
+            if st.button(" PDF 로드 및 페르소나 생성", type="primary"):
                 success = load_pdfs_and_create_personas()
                 if success:
                     st.success("✅ 초기화 완료!")

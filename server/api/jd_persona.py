@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel
 import logging
+import json
 
 from db.database import get_db
 from services.competency_service import CompetencyService
@@ -90,39 +91,38 @@ async def upload_jd_and_analyze(
                 detail=f"File size exceeds maximum limit of {max_size / (1024*1024)}MB"
             )
 
-        print(f"\n🚀 Starting JD upload and analysis: {pdf_file.filename}")
+        print(f"\n Starting JD upload and analysis: {pdf_file.filename}")
 
-        # 1. 기존 Job 서비스로 PDF 처리 (S3 업로드, 청킹, 임베딩)
-        job_service = JobService()
-        job = await job_service.process_jd_pdf(
-            db=db,
-            pdf_content=pdf_content,
-            file_name=pdf_file.filename,
-            company_id=company_id,
-            title=title,
-            company_url=company_url  # 기업 URL 전달 (mock, 향후 파싱 예정)
-        )
+        # ===== MOCK MODE =====
+        # PDF 업로드는 받지만, 실제로는 미리 정의된 데이터 반환
+        # companyId=1 (삼성물산 패션부문), jobId=1 (상품기획/Retail영업)
 
-        print(f"✅ Job created with ID: {job.id}")
+        # Mock 데이터 (DB 조회 없이 hardcoded)
+        mock_job_id = 1
+        # CompetencyService.COMMON_COMPETENCIES 사용
+        from services.competency_service import CompetencyService
+        common_competencies = CompetencyService.COMMON_COMPETENCIES
+        job_competencies = [
+            "매출·트렌드 데이터 분석 및 상품 기획 (MD 프로세스)",
+            "시즌 전략 수립 및 비즈니스 문제해결 (KPI 관리)",
+            "소싱·생산·유통 밸류체인 최적화 (원가·마진 관리)",
+            "고객 여정 설계 및 VMD·마케팅 통합 전략",
+            "유관부서 협업 및 이해관계자 협상 (디자인/생산/영업)"
+        ]
 
-        # 2. 역량 분석
+        print(f"✅ Mock 데이터 사용: Job ID={mock_job_id}, 역량 {len(job_competencies)}개")
+
+        # 시각화 데이터 생성
         competency_service = CompetencyService()
-        competency_data = await competency_service.analyze_jd_competencies(
-            jd_text=job.description
-        )
-
-        print(f"✅ Competencies analyzed: {len(competency_data['job_competencies'])} job competencies")
-
-        # 3. 시각화 데이터 생성
         visualization_data = competency_service.get_competency_visualization_data(
-            job_competencies=competency_data["job_competencies"]
+            job_competencies=job_competencies
         )
 
         return CompetencyAnalysisResponse(
-            job_id=job.id,
-            common_competencies=competency_data["common_competencies"],
-            job_competencies=competency_data["job_competencies"],
-            analysis_summary=competency_data.get("analysis_summary", ""),
+            job_id=mock_job_id,
+            common_competencies=common_competencies,
+            job_competencies=job_competencies,
+            analysis_summary="삼성물산 패션부문 MD/영업 직무 핵심 역량 분석 완료 (Mock)",
             visualization_data=visualization_data
         )
 
@@ -157,53 +157,67 @@ async def generate_persona(
     try:
         print(f"\n🎭 Starting persona generation for Job ID: {request.job_id}")
 
-        # 1. Job 정보 조회
-        job_service = JobService()
-        job_data = job_service.get_job_with_chunks(db, request.job_id)
+        # ===== MOCK MODE =====
+        # 페르소나 생성 요청을 받지만, 미리 정의된 데이터 반환
 
-        if not job_data:
-            raise HTTPException(
-                status_code=404,
-                detail="Job not found"
-            )
-
-        jd_text = job_data["description"]
-
-        # 2. 역량 재분석 (이미 분석된 데이터가 있다면 캐시 활용 가능)
-        competency_service = CompetencyService()
-        competency_data = await competency_service.analyze_jd_competencies(jd_text)
-
-        print(f"📊 Competencies: {competency_data['job_competencies']}")
-
-        # 3. 기업 질문 검증
+        # 기업 질문 검증
         if len(request.company_questions) != 3:
             raise HTTPException(
                 status_code=400,
                 detail="Exactly 3 company questions are required"
             )
 
-        print(f"❓ Company questions: {len(request.company_questions)} questions received")
+        print(f"❓ Company questions received: {request.company_questions}")
 
-        # 4. 페르소나 생성 및 DB 저장
-        persona_service = JDPersonaService()
-        result = await persona_service.create_and_save_persona(
-            db=db,
-            job_id=request.job_id,
-            company_id=job_data["company_id"],
-            jd_text=jd_text,
-            company_questions=request.company_questions
-        )
+        # Mock 페르소나 데이터
+        from datetime import datetime
+        from services.competency_service import CompetencyService
 
-        print(f"🎭 Generated and saved persona with ID: {result.get('id')}")
+        mock_company_name = "삼성물산 패션부문"
+        # CompetencyService.COMMON_COMPETENCIES 사용 (6개)
+        mock_common_competencies = CompetencyService.COMMON_COMPETENCIES
+        mock_job_competencies = [
+            "매출·트렌드 데이터 분석 및 상품 기획 (MD 프로세스)",
+            "시즌 전략 수립 및 비즈니스 문제해결 (KPI 관리)",
+            "소싱·생산·유통 밸류체인 최적화 (원가·마진 관리)",
+            "고객 여정 설계 및 VMD·마케팅 통합 전략",
+            "유관부서 협업 및 이해관계자 협상 (디자인/생산/영업)"
+        ]
+
+        # 사용자가 입력한 3개 질문 사용
+        mock_core_questions = request.company_questions
+
+        mock_persona_summary = [
+            {
+                "type": "전략적 사고형 면접관",
+                "focus": "시장 분석 및 데이터 기반 의사결정 능력 평가",
+                "style": "논리적이고 분석적, 구체적인 근거를 요구",
+                "target_competencies": ["매출·트렌드 데이터 분석 및 상품 기획 (MD 프로세스)", "시즌 전략 수립 및 비즈니스 문제해결 (KPI 관리)"]
+            },
+            {
+                "type": "실행력 중심형 면접관",
+                "focus": "목표 달성을 위한 창의적 실행과 협업 능력 평가",
+                "style": "실무 경험과 구체적 성과를 중시",
+                "target_competencies": ["고객 여정 설계 및 VMD·마케팅 통합 전략", "유관부서 협업 및 이해관계자 협상 (디자인/생산/영업)"]
+            },
+            {
+                "type": "글로벌 비즈니스형 면접관",
+                "focus": "글로벌 감각과 비즈니스 마인드 평가",
+                "style": "전략적 사고와 글로벌 시각을 평가",
+                "target_competencies": ["소싱·생산·유통 밸류체인 최적화 (원가·마진 관리)"]
+            }
+        ]
+
+        print(f"✅ Mock 페르소나 데이터 생성 완료")
 
         return PersonaResponse(
             job_id=request.job_id,
-            company=result["company_name"],
-            common_competencies=result["common_competencies"],
-            job_competencies=result["job_competencies"],
-            core_questions=result["core_questions"],
-            persona_summary=result["persona_summary"],
-            created_at=result["created_at"]
+            company=mock_company_name,
+            common_competencies=mock_common_competencies,
+            job_competencies=mock_job_competencies,
+            core_questions=mock_core_questions,
+            persona_summary=mock_persona_summary,
+            created_at=datetime.now().isoformat()
         )
 
     except HTTPException:

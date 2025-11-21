@@ -253,7 +253,7 @@ class JDPreprocessor:
             print("="*60)
             print("전처리 완료!")
             print("="*60)
-            print(f"\n📊 추출된 정보:")
+            print(f"\n 추출된 정보:")
             print(f"  - 회사명: {persona_data['company_name']}")
             print(f"  - 직무: {persona_data['job_title']}")
             print(f"  - 핵심 역량: {', '.join(persona_data['core_competencies'])}")

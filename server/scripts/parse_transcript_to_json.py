@@ -155,7 +155,7 @@ def main():
         json.dump(transcript_data, f, ensure_ascii=False, indent=2)
 
     print(f"✅ Transcript saved to: {output_file}")
-    print(f"\n📊 Summary:")
+    print(f"\n Summary:")
     print(f"   - Applicant: {transcript_data['metadata']['applicant_name']}")
     print(f"   - Company: {transcript_data['metadata']['company']}")
     print(f"   - Total Questions: {transcript_data['metadata']['total_questions']}")

@@ -213,7 +213,7 @@ def create_applicants_data():
 
         # 3. 각 지원자별로 Applicant, InterviewSession, InterviewResult 생성
         for idx, applicant_info in enumerate(applicants_data, start=1):
-            print(f"\n📋 지원자 {idx}: {applicant_info['name']}")
+            print(f"\n 지원자 {idx}: {applicant_info['name']}")
 
             # Applicant 생성 또는 조회
             applicant = db.query(Applicant).filter(Applicant.email == applicant_info['email']).first()
@@ -317,7 +317,7 @@ def create_applicants_data():
         print("="*60 + "\n")
 
         # 생성된 데이터 요약
-        print("📊 생성된 지원자 요약:")
+        print(" 생성된 지원자 요약:")
         print("-" * 60)
         for applicant_info in applicants_data:
             print(f"  • {applicant_info['name']:<8} | 점수: {applicant_info['overall_score']:<6.2f} | 경력: {applicant_info['total_experience_years']}년 | {applicant_info['education']}")
