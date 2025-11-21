@@ -5,10 +5,10 @@
 import os
 import json
 from datetime import datetime
-from typing import Dict
+from typing import Dict, Optional
 from pathlib import Path
 from dotenv import load_dotenv
-import asyncio # Add this
+import asyncio
 from ai.agents.graph.evaluation import create_evaluation_graph
 from services.storage.s3_service import S3Service
 from sqlalchemy.orm import Session
@@ -17,34 +17,37 @@ from models.evaluation import Evaluation
 from models.interview import Applicant, Company, InterviewSession, InterviewStatus
 from models.job import Job
 
-# .env 파일 로드
 env_path = Path(__file__).parent.parent.parent / '.env'
 load_dotenv(env_path)
 
-# 프롬프트 생성 함수 import
 from ai.prompts.competency_agents.common_competencies.problem_solving_prompt import create_problem_solving_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.organizational_fit_prompt import create_organizational_fit_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.growth_potential_prompt import create_growth_potential_evaluation_prompt
-from ai.prompts.competency_agents.common_competencies.interpersonal_skill_prompt import create_interpersonal_skill_evaluation_prompt
+from ai.prompts.competency_agents.common_competencies.interpersonal_skill_prompt import create_interpersonal_skill_evaluation_prompt  # ⚠️ "skill" (단수)
 from ai.prompts.competency_agents.common_competencies.achievement_motivation_prompt import create_achievement_motivation_evaluation_prompt
-from ai.prompts.competency_agents.job_competencies.structured_thinking_prompt import create_structured_thinking_evaluation_prompt
-from ai.prompts.competency_agents.job_competencies.business_documentation_prompt import create_business_documentation_evaluation_prompt
-from ai.prompts.competency_agents.job_competencies.financing_literacy_prompt import create_financial_literacy_evaluation_prompt
-from ai.prompts.competency_agents.job_competencies.industry_learning_prompt import create_industry_learning_evaluation_prompt
-from ai.prompts.competency_agents.job_competencies.stakeholder_coordination_prompt import create_stakeholder_management_evaluation_prompt
+
+from ai.prompts.competency_agents.job_competencies.customer_journey_marketing_prompt import create_customer_journey_marketing_evaluation_prompt
+from ai.prompts.competency_agents.job_competencies.data_analysis_prompt import create_md_data_analysis_evaluation_prompt
+from ai.prompts.competency_agents.job_competencies.seasonal_strategy_kpi_prompt import create_seasonal_strategy_kpi_evaluation_prompt
+from ai.prompts.competency_agents.job_competencies.stakeholder_collaboration_prompt import create_stakeholder_collaboration_evaluation_prompt
+from ai.prompts.competency_agents.job_competencies.value_chain_optimization_prompt import create_value_chain_optimization_evaluation_prompt
+
 from openai import AsyncOpenAI
 
 PROMPT_GENERATORS = {
+    # Common Competencies (5개)
     "problem_solving": create_problem_solving_evaluation_prompt,
     "organizational_fit": create_organizational_fit_evaluation_prompt,
     "growth_potential": create_growth_potential_evaluation_prompt,
-    "interpersonal_skills": create_interpersonal_skill_evaluation_prompt,
+    "interpersonal_skill": create_interpersonal_skill_evaluation_prompt, 
     "achievement_motivation": create_achievement_motivation_evaluation_prompt,
-    "structured_thinking": create_structured_thinking_evaluation_prompt,
-    "business_documentation": create_business_documentation_evaluation_prompt,
-    "financial_literacy": create_financial_literacy_evaluation_prompt,
-    "industry_learning": create_industry_learning_evaluation_prompt,
-    "stakeholder_management": create_stakeholder_management_evaluation_prompt,
+    
+    # Job Competencies (5개)
+    "customer_journey_marketing": create_customer_journey_marketing_evaluation_prompt,
+    "md_data_analysis": create_md_data_analysis_evaluation_prompt,
+    "seasonal_strategy_kpi": create_seasonal_strategy_kpi_evaluation_prompt,
+    "stakeholder_collaboration": create_stakeholder_collaboration_evaluation_prompt,
+    "value_chain_optimization": create_value_chain_optimization_evaluation_prompt,
 }
 
 
@@ -74,69 +77,76 @@ class EvaluationService:
         applicant_id: int,
         job_id: int,
         transcript: Dict,
-        job_weights: Dict[str, float],
-        common_weights: Dict[str, float],
-        job_common_ratio: Dict[str, float] = None
+        competency_weights: Dict[str, float], 
+        resume_data: Optional[Dict] = None 
     ) -> Dict:
-        """면접 평가 실행"""
-
+        """
+        면접 평가 실행
         
-        # S3에서 다운로드하는 대신, 인자로 받은 transcript를 직접 사용
+        Args:
+            interview_id: 면접 ID
+            applicant_id: 지원자 ID
+            job_id: JD ID
+            transcript: 면접 Transcript JSON
+            competency_weights: 10개 역량 가중치
+                {
+                    "achievement_motivation": 0.12,
+                    "growth_potential": 0.10,
+                    ...
+                }
+            resume_data: 파싱된 Resume JSON (선택적)
+        
+        Returns:
+            평가 결과
+        """
+        
         transcript_content = transcript
-        transcript_s3_url = f"s3://{self.s3_service.bucket_name}/transcripts/{interview_id}_mock.json" # 임시 S3 URL
-
-            
-
+        transcript_s3_url = f"s3://{self.s3_service.bucket_name}/transcripts/{interview_id}_mock.json"  # 임시 S3 URL
         prompts = self._load_prompts(transcript_content)
 
-
+       
+        # Initial State 구성
         initial_state = {
             # 기본 정보
             "interview_id": interview_id,
             "applicant_id": applicant_id,
             "job_id": job_id,
-
             "transcript_s3_url": transcript_s3_url,
             "transcript_content": transcript_content,
-            "transcript": transcript_content,  # 일부 노드 호환용
-            "openai_client": self.openai_client,  
-
-
+            "transcript": transcript_content,
+            "resume_data": resume_data, 
+            "openai_client": self.openai_client,
             "prompts": prompts,
             
-            # 가중치
-            "job_weights": job_weights,
-            "common_weights": common_weights,
-            "job_common_ratio": job_common_ratio,
+            # 가중치 
+            "competency_weights": competency_weights,
             
-            # Phase 1 결과 (초기화)
-            "structured_thinking_result": None,
-            "business_documentation_result": None,
-            "financial_literacy_result": None,
-            "industry_learning_result": None,
-            "stakeholder_management_result": None,
-            "problem_solving_result": None,
-            "organizational_fit_result": None,
-            "growth_potential_result": None,
-            "interpersonal_skills_result": None,
+            # Stage 1 결과 (초기화)
             "achievement_motivation_result": None,
-            "job_aggregation_result": None,
-            "common_aggregation_result": None,
-            "low_confidence_competencies": [],
-            "validation_notes": None,
-            "requires_revaluation": False,
+            "growth_potential_result": None,
+            "interpersonal_skill_result": None, 
+            "organizational_fit_result": None,
+            "problem_solving_result": None,
+            "customer_journey_marketing_result": None, 
+            "md_data_analysis_result": None, 
+            "seasonal_strategy_kpi_result": None, 
+            "stakeholder_collaboration_result": None, 
+            "value_chain_optimization_result": None, 
             
-            # Phase 2 결과 (초기화)
-            "evidence_conflicts": [],
+            # Stage 2 결과 (초기화)
+            "segment_evaluations_with_resume": [],
+            "confidence_v2_calculated": False,
+            "segment_overlap_adjustments": [],
+            "cross_competency_flags": [],
+            "aggregated_competencies": {},
             "low_confidence_list": [],
             "requires_collaboration": False,
             
-            # Phase 3 결과 (초기화)
-            "mediation_results": [],
-            "adversarial_results": [],
+            # Stage 3 결과 (초기화)
+            "collaboration_results": [],
             "collaboration_count": 0,
             
-            # Phase 4 결과 (초기화)
+            # Final 결과 (초기화)
             "final_score": None,
             "avg_confidence": None,
             "final_reliability": None,
@@ -147,31 +157,35 @@ class EvaluationService:
             "started_at": datetime.now(),
             "completed_at": None,
             "errors": [],
-            "execution_logs": [],
-            "structured_transcript": None
+            "execution_logs": []
         }
         
+       
         # 그래프 실행
         print("\n" + "="*80)
         print(f"평가 시작: Interview ID {interview_id}")
         print("="*80)
         
         result = await self.graph.ainvoke(initial_state)
-
+        
+       
         # 1. Save execution logs to S3
         execution_logs_s3_key = f"logs/evaluations/{applicant_id}/{interview_id}/{datetime.now().isoformat()}_execution_logs.json"
         agent_logs_s3_url = self.s3_service.upload_json(
             execution_logs_s3_key, result["execution_logs"]
         )
 
+       
         # 2. Save evaluation results to DB
         db = SessionLocal()
         try:
-            evaluation_record = await asyncio.to_thread(self._save_evaluation_to_db, 
-                                                         db, 
-                                                         result, 
-                                                         transcript_s3_url, 
-                                                         agent_logs_s3_url)
+            evaluation_record = await asyncio.to_thread(
+                self._save_evaluation_to_db, 
+                db, 
+                result, 
+                transcript_s3_url, 
+                agent_logs_s3_url
+            )
             evaluation_id = evaluation_record.id
         finally:
             await asyncio.to_thread(db.close)
@@ -180,60 +194,54 @@ class EvaluationService:
         print("평가 완료")
         print("="*80)
         
+       
         # 최종 결과 구성
         return {
-
-
             "evaluation_id": evaluation_id,
             "interview_id": interview_id,
             "applicant_id": applicant_id,
             "job_id": job_id,
             "transcript_s3_url": transcript_s3_url,
             "agent_logs_s3_url": agent_logs_s3_url,
-
-            "job_aggregation": result["job_aggregation_result"],
-            "common_aggregation": result["common_aggregation_result"],
-            "validation": {
-                "low_confidence_competencies": result["low_confidence_competencies"],
-                "validation_notes": result["validation_notes"],
-                "requires_revaluation": result["requires_revaluation"]
-            },
             
-            # Phase 2 결과
-            "issues_detected": {
-                "evidence_conflicts": result.get("evidence_conflicts", []),
-                "low_confidence_list": result.get("low_confidence_list", []),
-                "requires_collaboration": result.get("requires_collaboration", False)
-            },
+            # 디버깅/관찰용 상세 정보 (요청 시 출력)
+            "execution_logs": result.get("execution_logs", []),
+            "segment_evaluations_with_resume": result.get("segment_evaluations_with_resume", []),
+            "segment_overlap_adjustments": result.get("segment_overlap_adjustments", []),
+            "cross_competency_flags": result.get("cross_competency_flags", []),
+            "aggregated_competencies": result.get("aggregated_competencies", {}),
             
-            # Phase 3 결과 (있다면)
-            "collaboration": {
-                "mediation_results": result.get("mediation_results", []),
-                "adversarial_results": result.get("adversarial_results", []),
-                "collaboration_count": result.get("collaboration_count", 0)
-            },
-            
-            # Phase 4 최종 결과
-            "final_result": result.get("final_result", {}),
+            # 최종 점수
             "final_score": result.get("final_score"),
             "avg_confidence": result.get("avg_confidence"),
             "final_reliability": result.get("final_reliability"),
             "reliability_note": result.get("reliability_note"),
             
+            # 역량별 상세
+            "competency_details": result.get("final_result", {}).get("competency_details", {}),
+            
+            # Low Confidence 요약
+            "low_confidence_summary": result.get("final_result", {}).get("low_confidence_summary", {}),
+            
+            # Collaboration 요약
+            "collaboration_summary": result.get("final_result", {}).get("collaboration_summary", {}),
+            
             # 메타 정보
             "started_at": result["started_at"].isoformat(),
-
             "completed_at": datetime.now().isoformat()
         }
 
-    def _save_evaluation_to_db(self, 
-                                        db: Session, 
-                                        state: Dict, 
-                                        transcript_s3_url: str, 
-                                        agent_logs_s3_url: str):
+    def _save_evaluation_to_db(
+        self, 
+        db: Session, 
+        state: Dict, 
+        transcript_s3_url: str, 
+        agent_logs_s3_url: str
+    ):
         """
         평가 결과를 DB에 저장
         """
+       
         # FK가 없는 경우 테스트 편의를 위해 최소 엔터티를 생성
         applicant_id = state["applicant_id"]
         job_id = state["job_id"]
@@ -278,76 +286,84 @@ class EvaluationService:
         # FK 객체들을 먼저 flush해서 PK를 확정
         db.flush()
 
+       
         # 1. 역량 평가 결과(증거)를 S3에 업로드
-        competency_results = {
-            "problem_solving": state.get("problem_solving_result"),
-            "organizational_fit": state.get("organizational_fit_result"),
-            "growth_potential": state.get("growth_potential_result"),
-            "interpersonal_skills": state.get("interpersonal_skills_result"),
-            "achievement_motivation": state.get("achievement_motivation_result"),
-            "structured_thinking": state.get("structured_thinking_result"),
-            "business_documentation": state.get("business_documentation_result"),
-            "financial_literacy": state.get("financial_literacy_result"),
-            "industry_learning": state.get("industry_learning_result"),
-            "stakeholder_management": state.get("stakeholder_management_result"),
-        }
+       
+        aggregated_competencies = state.get("aggregated_competencies", {})
         
         evidence_s3_key = f"evaluations/{state['interview_id']}/evidence.json"
-        evidence_s3_url = self.s3_service.upload_json(evidence_s3_key, competency_results)
+        evidence_s3_url = self.s3_service.upload_json(evidence_s3_key, aggregated_competencies)
 
-        job_agg = state.get("job_aggregation_result")
-        common_agg = state.get("common_aggregation_result")
-
+       
+        # 2. Evaluation 레코드 생성
+       
+        final_result = state.get("final_result", {})
+        
         evaluation_record = Evaluation(
             applicant_id=state["applicant_id"],
             job_id=state["job_id"],
             interview_id=state["interview_id"],
             evaluation_status="completed",
             
-            # scores (임시, 추후 보완)
-            match_score=0.0, # TODO: 실제 점수 계산 로직 필요
-            normalized_score=0.0,
-            weighted_score=0.0,
-            confidence_score=0.0,
+            # Scores (최종 점수)
+            match_score=state.get("final_score", 0.0),
+            normalized_score=state.get("final_score", 0.0),
+            weighted_score=state.get("final_score", 0.0),
+            confidence_score=state.get("avg_confidence", 0.0),
 
             # S3 URL
             transcript_s3_url=transcript_s3_url,
             agent_logs_s3_url=agent_logs_s3_url,
             evidence_s3_url=evidence_s3_url,
 
-            # LangGraph 결과 (점수만 저장)
-            problem_solving=state.get("problem_solving_result"),
-            organizational_fit=state.get("organizational_fit_result"),
-            growth_potential=state.get("growth_potential_result"),
-            interpersonal_skills=state.get("interpersonal_skills_result"),
-            achievement_motivation=state.get("achievement_motivation_result"),
-            structured_thinking=state.get("structured_thinking_result"),
-            business_documentation=state.get("business_documentation_result"),
-            financial_literacy=state.get("financial_literacy_result"),
-            industry_learning=state.get("industry_learning_result"),
-            stakeholder_management=state.get("stakeholder_management_result"),
+            # 역량별 점수 (수정됨! - 역량 이름 변경)
+            problem_solving=aggregated_competencies.get("problem_solving", {}).get("overall_score", 0),
+            organizational_fit=aggregated_competencies.get("organizational_fit", {}).get("overall_score", 0),
+            growth_potential=aggregated_competencies.get("growth_potential", {}).get("overall_score", 0),
+            interpersonal_skills=aggregated_competencies.get("interpersonal_skill", {}).get("overall_score", 0),  # ⚠️ "skill" → DB는 "skills"
+            achievement_motivation=aggregated_competencies.get("achievement_motivation", {}).get("overall_score", 0),
+            
+            # Job Competencies - 수정 필요! (DB 스키마에 컬럼 추가 필요)
+            # 임시로 기존 컬럼 재사용
+            structured_thinking=aggregated_competencies.get("customer_journey_marketing", {}).get("overall_score", 0),
+            business_documentation=aggregated_competencies.get("md_data_analysis", {}).get("overall_score", 0),
+            financial_literacy=aggregated_competencies.get("seasonal_strategy_kpi", {}).get("overall_score", 0),
+            industry_learning=aggregated_competencies.get("stakeholder_collaboration", {}).get("overall_score", 0),
+            stakeholder_management=aggregated_competencies.get("value_chain_optimization", {}).get("overall_score", 0),
 
-            job_aggregation=job_agg,
-            common_aggregation=common_agg,
+            # Aggregation 결과 (삭제됨!)
+            job_aggregation=None,  # Job/Common 구분 제거
+            common_aggregation=None,  # Job/Common 구분 제거
+            
+            # Validation 결과
             validation_result={
-                "low_confidence_competencies": state.get("low_confidence_competencies", []),
-                "validation_notes": state.get("validation_notes"),
-                "requires_revaluation": state.get("requires_revaluation", False),
+                "low_confidence_list": state.get("low_confidence_list", []),
+                "cross_competency_flags": state.get("cross_competency_flags", []),
             },
 
-            # JSON 필드 (임시, 추후 보완)
-            competency_scores={},
-            individual_evaluations={},
-            aggregated_evaluation={
-                "job_aggregation": job_agg,
-                "common_aggregation": common_agg,
-                "raw": state.get("aggregated_evaluation")
+            # JSON 필드
+            competency_scores={
+                comp_name: comp_data.get("overall_score", 0)
+                for comp_name, comp_data in aggregated_competencies.items()
             },
-            match_result={},
+            individual_evaluations=aggregated_competencies,
+            aggregated_evaluation=final_result,
+            match_result={
+                "final_score": state.get("final_score"),
+                "reliability": state.get("final_reliability"),
+                "reliability_note": state.get("reliability_note")
+            },
             reasoning_log={},
             rubric_scores={},
             normalization_metadata={},
-            evaluation_metadata={},
+            evaluation_metadata={
+                "resume_verified_count": sum(
+                    comp.get("resume_verified_count", 0)
+                    for comp in aggregated_competencies.values()
+                ),
+                "segment_overlap_adjustments": len(state.get("segment_overlap_adjustments", [])),
+                "collaboration_count": state.get("collaboration_count", 0)
+            },
             
             created_at=state["started_at"],
             updated_at=datetime.now()

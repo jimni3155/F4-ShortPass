@@ -1,5 +1,6 @@
 """
 Competency Agent (OpenAI 직접 호출)
+10개 역량 병렬 평가
 """
 
 import asyncio
@@ -113,25 +114,52 @@ async def evaluate_all_competencies(
     transcript: Dict,
     prompts: Dict[str, str]
 ) -> Dict[str, Dict]:
-    """10개 역량 배치 평가"""
+    """
+    10개 역량 배치 평가
+    
+    Args:
+        agent: CompetencyAgent 인스턴스
+        transcript: Interview Transcript JSON
+        prompts: 역량별 프롬프트 Dict
+            {
+                "achievement_motivation": "...",
+                "growth_potential": "...",
+                ...
+            }
+    
+    Returns:
+        역량별 평가 결과
+            {
+                "achievement_motivation": {...},
+                "growth_potential": {...},
+                ...
+            }
+    """
     
     print("=" * 60)
     print("10개 역량 배치 평가 시작")
     print("=" * 60)
     
+   
+    # 10개 역량 설정 (최종 버전)
     competency_configs = [
-        ("problem_solving", "문제해결력", "common"),
-        ("organizational_fit", "조직 적합성", "common"),
-        ("growth_potential", "성장 잠재력", "common"),
-        ("interpersonal_skills", "대인관계 역량", "common"),
+        # Common Competencies (5개) - 프롬프트 파일명과 정확히 일치
         ("achievement_motivation", "성취/동기 역량", "common"),
-        ("structured_thinking", "구조화 사고", "job"),
-        ("business_documentation", "전략 문서화", "job"),
-        ("financial_literacy", "재무 경영 감각", "job"),
-        ("industry_learning", "산업 학습 민첩성", "job"),
-        ("stakeholder_management", "이해관계자 관리", "job"),
+        ("growth_potential", "성장 잠재력", "common"),
+        ("interpersonal_skill", "대인관계 역량", "common"), 
+        ("organizational_fit", "조직 적합성", "common"),
+        ("problem_solving", "문제해결력", "common"),
+        
+        # Job Competencies (5개) - 프롬프트 파일명과 정확히 일치
+        ("customer_journey_marketing", "고객 여정 설계 및 VMD·마케팅 통합 전략", "job"),
+        ("md_data_analysis", "매출·트렌드 데이터 분석 및 상품 기획", "job"),
+        ("seasonal_strategy_kpi", "시즌 전략 수립 및 비즈니스 문제해결", "job"),
+        ("stakeholder_collaboration", "유관부서 협업 및 이해관계자 협상", "job"),
+        ("value_chain_optimization", "소싱·생산·유통 밸류체인 최적화", "job"),
     ]
     
+   
+    # 병렬 평가 실행
     tasks = [
         agent.evaluate(name, display, category, prompts[name], transcript)
         for name, display, category in competency_configs
@@ -143,12 +171,19 @@ async def evaluate_all_competencies(
     print("배치 평가 완료")
     print("=" * 60)
     
+   
     # 결과 매핑
     result_dict = {}
     for (name, _, _), result in zip(competency_configs, results):
         if isinstance(result, Exception):
             print(f"[오류] {name}: {str(result)}")
-            result_dict[name] = {"error": str(result), "overall_score": 0}
+            result_dict[name] = {
+                "error": str(result),
+                "overall_score": 0,
+                "confidence": {
+                    "overall_confidence": 0.3
+                }
+            }
         else:
             result_dict[name] = result
     
