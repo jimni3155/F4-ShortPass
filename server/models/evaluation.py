@@ -1,5 +1,5 @@
 # server/models/evaluation.py
-from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, Index, JSON, Text
+from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, Index, JSON, Text, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from db.database import Base
@@ -23,6 +23,7 @@ class Evaluation(Base):
     normalized_score = Column(Float, nullable=True, index=True)  # 표준화 점수 (편향 방지)
     weighted_score = Column(Float, nullable=False)
     confidence_score = Column(Float, nullable=False)
+    evaluation_status = Column(String(50), nullable=False, default="completed", server_default="completed")
     
 
     # ===== 6개 고정 역량 점수 (JSON in RDS) =====

@@ -16,6 +16,7 @@ class EvaluationState(TypedDict):
     applicant_id: int
     job_id: int
     transcript_s3_url: str  # Transcript S3 URL
+    transcript: Dict  # raw transcript (노드 호환용)
     transcript_content: Dict  # JSON 형태의 전체 transcript
     openai_client: Any  
     prompts: Dict[str, str]  # 10개 역량별 프롬프트

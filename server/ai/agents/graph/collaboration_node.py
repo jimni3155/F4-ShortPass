@@ -96,18 +96,18 @@ async def collaboration_node(state: Dict) -> Dict:
         validation_task,
         return_exceptions=True
     )
-    
+
     # Exception 처리
     if isinstance(mediation_results, Exception):
         print(f"⚠️  Evidence 중재 실패: {mediation_results}")
         mediation_results = []
-    elif mediation_results == 0:  # asyncio.sleep(0) 결과
+    elif mediation_results in (0, None):  # asyncio.sleep(0) or None
         mediation_results = []
     
     if isinstance(adversarial_results, Exception):
         print(f"⚠️  Adversarial 재평가 실패: {adversarial_results}")
         adversarial_results = []
-    elif adversarial_results == 0:  # asyncio.sleep(0) 결과
+    elif adversarial_results in (0, None):  # asyncio.sleep(0) or None
         adversarial_results = []
     
     

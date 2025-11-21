@@ -98,6 +98,7 @@ class EvaluationService:
 
             "transcript_s3_url": transcript_s3_url,
             "transcript_content": transcript_content,
+            "transcript": transcript_content,  # 일부 노드 호환용
             "openai_client": self.openai_client,  
 
 
@@ -301,6 +302,7 @@ class EvaluationService:
             applicant_id=state["applicant_id"],
             job_id=state["job_id"],
             interview_id=state["interview_id"],
+            evaluation_status="completed",
             
             # scores (임시, 추후 보완)
             match_score=0.0, # TODO: 실제 점수 계산 로직 필요
@@ -354,4 +356,3 @@ class EvaluationService:
         db.commit()
         db.refresh(evaluation_record)
         return evaluation_record
-
