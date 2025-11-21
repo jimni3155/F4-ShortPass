@@ -27,15 +27,21 @@ export default function PdfUpload({
 
       {!file ? (
         <label
-          className={`flex items-center justify-center gap-2 px-4 py-8 border-2 border-dashed rounded-lg cursor-pointer transition-colors ${
+          className={`flex items-center justify-center gap-2 px-4 py-15 border-2 border-dashed rounded-lg cursor-pointer transition-colors ${
             error
               ? 'border-red-500'
-              : 'border-gray-300 hover:border-primary hover:bg-[#8B5CF6]/5'
+              : 'border-gray-300 hover:border-blue hover:bg-blue/5'
           }`}>
-          <img className='w-5 h-5' src={upload} alt='파일 업로드' />
-          <span className='text-sm text-grey'>
-            PDF 파일을 선택하거나 드래그하세요
-          </span>
+          <div className='flex-center flex-col gap-3'>
+            <p className='text-sm text-grey flex-center gap-3'>
+              <img className='w-5 h-5' src={upload} alt='파일 업로드' />
+              PDF 파일을 선택하거나 드래그하세요
+            </p>
+            <p className='text-sm text-blue-600 hover:underline cursor-pointer'>
+              파일 선택
+            </p>
+          </div>
+
           <input
             type='file'
             accept='.pdf'

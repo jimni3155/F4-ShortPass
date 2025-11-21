@@ -82,31 +82,32 @@ const CompanyInfo = () => {
 
       const uploadedJobId = result.job_id;
       setJobId(uploadedJobId);
-    setPersonaUploadStatus('업로드 중...');
+      setPersonaUploadStatus('업로드 중...');
 
-    try {
-      const result = await uploadPersonaPdf(companyId, formData.personaPdf);
-      setPersonaUploadStatus(
-        `✓ 페르소나 생성 완료! ${result.questions.length}개의 질문이 추출되었습니다.`
-      );
+      try {
+        const result = await uploadPersonaPdf(companyId, formData.personaPdf);
+        setPersonaUploadStatus(
+          `✓ 페르소나 생성 완료! ${result.questions.length}개의 질문이 추출되었습니다.`
+        );
 
-      // 페르소나 목록 새로고침
-      const personaList = await getPersonasByCompany(companyId);
-      setPersonas(personaList.personas);
+        // 페르소나 목록 새로고침
+        const personaList = await getPersonasByCompany(companyId);
+        setPersonas(personaList.personas);
 
-      console.log('✅ JD 업로드 완료:', result);
-      console.log('회사 정보 저장:', formData);
+        console.log('✅ JD 업로드 완료:', result);
+        console.log('회사 정보 저장:', formData);
 
-      alert('JD 업로드가 완료되었습니다. 페르소나 생성 페이지로 이동합니다.');
+        alert('JD 업로드가 완료되었습니다. 페르소나 생성 페이지로 이동합니다.');
 
-      // 2. 페르소나 생성 페이지로 이동
-      navigate(`/company/persona/${uploadedJobId}`);
-    } catch (err) {
-      console.error('저장 실패:', err);
-      alert(`저장 중 오류가 발생했습니다: ${err.message}`);
-    } finally {
-      setLoading(false);
-    }
+        // 2. 페르소나 생성 페이지로 이동
+        navigate(`/company/persona/${uploadedJobId}`);
+      } catch (err) {
+        console.error('저장 실패:', err);
+        alert(`저장 중 오류가 발생했습니다: ${err.message}`);
+      } finally {
+        setLoading(false);
+      }
+    } catch {}
   };
 
   const handleEdit = () => {
@@ -150,14 +151,16 @@ const CompanyInfo = () => {
               페르소나 생성 (PDF 업로드)
             </h2>
             <p className='text-sm text-gray-600 mb-4'>
-              면접관 페르소나를 생성하기 위한 질문 PDF를 업로드하세요.
-              PDF에서 질문을 자동으로 추출하여 페르소나를 생성합니다.
+              면접관 페르소나를 생성하기 위한 질문 PDF를 업로드하세요. PDF에서
+              질문을 자동으로 추출하여 페르소나를 생성합니다.
             </p>
 
             <PdfUpload
               label='페르소나 질문 PDF'
               file={formData.personaPdf}
-              onFileChange={(file) => setFormData({...formData, personaPdf: file})}
+              onFileChange={(file) =>
+                setFormData({...formData, personaPdf: file})
+              }
               onRemove={() => setFormData({...formData, personaPdf: null})}
             />
 
@@ -170,7 +173,9 @@ const CompanyInfo = () => {
                 페르소나 생성
               </Button>
               {personaUploadStatus && (
-                <span className='text-sm text-gray-700'>{personaUploadStatus}</span>
+                <span className='text-sm text-gray-700'>
+                  {personaUploadStatus}
+                </span>
               )}
             </div>
 
@@ -197,11 +202,12 @@ const CompanyInfo = () => {
                             <span className='text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded'>
                               {persona.archetype}
                             </span>
-                            {persona.focus_keywords && persona.focus_keywords.length > 0 && (
-                              <span className='text-xs text-gray-500'>
-                                키워드: {persona.focus_keywords.join(', ')}
-                              </span>
-                            )}
+                            {persona.focus_keywords &&
+                              persona.focus_keywords.length > 0 && (
+                                <span className='text-xs text-gray-500'>
+                                  키워드: {persona.focus_keywords.join(', ')}
+                                </span>
+                              )}
                           </div>
                         </div>
                       </div>

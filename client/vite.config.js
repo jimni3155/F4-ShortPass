@@ -17,6 +17,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@utils': path.resolve(__dirname, './src/utils'),
       '@mock': path.resolve(__dirname, './src/mock'),
+      '@data': path.resolve(__dirname, './src/data'),
     },
   },
   server: {
