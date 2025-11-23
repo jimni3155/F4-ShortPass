@@ -38,12 +38,12 @@ const Select = ({
         <button
           type='button'
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`w-full px-4 py-3 flex items-center justify-between border rounded-lg bg-white text-sm transition-all
+          className={`w-full px-4 py-2.5 flex items-center justify-between border rounded-lg bg-white text-sm transition-all
             ${error ? 'border-red' : 'border-gray-300 hover:border-gray-400'}
             focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent
           `}>
           <span
-            className={`truncate ${
+            className={`text-base truncate ${
               selectedOption ? 'text-dark' : 'text-grey'
             }`}>
             {selectedOption ? selectedOption.name : placeholder}

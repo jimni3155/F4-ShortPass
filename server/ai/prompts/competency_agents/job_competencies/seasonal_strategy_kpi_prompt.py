@@ -124,6 +124,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 액션 지향: 문제 발견 후 즉시 대응
 ✓ 결과 확인: "최종적으로 어땠나" 항상 언급
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "12개 질문 중 9개(75%)에서 '목표', '달성률', '체크' 등 목표 관련 표현 언급",
+  "segment_ids": [3, 5, 6, 7, 9, 11],
+  "evidence_type": "목표 지향"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "대부분 질문에서 목표 언급 (Segment 3, 5, 6)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [문제해결 패턴 평가] ⚠️ 중요
 문제해결 = 문제 발견 → 원인 분석 → 해결 액션 → 결과 확인
 
@@ -354,10 +384,26 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "대부분 답변에서 목표 지향적 사고, 문제해결 논리 명확",
       "specific_examples": [
-        "12개 질문 중 9개(75%)에서 '목표', '달성률', '체크' 등 목표 관련 표현 언급",
-        "구체적 수치 목표 4회(매출 1억, 달성률 95%, 주간 목표, 판매율 65%)",
-        "'주간 체크', '일일 확인' 같은 모니터링 표현 3회",
-        "문제→원인→해결 논리 2회 명확(주말 매출 부진 해결, 재고 소진 전략)"
+        {{
+          "description": "12개 질문 중 9개(75%)에서 '목표', '달성률', '체크' 등 목표 관련 표현 언급",
+          "segment_ids": [3, 5, 6, 7, 9, 11],
+          "evidence_type": "목표 지향"
+        }},
+        {{
+          "description": "구체적 수치 목표 4회(매출 1억, 달성률 95%, 주간 목표, 판매율 65%)",
+          "segment_ids": [6, 7, 9],
+          "evidence_type": "숫자 의식"
+        }},
+        {{
+          "description": "'주간 체크', '일일 확인' 같은 모니터링 표현 3회",
+          "segment_ids": [6, 7],
+          "evidence_type": "모니터링 습관"
+        }},
+        {{
+          "description": "문제→원인→해결 논리 2회 명확(주말 매출 부진 해결, 재고 소진 전략)",
+          "segment_ids": [6, 9],
+          "evidence_type": "문제해결"
+        }}
       ],
       "consistency_note": "Case 질문에서 특히 목표 지향적 답변 명확, Behavioral 질문에서는 정성적 설명 많으나 여전히 결과 확인 습관"
     }},

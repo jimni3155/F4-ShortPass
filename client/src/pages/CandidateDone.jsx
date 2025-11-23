@@ -1,9 +1,14 @@
 import Button from '../components/Button';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const CandidateDone = () => {
   const navigate = useNavigate();
-  const candidateId = 'candidate-123';
+  const {state} = useLocation();
+  const interviewResults = state?.interviewResults || [];
+  const personaInfo = state?.personaInfo;
+  const transcriptUrl = state?.transcriptUrl;
+  const interviewId = state?.interviewId;
+
   const companyScores = [
     {company: '테크 스타트업 A', matchingScore: 92},
     {company: '글로벌 기업 B', matchingScore: 85},
@@ -41,6 +46,52 @@ const CandidateDone = () => {
               );
             })}
           </div>
+        </div>
+
+        {/* 인터뷰 결과 요약 */}
+        <div className='w-full space-y-3 rounded-2xl border border-gray-200 px-6 py-5'>
+          <div className='flex flex-wrap items-center justify-between gap-2'>
+            <h3 className='text-lg font-semibold text-dark'>
+              인터뷰 결과 요약 {interviewId ? `(#${interviewId})` : ''}
+            </h3>
+            {transcriptUrl && (
+              <Button
+                variant='outline'
+                className='text-sm'
+                onClick={() => window.open(transcriptUrl, '_blank')}>
+                녹취/결과 파일 열기
+              </Button>
+            )}
+          </div>
+          {personaInfo?.name && (
+            <p className='text-sm text-grey'>
+              면접관 페르소나: {personaInfo.name} ({personaInfo.identity})
+            </p>
+          )}
+          {interviewResults.length > 0 ? (
+            <div className='space-y-3 max-h-64 overflow-y-auto pr-1'>
+              {interviewResults.map((item, idx) => (
+                <div
+                  key={`${item.question_index}-${idx}`}
+                  className='rounded-xl border border-gray-100 bg-gray-50 px-4 py-3'>
+                  <div className='text-xs font-semibold text-primary mb-1'>
+                    질문 {item.question_index + 1}
+                  </div>
+                  <div className='text-sm font-medium text-dark'>
+                    Q. {item.question}
+                  </div>
+                  <div className='text-sm text-gray-700 mt-1'>
+                    A. {item.answer}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className='text-sm text-grey'>
+              아직 인터뷰 결과 데이터가 없습니다. 면접을 완료하면 자동으로
+              표시됩니다.
+            </p>
+          )}
         </div>
 
         {/* Return home button */}

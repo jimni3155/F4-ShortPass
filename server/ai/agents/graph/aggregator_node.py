@@ -74,7 +74,9 @@ def _extract_resume_verification_summary(comp_segments: List[Dict]) -> Dict:
             "resume_section": first_match.get("resume_section", ""),
             "matched_content": first_match.get("matched_content", ""),
             "verification_strength": resume_verification.get("strength", "none"),
-            "reasoning": resume_verification.get("reasoning", "")
+            "reasoning": resume_verification.get("reasoning", ""),
+            "char_index": seg.get("char_index"), 
+            "char_length": seg.get("char_length") or len(seg.get("quote_text", "")) 
         })
     
     return {
@@ -168,6 +170,14 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     print(f"    - 총 Segment 평가: {len(segment_evaluations_with_resume)}개")
     print(f"    - 검증됨: {verified_count}개")
     print(f"    - 강한 검증 (high): {high_strength_count}개")
+    if segment_evaluations_with_resume:
+        print("    - 샘플(상위 3개):")
+        for seg in segment_evaluations_with_resume[:3]:
+            rv = seg.get("resume_verification", {})
+            print(
+                f"      • seg#{seg.get('segment_id')} [{seg.get('competency')}] "
+                f"verified={rv.get('verified')} strength={rv.get('strength', '-')}"
+            )
     
 
     # Sub-step 2.2: Confidence V2 재계산
@@ -190,6 +200,11 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     print(f"\n  Confidence V2 계산 완료:")
     print(f"    - 평균 Confidence V2: {avg_conf_v2:.2f}")
     print(f"    - 개선된 평가: {improved_count}개")
+    if segment_evaluations_with_conf_v2:
+        sorted_by_conf = sorted(segment_evaluations_with_conf_v2, key=lambda s: s["confidence_v2"], reverse=True)
+        best = sorted_by_conf[0]
+        worst = sorted_by_conf[-1]
+        print(f"    - 최고/최저: seg#{best.get('segment_id')}={best['confidence_v2']:.2f} / seg#{worst.get('segment_id')}={worst['confidence_v2']:.2f}")
     
 
     # Sub-step 2.3: Segment Overlap Check (내부 로직용)
@@ -209,6 +224,13 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     if segment_overlap_adjustments:
         for adj in segment_overlap_adjustments:
             print(f"      * Segment {adj['segment_id']}: {len(adj['adjustments'])}개 역량 조정 ({adj['adjustment_type']})")
+            for a in adj.get("adjustments", [])[:2]:
+                print(
+                    f"         · {a.get('competency')}: {a.get('original_score')}→{a.get('adjusted_score')} "
+                    f"(conf {a.get('original_confidence')}→{a.get('adjusted_confidence')})"
+                )
+            if len(adj.get("adjustments", [])) > 2:
+                print("         · ...")
     print("      이 정보는 내부 로직용이며 프론트엔드에 노출하지 않습니다.")
     
 
@@ -289,6 +311,13 @@ async def aggregator_node(state: EvaluationState) -> Dict:
         #  Resume 검증 근거 추출 (상위 3개만)
         resume_verification_summary = _extract_resume_verification_summary(comp_segments)
         
+        perspectives = comp_result.get("perspectives", {})
+        evidence_details = perspectives.get("evidence_details", [])
+        
+        # char_length 추가 (없으면 계산)
+        for ev in evidence_details:
+            if "char_length" not in ev or ev["char_length"] is None:
+                ev["char_length"] = len(ev.get("text", ""))
         aggregated_competencies[comp_name] = {
             "competency_name": comp_name,
             "overall_score": original_score,  # Agent 점수 유지
@@ -300,7 +329,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
                 if s.get("resume_verification", {}).get("verified", False)
             ),
             "adjusted_by_overlap": any(s.get("adjusted") for s in comp_segments),
-            "perspectives": comp_result.get("perspectives"),
+            "perspectives": {
+                **perspectives,
+                "evidence_details": evidence_details  
+            },
             "strengths": comp_result.get("strengths"),
             "weaknesses": comp_result.get("weaknesses"),
             "key_observations": comp_result.get("key_observations", []),
@@ -312,6 +344,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
         verified = agg['resume_verification_summary']['verified_count']
         high_strength = agg['resume_verification_summary']['high_strength_count']
         print(f"    - {comp_name}: {agg['overall_score']}점 (Conf V2: {agg['confidence_v2']:.2f}, Resume: {verified}개 검증, {high_strength}개 강함)")
+        print(
+            f"      · segments={agg.get('segment_count', 0)} "
+            f"resume_verified={agg.get('resume_verified_count', 0)} overlap_adjusted={agg.get('adjusted_by_overlap', False)}"
+        )
     
 
     # 협업 필요 여부 판단   

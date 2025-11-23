@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import InputField from '../components/InputField';
 import PdfUpload from '../components/FileUpload';
 import Button from '../components/Button';
 import Toggle from '../components/Toggle';
 import Select from '../components/Select';
 import {useNavigate} from 'react-router-dom';
-import {uploadJDAndAnalyze} from '../apis/jdPersona';
+// import {uploadJDAndAnalyze} from '../apis/jdPersona'; // mock 모드에서는 사용 안 함
+import personaSamsungFashion from '../mock/personaSamsungFashion';
 
 const sizeOptions = [
   {id: 0, name: '1-10명'},
@@ -21,31 +22,23 @@ const CompanyInfo = () => {
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
+    name: '삼성물산 패션부문',
     size: '',
     jdPdf: null,
+    personaPdf: null,
     questions: [],
     blind: false,
   });
 
   const [newQuestion, setNewQuestion] = useState('');
-  const [companyId, setCompanyId] = useState(1); // 임시 하드코딩
+  const [companyId] = useState(1); // mock 고정
   const [jobId, setJobId] = useState(null); // JD 업로드 후 받는 Job ID
-
-  useEffect(() => {
-    const loadCompany = async () => {
-      try {
-        const company = await getCompany();
-        if (company) {
-          setFormData(company);
-          setIsEditable(false);
-        }
-      } catch (err) {
-        // No existing company data, start fresh
-      }
-    };
-    loadCompany();
-  }, []);
+  const [personaUploadStatus, setPersonaUploadStatus] = useState(
+    personaSamsungFashion.personas?.length
+      ? '✓ 페르소나 생성 완료! (Mock 데이터 사용)'
+      : ''
+  );
+  const [personas, setPersonas] = useState(personaSamsungFashion.personas || []);
 
   const handleAddQuestion = () => {
     if (newQuestion.trim()) {
@@ -65,48 +58,23 @@ const CompanyInfo = () => {
   };
 
   const handleSave = async () => {
-    if (!formData.jdPdf) {
-      alert('JD PDF를 업로드해주세요.');
-      return;
-    }
-
+    // Mock 모드: PDF 없이도 저장 가능하게 단순화
     setLoading(true);
     try {
-      // 1. JD PDF 업로드 및 분석
-      console.log('📤 JD 업로드 중...');
-      const result = await uploadJDAndAnalyze(
-        formData.jdPdf,
-        companyId,
-        formData.name || 'Untitled Position'
-      );
-
-      const uploadedJobId = result.job_id;
-      setJobId(uploadedJobId);
-    setPersonaUploadStatus('업로드 중...');
-
-    try {
-      const result = await uploadPersonaPdf(companyId, formData.personaPdf);
-      setPersonaUploadStatus(
-        `✓ 페르소나 생성 완료! ${result.questions.length}개의 질문이 추출되었습니다.`
-      );
-
-      // 페르소나 목록 새로고침
-      const personaList = await getPersonasByCompany(companyId);
-      setPersonas(personaList.personas);
-
-      console.log('✅ JD 업로드 완료:', result);
-      console.log('회사 정보 저장:', formData);
-
-      alert('JD 업로드가 완료되었습니다. 페르소나 생성 페이지로 이동합니다.');
-
-      // 2. 페르소나 생성 페이지로 이동
-      navigate(`/company/persona/${uploadedJobId}`);
+      setJobId(1);
+      alert('저장되었습니다. (Mock 모드)');
     } catch (err) {
       console.error('저장 실패:', err);
       alert(`저장 중 오류가 발생했습니다: ${err.message}`);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handlePersonaUpload = async () => {
+    // Mock 모드: 업로드 없이 사전에 정의된 페르소나 표시
+    setPersonaUploadStatus('✓ 페르소나 생성 완료! (Mock 데이터 사용)');
+    setPersonas(personaSamsungFashion.personas || []);
   };
 
   const handleEdit = () => {

@@ -1,5 +1,5 @@
 # 20251121 채아
-# 20251122 수정 - 페르소나 3개 순차 면접 지원
+# 20251122 수정 - 페르소나 3개 순차 면접 지원 + 실시간 꼬리질문
 # server/services/interview_service_v4.py
 
 from fastapi import WebSocket, WebSocketDisconnect
@@ -9,14 +9,60 @@ import os
 import uuid
 import wave
 from pathlib import Path
+from openai import OpenAI
 from utils.s3_uploader import upload_file_and_get_url
 from utils.stt_tts_translator import stt_tts_translator
-from utils.s3_uploader import upload_file_and_get_url
 
 class InterviewServiceV4:
     def __init__(self):
         self.example_question_list = ["첫번째 질문입니다", "두번째 질문입니다", "세번째 질문입니다"]
         self.interview_results = []
+        self.openai_client = OpenAI()  # OPENAI_API_KEY 환경변수 사용
+
+    async def _evaluate_answer_quality(self, question: str, answer: str, intent: str = None) -> bool:
+        """
+        LLM으로 답변 품질 판단. 약한 답변이면 True 반환.
+        - 답변이 너무 짧거나 (50자 미만)
+        - 구체적 사례/수치가 없거나
+        - 질문 의도에 맞지 않으면 → 꼬리질문 필요
+        """
+        # 빠른 체크: 너무 짧은 답변
+        if len(answer.strip()) < 50:
+            print(f"⚠️ 답변이 너무 짧음 ({len(answer)}자) → 꼬리질문 필요")
+            return True
+
+        # LLM 판단
+        try:
+            prompt = f"""다음 면접 질문과 답변을 분석해주세요.
+
+질문: {question}
+{f'질문 의도: {intent}' if intent else ''}
+
+답변: {answer}
+
+다음 기준으로 답변의 충실도를 판단해주세요:
+1. 구체적인 사례나 경험이 포함되어 있는가?
+2. 수치나 정량적 결과가 언급되어 있는가?
+3. 질문의 핵심을 제대로 답변했는가?
+4. STAR 기법(상황-과제-행동-결과)으로 구조화되어 있는가?
+
+위 기준 중 2개 이상 충족하지 못하면 "WEAK", 충족하면 "STRONG"으로만 답변하세요."""
+
+            response = self.openai_client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=10,
+                temperature=0
+            )
+
+            result = response.choices[0].message.content.strip().upper()
+            is_weak = "WEAK" in result
+            print(f"🔍 답변 품질 판단: {result} → 꼬리질문 {'필요' if is_weak else '불필요'}")
+            return is_weak
+
+        except Exception as e:
+            print(f"❌ 답변 품질 판단 실패: {e}")
+            return False  # 에러 시 꼬리질문 안 함
 
     def _load_persona_data(self):
         """

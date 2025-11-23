@@ -82,6 +82,7 @@ class EvaluationState(TypedDict):
     reliability_note: Optional[str]
     
     final_result: Optional[Dict]
+    presentation_result: Optional[Dict]
     
     # 메타 정보  
     started_at: datetime

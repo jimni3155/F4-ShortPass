@@ -1,0 +1,4973 @@
+{
+  "evaluation_id": 34,
+  "interview_id": 101,
+  "applicant_id": 101,
+  "job_id": 1,
+  "transcript_s3_url": "s3://linkbig-ht-06-f4/transcripts/101_mock.json",
+  "agent_logs_s3_url": "s3://linkbig-ht-06-f4/logs/evaluations/101/101/20251123T034929_execution_logs.json",
+  "stage1_evidence_s3_url": "s3://linkbig-ht-06-f4/evaluations/101/20251123T034929/stage1_evidence.json",
+  "stage2_aggregator_s3_url": "s3://linkbig-ht-06-f4/evaluations/101/20251123T034929/stage2_aggregator.json",
+  "stage3_final_integration_s3_url": "s3://linkbig-ht-06-f4/evaluations/101/20251123T034929/stage3_final_integration.json",
+  "stage4_presentation_s3_url": "s3://linkbig-ht-06-f4/evaluations/101/20251123T034929/stage4_presentation_frontend.json",
+  "evaluation_run_ts": "20251123T034929",
+  "execution_logs": [
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 159.91,
+      "segments_processed": 35,
+      "resume_verified_count": 18,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 10,
+      "timestamp": "2025-11-23T03:52:31.977949"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 159.91,
+      "segments_processed": 35,
+      "resume_verified_count": 18,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 10,
+      "timestamp": "2025-11-23T03:52:31.977949"
+    },
+    {
+      "node": "final_integration",
+      "duration_seconds": 2.68,
+      "timestamp": "2025-11-23T03:52:34.662341",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 159.91,
+      "segments_processed": 35,
+      "resume_verified_count": 18,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 10,
+      "timestamp": "2025-11-23T03:52:31.977949"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 22.41,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-23T03:49:52.063407",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 159.91,
+      "segments_processed": 35,
+      "resume_verified_count": 18,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 10,
+      "timestamp": "2025-11-23T03:52:31.977949"
+    },
+    {
+      "node": "final_integration",
+      "duration_seconds": 2.68,
+      "timestamp": "2025-11-23T03:52:34.662341",
+      "status": "success"
+    },
+    {
+      "node": "presentation_formatter",
+      "duration_seconds": 114.1,
+      "total_evidences_generated": 45,
+      "batch_llm_calls": 1,
+      "components_regenerated": [
+        "evidences",
+        "strengths",
+        "weaknesses",
+        "key_observations"
+      ],
+      "timestamp": "2025-11-23T03:54:28.768234"
+    }
+  ],
+  "segment_evaluations_with_resume": [
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 1,
+      "quote_text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+      "relevance_note": "주도성 (먼저 제안), 내적 동기 (데이터 분석에 대한 관심)",
+      "quality_score": 0.9,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당'으로 언급하며, '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 강조하고 있습니다. 이 내용이 면접 답변과 일치하므로 검증 강도는 high입니다. 또한, 프로젝트의 성과로 재고회전율 개선이 명시되어 있어 일관성이 있습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당",
+            "relevance": "면접 답변의 '3축 데이터 분석 체계 구축'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 3,
+      "quote_text": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+      "relevance_note": "높은 목표 (신규 업체 테스트), 책임감 (품질 관리)",
+      "quality_score": 0.85,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "relevance": "면접 답변의 '신규 업체 3곳을 테스트하여 품질 리스크를 관리'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+      "relevance_note": "주도성 (리뷰 분석), 내적 동기 (고객 피드백 반영)",
+      "quality_score": 0.9,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "relevance": "면접 답변의 '고객 리뷰 300개를 분석하여 디자인 방향을 제시'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 12,
+      "quote_text": "F/W 시즌 론칭 때 팀을 동기부여하고 유지했습니다.",
+      "relevance_note": "책임감 (팀 관리), 몰입 (시즌 론칭)",
+      "quality_score": 0.9,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 팀 관리에 대한 구체적인 언급이 없으며, F/W 시즌 론칭 관련 경험도 명시되어 있지 않습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 3,
+      "quote_text": "데이터 분석을 3주 만에 독학했어요. Python 책, 유튜브, 실습 프로젝트로",
+      "relevance_note": "학습 민첩성 (3주), 구체적 방법론",
+      "quality_score": 0.9,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 Python 독학 경험을 언급하지 않았으며, 데이터 분석 관련 교육이나 자격증도 명시되어 있지 않습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 6,
+      "quote_text": "공모전에서 떨어졌을 때 정말 힘들었지만, 피드백을 받아서 약점을 보완했어요",
+      "relevance_note": "실패 경험, 회복 과정",
+      "quality_score": 0.95,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 공모전 관련 경험을 언급하지 않았으며, 피드백을 통한 약점 보완에 대한 구체적인 사례도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 9,
+      "quote_text": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+      "relevance_note": "메타인지 (구체적), 개선 계획",
+      "quality_score": 0.9,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "medium",
+        "reasoning": "지원자는 Resume의 'skills' 섹션에서 '데이터 분석' 관련 기술을 보유하고 있으며, 데이터 수집 및 분석에 대한 언급이 있습니다. 그러나 인사이트 도출에 대한 구체적인 경험은 명시되어 있지 않아 medium으로 평가합니다.",
+        "resume_matches": [
+          {
+            "resume_section": "skills",
+            "matched_content": "Excel (고급), Tableau, Google Analytics",
+            "relevance": "면접 답변의 '데이터 수집 분석'과 관련된 기술 보유."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "medium"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 11,
+      "quote_text": "노력하면 개선할 수 있다고 믿어요. 1년 전 못했던 걸 지금은 할 수 있으니까요",
+      "relevance_note": "성장 마인드",
+      "quality_score": 0.85,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 개인의 성장 마인드에 대한 구체적인 언급이 없으며, 1년 전의 경험에 대한 내용도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 5,
+      "quote_text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+      "relevance_note": "갈등 해결 (중재, Win-Win)",
+      "quality_score": 0.95,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "relevance": "면접 답변의 '고객 리뷰 300개를 분석한 결과'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 9,
+      "quote_text": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+      "relevance_note": "경청 (이해 시도, 공감)",
+      "quality_score": 0.9,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 언급하며, 리뷰 분석 방법에 대한 구체적인 내용이 포함되어 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "relevance": "면접 답변의 '리뷰를 카테고리별로 분류'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 11,
+      "quote_text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요.",
+      "relevance_note": "배려, 협업",
+      "quality_score": 0.8,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 팀원 지원에 대한 구체적인 언급이 없으며, 팀 관리에 대한 경험도 명시되어 있지 않습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 12,
+      "quote_text": "저는 두 가지를 했습니다. 첫째, 진행 상황을 매일 시각화해서 공유했습니다. '오늘 여기까지 왔고, 내일 목표는 여기'라고 보여드리니까 막막함이 줄었습니다.",
+      "relevance_note": "커뮤니케이션 효과성",
+      "quality_score": 0.85,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 진행 상황 시각화에 대한 언급이 없으며, 구체적인 팀 관리 경험도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 4,
+      "quote_text": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+      "relevance_note": "고객 우선, 패션 MD 핵심 가치",
+      "quality_score": 0.95,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.86,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매 데이터 분석'을 통해 고객 반응을 확인하는 중요성을 강조하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "판매 데이터 분석",
+            "relevance": "면접 답변의 '고객 반응을 먼저 확인'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 6,
+      "quote_text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+      "relevance_note": "피드백 수용, 구체적 개선",
+      "quality_score": 0.9,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.86,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 상품 믹스 수정에 대한 구체적인 언급이 없으며, 피드백 수용에 대한 사례도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 8,
+      "quote_text": "시즌 런칭 3일 전부터 밤샘했는데, 목표 달성을 위해서라면 당연하다고 생각해요",
+      "relevance_note": "마감 압박 긍정적 태도, 시즌 목표 우선",
+      "quality_score": 0.9,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.86,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 시즌 런칭 관련 경험이나 밤샘 근무에 대한 언급이 없으므로 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 10,
+      "quote_text": "좋은 결과는 팀 덕분이고, 부족한 건 제가 더 노력할 부분이에요",
+      "relevance_note": "겸손, 자기 귀인",
+      "quality_score": 0.85,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.86,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 팀워크에 대한 구체적인 언급이 없으며, 결과에 대한 겸손한 태도에 대한 사례도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 1,
+      "quote_text": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+      "relevance_note": "구조적 분석 (3축), 데이터 기반",
+      "quality_score": 0.9,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "판매/재고/트렌드 3축 데이터 분석 체계 구축",
+            "relevance": "면접 답변의 '3축 데이터 분석 체계 구축'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 2,
+      "quote_text": "안전재고 수준을 카테고리별로 차등 설정했습니다.",
+      "relevance_note": "구조적 접근, 실행 고려",
+      "quality_score": 0.85,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 안전재고 설정에 대한 구체적인 언급이 없으며, 카테고리별 차등 설정 경험도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 3,
+      "quote_text": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+      "relevance_note": "리스크 관리, 단계적 접근",
+      "quality_score": 0.9,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "relevance": "면접 답변의 '신규 업체 3곳을 테스트하여 품질 리스크를 관리'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 5,
+      "quote_text": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+      "relevance_note": "데이터 기반 설득, 고객 피드백 분석",
+      "quality_score": 0.95,
+      "overall_score": 86,
+      "score": 86,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "relevance": "면접 답변의 '고객 리뷰 300개를 분석한 결과'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "segment_id": 5,
+      "quote_text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+      "relevance_note": "고객 피드백 분석을 통한 타겟 고객 이해",
+      "quality_score": 0.9,
+      "overall_score": 67,
+      "score": 67,
+      "interview_confidence": 0.77,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "relevance": "면접 답변의 '판매율이 73%까지 올라갔다'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "segment_id": 5,
+      "quote_text": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+      "relevance_note": "구체적 수치로 결과 측정",
+      "quality_score": 0.85,
+      "overall_score": 67,
+      "score": 67,
+      "interview_confidence": 0.77,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "relevance": "면접 답변의 '판매율이 73%까지 올라갔다'와 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "segment_id": 14,
+      "quote_text": "플래그십 스토어는 브랜드 이미지 중심으로 디자인 아이템 전면 배치, 볼륨 매장은 판매 효율 중심으로 베이직 전면 배치.",
+      "relevance_note": "매장 타입별 차별화 전략",
+      "quality_score": 0.9,
+      "overall_score": 67,
+      "score": 67,
+      "interview_confidence": 0.77,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 플래그십 스토어 관련 경험이나 매장 디자인 전략에 대한 구체적인 언급이 없으므로 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "md_data_analysis",
+      "segment_id": 1,
+      "quote_text": "먼저 전년 동기 대비 매출을 확인했는데, 상의 카테고리가 18% 증가했고",
+      "relevance_note": "데이터 우선 사고, 구체적 수치(18%), 비교 분석(전년 대비)",
+      "quality_score": 0.95,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 전년 동기 대비 매출 분석에 대한 구체적인 언급이 없으며, 상의 카테고리 증가에 대한 데이터도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "md_data_analysis",
+      "segment_id": 5,
+      "quote_text": "판매 상위 10개 SKU를 분석한 결과, 가격대 5-7만원 구간이 전체 매출의 42%를 차지했어요",
+      "relevance_note": "정량 분석, 구체적 수치(42%), 인사이트 도출",
+      "quality_score": 0.9,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 다음 시즌 상품 비중 결정에 대한 구체적인 언급이 없으며, 데이터 기반 의사결정에 대한 사례도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "md_data_analysis",
+      "segment_id": 5,
+      "quote_text": "이 데이터를 바탕으로 다음 시즌에는 5-7만원 상품 비중을 40%에서 50%로 늘리기로 결정했습니다",
+      "relevance_note": "데이터→의사결정 연결, MD 실행",
+      "quality_score": 0.85,
+      "overall_score": 85,
+      "score": 85,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 다음 시즌 상품 비중 결정에 대한 구체적인 언급이 없으며, 데이터 기반 의사결정에 대한 사례도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "segment_id": 1,
+      "quote_text": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+      "relevance_note": "목표 설정, 전략 수립, KPI 모니터링",
+      "quality_score": 0.9,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "relevance": "면접 질문의 '재고회전율 개선'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "segment_id": 3,
+      "quote_text": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+      "relevance_note": "문제 발견, 원인 분석, 해결 액션",
+      "quality_score": 0.9,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '마진율 35% → 38.5% 개선'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "마진율 35% → 38.5% 개선",
+            "relevance": "면접 질문의 '마진율 개선'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+      "relevance_note": "문제 발견, 원인 분석, 해결 액션, 결과 확인",
+      "quality_score": 0.85,
+      "overall_score": 83,
+      "score": 83,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "relevance": "면접 질문의 '고객 리뷰 분석'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다.",
+      "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+      "quality_score": 0.9,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 최종 합의안에 대한 구체적인 언급이 없으며, 디자인 아이템 관련 경험도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+      "relevance_note": "논리적 설득, 데이터 기반, 구체적 수치(40%)",
+      "quality_score": 0.9,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 최종 합의안에 대한 구체적인 언급이 없으며, 디자인 아이템 관련 경험도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "최종 합의안은 베이직 비율을 줄이되, 디자인 아이템에 포인트 컬러나 디테일을 가미해 브랜드 아이덴티티를 살리는 방식이었습니다.",
+      "relevance_note": "Win-Win 합의, 절충안 도출",
+      "quality_score": 0.85,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에서 최종 합의안에 대한 구체적인 언급이 없으며, 디자인 아이템 관련 경험도 없습니다. 따라서 이 내용은 검증 실패로 판단됩니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "value_chain_optimization",
+      "segment_id": 1,
+      "quote_text": "재고회전율을 0.8에서 1.2로 50% 개선",
+      "relevance_note": "재고 관리 최적화, 구체적 수치(50% 개선)",
+      "quality_score": 0.9,
+      "overall_score": 84,
+      "score": 84,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "relevance": "면접 답변의 '재고회전율 개선'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "value_chain_optimization",
+      "segment_id": 3,
+      "quote_text": "마진율을 35%에서 38.5%로 개선",
+      "relevance_note": "마진 관리, 구체적 수치(35%→38.5%)",
+      "quality_score": 0.85,
+      "overall_score": 84,
+      "score": 84,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "relevance": "면접 답변의 '소재비 절감'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "value_chain_optimization",
+      "segment_id": 3,
+      "quote_text": "소재비를 42%에서 35%로 절감",
+      "relevance_note": "원가 절감, 구체적 수치(42%→35%)",
+      "quality_score": 0.9,
+      "overall_score": 84,
+      "score": 84,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "relevance": "면접 답변의 '소재비 절감'과 직접 매칭됩니다."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    }
+  ],
+  "segment_overlap_adjustments": [],
+  "cross_competency_flags": [
+    {
+      "competency": "achievement_motivation",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.51,
+      "note": "Confidence V2 (0.51) < Threshold (0.6)"
+    },
+    {
+      "competency": "growth_potential",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.51,
+      "note": "Confidence V2 (0.51) < Threshold (0.6)"
+    },
+    {
+      "competency": "interpersonal_skill",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.51,
+      "note": "Confidence V2 (0.51) < Threshold (0.6)"
+    },
+    {
+      "competency": "organizational_fit",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.52,
+      "note": "Confidence V2 (0.52) < Threshold (0.6)"
+    },
+    {
+      "competency": "problem_solving",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.51,
+      "note": "Confidence V2 (0.51) < Threshold (0.6)"
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.46,
+      "note": "Confidence V2 (0.46) < Threshold (0.6)"
+    },
+    {
+      "competency": "md_data_analysis",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.54,
+      "note": "Confidence V2 (0.54) < Threshold (0.6)"
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.54,
+      "note": "Confidence V2 (0.54) < Threshold (0.6)"
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.54,
+      "note": "Confidence V2 (0.54) < Threshold (0.6)"
+    },
+    {
+      "competency": "value_chain_optimization",
+      "flag_type": "low_confidence",
+      "confidence_v2": 0.54,
+      "note": "Confidence V2 (0.54) < Threshold (0.6)"
+    }
+  ],
+  "aggregated_competencies": {
+    "achievement_motivation": {
+      "competency_name": "achievement_motivation",
+      "overall_score": 85,
+      "interview_confidence": 0.85,
+      "confidence_v2": 0.51,
+      "segment_count": 4,
+      "resume_verified_count": 3,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 85,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "주도성 (먼저 제안), 내적 동기 (데이터 분석에 대한 관심)",
+            "quality_score": 0.9,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+            "segment_id": 3,
+            "char_index": 150,
+            "relevance_note": "높은 목표 (신규 업체 테스트), 책임감 (품질 관리)",
+            "quality_score": 0.85,
+            "char_length": 31,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+            "segment_id": 9,
+            "char_index": 350,
+            "relevance_note": "주도성 (리뷰 분석), 내적 동기 (고객 피드백 반영)",
+            "quality_score": 0.9,
+            "char_length": 32,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "F/W 시즌 론칭 때 팀을 동기부여하고 유지했습니다.",
+            "segment_id": 12,
+            "char_index": 400,
+            "relevance_note": "책임감 (팀 관리), 몰입 (시즌 론칭)",
+            "quality_score": 0.9,
+            "char_length": 29,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 주도성 중상 (재고회전율 개선 프로젝트, 신규 업체 테스트). 목표 난이도 중상 (고객 리뷰 분석, 디자인 방향 제시). 내적 동기 명확 (데이터 분석, 고객 피드백 반영). 책임감 (팀 동기부여, 시즌 론칭). Quote 4개. 90-100점 기준(매우 도전적 목표, 다수 자발적 경험)에는 미달하나 Good 상위권으로 85점 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "모든 경험에서 자발적 시작, 끈기, 열정 표현 자주",
+          "specific_examples": [
+            {
+              "description": "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복",
+              "segment_ids": [
+                1,
+                3,
+                9
+              ],
+              "evidence_type": "자발성"
+            },
+            {
+              "description": "끈기 명확: 고객 리뷰 분석 후 팀 설득 성공",
+              "segment_ids": [
+                9
+              ],
+              "evidence_type": "끈기"
+            },
+            {
+              "description": "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
+              "segment_ids": [
+                1,
+                3,
+                9,
+                12
+              ],
+              "evidence_type": "열정"
+            },
+            {
+              "description": "스스로 목표 설정 습관: 매번 구체적 목표 ('재고회전율 개선', '디자인 방향 제시')",
+              "segment_ids": [
+                1,
+                9
+              ],
+              "evidence_type": "목표 설정"
+            },
+            {
+              "description": "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)",
+              "segment_ids": [
+                1,
+                3,
+                9,
+                12
+              ],
+              "evidence_type": "책임감"
+            }
+          ],
+          "consistency_note": "모든 경험에서 일관된 자발성과 끈기"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 주요 경험(3개)에서 자발적 시작 ('먼저', '스스로' 반복, Segment 1, 3, 9). 끈기 명확 (고객 리뷰 분석 후 팀 설득 성공, Segment 9). 열정 표현 자주 ('재미있어서', '좋아해서', '즐겼다' 5회). 스스로 목표 설정 습관 (매번 구체적 목표 세움). 완수율 높음 (5개 프로젝트 중 4개 완수, 80%). 90-100점 기준(완수율 90% 이상, 모든 경험 자발적)에는 미달하나 75-89점 충족. 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "easy_goal",
+            "description": "Segment 9에서 동아리 활동 선택 시 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 3450-3500"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "주도성 중상 (재고회전율 개선 프로젝트, 자발적 시작)",
+        "목표 난이도 중상 (고객 리뷰 분석, 도전적)",
+        "내적 동기 명확 (데이터 분석, 고객 피드백 반영)",
+        "끈기 (고객 리뷰 분석 후 팀 설득 성공)",
+        "모든 경험에서 일관된 자발성",
+        "높은 완수율 (5개 중 4개, 80%)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 도전 회피 (Segment 9, 쉬운 것 선택)",
+        "완수율 80%로 90% 미달",
+        "매우 도전적 목표 경험은 제한적 (고객 리뷰 분석 수준)"
+      ],
+      "key_observations": [
+        "신입 치고는 자발성과 내적 동기가 명확 (상위 30% 추정)",
+        "고객 피드백을 반영한 데이터 분석 능력",
+        "모든 프로젝트에서 일관된 '먼저' 시작 패턴"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "resume_section": "experience",
+            "matched_content": "여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당'으로 언급하며, '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 강조하고 있습니다. 이 내용이 면접 답변과 일치하므로 검증 강도는 high입니다. 또한, 프로젝트의 성과로 재고회전율 개선이 명시되어 있어 일관성이 있습니다.",
+            "char_index": null,
+            "char_length": 47
+          },
+          {
+            "segment_id": 3,
+            "quote": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 31
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 32
+          }
+        ]
+      }
+    },
+    "growth_potential": {
+      "competency_name": "growth_potential",
+      "overall_score": 83,
+      "interview_confidence": 0.85,
+      "confidence_v2": 0.51,
+      "segment_count": 4,
+      "resume_verified_count": 1,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 83,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "데이터 분석을 3주 만에 독학했어요. Python 책, 유튜브, 실습 프로젝트로",
+            "segment_id": 3,
+            "char_index": 1200,
+            "relevance_note": "학습 민첩성 (3주), 구체적 방법론",
+            "quality_score": 0.9,
+            "char_length": 44,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "공모전에서 떨어졌을 때 정말 힘들었지만, 피드백을 받아서 약점을 보완했어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "실패 경험, 회복 과정",
+            "quality_score": 0.95,
+            "char_length": 41,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+            "segment_id": 9,
+            "char_index": 3500,
+            "relevance_note": "메타인지 (구체적), 개선 계획",
+            "quality_score": 0.9,
+            "char_length": 49,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "노력하면 개선할 수 있다고 믿어요. 1년 전 못했던 걸 지금은 할 수 있으니까요",
+            "segment_id": 11,
+            "char_index": 4200,
+            "relevance_note": "성장 마인드",
+            "quality_score": 0.85,
+            "char_length": 44,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 학습 민첩성 중상 (비전공인 데이터 분석을 3주 독학, 구체적 방법 'Python 책 + 유튜브 + 프로젝트 실습'). 실패 대응 중간 (공모전 탈락 경험 + 구체적 회복 과정: 피드백 분석 → 약점 보완 → 재도전). 메타인지 중상 (강점 '데이터 수집 분석', 약점 '인사이트 도출', 근거 명확, 개선 계획 '사례 연구'). Quote 4개. 90-100점 기준(2주 이내 학습, 심각한 실패 + 재도전 성공)에 약간 미달하나 Good 상위권으로 83점 산정.",
+        "behavioral_score": 80,
+        "behavioral_pattern": {
+          "pattern_description": "모든 학습에서 능동적, 실패 직면, 자기 반성, 성장 마인드",
+          "specific_examples": [
+            {
+              "description": "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서'",
+              "segment_ids": [
+                3,
+                5,
+                9
+              ],
+              "evidence_type": "능동적 학습"
+            },
+            {
+              "description": "실패 직면 태도: 공모전 탈락 후 원인 분석",
+              "segment_ids": [
+                6
+              ],
+              "evidence_type": "실패 직면"
+            },
+            {
+              "description": "자기 반성 습관: 프로젝트 후 회고 언급",
+              "segment_ids": [
+                9
+              ],
+              "evidence_type": "자기 반성"
+            },
+            {
+              "description": "피드백 추구: 교수님께 조언 구함",
+              "segment_ids": [
+                11
+              ],
+              "evidence_type": "피드백 추구"
+            },
+            {
+              "description": "성장 마인드: '노력하면 개선', '배우면 된다' 반복",
+              "segment_ids": [
+                3,
+                9,
+                11
+              ],
+              "evidence_type": "성장 마인드"
+            }
+          ],
+          "consistency_note": "모든 경험에서 성장 지향적 태도 일관"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 학습 경험(3개)에서 능동적 ('혼자서', '스스로 찾아서'). 실패 직면 태도 (공모전 탈락 후 원인 분석, Segment 6). 자기 반성 습관 (프로젝트 후 회고 언급, Segment 9). 피드백 추구 (교수님께 조언 구함, Segment 11). 성장 마인드 ('노력하면 개선', '배우면 된다' 반복). 90-100점 기준(자주 자기 반성, 모든 상황에서 성장 지향)에는 미달하나 75-89점 충족. 80점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "metacognition_lack",
+            "description": "Segment 8에서 강점/약점을 물었을 때 처음에는 '노력형, 성실함'이라는 추상적 답변, 추가 질문 후 구체화",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3100-3150"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-3점). 다만 추가 질문 후 구체화함. 총 감점 -3점."
+      },
+      "strengths": [
+        "학습 민첩성 중상 (비전공 영역 3주 독학, 구체적 방법론)",
+        "실패 직면 태도 (공모전 탈락 후 원인 분석, 재도전)",
+        "메타인지 중상 (강점/약점 구체적, 개선 계획)",
+        "모든 학습에서 능동적 ('혼자서', '스스로')",
+        "성장 마인드 명확 ('노력하면 개선', '배우면 된다')"
+      ],
+      "weaknesses": [
+        "초기 자기 인식 추상적 (구체화까지 시간 필요)",
+        "실패 심각성 중간 (공모전 탈락, 더 큰 좌절 경험 부족)",
+        "학습 속도 3주로 매우 빠르지는 않음 (2주 이내가 최상위)"
+      ],
+      "key_observations": [
+        "신입 치고는 성장 마인드가 명확 (상위 30% 추정)",
+        "실패를 학습 기회로 인식하는 회복 탄력성",
+        "모든 학습에서 일관된 능동적 태도"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 1,
+        "high_strength_count": 0,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+            "resume_section": "skills",
+            "matched_content": "Excel (고급), Tableau, Google Analytics",
+            "verification_strength": "medium",
+            "reasoning": "지원자는 Resume의 'skills' 섹션에서 '데이터 분석' 관련 기술을 보유하고 있으며, 데이터 수집 및 분석에 대한 언급이 있습니다. 그러나 인사이트 도출에 대한 구체적인 경험은 명시되어 있지 않아 medium으로 평가합니다.",
+            "char_index": null,
+            "char_length": 49
+          }
+        ]
+      }
+    },
+    "interpersonal_skill": {
+      "competency_name": "interpersonal_skill",
+      "overall_score": 82,
+      "interview_confidence": 0.85,
+      "confidence_v2": 0.51,
+      "segment_count": 4,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "갈등 해결 (중재, Win-Win)",
+            "quality_score": 0.95,
+            "char_length": 136,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "경청 (이해 시도, 공감)",
+            "quality_score": 0.9,
+            "char_length": 56,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요.",
+            "segment_id": 11,
+            "char_index": 0,
+            "relevance_note": "배려, 협업",
+            "quality_score": 0.8,
+            "char_length": 32,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "저는 두 가지를 했습니다. 첫째, 진행 상황을 매일 시각화해서 공유했습니다. '오늘 여기까지 왔고, 내일 목표는 여기'라고 보여드리니까 막막함이 줄었습니다.",
+            "segment_id": 12,
+            "char_index": 0,
+            "relevance_note": "커뮤니케이션 효과성",
+            "quality_score": 0.85,
+            "char_length": 87,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 갈등 해결 복잡도 중상 (팀 프로젝트에서 방향성 충돌, 5명 팀원, 중간 강도 갈등, 중재 후 합의 도출). 경청 깊이 중간 (각 팀원 의견 먼저 들음 + 입장 이해 시도 + 일부 의견 반영하여 절충안). 협업 태도 양호 (본인 아이디어 양보, 팀 목표 우선). 커뮤니케이션 효과성 (명확한 설명, 이해 확인). Quote 4개. 90-100점 기준(심각한 갈등, 다수 이해관계자, Win-Win)에는 미달하나 Good 상위권으로 82점 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
+          "specific_examples": [
+            {
+              "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "경청"
+            },
+            {
+              "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "갈등 직면"
+            },
+            {
+              "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+              "segment_ids": [
+                9,
+                11
+              ],
+              "evidence_type": "팀 우선"
+            },
+            {
+              "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "쌍방향 소통"
+            }
+          ],
+          "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 팀 프로젝트(3개)에서 경청 먼저 습관 ('먼저 들었다' 반복 언급). 갈등 반응 직면 시도 (회피하지 않고 대화로 해결, Segment 5, 9). 팀 우선 태도 명확 (본인 아이디어 양보 2회, '팀이 좋으면' 표현). 쌍방향 소통 (의견 제시 후 항상 '어떻게 생각하세요?' 확인). 90-100점 기준(모든 상황에서 완벽한 일관성, 심각한 갈등 조율)에는 미달하나 75-89점 충족. 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "conflict_avoidance",
+            "description": "Segment 8에서 '불편한 팀원 한 명은 그냥 피했다'며 일부 상황에서 갈등 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 0"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "갈등 해결 복잡도 중상 (5명 팀, 방향성 충돌, 중재 성공)",
+        "경청 깊이 중간 (이해 시도 + 의견 반영)",
+        "모든 팀 프로젝트에서 경청 먼저 습관",
+        "팀 우선 태도 명확 (개인 아이디어 양보 2회)",
+        "쌍방향 소통 습관 ('어떻게 생각하세요?' 확인)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 갈등 회피 (Segment 8, 불편한 팀원)",
+        "갈등 복잡도가 중상 수준 (심각한 갈등 경험 부족)",
+        "경청 후 행동 변화가 일부만 반영 (완전한 Win-Win 미달)"
+      ],
+      "key_observations": [
+        "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
+        "모든 팀 관계에서 일관된 경청 먼저 패턴",
+        "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 136
+          },
+          {
+            "segment_id": 9,
+            "quote": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 언급하며, 리뷰 분석 방법에 대한 구체적인 내용이 포함되어 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 56
+          }
+        ]
+      }
+    },
+    "organizational_fit": {
+      "competency_name": "organizational_fit",
+      "overall_score": 86,
+      "interview_confidence": 0.86,
+      "confidence_v2": 0.52,
+      "segment_count": 4,
+      "resume_verified_count": 1,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 84,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+            "segment_id": 4,
+            "char_index": 1800,
+            "relevance_note": "고객 우선, 패션 MD 핵심 가치",
+            "quality_score": 0.95,
+            "char_length": 60,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "피드백 수용, 구체적 개선",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "시즌 런칭 3일 전부터 밤샘했는데, 목표 달성을 위해서라면 당연하다고 생각해요",
+            "segment_id": 8,
+            "char_index": 3200,
+            "relevance_note": "마감 압박 긍정적 태도, 시즌 목표 우선",
+            "quality_score": 0.9,
+            "char_length": 43,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "좋은 결과는 팀 덕분이고, 부족한 건 제가 더 노력할 부분이에요",
+            "segment_id": 10,
+            "char_index": 3800,
+            "relevance_note": "겸손, 자기 귀인",
+            "quality_score": 0.85,
+            "char_length": 35,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 패션 MD 문화 이해도 중상 (고객 우선 명시 '고객이 원하는 걸 파악', 시즌 목표 달성 기준 '목표 달성까지', 마감 압박 경험 '런칭 전 3일 밤샘' + 긍정적 태도). 피드백 수용성 양호 (혹독한 비판 경험 + 긍정적 수용 '처음엔 속상했지만' + 구체적 개선 '상품 믹스 전면 수정'). 겸손 ('팀 덕분'). Quote 4개. 90-100점 기준(심각한 비판 + 감사 표현 + 빠른 실행 명시)에는 약간 미달하나 Good 상위권으로 84점 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "모든 경험에서 일관된 시즌 목표 달성 의식, 비판 수용적, 자기 귀인 습관",
+          "specific_examples": [
+            {
+              "description": "모든 프로젝트(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조",
+              "segment_ids": [
+                4,
+                8,
+                12
+              ],
+              "evidence_type": "가치관 일관성"
+            },
+            {
+              "description": "비판 반응 수용적: 교수님 지적, 팀장 피드백 모두 긍정적 수용",
+              "segment_ids": [
+                6,
+                11
+              ],
+              "evidence_type": "피드백 수용"
+            },
+            {
+              "description": "자기 귀인 습관: '내가 부족했다' 3회 언급",
+              "segment_ids": [
+                6,
+                10,
+                12
+              ],
+              "evidence_type": "자기 귀인"
+            },
+            {
+              "description": "스트레스 대응 양호: 마감 압박 2회, 모두 긍정적 태도",
+              "segment_ids": [
+                8,
+                12
+              ],
+              "evidence_type": "압박 대응"
+            }
+          ],
+          "consistency_note": "모든 경험에서 일관된 가치관 (고객 우선, 시즌 목표)"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 프로젝트 경험(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조. 비판 반응 수용적 (Segment 6에서 교수님 지적, Segment 11에서 팀장 피드백 모두 긍정적 수용). 자기 귀인 습관 ('내가 부족했다' 3회 언급). 스트레스 대응 양호 (마감 압박 상황 2회, 모두 긍정적 태도). 90-100점 기준(모든 상황에서 완벽한 일관성, 비판에 감사)에는 미달하나 75-89점 충족. 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "low_standard",
+            "description": "Segment 8에서 '80% 완성도면 충분하다고 생각했었다'는 과거 표현, 현재는 개선되었으나 초기 기준 낮았음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3150-3200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '80% 완성도면 충분하다고 생각했었다'는 과거 표현, 낮은 기준 의식이었으나 현재는 '100% 완성도' 강조로 개선(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "패션 MD 문화 이해도 중상 (고객 우선, 시즌 목표 달성 기준)",
+        "피드백 수용성 양호 (비판 경험 + 구체적 개선 사례)",
+        "모든 경험에서 일관된 가치관 (고객 만족, 시즌 목표)",
+        "마감 압박에 대한 긍정적 태도 (런칭 전 3일 밤샘)",
+        "겸손과 자기 귀인 습관 ('팀 덕분', '내가 부족')"
+      ],
+      "weaknesses": [
+        "과거 낮은 기준 의식 (80% 충분, 현재는 개선됨)",
+        "비판 수용 시 초기 불편함 표출 ('속상했다')",
+        "빠른 실행 의식은 부족 (목표 달성 우선만 강조)"
+      ],
+      "key_observations": [
+        "신입 치고는 패션 MD 문화 이해도가 높음 (상위 30% 추정)",
+        "피드백을 성장 기회로 인식하는 성장 마인드",
+        "모든 프로젝트에서 일관된 시즌 목표 의식"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 1,
+        "high_strength_count": 1,
+        "key_evidence": [
+          {
+            "segment_id": 4,
+            "quote": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+            "resume_section": "experience",
+            "matched_content": "판매 데이터 분석",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매 데이터 분석'을 통해 고객 반응을 확인하는 중요성을 강조하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 60
+          }
+        ]
+      }
+    },
+    "problem_solving": {
+      "competency_name": "problem_solving",
+      "overall_score": 86,
+      "interview_confidence": 0.85,
+      "confidence_v2": 0.51,
+      "segment_count": 4,
+      "resume_verified_count": 3,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 86,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "구조적 분석 (3축), 데이터 기반",
+            "quality_score": 0.9,
+            "char_length": 31,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "안전재고 수준을 카테고리별로 차등 설정했습니다.",
+            "segment_id": 2,
+            "char_index": 150,
+            "relevance_note": "구조적 접근, 실행 고려",
+            "quality_score": 0.85,
+            "char_length": 26,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "relevance_note": "리스크 관리, 단계적 접근",
+            "quality_score": 0.9,
+            "char_length": 59,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "데이터 기반 설득, 고객 피드백 분석",
+            "quality_score": 0.95,
+            "char_length": 27,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 문제 복잡도 중상 (재고회전율 개선: 판매/재고/트렌드 3가지 변수, 예산 제약). 구조적 분석 2단계 (문제 → 원인 → 해결책). 창의적 해결책의 차별성 중간 ('기존 비율 대신 새로운 비율 적용', 실현 가능성 검증). 의사결정 논리 명확 (리스크 관리, 단계적 접근). 실행 결과 정량적 ('판매율 73% 달성'). Quote 4개. 90-100점 기준(3단계 이상 분석, 높은 복잡도)에는 미달하나 Good 상위권으로 86점 산정.",
+        "behavioral_score": 83,
+        "behavioral_pattern": {
+          "pattern_description": "모든 Case에서 '왜?' 먼저, 자동 구조화, 옵션 비교 습관",
+          "specific_examples": [
+            {
+              "description": "모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7
+              ],
+              "evidence_type": "원인 분석"
+            },
+            {
+              "description": "구조화 습관: '자동으로 Issue Tree 그린다' 언급",
+              "segment_ids": [
+                1
+              ],
+              "evidence_type": "구조적 사고"
+            },
+            {
+              "description": "옵션 생성: 3개 이상 대안 검토",
+              "segment_ids": [
+                3,
+                5,
+                7
+              ],
+              "evidence_type": "대안 생성"
+            },
+            {
+              "description": "실행 고려: '리스크는 ○○', '필요 자원은 ○○'",
+              "segment_ids": [
+                3,
+                5
+              ],
+              "evidence_type": "실행 가능성"
+            }
+          ],
+          "consistency_note": "Case와 Behavioral 질문 모두에서 유사한 구조적 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근. 구조화 습관 명확 (자동으로 Issue Tree 그리는 언급, Segment 1). 옵션 생성 단계에서 대부분 3개 이상 대안 검토 (Segment 3, 5, 7). 실행 가능성 체크 ('리스크는 ○○', '필요 자원은 ○○'). Behavioral 질문에서도 유사한 구조적 패턴. 90-100점 기준(모든 문제에서 완벽한 프로세스)에는 미달하나 일관성 높음. 83점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "implementation_feasibility",
+            "description": "Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 6, char_index: 2400-2550"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시, 실행 고려 부족(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "문제 복잡도 중상 (다수 변수, 제약 조건) 경험",
+        "모든 Case에서 '왜?' 먼저 묻는 습관 (원인 분석)",
+        "구조적 분석 2단계 (문제 → 원인 → 해결책)",
+        "창의적 해결책 시도 (기존 방식과 차별화)",
+        "의사결정 시 트레이드오프 고려",
+        "실행 결과 정량적 (판매율 73% 달성)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 실현 가능성 검토 부족 (Segment 6)",
+        "구조적 분석 깊이가 2단계로 제한적 (3단계 이상 미달)",
+        "문제 복잡도가 중상 수준 (매우 높은 복잡도 경험 부족)"
+      ],
+      "key_observations": [
+        "신입 치고는 구조적 사고 습관이 명확 (상위 30% 추정)",
+        "Case Interview에서 일관된 문제해결 프로세스 (문제 정의 → 원인 → 해결)",
+        "창의성과 실행 가능성의 균형 의식"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "resume_section": "experience",
+            "matched_content": "판매/재고/트렌드 3축 데이터 분석 체계 구축",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 31
+          },
+          {
+            "segment_id": 3,
+            "quote": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 59
+          },
+          {
+            "segment_id": 5,
+            "quote": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 27
+          }
+        ]
+      }
+    },
+    "customer_journey_marketing": {
+      "competency_name": "customer_journey_marketing",
+      "overall_score": 67,
+      "interview_confidence": 0.77,
+      "confidence_v2": 0.46,
+      "segment_count": 3,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 2150,
+            "relevance_note": "고객 피드백 분석을 통한 타겟 고객 이해",
+            "quality_score": 0.9,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+            "segment_id": 5,
+            "char_index": 2410,
+            "relevance_note": "구체적 수치로 결과 측정",
+            "quality_score": 0.85,
+            "char_length": 37,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "플래그십 스토어는 브랜드 이미지 중심으로 디자인 아이템 전면 배치, 볼륨 매장은 판매 효율 중심으로 베이직 전면 배치.",
+            "segment_id": 14,
+            "char_index": 2280,
+            "relevance_note": "매장 타입별 차별화 전략",
+            "quality_score": 0.9,
+            "char_length": 66,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 고객 분석→마케팅 실행→결과 확인의 기본 사이클 명확. 구체적 수치 2개(판매율 73%, 체류 시간 15% 증가). 온/오프라인 연계 경험 1개(매장 타입별 차별화). Quote 3개. 90-100점 기준(여정 단계별 차별화 전략)은 있으나 재구매 단계 전략 없음. Good 구간 상위권. 타겟 고객 정의 구체적하여 82점으로 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 고객 중심 사고, 채널 통합 의식 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '고객', '타겟', '경험', '여정' 등 고객 관련 표현 언급",
+              "segment_ids": [
+                5,
+                9,
+                10,
+                11,
+                12
+              ],
+              "evidence_type": "고객 중심 사고"
+            },
+            {
+              "description": "'고객 입장에서', '고객이 원하는' 같은 명시적 고객 중심 표현 4회",
+              "segment_ids": [
+                5,
+                9,
+                10,
+                12
+              ],
+              "evidence_type": "고객 중심 사고"
+            },
+            {
+              "description": "채널별 역할 구분('SNS는 인지, 매장은 체험') 3회",
+              "segment_ids": [
+                5,
+                9,
+                14
+              ],
+              "evidence_type": "통합적 사고"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 고객 여정 의식 명확, Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 관점 유지"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '고객', '타겟', '경험' 등 고객 관련 표현 언급. '고객 입장에서', '고객 여정' 같은 명시적 표현 4회. 채널별 역할('온라인은 인지, 오프라인은 체험') 구분 3회. '브랜드 일관성', '통합 메시지' 언급 2회. Case 질문에서 특히 고객 중심. Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 언급. 75-89점 기준 충족하여 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "unclear_target",
+            "description": "Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3450-3580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "타겟 고객을 구체적으로 정의 ('20대 후반 직장인 여성')",
+        "고객 여정 단계별 전략 (인지→고려→구매)",
+        "온/오프라인 채널 통합 의식 (SNS→매장 연계)",
+        "구체적 수치로 결과 측정 (판매율 73%, 체류 시간 15% 증가)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 타겟 불명확 ('모든 고객', Segment 11)",
+        "재구매 단계 전략 부족 (여정의 마지막 단계)",
+        "VMD 구체적 전략 (디스플레이, 동선 등) 언급 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 고객 여정 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (타겟→전략→결과)",
+        "채널 통합 경험 있으나 VMD는 제한적",
+        "고객 중심 사고가 일관적, 제품 중심 아님"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 85
+          },
+          {
+            "segment_id": 5,
+            "quote": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 37
+          }
+        ]
+      }
+    },
+    "md_data_analysis": {
+      "competency_name": "md_data_analysis",
+      "overall_score": 85,
+      "interview_confidence": 0.9,
+      "confidence_v2": 0.54,
+      "segment_count": 3,
+      "resume_verified_count": 0,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 85,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "먼저 전년 동기 대비 매출을 확인했는데, 상의 카테고리가 18% 증가했고",
+            "segment_id": 1,
+            "char_index": 150,
+            "relevance_note": "데이터 우선 사고, 구체적 수치(18%), 비교 분석(전년 대비)",
+            "quality_score": 0.95,
+            "char_length": 40,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "판매 상위 10개 SKU를 분석한 결과, 가격대 5-7만원 구간이 전체 매출의 42%를 차지했어요",
+            "segment_id": 5,
+            "char_index": 1580,
+            "relevance_note": "정량 분석, 구체적 수치(42%), 인사이트 도출",
+            "quality_score": 0.9,
+            "char_length": 54,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "이 데이터를 바탕으로 다음 시즌에는 5-7만원 상품 비중을 40%에서 50%로 늘리기로 결정했습니다",
+            "segment_id": 5,
+            "char_index": 1720,
+            "relevance_note": "데이터→의사결정 연결, MD 실행",
+            "quality_score": 0.85,
+            "char_length": 55,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 구체적 수치 포함 정량 분석 2개(전년 대비 18% 증가, 가격대별 매출 비중 42%), MD 의사결정 경험 1개(가격대 비중 조정). Quote 3개. 90-100점 기준(가설 검증 사이클)은 없으나, Good 구간 상위권. 데이터→인사이트→의사결정 연결 명확하여 85점으로 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 데이터 우선 사고, 구체적 수치 자주 언급",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '먼저 데이터 확인', '수치를 보니' 등으로 시작",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7,
+                9,
+                11
+              ],
+              "evidence_type": "데이터 우선 사고"
+            },
+            {
+              "description": "구체적 수치 4회 사용(매출 증가율 18%, 가격대 비중 42%, 재구매율 23%, 카테고리 비율 6:4)",
+              "segment_ids": [
+                1,
+                5,
+                7
+              ],
+              "evidence_type": "정량적 표현"
+            },
+            {
+              "description": "비교 분석 표현 5회(전년 대비, 카테고리별, 가격대별, 경쟁사 vs 자사, 시즌별)",
+              "segment_ids": [
+                1,
+                5,
+                7,
+                9
+              ],
+              "evidence_type": "비교 분석"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 데이터 중심 답변 명확, Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 데이터 우선 언급. 구체적 수치 4회 사용(매출 증가율, 판매량, 비율 등). '먼저 데이터 확인' 표현 3회, 비교 분석(전년 대비, 카테고리별) 5회. Case 질문에서 특히 데이터 중심 답변. Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시. 75-89점 기준 충족하여 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_evidence",
+            "description": "Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 2450-2580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "데이터 우선 사고가 명확함 (전체 질문의 75%)",
+        "구체적 수치를 자연스럽게 언급 (4회)",
+        "데이터→인사이트→의사결정 연결 습관",
+        "비교 분석 의식 (전년 대비, 카테고리별 등)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 데이터 언급 없이 추상적 설명 (Segment 8)",
+        "가설-검증 사이클 경험 부족",
+        "정성적 분석(트렌드 리서치)에서 구체성 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 데이터 기반 의사결정 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 정량적 접근 (매출, 판매량, 비율)",
+        "MD 경험은 제한적이나 데이터 사고방식은 우수",
+        "복잡한 분석보다 명확한 인사이트 도출에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 0,
+        "high_strength_count": 0,
+        "key_evidence": []
+      }
+    },
+    "seasonal_strategy_kpi": {
+      "competency_name": "seasonal_strategy_kpi",
+      "overall_score": 83,
+      "interview_confidence": 0.9,
+      "confidence_v2": 0.54,
+      "segment_count": 3,
+      "resume_verified_count": 3,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 83,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+            "segment_id": 1,
+            "char_index": 0,
+            "relevance_note": "목표 설정, 전략 수립, KPI 모니터링",
+            "quality_score": 0.9,
+            "char_length": 88,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "문제 발견, 원인 분석, 해결 액션",
+            "quality_score": 0.9,
+            "char_length": 71,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "문제 발견, 원인 분석, 해결 액션, 결과 확인",
+            "quality_score": 0.85,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 목표 설정→실행→모니터링→결과 확인의 기본 사이클 명확. 구체적 KPI 수치 2개(재고회전율 1.2, 마진율 38.5%). 문제 발견 후 대응 경험 1개(고객 리뷰 분석). Quote 3개. 90-100점 기준(Plan B 경험)은 없으나, Good 구간 상위권. 원인 분석→대응→결과 개선 논리적 흐름 명확하여 83점으로 산정.",
+        "behavioral_score": 80,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 목표 지향적 사고, 문제해결 논리 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '목표', '달성률', '체크' 등 목표 관련 표현 언급",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                6,
+                9
+              ],
+              "evidence_type": "목표 지향"
+            },
+            {
+              "description": "구체적 수치 목표 4회(재고회전율 1.2, 마진율 38.5%, 판매율 73%, 신규 고객 유입 20%)",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                13
+              ],
+              "evidence_type": "숫자 의식"
+            },
+            {
+              "description": "'주간 체크', '일일 확인' 같은 모니터링 표현 3회",
+              "segment_ids": [
+                1,
+                3,
+                5
+              ],
+              "evidence_type": "모니터링 습관"
+            },
+            {
+              "description": "문제→원인→해결 논리 2회 명확(고객 리뷰 분석, 신규 업체 전환)",
+              "segment_ids": [
+                3,
+                9
+              ],
+              "evidence_type": "문제해결"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 목표 지향적 답변 명확, Behavioral 질문에서는 정성적 설명 많으나 여전히 결과 확인 습관"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 목표 관련 표현 언급. 구체적 수치 목표 4회(재고회전율 1.2, 마진율 38.5%, 판매율 73%, 신규 고객 유입 20%). '주간 체크', '일일 확인' 같은 모니터링 표현 3회. 문제→원인→해결 논리 2회 명확. Case 질문에서 특히 목표 지향적. Behavioral 질문에서는 정성적 설명 많으나 여전히 결과 확인. 75-89점 기준 충족하여 80점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_goal",
+            "description": "Segment 9에서 '열심히 실행했다'고 했으나 구체적 목표 수치나 달성률 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 0"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '열심히 실행했다'고 했으나 구체적 목표 수치나 달성률 언급 없음, 목표 없는 실행(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "목표 지향적 사고가 명확함 (전체 질문의 75%)",
+        "문제→원인→해결→결과의 논리적 흐름 (2회)",
+        "구체적 KPI 수치 자연스럽게 언급 (4회)",
+        "주간/일일 모니터링 습관 (3회 언급)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 목표 없이 '열심히 했다' 수준",
+        "Plan B 또는 전략 수정 경험 부족",
+        "사후적 대응보다 선제적 모니터링 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 목표 관리 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 문제해결 논리",
+        "시즌 전략 경험은 제한적이나 기본 사이클 이해",
+        "복잡한 KPI보다 핵심 지표 관리에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 88
+          },
+          {
+            "segment_id": 3,
+            "quote": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+            "resume_section": "experience",
+            "matched_content": "마진율 35% → 38.5% 개선",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '마진율 35% → 38.5% 개선'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 71
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 85
+          }
+        ]
+      }
+    },
+    "stakeholder_collaboration": {
+      "competency_name": "stakeholder_collaboration",
+      "overall_score": 81,
+      "interview_confidence": 0.9,
+      "confidence_v2": 0.54,
+      "segment_count": 3,
+      "resume_verified_count": 0,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 81,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+            "quality_score": 0.9,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "논리적 설득, 데이터 기반, 구체적 수치(40%)",
+            "quality_score": 0.9,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "최종 합의안은 베이직 비율을 줄이되, 디자인 아이템에 포인트 컬러나 디테일을 가미해 브랜드 아이덴티티를 살리는 방식이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "Win-Win 합의, 절충안 도출",
+            "quality_score": 0.85,
+            "char_length": 70,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 충돌 인식→설득→합의의 기본 사이클 명확. 구체적 수치 2개(고객 리뷰 40%, 디자인 아이템 비율). 논리적 설득 경험 1개(디자인팀에 고객 리뷰 데이터 제시). Quote 3개. 90-100점 기준(2개 이상 이해관계자)은 있으나 결과 확인 미흡. Good 구간 상위권. 상대 입장 이해('디자인팀 우려') 명확하여 81점으로 산정.",
+        "behavioral_score": 78,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+              "segment_ids": [
+                5,
+                7,
+                9,
+                10,
+                11
+              ],
+              "evidence_type": "협업 의식"
+            },
+            {
+              "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+              "segment_ids": [
+                5,
+                9,
+                10
+              ],
+              "evidence_type": "설득 커뮤니케이션"
+            },
+            {
+              "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "균형 의식"
+            },
+            {
+              "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+              "segment_ids": [
+                11
+              ],
+              "evidence_type": "관계 중시"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득' 등 협업 관련 표현 언급. 경청→공감→논리 패턴 4회('먼저 들어보고'→'이해한다'→'데이터로 설명'). '양쪽 다', 'Win-Win' 같은 균형 표현 3회. '장기적 관계' 언급 2회. Case 질문에서 특히 논리적 설득 명확. Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 배려. 75-89점 기준 충족하여 78점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "one_sided_persuasion",
+            "description": "Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3520-3650"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "이해관계자 입장 파악 ('디자인팀 우려')",
+        "데이터 기반 논리적 설득 (고객 리뷰 40% 제시)",
+        "Win-Win 합의 도출 (디자인 아이템 비율 조정)",
+        "경청→공감→논리 패턴 (4회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 일방적 설득 강조 (Segment 11)",
+        "합의 후 결과/관계 확인 부족",
+        "2개 이상 이해관계자 동시 조정 경험 제한적"
+      ],
+      "key_observations": [
+        "신입 치고는 논리적 설득 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (충돌→입장→설득→합의)",
+        "상대 입장 이해 능력 우수 ('디자인팀 우려')",
+        "감정보다는 논리 우선, 데이터 활용"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 0,
+        "high_strength_count": 0,
+        "key_evidence": []
+      }
+    },
+    "value_chain_optimization": {
+      "competency_name": "value_chain_optimization",
+      "overall_score": 84,
+      "interview_confidence": 0.9,
+      "confidence_v2": 0.54,
+      "segment_count": 3,
+      "resume_verified_count": 3,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 84,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율을 0.8에서 1.2로 50% 개선",
+            "segment_id": 1,
+            "char_index": 0,
+            "relevance_note": "재고 관리 최적화, 구체적 수치(50% 개선)",
+            "quality_score": 0.9,
+            "char_length": 24,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "마진율을 35%에서 38.5%로 개선",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "마진 관리, 구체적 수치(35%→38.5%)",
+            "quality_score": 0.85,
+            "char_length": 20,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "소재비를 42%에서 35%로 절감",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "원가 절감, 구체적 수치(42%→35%)",
+            "quality_score": 0.9,
+            "char_length": 18,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 원가 분석→개선→결과 확인의 기본 사이클 명확. 구체적 수치 3개(재고회전율 50% 개선, 마진율 35%→38.5%, 소재비 42%→35%). 소싱 최적화 경험 1개(소재비 절감). Quote 3개. 90-100점 기준(밸류체인 2개 영역)은 없으나, Good 구간 상위권. 품질-비용 균형 고려하여 84점으로 산정.",
+        "behavioral_score": 81,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 원가 의식, 효율화 지향적 사고 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "원가 의식"
+            },
+            {
+              "description": "구체적 수치 4회(재고회전율 50% 개선, 마진율 35%→38.5%, 소재비 42%→35%)",
+              "segment_ids": [
+                1,
+                3
+              ],
+              "evidence_type": "숫자 의식"
+            },
+            {
+              "description": "'품질 유지하면서', '효율화', '최적화' 같은 균형 표현 3회",
+              "segment_ids": [
+                3,
+                5
+              ],
+              "evidence_type": "품질-비용 균형"
+            },
+            {
+              "description": "비교 표현 5회(업체 비교, 소재 비교, 기존 대비, 원가율 비교, 마진 비교)",
+              "segment_ids": [
+                3,
+                7,
+                8
+              ],
+              "evidence_type": "비교 분석"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 원가 민감도 높음, Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식 명확"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 원가/비용 관련 표현 언급. 구체적 수치 4회(재고회전율 50% 개선, 마진율 38.5%, 소재비 35%). '품질 유지하면서', '효율화' 같은 최적화 표현 3회. 비교 표현 5회(업체 A vs B, 기존 대비, 소재 비교). Case 질문에서 특히 원가 민감. Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식. 75-89점 기준 충족하여 81점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_cost_detail",
+            "description": "Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 10, char_index: 3120-3260"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "원가 의식이 명확함 (전체 질문의 75%)",
+        "품질-비용 균형 고려 ('품질 유지하면서')",
+        "구체적 수치로 결과 측정 (재고회전율 50% 개선, 마진 3.5%p 개선)",
+        "비교 분석 습관 (업체 비교, 소재 비교 등 5회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 구체적 수치 없이 추상적 언급 (Segment 10)",
+        "밸류체인 전체보다는 특정 영역(소싱) 집중",
+        "프로세스 개선 경험 (리드타임 단축 등) 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 원가 구조 이해도 높음 (상위 30% 추정)",
+        "Case 질문에서 특히 원가 민감도와 효율화 의식",
+        "소싱 영역에서 최적화 경험, 다른 영역은 제한적",
+        "품질 균형 고려하는 성숙한 사고 (무조건 싸게 X)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율을 0.8에서 1.2로 50% 개선",
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 24
+          },
+          {
+            "segment_id": 3,
+            "quote": "마진율을 35%에서 38.5%로 개선",
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 20
+          },
+          {
+            "segment_id": 3,
+            "quote": "소재비를 42%에서 35%로 절감",
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 18
+          }
+        ]
+      }
+    }
+  },
+  "final_score": 81.5,
+  "avg_confidence": 0.51,
+  "final_reliability": "low",
+  "reliability_note": "평균 Confidence V2: 0.51 | Low Confidence 역량: 10개 |   - achievement_motivation: 0.51 |   - growth_potential: 0.51 |   - interpersonal_skill: 0.51 |   - organizational_fit: 0.52 |   - problem_solving: 0.51 |   - customer_journey_marketing: 0.46 |   - md_data_analysis: 0.54 |   - seasonal_strategy_kpi: 0.54 |   - stakeholder_collaboration: 0.54 |   - value_chain_optimization: 0.54",
+  "analysis_summary": null,
+  "post_processing": null,
+  "competency_details": {
+    "achievement_motivation": {
+      "overall_score": 85,
+      "confidence_v2": 0.51,
+      "weight": 0.1,
+      "weighted_contribution": 8.5,
+      "resume_verified_count": 3,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 85,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "주도성 (먼저 제안), 내적 동기 (데이터 분석에 대한 관심)",
+            "quality_score": 0.9,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+            "segment_id": 3,
+            "char_index": 150,
+            "relevance_note": "높은 목표 (신규 업체 테스트), 책임감 (품질 관리)",
+            "quality_score": 0.85,
+            "char_length": 31,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+            "segment_id": 9,
+            "char_index": 350,
+            "relevance_note": "주도성 (리뷰 분석), 내적 동기 (고객 피드백 반영)",
+            "quality_score": 0.9,
+            "char_length": 32,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "F/W 시즌 론칭 때 팀을 동기부여하고 유지했습니다.",
+            "segment_id": 12,
+            "char_index": 400,
+            "relevance_note": "책임감 (팀 관리), 몰입 (시즌 론칭)",
+            "quality_score": 0.9,
+            "char_length": 29,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 주도성 중상 (재고회전율 개선 프로젝트, 신규 업체 테스트). 목표 난이도 중상 (고객 리뷰 분석, 디자인 방향 제시). 내적 동기 명확 (데이터 분석, 고객 피드백 반영). 책임감 (팀 동기부여, 시즌 론칭). Quote 4개. 90-100점 기준(매우 도전적 목표, 다수 자발적 경험)에는 미달하나 Good 상위권으로 85점 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "모든 경험에서 자발적 시작, 끈기, 열정 표현 자주",
+          "specific_examples": [
+            {
+              "description": "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복",
+              "segment_ids": [
+                1,
+                3,
+                9
+              ],
+              "evidence_type": "자발성"
+            },
+            {
+              "description": "끈기 명확: 고객 리뷰 분석 후 팀 설득 성공",
+              "segment_ids": [
+                9
+              ],
+              "evidence_type": "끈기"
+            },
+            {
+              "description": "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
+              "segment_ids": [
+                1,
+                3,
+                9,
+                12
+              ],
+              "evidence_type": "열정"
+            },
+            {
+              "description": "스스로 목표 설정 습관: 매번 구체적 목표 ('재고회전율 개선', '디자인 방향 제시')",
+              "segment_ids": [
+                1,
+                9
+              ],
+              "evidence_type": "목표 설정"
+            },
+            {
+              "description": "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)",
+              "segment_ids": [
+                1,
+                3,
+                9,
+                12
+              ],
+              "evidence_type": "책임감"
+            }
+          ],
+          "consistency_note": "모든 경험에서 일관된 자발성과 끈기"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 주요 경험(3개)에서 자발적 시작 ('먼저', '스스로' 반복, Segment 1, 3, 9). 끈기 명확 (고객 리뷰 분석 후 팀 설득 성공, Segment 9). 열정 표현 자주 ('재미있어서', '좋아해서', '즐겼다' 5회). 스스로 목표 설정 습관 (매번 구체적 목표 세움). 완수율 높음 (5개 프로젝트 중 4개 완수, 80%). 90-100점 기준(완수율 90% 이상, 모든 경험 자발적)에는 미달하나 75-89점 충족. 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "easy_goal",
+            "description": "Segment 9에서 동아리 활동 선택 시 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 3450-3500"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "주도성 중상 (재고회전율 개선 프로젝트, 자발적 시작)",
+        "목표 난이도 중상 (고객 리뷰 분석, 도전적)",
+        "내적 동기 명확 (데이터 분석, 고객 피드백 반영)",
+        "끈기 (고객 리뷰 분석 후 팀 설득 성공)",
+        "모든 경험에서 일관된 자발성",
+        "높은 완수율 (5개 중 4개, 80%)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 도전 회피 (Segment 9, 쉬운 것 선택)",
+        "완수율 80%로 90% 미달",
+        "매우 도전적 목표 경험은 제한적 (고객 리뷰 분석 수준)"
+      ],
+      "key_observations": [
+        "신입 치고는 자발성과 내적 동기가 명확 (상위 30% 추정)",
+        "고객 피드백을 반영한 데이터 분석 능력",
+        "모든 프로젝트에서 일관된 '먼저' 시작 패턴"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "resume_section": "experience",
+            "matched_content": "여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당'으로 언급하며, '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 강조하고 있습니다. 이 내용이 면접 답변과 일치하므로 검증 강도는 high입니다. 또한, 프로젝트의 성과로 재고회전율 개선이 명시되어 있어 일관성이 있습니다.",
+            "char_index": null,
+            "char_length": 47
+          },
+          {
+            "segment_id": 3,
+            "quote": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 31
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 32
+          }
+        ]
+      }
+    },
+    "growth_potential": {
+      "overall_score": 83,
+      "confidence_v2": 0.51,
+      "weight": 0.1,
+      "weighted_contribution": 8.3,
+      "resume_verified_count": 1,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 83,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "데이터 분석을 3주 만에 독학했어요. Python 책, 유튜브, 실습 프로젝트로",
+            "segment_id": 3,
+            "char_index": 1200,
+            "relevance_note": "학습 민첩성 (3주), 구체적 방법론",
+            "quality_score": 0.9,
+            "char_length": 44,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "공모전에서 떨어졌을 때 정말 힘들었지만, 피드백을 받아서 약점을 보완했어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "실패 경험, 회복 과정",
+            "quality_score": 0.95,
+            "char_length": 41,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+            "segment_id": 9,
+            "char_index": 3500,
+            "relevance_note": "메타인지 (구체적), 개선 계획",
+            "quality_score": 0.9,
+            "char_length": 49,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "노력하면 개선할 수 있다고 믿어요. 1년 전 못했던 걸 지금은 할 수 있으니까요",
+            "segment_id": 11,
+            "char_index": 4200,
+            "relevance_note": "성장 마인드",
+            "quality_score": 0.85,
+            "char_length": 44,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 학습 민첩성 중상 (비전공인 데이터 분석을 3주 독학, 구체적 방법 'Python 책 + 유튜브 + 프로젝트 실습'). 실패 대응 중간 (공모전 탈락 경험 + 구체적 회복 과정: 피드백 분석 → 약점 보완 → 재도전). 메타인지 중상 (강점 '데이터 수집 분석', 약점 '인사이트 도출', 근거 명확, 개선 계획 '사례 연구'). Quote 4개. 90-100점 기준(2주 이내 학습, 심각한 실패 + 재도전 성공)에 약간 미달하나 Good 상위권으로 83점 산정.",
+        "behavioral_score": 80,
+        "behavioral_pattern": {
+          "pattern_description": "모든 학습에서 능동적, 실패 직면, 자기 반성, 성장 마인드",
+          "specific_examples": [
+            {
+              "description": "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서'",
+              "segment_ids": [
+                3,
+                5,
+                9
+              ],
+              "evidence_type": "능동적 학습"
+            },
+            {
+              "description": "실패 직면 태도: 공모전 탈락 후 원인 분석",
+              "segment_ids": [
+                6
+              ],
+              "evidence_type": "실패 직면"
+            },
+            {
+              "description": "자기 반성 습관: 프로젝트 후 회고 언급",
+              "segment_ids": [
+                9
+              ],
+              "evidence_type": "자기 반성"
+            },
+            {
+              "description": "피드백 추구: 교수님께 조언 구함",
+              "segment_ids": [
+                11
+              ],
+              "evidence_type": "피드백 추구"
+            },
+            {
+              "description": "성장 마인드: '노력하면 개선', '배우면 된다' 반복",
+              "segment_ids": [
+                3,
+                9,
+                11
+              ],
+              "evidence_type": "성장 마인드"
+            }
+          ],
+          "consistency_note": "모든 경험에서 성장 지향적 태도 일관"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 학습 경험(3개)에서 능동적 ('혼자서', '스스로 찾아서'). 실패 직면 태도 (공모전 탈락 후 원인 분석, Segment 6). 자기 반성 습관 (프로젝트 후 회고 언급, Segment 9). 피드백 추구 (교수님께 조언 구함, Segment 11). 성장 마인드 ('노력하면 개선', '배우면 된다' 반복). 90-100점 기준(자주 자기 반성, 모든 상황에서 성장 지향)에는 미달하나 75-89점 충족. 80점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "metacognition_lack",
+            "description": "Segment 8에서 강점/약점을 물었을 때 처음에는 '노력형, 성실함'이라는 추상적 답변, 추가 질문 후 구체화",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3100-3150"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-3점). 다만 추가 질문 후 구체화함. 총 감점 -3점."
+      },
+      "strengths": [
+        "학습 민첩성 중상 (비전공 영역 3주 독학, 구체적 방법론)",
+        "실패 직면 태도 (공모전 탈락 후 원인 분석, 재도전)",
+        "메타인지 중상 (강점/약점 구체적, 개선 계획)",
+        "모든 학습에서 능동적 ('혼자서', '스스로')",
+        "성장 마인드 명확 ('노력하면 개선', '배우면 된다')"
+      ],
+      "weaknesses": [
+        "초기 자기 인식 추상적 (구체화까지 시간 필요)",
+        "실패 심각성 중간 (공모전 탈락, 더 큰 좌절 경험 부족)",
+        "학습 속도 3주로 매우 빠르지는 않음 (2주 이내가 최상위)"
+      ],
+      "key_observations": [
+        "신입 치고는 성장 마인드가 명확 (상위 30% 추정)",
+        "실패를 학습 기회로 인식하는 회복 탄력성",
+        "모든 학습에서 일관된 능동적 태도"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 1,
+        "high_strength_count": 0,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+            "resume_section": "skills",
+            "matched_content": "Excel (고급), Tableau, Google Analytics",
+            "verification_strength": "medium",
+            "reasoning": "지원자는 Resume의 'skills' 섹션에서 '데이터 분석' 관련 기술을 보유하고 있으며, 데이터 수집 및 분석에 대한 언급이 있습니다. 그러나 인사이트 도출에 대한 구체적인 경험은 명시되어 있지 않아 medium으로 평가합니다.",
+            "char_index": null,
+            "char_length": 49
+          }
+        ]
+      }
+    },
+    "interpersonal_skill": {
+      "overall_score": 82,
+      "confidence_v2": 0.51,
+      "weight": 0.1,
+      "weighted_contribution": 8.200000000000001,
+      "resume_verified_count": 2,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "갈등 해결 (중재, Win-Win)",
+            "quality_score": 0.95,
+            "char_length": 136,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "경청 (이해 시도, 공감)",
+            "quality_score": 0.9,
+            "char_length": 56,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요.",
+            "segment_id": 11,
+            "char_index": 0,
+            "relevance_note": "배려, 협업",
+            "quality_score": 0.8,
+            "char_length": 32,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "저는 두 가지를 했습니다. 첫째, 진행 상황을 매일 시각화해서 공유했습니다. '오늘 여기까지 왔고, 내일 목표는 여기'라고 보여드리니까 막막함이 줄었습니다.",
+            "segment_id": 12,
+            "char_index": 0,
+            "relevance_note": "커뮤니케이션 효과성",
+            "quality_score": 0.85,
+            "char_length": 87,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 갈등 해결 복잡도 중상 (팀 프로젝트에서 방향성 충돌, 5명 팀원, 중간 강도 갈등, 중재 후 합의 도출). 경청 깊이 중간 (각 팀원 의견 먼저 들음 + 입장 이해 시도 + 일부 의견 반영하여 절충안). 협업 태도 양호 (본인 아이디어 양보, 팀 목표 우선). 커뮤니케이션 효과성 (명확한 설명, 이해 확인). Quote 4개. 90-100점 기준(심각한 갈등, 다수 이해관계자, Win-Win)에는 미달하나 Good 상위권으로 82점 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
+          "specific_examples": [
+            {
+              "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "경청"
+            },
+            {
+              "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "갈등 직면"
+            },
+            {
+              "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+              "segment_ids": [
+                9,
+                11
+              ],
+              "evidence_type": "팀 우선"
+            },
+            {
+              "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "쌍방향 소통"
+            }
+          ],
+          "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 팀 프로젝트(3개)에서 경청 먼저 습관 ('먼저 들었다' 반복 언급). 갈등 반응 직면 시도 (회피하지 않고 대화로 해결, Segment 5, 9). 팀 우선 태도 명확 (본인 아이디어 양보 2회, '팀이 좋으면' 표현). 쌍방향 소통 (의견 제시 후 항상 '어떻게 생각하세요?' 확인). 90-100점 기준(모든 상황에서 완벽한 일관성, 심각한 갈등 조율)에는 미달하나 75-89점 충족. 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "conflict_avoidance",
+            "description": "Segment 8에서 '불편한 팀원 한 명은 그냥 피했다'며 일부 상황에서 갈등 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 0"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "갈등 해결 복잡도 중상 (5명 팀, 방향성 충돌, 중재 성공)",
+        "경청 깊이 중간 (이해 시도 + 의견 반영)",
+        "모든 팀 프로젝트에서 경청 먼저 습관",
+        "팀 우선 태도 명확 (개인 아이디어 양보 2회)",
+        "쌍방향 소통 습관 ('어떻게 생각하세요?' 확인)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 갈등 회피 (Segment 8, 불편한 팀원)",
+        "갈등 복잡도가 중상 수준 (심각한 갈등 경험 부족)",
+        "경청 후 행동 변화가 일부만 반영 (완전한 Win-Win 미달)"
+      ],
+      "key_observations": [
+        "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
+        "모든 팀 관계에서 일관된 경청 먼저 패턴",
+        "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 136
+          },
+          {
+            "segment_id": 9,
+            "quote": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 언급하며, 리뷰 분석 방법에 대한 구체적인 내용이 포함되어 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 56
+          }
+        ]
+      }
+    },
+    "organizational_fit": {
+      "overall_score": 86,
+      "confidence_v2": 0.52,
+      "weight": 0.1,
+      "weighted_contribution": 8.6,
+      "resume_verified_count": 1,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 84,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+            "segment_id": 4,
+            "char_index": 1800,
+            "relevance_note": "고객 우선, 패션 MD 핵심 가치",
+            "quality_score": 0.95,
+            "char_length": 60,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "피드백 수용, 구체적 개선",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "시즌 런칭 3일 전부터 밤샘했는데, 목표 달성을 위해서라면 당연하다고 생각해요",
+            "segment_id": 8,
+            "char_index": 3200,
+            "relevance_note": "마감 압박 긍정적 태도, 시즌 목표 우선",
+            "quality_score": 0.9,
+            "char_length": 43,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "좋은 결과는 팀 덕분이고, 부족한 건 제가 더 노력할 부분이에요",
+            "segment_id": 10,
+            "char_index": 3800,
+            "relevance_note": "겸손, 자기 귀인",
+            "quality_score": 0.85,
+            "char_length": 35,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 패션 MD 문화 이해도 중상 (고객 우선 명시 '고객이 원하는 걸 파악', 시즌 목표 달성 기준 '목표 달성까지', 마감 압박 경험 '런칭 전 3일 밤샘' + 긍정적 태도). 피드백 수용성 양호 (혹독한 비판 경험 + 긍정적 수용 '처음엔 속상했지만' + 구체적 개선 '상품 믹스 전면 수정'). 겸손 ('팀 덕분'). Quote 4개. 90-100점 기준(심각한 비판 + 감사 표현 + 빠른 실행 명시)에는 약간 미달하나 Good 상위권으로 84점 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "모든 경험에서 일관된 시즌 목표 달성 의식, 비판 수용적, 자기 귀인 습관",
+          "specific_examples": [
+            {
+              "description": "모든 프로젝트(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조",
+              "segment_ids": [
+                4,
+                8,
+                12
+              ],
+              "evidence_type": "가치관 일관성"
+            },
+            {
+              "description": "비판 반응 수용적: 교수님 지적, 팀장 피드백 모두 긍정적 수용",
+              "segment_ids": [
+                6,
+                11
+              ],
+              "evidence_type": "피드백 수용"
+            },
+            {
+              "description": "자기 귀인 습관: '내가 부족했다' 3회 언급",
+              "segment_ids": [
+                6,
+                10,
+                12
+              ],
+              "evidence_type": "자기 귀인"
+            },
+            {
+              "description": "스트레스 대응 양호: 마감 압박 2회, 모두 긍정적 태도",
+              "segment_ids": [
+                8,
+                12
+              ],
+              "evidence_type": "압박 대응"
+            }
+          ],
+          "consistency_note": "모든 경험에서 일관된 가치관 (고객 우선, 시즌 목표)"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 프로젝트 경험(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조. 비판 반응 수용적 (Segment 6에서 교수님 지적, Segment 11에서 팀장 피드백 모두 긍정적 수용). 자기 귀인 습관 ('내가 부족했다' 3회 언급). 스트레스 대응 양호 (마감 압박 상황 2회, 모두 긍정적 태도). 90-100점 기준(모든 상황에서 완벽한 일관성, 비판에 감사)에는 미달하나 75-89점 충족. 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "low_standard",
+            "description": "Segment 8에서 '80% 완성도면 충분하다고 생각했었다'는 과거 표현, 현재는 개선되었으나 초기 기준 낮았음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3150-3200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '80% 완성도면 충분하다고 생각했었다'는 과거 표현, 낮은 기준 의식이었으나 현재는 '100% 완성도' 강조로 개선(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "패션 MD 문화 이해도 중상 (고객 우선, 시즌 목표 달성 기준)",
+        "피드백 수용성 양호 (비판 경험 + 구체적 개선 사례)",
+        "모든 경험에서 일관된 가치관 (고객 만족, 시즌 목표)",
+        "마감 압박에 대한 긍정적 태도 (런칭 전 3일 밤샘)",
+        "겸손과 자기 귀인 습관 ('팀 덕분', '내가 부족')"
+      ],
+      "weaknesses": [
+        "과거 낮은 기준 의식 (80% 충분, 현재는 개선됨)",
+        "비판 수용 시 초기 불편함 표출 ('속상했다')",
+        "빠른 실행 의식은 부족 (목표 달성 우선만 강조)"
+      ],
+      "key_observations": [
+        "신입 치고는 패션 MD 문화 이해도가 높음 (상위 30% 추정)",
+        "피드백을 성장 기회로 인식하는 성장 마인드",
+        "모든 프로젝트에서 일관된 시즌 목표 의식"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 1,
+        "high_strength_count": 1,
+        "key_evidence": [
+          {
+            "segment_id": 4,
+            "quote": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+            "resume_section": "experience",
+            "matched_content": "판매 데이터 분석",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매 데이터 분석'을 통해 고객 반응을 확인하는 중요성을 강조하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 60
+          }
+        ]
+      }
+    },
+    "problem_solving": {
+      "overall_score": 86,
+      "confidence_v2": 0.51,
+      "weight": 0.1,
+      "weighted_contribution": 8.6,
+      "resume_verified_count": 3,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 86,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "구조적 분석 (3축), 데이터 기반",
+            "quality_score": 0.9,
+            "char_length": 31,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "안전재고 수준을 카테고리별로 차등 설정했습니다.",
+            "segment_id": 2,
+            "char_index": 150,
+            "relevance_note": "구조적 접근, 실행 고려",
+            "quality_score": 0.85,
+            "char_length": 26,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "relevance_note": "리스크 관리, 단계적 접근",
+            "quality_score": 0.9,
+            "char_length": 59,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "데이터 기반 설득, 고객 피드백 분석",
+            "quality_score": 0.95,
+            "char_length": 27,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 문제 복잡도 중상 (재고회전율 개선: 판매/재고/트렌드 3가지 변수, 예산 제약). 구조적 분석 2단계 (문제 → 원인 → 해결책). 창의적 해결책의 차별성 중간 ('기존 비율 대신 새로운 비율 적용', 실현 가능성 검증). 의사결정 논리 명확 (리스크 관리, 단계적 접근). 실행 결과 정량적 ('판매율 73% 달성'). Quote 4개. 90-100점 기준(3단계 이상 분석, 높은 복잡도)에는 미달하나 Good 상위권으로 86점 산정.",
+        "behavioral_score": 83,
+        "behavioral_pattern": {
+          "pattern_description": "모든 Case에서 '왜?' 먼저, 자동 구조화, 옵션 비교 습관",
+          "specific_examples": [
+            {
+              "description": "모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7
+              ],
+              "evidence_type": "원인 분석"
+            },
+            {
+              "description": "구조화 습관: '자동으로 Issue Tree 그린다' 언급",
+              "segment_ids": [
+                1
+              ],
+              "evidence_type": "구조적 사고"
+            },
+            {
+              "description": "옵션 생성: 3개 이상 대안 검토",
+              "segment_ids": [
+                3,
+                5,
+                7
+              ],
+              "evidence_type": "대안 생성"
+            },
+            {
+              "description": "실행 고려: '리스크는 ○○', '필요 자원은 ○○'",
+              "segment_ids": [
+                3,
+                5
+              ],
+              "evidence_type": "실행 가능성"
+            }
+          ],
+          "consistency_note": "Case와 Behavioral 질문 모두에서 유사한 구조적 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근. 구조화 습관 명확 (자동으로 Issue Tree 그리는 언급, Segment 1). 옵션 생성 단계에서 대부분 3개 이상 대안 검토 (Segment 3, 5, 7). 실행 가능성 체크 ('리스크는 ○○', '필요 자원은 ○○'). Behavioral 질문에서도 유사한 구조적 패턴. 90-100점 기준(모든 문제에서 완벽한 프로세스)에는 미달하나 일관성 높음. 83점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "implementation_feasibility",
+            "description": "Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 6, char_index: 2400-2550"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시, 실행 고려 부족(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "문제 복잡도 중상 (다수 변수, 제약 조건) 경험",
+        "모든 Case에서 '왜?' 먼저 묻는 습관 (원인 분석)",
+        "구조적 분석 2단계 (문제 → 원인 → 해결책)",
+        "창의적 해결책 시도 (기존 방식과 차별화)",
+        "의사결정 시 트레이드오프 고려",
+        "실행 결과 정량적 (판매율 73% 달성)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 실현 가능성 검토 부족 (Segment 6)",
+        "구조적 분석 깊이가 2단계로 제한적 (3단계 이상 미달)",
+        "문제 복잡도가 중상 수준 (매우 높은 복잡도 경험 부족)"
+      ],
+      "key_observations": [
+        "신입 치고는 구조적 사고 습관이 명확 (상위 30% 추정)",
+        "Case Interview에서 일관된 문제해결 프로세스 (문제 정의 → 원인 → 해결)",
+        "창의성과 실행 가능성의 균형 의식"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "resume_section": "experience",
+            "matched_content": "판매/재고/트렌드 3축 데이터 분석 체계 구축",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 31
+          },
+          {
+            "segment_id": 3,
+            "quote": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+            "resume_section": "experience",
+            "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 59
+          },
+          {
+            "segment_id": 5,
+            "quote": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 27
+          }
+        ]
+      }
+    },
+    "customer_journey_marketing": {
+      "overall_score": 67,
+      "confidence_v2": 0.46,
+      "weight": 0.15,
+      "weighted_contribution": 10.049999999999999,
+      "resume_verified_count": 2,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 2150,
+            "relevance_note": "고객 피드백 분석을 통한 타겟 고객 이해",
+            "quality_score": 0.9,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+            "segment_id": 5,
+            "char_index": 2410,
+            "relevance_note": "구체적 수치로 결과 측정",
+            "quality_score": 0.85,
+            "char_length": 37,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "플래그십 스토어는 브랜드 이미지 중심으로 디자인 아이템 전면 배치, 볼륨 매장은 판매 효율 중심으로 베이직 전면 배치.",
+            "segment_id": 14,
+            "char_index": 2280,
+            "relevance_note": "매장 타입별 차별화 전략",
+            "quality_score": 0.9,
+            "char_length": 66,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 고객 분석→마케팅 실행→결과 확인의 기본 사이클 명확. 구체적 수치 2개(판매율 73%, 체류 시간 15% 증가). 온/오프라인 연계 경험 1개(매장 타입별 차별화). Quote 3개. 90-100점 기준(여정 단계별 차별화 전략)은 있으나 재구매 단계 전략 없음. Good 구간 상위권. 타겟 고객 정의 구체적하여 82점으로 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 고객 중심 사고, 채널 통합 의식 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '고객', '타겟', '경험', '여정' 등 고객 관련 표현 언급",
+              "segment_ids": [
+                5,
+                9,
+                10,
+                11,
+                12
+              ],
+              "evidence_type": "고객 중심 사고"
+            },
+            {
+              "description": "'고객 입장에서', '고객이 원하는' 같은 명시적 고객 중심 표현 4회",
+              "segment_ids": [
+                5,
+                9,
+                10,
+                12
+              ],
+              "evidence_type": "고객 중심 사고"
+            },
+            {
+              "description": "채널별 역할 구분('SNS는 인지, 매장은 체험') 3회",
+              "segment_ids": [
+                5,
+                9,
+                14
+              ],
+              "evidence_type": "통합적 사고"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 고객 여정 의식 명확, Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 관점 유지"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '고객', '타겟', '경험' 등 고객 관련 표현 언급. '고객 입장에서', '고객 여정' 같은 명시적 표현 4회. 채널별 역할('온라인은 인지, 오프라인은 체험') 구분 3회. '브랜드 일관성', '통합 메시지' 언급 2회. Case 질문에서 특히 고객 중심. Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 언급. 75-89점 기준 충족하여 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "unclear_target",
+            "description": "Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3450-3580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "타겟 고객을 구체적으로 정의 ('20대 후반 직장인 여성')",
+        "고객 여정 단계별 전략 (인지→고려→구매)",
+        "온/오프라인 채널 통합 의식 (SNS→매장 연계)",
+        "구체적 수치로 결과 측정 (판매율 73%, 체류 시간 15% 증가)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 타겟 불명확 ('모든 고객', Segment 11)",
+        "재구매 단계 전략 부족 (여정의 마지막 단계)",
+        "VMD 구체적 전략 (디스플레이, 동선 등) 언급 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 고객 여정 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (타겟→전략→결과)",
+        "채널 통합 경험 있으나 VMD는 제한적",
+        "고객 중심 사고가 일관적, 제품 중심 아님"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 85
+          },
+          {
+            "segment_id": 5,
+            "quote": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+            "resume_section": "projects",
+            "matched_content": "판매율 73%, 회전율 1.2회 달성",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 37
+          }
+        ]
+      }
+    },
+    "md_data_analysis": {
+      "overall_score": 85,
+      "confidence_v2": 0.54,
+      "weight": 0.15,
+      "weighted_contribution": 12.75,
+      "resume_verified_count": 0,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 85,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "먼저 전년 동기 대비 매출을 확인했는데, 상의 카테고리가 18% 증가했고",
+            "segment_id": 1,
+            "char_index": 150,
+            "relevance_note": "데이터 우선 사고, 구체적 수치(18%), 비교 분석(전년 대비)",
+            "quality_score": 0.95,
+            "char_length": 40,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "판매 상위 10개 SKU를 분석한 결과, 가격대 5-7만원 구간이 전체 매출의 42%를 차지했어요",
+            "segment_id": 5,
+            "char_index": 1580,
+            "relevance_note": "정량 분석, 구체적 수치(42%), 인사이트 도출",
+            "quality_score": 0.9,
+            "char_length": 54,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "이 데이터를 바탕으로 다음 시즌에는 5-7만원 상품 비중을 40%에서 50%로 늘리기로 결정했습니다",
+            "segment_id": 5,
+            "char_index": 1720,
+            "relevance_note": "데이터→의사결정 연결, MD 실행",
+            "quality_score": 0.85,
+            "char_length": 55,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 구체적 수치 포함 정량 분석 2개(전년 대비 18% 증가, 가격대별 매출 비중 42%), MD 의사결정 경험 1개(가격대 비중 조정). Quote 3개. 90-100점 기준(가설 검증 사이클)은 없으나, Good 구간 상위권. 데이터→인사이트→의사결정 연결 명확하여 85점으로 산정.",
+        "behavioral_score": 82,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 데이터 우선 사고, 구체적 수치 자주 언급",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '먼저 데이터 확인', '수치를 보니' 등으로 시작",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7,
+                9,
+                11
+              ],
+              "evidence_type": "데이터 우선 사고"
+            },
+            {
+              "description": "구체적 수치 4회 사용(매출 증가율 18%, 가격대 비중 42%, 재구매율 23%, 카테고리 비율 6:4)",
+              "segment_ids": [
+                1,
+                5,
+                7
+              ],
+              "evidence_type": "정량적 표현"
+            },
+            {
+              "description": "비교 분석 표현 5회(전년 대비, 카테고리별, 가격대별, 경쟁사 vs 자사, 시즌별)",
+              "segment_ids": [
+                1,
+                5,
+                7,
+                9
+              ],
+              "evidence_type": "비교 분석"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 데이터 중심 답변 명확, Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 데이터 우선 언급. 구체적 수치 4회 사용(매출 증가율, 판매량, 비율 등). '먼저 데이터 확인' 표현 3회, 비교 분석(전년 대비, 카테고리별) 5회. Case 질문에서 특히 데이터 중심 답변. Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시. 75-89점 기준 충족하여 82점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_evidence",
+            "description": "Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 2450-2580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "데이터 우선 사고가 명확함 (전체 질문의 75%)",
+        "구체적 수치를 자연스럽게 언급 (4회)",
+        "데이터→인사이트→의사결정 연결 습관",
+        "비교 분석 의식 (전년 대비, 카테고리별 등)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 데이터 언급 없이 추상적 설명 (Segment 8)",
+        "가설-검증 사이클 경험 부족",
+        "정성적 분석(트렌드 리서치)에서 구체성 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 데이터 기반 의사결정 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 정량적 접근 (매출, 판매량, 비율)",
+        "MD 경험은 제한적이나 데이터 사고방식은 우수",
+        "복잡한 분석보다 명확한 인사이트 도출에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 0,
+        "high_strength_count": 0,
+        "key_evidence": []
+      }
+    },
+    "seasonal_strategy_kpi": {
+      "overall_score": 83,
+      "confidence_v2": 0.54,
+      "weight": 0.1,
+      "weighted_contribution": 8.3,
+      "resume_verified_count": 3,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 83,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+            "segment_id": 1,
+            "char_index": 0,
+            "relevance_note": "목표 설정, 전략 수립, KPI 모니터링",
+            "quality_score": 0.9,
+            "char_length": 88,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "문제 발견, 원인 분석, 해결 액션",
+            "quality_score": 0.9,
+            "char_length": 71,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "문제 발견, 원인 분석, 해결 액션, 결과 확인",
+            "quality_score": 0.85,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 목표 설정→실행→모니터링→결과 확인의 기본 사이클 명확. 구체적 KPI 수치 2개(재고회전율 1.2, 마진율 38.5%). 문제 발견 후 대응 경험 1개(고객 리뷰 분석). Quote 3개. 90-100점 기준(Plan B 경험)은 없으나, Good 구간 상위권. 원인 분석→대응→결과 개선 논리적 흐름 명확하여 83점으로 산정.",
+        "behavioral_score": 80,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 목표 지향적 사고, 문제해결 논리 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '목표', '달성률', '체크' 등 목표 관련 표현 언급",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                6,
+                9
+              ],
+              "evidence_type": "목표 지향"
+            },
+            {
+              "description": "구체적 수치 목표 4회(재고회전율 1.2, 마진율 38.5%, 판매율 73%, 신규 고객 유입 20%)",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                13
+              ],
+              "evidence_type": "숫자 의식"
+            },
+            {
+              "description": "'주간 체크', '일일 확인' 같은 모니터링 표현 3회",
+              "segment_ids": [
+                1,
+                3,
+                5
+              ],
+              "evidence_type": "모니터링 습관"
+            },
+            {
+              "description": "문제→원인→해결 논리 2회 명확(고객 리뷰 분석, 신규 업체 전환)",
+              "segment_ids": [
+                3,
+                9
+              ],
+              "evidence_type": "문제해결"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 목표 지향적 답변 명확, Behavioral 질문에서는 정성적 설명 많으나 여전히 결과 확인 습관"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 목표 관련 표현 언급. 구체적 수치 목표 4회(재고회전율 1.2, 마진율 38.5%, 판매율 73%, 신규 고객 유입 20%). '주간 체크', '일일 확인' 같은 모니터링 표현 3회. 문제→원인→해결 논리 2회 명확. Case 질문에서 특히 목표 지향적. Behavioral 질문에서는 정성적 설명 많으나 여전히 결과 확인. 75-89점 기준 충족하여 80점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_goal",
+            "description": "Segment 9에서 '열심히 실행했다'고 했으나 구체적 목표 수치나 달성률 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 0"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '열심히 실행했다'고 했으나 구체적 목표 수치나 달성률 언급 없음, 목표 없는 실행(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "목표 지향적 사고가 명확함 (전체 질문의 75%)",
+        "문제→원인→해결→결과의 논리적 흐름 (2회)",
+        "구체적 KPI 수치 자연스럽게 언급 (4회)",
+        "주간/일일 모니터링 습관 (3회 언급)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 목표 없이 '열심히 했다' 수준",
+        "Plan B 또는 전략 수정 경험 부족",
+        "사후적 대응보다 선제적 모니터링 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 목표 관리 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 문제해결 논리",
+        "시즌 전략 경험은 제한적이나 기본 사이클 이해",
+        "복잡한 KPI보다 핵심 지표 관리에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 88
+          },
+          {
+            "segment_id": 3,
+            "quote": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+            "resume_section": "experience",
+            "matched_content": "마진율 35% → 38.5% 개선",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '마진율 35% → 38.5% 개선'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 71
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+            "resume_section": "projects",
+            "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 85
+          }
+        ]
+      }
+    },
+    "stakeholder_collaboration": {
+      "overall_score": 81,
+      "confidence_v2": 0.54,
+      "weight": 0.05,
+      "weighted_contribution": 4.05,
+      "resume_verified_count": 0,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 81,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+            "quality_score": 0.9,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "논리적 설득, 데이터 기반, 구체적 수치(40%)",
+            "quality_score": 0.9,
+            "char_length": 85,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "최종 합의안은 베이직 비율을 줄이되, 디자인 아이템에 포인트 컬러나 디테일을 가미해 브랜드 아이덴티티를 살리는 방식이었습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "Win-Win 합의, 절충안 도출",
+            "quality_score": 0.85,
+            "char_length": 70,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 충돌 인식→설득→합의의 기본 사이클 명확. 구체적 수치 2개(고객 리뷰 40%, 디자인 아이템 비율). 논리적 설득 경험 1개(디자인팀에 고객 리뷰 데이터 제시). Quote 3개. 90-100점 기준(2개 이상 이해관계자)은 있으나 결과 확인 미흡. Good 구간 상위권. 상대 입장 이해('디자인팀 우려') 명확하여 81점으로 산정.",
+        "behavioral_score": 78,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+              "segment_ids": [
+                5,
+                7,
+                9,
+                10,
+                11
+              ],
+              "evidence_type": "협업 의식"
+            },
+            {
+              "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+              "segment_ids": [
+                5,
+                9,
+                10
+              ],
+              "evidence_type": "설득 커뮤니케이션"
+            },
+            {
+              "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "균형 의식"
+            },
+            {
+              "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+              "segment_ids": [
+                11
+              ],
+              "evidence_type": "관계 중시"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득' 등 협업 관련 표현 언급. 경청→공감→논리 패턴 4회('먼저 들어보고'→'이해한다'→'데이터로 설명'). '양쪽 다', 'Win-Win' 같은 균형 표현 3회. '장기적 관계' 언급 2회. Case 질문에서 특히 논리적 설득 명확. Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 배려. 75-89점 기준 충족하여 78점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "one_sided_persuasion",
+            "description": "Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3520-3650"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "이해관계자 입장 파악 ('디자인팀 우려')",
+        "데이터 기반 논리적 설득 (고객 리뷰 40% 제시)",
+        "Win-Win 합의 도출 (디자인 아이템 비율 조정)",
+        "경청→공감→논리 패턴 (4회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 일방적 설득 강조 (Segment 11)",
+        "합의 후 결과/관계 확인 부족",
+        "2개 이상 이해관계자 동시 조정 경험 제한적"
+      ],
+      "key_observations": [
+        "신입 치고는 논리적 설득 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (충돌→입장→설득→합의)",
+        "상대 입장 이해 능력 우수 ('디자인팀 우려')",
+        "감정보다는 논리 우선, 데이터 활용"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 0,
+        "high_strength_count": 0,
+        "key_evidence": []
+      }
+    },
+    "value_chain_optimization": {
+      "overall_score": 84,
+      "confidence_v2": 0.54,
+      "weight": 0.05,
+      "weighted_contribution": 4.2,
+      "resume_verified_count": 3,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 84,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "재고회전율을 0.8에서 1.2로 50% 개선",
+            "segment_id": 1,
+            "char_index": 0,
+            "relevance_note": "재고 관리 최적화, 구체적 수치(50% 개선)",
+            "quality_score": 0.9,
+            "char_length": 24,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "마진율을 35%에서 38.5%로 개선",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "마진 관리, 구체적 수치(35%→38.5%)",
+            "quality_score": 0.85,
+            "char_length": 20,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "소재비를 42%에서 35%로 절감",
+            "segment_id": 3,
+            "char_index": 0,
+            "relevance_note": "원가 절감, 구체적 수치(42%→35%)",
+            "quality_score": 0.9,
+            "char_length": 18,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 원가 분석→개선→결과 확인의 기본 사이클 명확. 구체적 수치 3개(재고회전율 50% 개선, 마진율 35%→38.5%, 소재비 42%→35%). 소싱 최적화 경험 1개(소재비 절감). Quote 3개. 90-100점 기준(밸류체인 2개 영역)은 없으나, Good 구간 상위권. 품질-비용 균형 고려하여 84점으로 산정.",
+        "behavioral_score": 81,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 원가 의식, 효율화 지향적 사고 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+              "segment_ids": [
+                1,
+                3,
+                5,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "원가 의식"
+            },
+            {
+              "description": "구체적 수치 4회(재고회전율 50% 개선, 마진율 35%→38.5%, 소재비 42%→35%)",
+              "segment_ids": [
+                1,
+                3
+              ],
+              "evidence_type": "숫자 의식"
+            },
+            {
+              "description": "'품질 유지하면서', '효율화', '최적화' 같은 균형 표현 3회",
+              "segment_ids": [
+                3,
+                5
+              ],
+              "evidence_type": "품질-비용 균형"
+            },
+            {
+              "description": "비교 표현 5회(업체 비교, 소재 비교, 기존 대비, 원가율 비교, 마진 비교)",
+              "segment_ids": [
+                3,
+                7,
+                8
+              ],
+              "evidence_type": "비교 분석"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 원가 민감도 높음, Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식 명확"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 원가/비용 관련 표현 언급. 구체적 수치 4회(재고회전율 50% 개선, 마진율 38.5%, 소재비 35%). '품질 유지하면서', '효율화' 같은 최적화 표현 3회. 비교 표현 5회(업체 A vs B, 기존 대비, 소재 비교). Case 질문에서 특히 원가 민감. Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식. 75-89점 기준 충족하여 81점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_cost_detail",
+            "description": "Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 10, char_index: 3120-3260"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "원가 의식이 명확함 (전체 질문의 75%)",
+        "품질-비용 균형 고려 ('품질 유지하면서')",
+        "구체적 수치로 결과 측정 (재고회전율 50% 개선, 마진 3.5%p 개선)",
+        "비교 분석 습관 (업체 비교, 소재 비교 등 5회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 구체적 수치 없이 추상적 언급 (Segment 10)",
+        "밸류체인 전체보다는 특정 영역(소싱) 집중",
+        "프로세스 개선 경험 (리드타임 단축 등) 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 원가 구조 이해도 높음 (상위 30% 추정)",
+        "Case 질문에서 특히 원가 민감도와 효율화 의식",
+        "소싱 영역에서 최적화 경험, 다른 영역은 제한적",
+        "품질 균형 고려하는 성숙한 사고 (무조건 싸게 X)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "재고회전율을 0.8에서 1.2로 50% 개선",
+            "resume_section": "experience",
+            "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 24
+          },
+          {
+            "segment_id": 3,
+            "quote": "마진율을 35%에서 38.5%로 개선",
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 20
+          },
+          {
+            "segment_id": 3,
+            "quote": "소재비를 42%에서 35%로 절감",
+            "resume_section": "experience",
+            "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+            "char_index": null,
+            "char_length": 18
+          }
+        ]
+      }
+    }
+  },
+  "low_confidence_summary": {
+    "total_low_confidence": 10,
+    "competencies": [
+      "achievement_motivation",
+      "growth_potential",
+      "interpersonal_skill",
+      "organizational_fit",
+      "problem_solving",
+      "customer_journey_marketing",
+      "md_data_analysis",
+      "seasonal_strategy_kpi",
+      "stakeholder_collaboration",
+      "value_chain_optimization"
+    ],
+    "details": [
+      {
+        "competency": "achievement_motivation",
+        "score": 85,
+        "confidence_v2": 0.51,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "growth_potential",
+        "score": 83,
+        "confidence_v2": 0.51,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "interpersonal_skill",
+        "score": 82,
+        "confidence_v2": 0.51,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "organizational_fit",
+        "score": 86,
+        "confidence_v2": 0.52,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "problem_solving",
+        "score": 86,
+        "confidence_v2": 0.51,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "customer_journey_marketing",
+        "score": 67,
+        "confidence_v2": 0.46,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "md_data_analysis",
+        "score": 85,
+        "confidence_v2": 0.54,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "seasonal_strategy_kpi",
+        "score": 83,
+        "confidence_v2": 0.54,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "stakeholder_collaboration",
+        "score": 81,
+        "confidence_v2": 0.54,
+        "reason": "low_confidence_after_aggregation"
+      },
+      {
+        "competency": "value_chain_optimization",
+        "score": 84,
+        "confidence_v2": 0.54,
+        "reason": "low_confidence_after_aggregation"
+      }
+    ]
+  },
+  "collaboration_summary": {
+    "total_collaborations": 0,
+    "competencies_adjusted": [],
+    "adjustments": []
+  },
+  "presentation_result": {
+    "overall_summary": {
+      "final_score": 81.5,
+      "avg_confidence": 0.51,
+      "reliability": {
+        "level": "low",
+        "level_display": "낮음",
+        "avg_confidence": 0.51,
+        "note": "평균 Confidence V2: 0.51 | Low Confidence 역량: 10개 |   - achievement_motivation: 0.51 |   - growth_potential: 0.51 |   - interpersonal_skill: 0.51 |   - organizational_fit: 0.52 |   - problem_solving: 0.51 |   - customer_journey_marketing: 0.46 |   - md_data_analysis: 0.54 |   - seasonal_strategy_kpi: 0.54 |   - stakeholder_collaboration: 0.54 |   - value_chain_optimization: 0.54"
+      },
+      "overall_evaluation_summary": "지원자는 패션 MD 직무에 필요한 대부분의 역량을 고르게 갖추고 있습니다. 특히 성취 동기와 문제 해결 능력이 우수하며, Resume에서도 관련 프로젝트 경험이 다수 확인되어 신뢰도가 높습니다. 고객 여정 마케팅 및 데이터 분석 능력도 양호하여 데이터 기반 의사결정이 가능할 것으로 보입니다. 다만 고객 여정 마케팅과 유관부서 협업 역량에서 다소 보완이 필요하며, 팀 문화 적응 및 이해관계자 조정에 시간이 필요할 수 있습니다. 전반적으로 신입 기준 상위권 수준이며, 입사 후 체계적인 교육과 멘토링을 통해 빠른 성장이 기대됩니다."
+    },
+    "score_breakdown": {
+      "final_score": 81.5,
+      "job_score": 78.7,
+      "common_score": 84.4,
+      "job_competencies": [
+        "customer_journey_marketing",
+        "md_data_analysis",
+        "seasonal_strategy_kpi",
+        "stakeholder_collaboration",
+        "value_chain_optimization"
+      ],
+      "common_competencies": [
+        "achievement_motivation",
+        "growth_potential",
+        "interpersonal_skill",
+        "organizational_fit",
+        "problem_solving"
+      ]
+    },
+    "competency_scores": [
+      {
+        "competency": "md_data_analysis",
+        "score": 85,
+        "weight": 0.15,
+        "contribution": 12.75,
+        "confidence_v2": 0.54
+      },
+      {
+        "competency": "customer_journey_marketing",
+        "score": 67,
+        "weight": 0.15,
+        "contribution": 10.05,
+        "confidence_v2": 0.46
+      },
+      {
+        "competency": "organizational_fit",
+        "score": 86,
+        "weight": 0.1,
+        "contribution": 8.6,
+        "confidence_v2": 0.52
+      },
+      {
+        "competency": "problem_solving",
+        "score": 86,
+        "weight": 0.1,
+        "contribution": 8.6,
+        "confidence_v2": 0.51
+      },
+      {
+        "competency": "achievement_motivation",
+        "score": 85,
+        "weight": 0.1,
+        "contribution": 8.5,
+        "confidence_v2": 0.51
+      },
+      {
+        "competency": "growth_potential",
+        "score": 83,
+        "weight": 0.1,
+        "contribution": 8.3,
+        "confidence_v2": 0.51
+      },
+      {
+        "competency": "seasonal_strategy_kpi",
+        "score": 83,
+        "weight": 0.1,
+        "contribution": 8.3,
+        "confidence_v2": 0.54
+      },
+      {
+        "competency": "interpersonal_skill",
+        "score": 82,
+        "weight": 0.1,
+        "contribution": 8.2,
+        "confidence_v2": 0.51
+      },
+      {
+        "competency": "value_chain_optimization",
+        "score": 84,
+        "weight": 0.05,
+        "contribution": 4.2,
+        "confidence_v2": 0.54
+      },
+      {
+        "competency": "stakeholder_collaboration",
+        "score": 81,
+        "weight": 0.05,
+        "contribution": 4.05,
+        "confidence_v2": 0.54
+      }
+    ],
+    "competency_details": {
+      "achievement_motivation": {
+        "competency_display_name": "성취/동기 역량",
+        "overall_score": 85,
+        "confidence_v2": 0.51,
+        "strengths": [
+          "자발적이고 주도성이 높습니다.",
+          "도전적인 목표를 설정하고 끝까지 완수합니다.",
+          "내적 동기가 명확합니다.",
+          "실패 후에도 재도전하는 끈기가 있습니다."
+        ],
+        "weaknesses": [
+          "일부 상황에서 도전을 회피합니다.",
+          "프로젝트 완수율이 다소 낮습니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 자발성을 보입니다.",
+          "고객 피드백을 반영한 데이터 분석 능력이 뛰어납니다.",
+          "모든 프로젝트에서 일관된 '먼저' 시작 패턴을 보입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 재고회전율 개선 프로젝트에서 판매, 재고, 트렌드 데이터를 분석하여 체계를 구축했습니다. 이는 주도성과 내적 동기를 보여주는 사례로, 데이터 분석에 대한 높은 관심을 나타냅니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "char_length": 47,
+            "impact": "positive",
+            "evidence_type": "주도성, 내적 동기"
+          },
+          {
+            "summary": "지원자는 신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다. 이는 높은 목표를 설정하고 책임감을 가지고 품질 관리를 수행한 사례입니다.",
+            "segment_id": 3,
+            "char_index": 150,
+            "char_length": 31,
+            "impact": "positive",
+            "evidence_type": "책임감, 목표 설정"
+          },
+          {
+            "summary": "지원자는 고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다. 이는 고객 피드백을 반영하려는 주도적인 태도를 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 350,
+            "char_length": 32,
+            "impact": "positive",
+            "evidence_type": "주도성, 고객 피드백"
+          },
+          {
+            "summary": "지원자는 F/W 시즌 론칭 때 팀을 동기부여하고 유지했습니다. 이는 팀 관리에 대한 책임감과 몰입을 보여주는 사례입니다.",
+            "segment_id": 12,
+            "char_index": 400,
+            "char_length": 29,
+            "impact": "positive",
+            "evidence_type": "책임감, 팀 관리"
+          },
+          {
+            "summary": "지원자는 동아리 활동 선택 시 '어려운 건 피하고 쉬운 걸로 선택했다'고 언급했습니다. 이는 일부 상황에서 도전을 회피하는 경향을 시사합니다.",
+            "segment_id": 9,
+            "char_index": 3450,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "도전 회피"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 3,
+          "high_strength_count": 3,
+          "key_evidence": [
+            {
+              "segment_id": 1,
+              "quote": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+              "resume_section": "experience",
+              "matched_content": "여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당'으로 언급하며, '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 강조하고 있습니다. 이 내용이 면접 답변과 일치하므로 검증 강도는 high입니다. 또한, 프로젝트의 성과로 재고회전율 개선이 명시되어 있어 일관성이 있습니다.",
+              "char_index": null,
+              "char_length": 47
+            },
+            {
+              "segment_id": 3,
+              "quote": "신규 업체 3곳을 테스트하여 품질 리스크를 관리했습니다.",
+              "resume_section": "experience",
+              "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 31
+            },
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다.",
+              "resume_section": "projects",
+              "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 32
+            }
+          ]
+        }
+      },
+      "growth_potential": {
+        "competency_display_name": "성장 잠재력",
+        "overall_score": 83,
+        "confidence_v2": 0.51,
+        "strengths": [
+          "학습 민첩성이 뛰어납니다.",
+          "실패를 학습 기회로 인식하는 회복력이 있습니다.",
+          "구체적인 개선 계획을 세우고 있습니다.",
+          "모든 학습에서 능동적입니다."
+        ],
+        "weaknesses": [
+          "초기 자기 인식이 다소 추상적입니다.",
+          "실패 경험이 제한적입니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 성장 마인드를 보입니다.",
+          "모든 학습에서 일관된 능동적 태도를 보입니다.",
+          "자기 반성의 습관이 잘 형성되어 있습니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 데이터 분석을 3주 만에 독학했습니다. Python 책과 유튜브, 실습 프로젝트를 통해 학습한 점은 높은 학습 민첩성을 보여줍니다.",
+            "segment_id": 3,
+            "char_index": 1200,
+            "char_length": 44,
+            "impact": "positive",
+            "evidence_type": "학습 민첩성"
+          },
+          {
+            "summary": "지원자는 공모전에서 떨어졌을 때 피드백을 받아 약점을 보완했습니다. 이는 실패에 대한 회복력과 자기 개선 의지를 보여줍니다.",
+            "segment_id": 6,
+            "char_index": 2400,
+            "char_length": 41,
+            "impact": "positive",
+            "evidence_type": "회복력"
+          },
+          {
+            "summary": "지원자는 자신의 강점과 약점을 명확히 인식하고 있으며, 약점을 보완하기 위한 구체적인 개선 계획을 세우고 있습니다.",
+            "segment_id": 9,
+            "char_index": 3500,
+            "char_length": 49,
+            "impact": "positive",
+            "evidence_type": "메타인지"
+          },
+          {
+            "summary": "지원자는 '노력하면 개선할 수 있다'고 믿고 있으며, 과거의 부족함을 극복하고 현재의 성장을 강조했습니다.",
+            "segment_id": 11,
+            "char_index": 4200,
+            "char_length": 44,
+            "impact": "positive",
+            "evidence_type": "성장 마인드"
+          },
+          {
+            "summary": "지원자는 초기 자기 인식이 다소 추상적이었으며, 구체화하는 데 시간이 필요했습니다. 이는 자기 인식의 깊이가 부족함을 나타냅니다.",
+            "segment_id": 8,
+            "char_index": 3100,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "자기 인식 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 1,
+          "high_strength_count": 0,
+          "key_evidence": [
+            {
+              "segment_id": 9,
+              "quote": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+              "resume_section": "skills",
+              "matched_content": "Excel (고급), Tableau, Google Analytics",
+              "verification_strength": "medium",
+              "reasoning": "지원자는 Resume의 'skills' 섹션에서 '데이터 분석' 관련 기술을 보유하고 있으며, 데이터 수집 및 분석에 대한 언급이 있습니다. 그러나 인사이트 도출에 대한 구체적인 경험은 명시되어 있지 않아 medium으로 평가합니다.",
+              "char_index": null,
+              "char_length": 49
+            }
+          ]
+        }
+      },
+      "interpersonal_skill": {
+        "competency_display_name": "대인관계 역량",
+        "overall_score": 82,
+        "confidence_v2": 0.51,
+        "strengths": [
+          "갈등 해결 능력이 뛰어납니다.",
+          "경청과 이해를 중시합니다.",
+          "협업을 위한 배려가 있습니다.",
+          "효과적인 커뮤니케이션 능력이 있습니다."
+        ],
+        "weaknesses": [
+          "일부 상황에서 갈등을 회피합니다.",
+          "갈등 복잡도가 중상 수준입니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 경청 능력을 보입니다.",
+          "모든 팀 관계에서 일관된 경청 패턴을 보입니다.",
+          "팀 우선 태도가 행동으로 잘 나타납니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 디자인팀에서 갈등이 발생했을 때 고객 리뷰 분석 결과를 공유하여 중재했습니다. 이는 갈등 해결 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 136,
+            "impact": "positive",
+            "evidence_type": "갈등 해결"
+          },
+          {
+            "summary": "지원자는 팀원들의 의견을 경청하고, 그들의 입장을 이해하려고 노력했습니다. 이는 협업을 중시하는 태도를 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "char_length": 56,
+            "impact": "positive",
+            "evidence_type": "경청"
+          },
+          {
+            "summary": "지원자는 팀원 중 한 명이 힘들어할 때 그 파트를 도와주었습니다. 이는 배려와 협업의 중요성을 잘 이해하고 있음을 나타냅니다.",
+            "segment_id": 11,
+            "char_index": 0,
+            "char_length": 32,
+            "impact": "positive",
+            "evidence_type": "협업"
+          },
+          {
+            "summary": "지원자는 진행 상황을 매일 시각화하여 팀원들에게 공유했습니다. 이는 효과적인 커뮤니케이션을 통해 팀의 막막함을 줄이는 데 기여했습니다.",
+            "segment_id": 12,
+            "char_index": 0,
+            "char_length": 87,
+            "impact": "positive",
+            "evidence_type": "커뮤니케이션"
+          },
+          {
+            "summary": "지원자는 불편한 팀원 한 명을 피했다고 언급했습니다. 이는 일부 상황에서 갈등을 회피하는 경향을 보여줍니다.",
+            "segment_id": 8,
+            "char_index": 0,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "갈등 회피"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "디자인팀에서 처음에 '베이직 비중을 줄이면 브랜드가 평범해진다'는 우려가 있었습니다. 저는 고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+              "resume_section": "projects",
+              "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 136
+            },
+            {
+              "segment_id": 9,
+              "quote": "저는 먼저 리뷰를 카테고리별로 분류하고, 재구매 고객과 첫 구매 고객의 리뷰를 분리해서 분석했습니다.",
+              "resume_section": "projects",
+              "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 언급하며, 리뷰 분석 방법에 대한 구체적인 내용이 포함되어 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 56
+            }
+          ]
+        }
+      },
+      "organizational_fit": {
+        "competency_display_name": "조직 적합성",
+        "overall_score": 86,
+        "confidence_v2": 0.52,
+        "strengths": [
+          "고객 중심의 사고가 뚜렷합니다.",
+          "피드백을 긍정적으로 수용합니다.",
+          "마감 압박에 대한 긍정적인 태도를 보입니다.",
+          "겸손한 태도가 인상적입니다."
+        ],
+        "weaknesses": [
+          "과거 낮은 기준 의식을 보였습니다.",
+          "비판 수용 시 초기 불편함을 표현했습니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 패션 MD 문화 이해도를 보입니다.",
+          "피드백을 성장 기회로 인식하는 태도가 있습니다.",
+          "모든 프로젝트에서 일관된 시즌 목표 의식을 보입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 고객이 원하는 것을 빠르게 파악하는 것이 MD의 핵심이라고 생각하며, 고객 반응을 먼저 확인했습니다. 이는 고객 중심의 사고를 잘 보여줍니다.",
+            "segment_id": 4,
+            "char_index": 1800,
+            "char_length": 60,
+            "impact": "positive",
+            "evidence_type": "고객 중심"
+          },
+          {
+            "summary": "지원자는 비판을 수용하고 상품 믹스를 전면 수정하여 개선했습니다. 이는 피드백을 긍정적으로 받아들이는 태도를 보여줍니다.",
+            "segment_id": 6,
+            "char_index": 2400,
+            "char_length": 40,
+            "impact": "positive",
+            "evidence_type": "피드백 수용"
+          },
+          {
+            "summary": "지원자는 시즌 런칭 3일 전부터 밤샘하며 목표 달성을 위해 노력했습니다. 이는 마감 압박에 긍정적인 태도를 보이는 사례입니다.",
+            "segment_id": 8,
+            "char_index": 3200,
+            "char_length": 43,
+            "impact": "positive",
+            "evidence_type": "마감 압박 대응"
+          },
+          {
+            "summary": "지원자는 좋은 결과는 팀 덕분이라고 언급하며, 부족한 부분은 자신이 더 노력해야 한다고 겸손하게 표현했습니다.",
+            "segment_id": 10,
+            "char_index": 3800,
+            "char_length": 35,
+            "impact": "positive",
+            "evidence_type": "겸손"
+          },
+          {
+            "summary": "지원자는 과거에 '80% 완성도면 충분하다고 생각했다'고 언급했습니다. 이는 낮은 기준 의식을 보여주는 사례입니다.",
+            "segment_id": 8,
+            "char_index": 3150,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "기준 의식 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 1,
+          "high_strength_count": 1,
+          "key_evidence": [
+            {
+              "segment_id": 4,
+              "quote": "고객이 원하는 걸 빠르게 파악하는 게 MD의 핵심이라고 생각해요. 그래서 항상 고객 반응을 먼저 확인했습니다",
+              "resume_section": "experience",
+              "matched_content": "판매 데이터 분석",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매 데이터 분석'을 통해 고객 반응을 확인하는 중요성을 강조하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 60
+            }
+          ]
+        }
+      },
+      "problem_solving": {
+        "competency_display_name": "문제 해결",
+        "overall_score": 86,
+        "confidence_v2": 0.51,
+        "strengths": [
+          "문제 복잡도를 잘 이해하고 있습니다.",
+          "구조적 분석 능력이 뛰어납니다.",
+          "리스크 관리에 대한 경험이 있습니다.",
+          "데이터 기반 의사결정 능력이 있습니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 실현 가능성 검토가 부족합니다.",
+          "구조적 분석 깊이가 제한적입니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 구조적 사고 능력을 보입니다.",
+          "문제 정의에서 원인 분석까지의 일관된 프로세스를 갖추고 있습니다.",
+          "창의성과 실행 가능성을 균형 있게 고려합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 판매, 재고, 트렌드 데이터를 분석하여 문제를 구조적으로 접근했습니다. 이는 높은 문제 해결 능력을 보여줍니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "char_length": 31,
+            "impact": "positive",
+            "evidence_type": "구조적 분석"
+          },
+          {
+            "summary": "지원자는 안전재고 수준을 카테고리별로 차등 설정하여 문제를 해결했습니다. 이는 구조적 접근과 실행 가능성을 고려한 사례입니다.",
+            "segment_id": 2,
+            "char_index": 150,
+            "char_length": 26,
+            "impact": "positive",
+            "evidence_type": "구조적 접근"
+          },
+          {
+            "summary": "지원자는 신규 업체 3곳을 테스트하며 품질 리스크를 관리했습니다. 이는 단계적 접근을 통해 리스크를 최소화한 사례입니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "char_length": 59,
+            "impact": "positive",
+            "evidence_type": "리스크 관리"
+          },
+          {
+            "summary": "지원자는 고객 리뷰 300개를 분석하여 데이터 기반으로 설득했습니다. 이는 고객 피드백을 분석하여 문제를 해결한 사례입니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "char_length": 27,
+            "impact": "positive",
+            "evidence_type": "데이터 기반 설득"
+          },
+          {
+            "summary": "지원자는 '일단 해보면 될 것 같다'고 언급하며 실현 가능성 검토 없이 솔루션을 제시했습니다. 이는 실행 고려가 부족한 사례입니다.",
+            "segment_id": 6,
+            "char_index": 2400,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "실행 가능성 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 3,
+          "high_strength_count": 3,
+          "key_evidence": [
+            {
+              "segment_id": 1,
+              "quote": "판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+              "resume_section": "experience",
+              "matched_content": "판매/재고/트렌드 3축 데이터 분석 체계 구축",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '판매/재고/트렌드 3축 데이터 분석 체계 구축'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 31
+            },
+            {
+              "segment_id": 3,
+              "quote": "신규 업체 3곳을 테스트했습니다. 품질 리스크 관리를 위해 샘플 100장 단위로 품질 검수를 진행했습니다.",
+              "resume_section": "experience",
+              "matched_content": "신규 업체 테스트 및 품질/리드타임 검증 주도",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '신규 업체 테스트 및 품질/리드타임 검증 주도'라는 내용을 통해 신규 업체 테스트와 품질 리스크 관리 경험을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 59
+            },
+            {
+              "segment_id": 5,
+              "quote": "고객 리뷰 300개를 분석한 결과를 공유했습니다.",
+              "resume_section": "projects",
+              "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 '고객 리뷰 300개 분석 기반 디자인 방향 제시'라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 27
+            }
+          ]
+        }
+      },
+      "customer_journey_marketing": {
+        "competency_display_name": "고객 여정 마케팅",
+        "overall_score": 67,
+        "confidence_v2": 0.46,
+        "strengths": [
+          "타겟 고객을 구체적으로 정의할 수 있습니다.",
+          "고객 여정 단계별 전략을 수립합니다.",
+          "온/오프라인 채널 통합 의식이 있습니다.",
+          "구체적 수치로 결과를 측정합니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 타겟이 불명확합니다.",
+          "재구매 단계 전략이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 고객 여정 의식을 보입니다.",
+          "체계적인 사고를 통해 고객 경험을 최적화할 수 있습니다.",
+          "고객 중심 사고가 일관적으로 나타납니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 고객 리뷰 300개를 분석하여 타겟 고객의 피드백을 이해했습니다. 이는 고객 중심의 마케팅 전략을 수립하는 데 기여했습니다.",
+            "segment_id": 5,
+            "char_index": 2150,
+            "char_length": 85,
+            "impact": "positive",
+            "evidence_type": "고객 피드백 분석"
+          },
+          {
+            "summary": "지원자는 판매율이 73%까지 올라갔다는 구체적인 수치를 통해 마케팅의 결과를 측정했습니다. 이는 효과적인 결과 확인 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 2410,
+            "char_length": 37,
+            "impact": "positive",
+            "evidence_type": "결과 측정"
+          },
+          {
+            "summary": "지원자는 플래그십 스토어와 볼륨 매장에서 각각의 차별화 전략을 수립했습니다. 이는 매장 타입별로 고객 경험을 최적화하려는 노력을 보여줍니다.",
+            "segment_id": 14,
+            "char_index": 2280,
+            "char_length": 66,
+            "impact": "positive",
+            "evidence_type": "차별화 전략"
+          },
+          {
+            "summary": "지원자는 '모든 고객을 위한 이벤트'라고 언급하며 타겟이 불명확하다는 점을 드러냈습니다. 이는 마케팅 전략의 명확성이 부족함을 나타냅니다.",
+            "segment_id": 11,
+            "char_index": 3450,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "타겟 불명확"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "고객 리뷰 300개를 분석한 결과를 공유했는데, '디자인이 좋지만 입을 데가 없다', '너무 튀어서 데일리로 안 맞다'는 피드백이 40% 이상이었습니다.",
+              "resume_section": "projects",
+              "matched_content": "판매율 73%, 회전율 1.2회 달성",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 85
+            },
+            {
+              "segment_id": 5,
+              "quote": "결과적으로 판매율이 73%까지 올라가면서 디자인팀도 납득하셨습니다.",
+              "resume_section": "projects",
+              "matched_content": "판매율 73%, 회전율 1.2회 달성",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 '판매율 73%, 회전율 1.2회 달성'이라는 성과를 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 37
+            }
+          ]
+        }
+      },
+      "md_data_analysis": {
+        "competency_display_name": "MD 데이터 분석",
+        "overall_score": 85,
+        "confidence_v2": 0.54,
+        "strengths": [
+          "데이터 기반 사고가 명확합니다.",
+          "구체적 수치를 자연스럽게 언급합니다.",
+          "데이터에서 인사이트를 도출하는 능력이 뛰어납니다.",
+          "비교 분석 능력이 있습니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 데이터 언급 없이 추상적 설명을 합니다.",
+          "가설-검증 사이클 경험이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 데이터 기반 의사결정 능력을 보입니다.",
+          "정량적 접근이 잘 이루어집니다.",
+          "복잡한 분석보다 명확한 인사이트 도출에 강점이 있습니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 전년 동기 대비 매출을 확인하여 상의 카테고리가 18% 증가했음을 분석했습니다. 이는 데이터 기반의 사고를 잘 보여줍니다.",
+            "segment_id": 1,
+            "char_index": 150,
+            "char_length": 40,
+            "impact": "positive",
+            "evidence_type": "데이터 분석"
+          },
+          {
+            "summary": "판매 상위 10개 SKU를 분석하여 가격대 5-7만원 구간이 전체 매출의 42%를 차지한다는 인사이트를 도출했습니다. 이는 정량 분석 능력이 뛰어남을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 1580,
+            "char_length": 54,
+            "impact": "positive",
+            "evidence_type": "정량 분석"
+          },
+          {
+            "summary": "이 데이터를 바탕으로 다음 시즌에는 5-7만원 상품 비중을 40%에서 50%로 늘리기로 결정했습니다. 이는 데이터 기반 의사결정 능력을 잘 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 1720,
+            "char_length": 55,
+            "impact": "positive",
+            "evidence_type": "의사결정"
+          },
+          {
+            "summary": "지원자는 '매출 데이터 심층 분석'이라고 언급했으나 구체적 수치를 제시하지 않았습니다. 이는 데이터에 대한 구체성이 부족함을 나타냅니다.",
+            "segment_id": 8,
+            "char_index": 2450,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "구체성 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 0,
+          "high_strength_count": 0,
+          "key_evidence": []
+        }
+      },
+      "seasonal_strategy_kpi": {
+        "competency_display_name": "시즌 전략 KPI",
+        "overall_score": 83,
+        "confidence_v2": 0.54,
+        "strengths": [
+          "목표 지향적 사고가 뚜렷합니다.",
+          "문제 해결 논리의 흐름이 명확합니다.",
+          "구체적 KPI 수치를 자연스럽게 언급합니다.",
+          "모니터링 습관이 잘 형성되어 있습니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 목표 없이 실행한 사례가 있습니다.",
+          "Plan B 또는 전략 수정 경험이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 목표 관리 의식을 보입니다.",
+          "문제 해결 논리에서 체계적인 접근이 이루어집니다.",
+          "핵심 지표 관리에 강점을 보입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 재고회전율을 0.8에서 1.2로 50% 개선했다고 언급했습니다. 이는 목표 설정과 KPI 모니터링 능력을 보여줍니다.",
+            "segment_id": 1,
+            "char_index": 0,
+            "char_length": 88,
+            "impact": "positive",
+            "evidence_type": "목표 설정"
+          },
+          {
+            "summary": "지원자는 마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 했습니다. 이는 문제 발견과 원인 분석 능력을 보여줍니다.",
+            "segment_id": 3,
+            "char_index": 0,
+            "char_length": 71,
+            "impact": "positive",
+            "evidence_type": "문제 해결"
+          },
+          {
+            "summary": "지원자는 고객 리뷰 300개를 분석하여 디자인 방향을 제시했습니다. 이는 문제 발견과 해결 액션을 잘 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "char_length": 85,
+            "impact": "positive",
+            "evidence_type": "문제 해결"
+          },
+          {
+            "summary": "지원자는 '열심히 실행했다'고 언급했으나 구체적 목표 수치나 달성률을 언급하지 않았습니다. 이는 목표 없는 실행을 나타냅니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "목표 불명확"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 3,
+          "high_strength_count": 3,
+          "key_evidence": [
+            {
+              "segment_id": 1,
+              "quote": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데, 어떤 데이터 분석 프레임워크를 사용했고, 그 과정에서 판매 기회 손실이나 품절 리스크는 없었나요?",
+              "resume_section": "experience",
+              "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 88
+            },
+            {
+              "segment_id": 3,
+              "quote": "마진율을 35%에서 38.5%로 개선하면서 신규 업체로 전환했다고 하셨는데, 품질 저하나 납기 지연 리스크는 어떻게 관리했나요?",
+              "resume_section": "experience",
+              "matched_content": "마진율 35% → 38.5% 개선",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '마진율 35% → 38.5% 개선'을 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 71
+            },
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 300개를 분석해서 '심심하다'는 피드백을 근거로 디자인 방향을 제시했다고 하셨는데, 처음에 팀 내 반응은 어땠고 어떻게 공감을 이끌어냈나요?",
+              "resume_section": "projects",
+              "matched_content": "고객 리뷰 300개 분석 기반 디자인 방향 제시",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 고객 리뷰 분석을 통한 디자인 방향 제시를 명확히 언급하고 있습니다. 이 내용은 면접 질문과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 85
+            }
+          ]
+        }
+      },
+      "stakeholder_collaboration": {
+        "competency_display_name": "이해관계자 협업",
+        "overall_score": 81,
+        "confidence_v2": 0.54,
+        "strengths": [
+          "이해관계자 입장을 잘 파악합니다.",
+          "데이터 기반의 논리적 설득 능력이 뛰어납니다.",
+          "Win-Win 합의를 도출할 수 있습니다.",
+          "경청과 공감 능력이 있습니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 일방적 설득을 강조합니다.",
+          "합의 후 결과 확인이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 논리적 설득 능력을 보입니다.",
+          "충돌 인식 후 설득의 체계적인 접근이 이루어집니다.",
+          "상대 입장 이해 능력이 우수합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 디자인팀에서 갈등이 발생했을 때 각 부서의 입장을 이해하고 충돌을 인식했습니다. 이는 이해관계자 파악 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 47,
+            "impact": "positive",
+            "evidence_type": "이해관계자 파악"
+          },
+          {
+            "summary": "지원자는 고객 리뷰 분석 결과를 공유하여 논리적으로 설득했습니다. 이는 데이터 기반의 설득 능력을 잘 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 85,
+            "impact": "positive",
+            "evidence_type": "논리적 설득"
+          },
+          {
+            "summary": "지원자는 최종 합의안을 도출하여 Win-Win의 결과를 이끌어냈습니다. 이는 협업의 중요성을 잘 이해하고 있음을 나타냅니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 70,
+            "impact": "positive",
+            "evidence_type": "합의 도출"
+          },
+          {
+            "summary": "지원자는 '제가 설득에 성공했다'고 언급하며 일방적 설득을 강조했습니다. 이는 상대 입장을 고려하지 않는 경향을 보여줍니다.",
+            "segment_id": 11,
+            "char_index": 3520,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "상대 입장 무시"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 0,
+          "high_strength_count": 0,
+          "key_evidence": []
+        }
+      },
+      "value_chain_optimization": {
+        "competency_display_name": "가치사슬 최적화",
+        "overall_score": 84,
+        "confidence_v2": 0.54,
+        "strengths": [
+          "원가 의식이 뚜렷합니다.",
+          "품질-비용 균형을 고려합니다.",
+          "구체적 수치로 결과를 측정합니다.",
+          "비교 분석 능력이 뛰어납니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 구체적 수치 없이 추상적 언급을 합니다.",
+          "밸류체인 전체보다는 특정 영역에 집중합니다."
+        ],
+        "key_observations": [
+          "신입 기준 상위 30% 수준의 원가 구조 이해도를 보입니다.",
+          "원가 민감도와 효율화 의식이 높습니다.",
+          "품질 균형을 고려하는 성숙한 사고를 보입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 재고회전율을 0.8에서 1.2로 50% 개선했습니다. 이는 재고 관리 최적화 능력을 보여줍니다.",
+            "segment_id": 1,
+            "char_index": 0,
+            "char_length": 24,
+            "impact": "positive",
+            "evidence_type": "재고 관리"
+          },
+          {
+            "summary": "지원자는 마진율을 35%에서 38.5%로 개선했습니다. 이는 마진 관리 능력이 뛰어남을 나타냅니다.",
+            "segment_id": 3,
+            "char_index": 0,
+            "char_length": 20,
+            "impact": "positive",
+            "evidence_type": "마진 관리"
+          },
+          {
+            "summary": "지원자는 소재비를 42%에서 35%로 절감했습니다. 이는 원가 절감 능력을 잘 보여줍니다.",
+            "segment_id": 3,
+            "char_index": 0,
+            "char_length": 18,
+            "impact": "positive",
+            "evidence_type": "원가 절감"
+          },
+          {
+            "summary": "지원자는 '원가 크게 절감했다'고 언급했으나 구체적 수치나 방법을 제시하지 않았습니다. 이는 원가 최적화의 구체성이 부족함을 나타냅니다.",
+            "segment_id": 10,
+            "char_index": 3120,
+            "char_length": 50,
+            "impact": "negative",
+            "evidence_type": "구체성 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 3,
+          "high_strength_count": 3,
+          "key_evidence": [
+            {
+              "segment_id": 1,
+              "quote": "재고회전율을 0.8에서 1.2로 50% 개선",
+              "resume_section": "experience",
+              "matched_content": "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '재고회전율 0.8회 → 1.2회 개선 (50% 향상)'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 24
+            },
+            {
+              "segment_id": 3,
+              "quote": "마진율을 35%에서 38.5%로 개선",
+              "resume_section": "experience",
+              "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 20
+            },
+            {
+              "segment_id": 3,
+              "quote": "소재비를 42%에서 35%로 절감",
+              "resume_section": "experience",
+              "matched_content": "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 '원단 공급업체 재협상으로 소재비 42% → 35% 절감'을 명확히 언급하고 있습니다. 이 내용은 면접 답변과 일치하며, 시간적 모순도 없습니다.",
+              "char_index": null,
+              "char_length": 18
+            }
+          ]
+        }
+      }
+    }
+  },
+  "started_at": "2025-11-23T03:49:29.656007",
+  "completed_at": "2025-11-23T03:54:29.278211"
+}

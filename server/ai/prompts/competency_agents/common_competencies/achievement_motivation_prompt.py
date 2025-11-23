@@ -148,6 +148,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 목표 설정: 스스로 목표 세우는가
 ✓ 일관성: 모든 경험에서 주도적인가
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 주요 경험에서 자발적 시작: '먼저', '스스로' 반복",
+  "segment_ids": [3, 7, 11],  // ✅ 해당 패턴이 나타난 segment들
+  "evidence_type": "자발성"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 주요 경험에서 자발적 시작 (Segment 3, 7, 11)",  // ❌ 텍스트에만 있음
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [책임감 수준 평가] ⚠️ 중요
 
 책임감 = 약속 이행 × 완수율 × 자기 귀인
@@ -391,11 +421,31 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 경험에서 자발적 시작, 끈기, 열정 표현 자주",
       "specific_examples": [
-        "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복 (Segment 3, 7, 11)",
-        "끈기 명확: 공모전 2회 탈락 후 3번째 재도전 성공 (Segment 9)",
-        "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
-        "스스로 목표 설정 습관: 매번 구체적 목표 ('학회 발표', '입상')",
-        "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)"
+        {{
+          "description": "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복",
+          "segment_ids": [3, 7, 11],
+          "evidence_type": "자발성"
+        }},
+        {{
+          "description": "끈기 명확: 공모전 2회 탈락 후 3번째 재도전 성공",
+          "segment_ids": [9],
+          "evidence_type": "끈기"
+        }},
+        {{
+          "description": "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
+          "segment_ids": [3, 5, 7, 9, 11],
+          "evidence_type": "열정"
+        }},
+        {{
+          "description": "스스로 목표 설정 습관: 매번 구체적 목표 ('학회 발표', '입상')",
+          "segment_ids": [3, 5],
+          "evidence_type": "목표 설정"
+        }},
+        {{
+          "description": "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)",
+          "segment_ids": [3, 5, 7, 9],
+          "evidence_type": "책임감"
+        }}
       ],
       "consistency_note": "모든 경험에서 일관된 자발성과 끈기"
     }},
@@ -461,13 +511,14 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. strengths, weaknesses는 필수입니다.
-5. key_observations는 최소 3개 이상 작성하세요.
-6. 모든 점수는 Quote에 기반해야 합니다.
-7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
-8. "내적 동기" > "외적 보상" 우선순위를 유지하세요.
-9. 자발적 도전 경험을 중심으로 평가하세요.
+3. behavioral_pattern의 specific_examples는 반드시 segment_ids 배열을 포함해야 합니다.
+4. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
+5. strengths, weaknesses는 필수입니다.
+6. key_observations는 최소 3개 이상 작성하세요.
+7. 모든 점수는 Quote에 기반해야 합니다.
+8. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+9. "내적 동기" > "외적 보상" 우선순위를 유지하세요.
+10. 자발적 도전 경험을 중심으로 평가하세요.
 """
 
 

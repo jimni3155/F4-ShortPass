@@ -94,7 +94,7 @@ class EvaluationService:
             
             # 1-1. key_observations 보장
             if "key_observations" not in comp_data or not comp_data.get("key_observations"):
-                print(f"  ⚠️  key_observations 누락 → 자동 생성")
+                print(f"    key_observations 누락 → 자동 생성")
                 
                 key_obs = []
                 # Strengths에서 추출 (최대 2개)
@@ -126,12 +126,12 @@ class EvaluationService:
                 
                 print(f"    → 생성됨 ({len(key_obs)}개)")
             else:
-                print(f"  ✅ key_observations 존재 ({len(comp_data['key_observations'])}개)")
+                print(f"   key_observations 존재 ({len(comp_data['key_observations'])}개)")
             
             
             # 1-2. resume_verification_summary 보장
             if "resume_verification_summary" not in comp_data:
-                print(f"  ⚠️  resume_verification_summary 누락 → 생성")
+                print(f"    resume_verification_summary 누락 → 생성")
                 
                 # segment_evaluations_with_resume에서 추출
                 segment_evals = result.get("segment_evaluations_with_resume", [])
@@ -176,7 +176,7 @@ class EvaluationService:
                 print(f"    → 생성됨 (verified: {len(verified_segments)}개)")
             else:
                 verified = comp_data["resume_verification_summary"].get("verified_count", 0)
-                print(f"  ✅ resume_verification_summary 존재 ({verified}개 검증)")
+                print(f"   resume_verification_summary 존재 ({verified}개 검증)")
         
         result["aggregated_competencies"] = aggregated_competencies
         
@@ -188,7 +188,7 @@ class EvaluationService:
         
         # 2-1. overall_evaluation_summary 보장
         if "overall_evaluation_summary" not in final_result or not final_result.get("overall_evaluation_summary"):
-            print(f"\n⚠️  overall_evaluation_summary 누락 → Fallback 생성")
+            print(f"\n  overall_evaluation_summary 누락 → Fallback 생성")
             
             final_score = result.get("final_score", 0)
             avg_confidence = result.get("avg_confidence", 0.5)
@@ -203,7 +203,7 @@ class EvaluationService:
             
             print(f"  → 생성됨 ({len(fallback)} chars)")
         else:
-            print(f"\n✅ overall_evaluation_summary 존재 ({len(final_result['overall_evaluation_summary'])} chars)")
+            print(f"\n overall_evaluation_summary 존재 ({len(final_result['overall_evaluation_summary'])} chars)")
         
         
         # 2-2. competency_details에 key_observations 및 resume_verification_summary 포함
@@ -310,6 +310,9 @@ class EvaluationService:
             "reliability_note": None,
             "final_result": None,
             
+            # Presentation 결과 (초기화)
+            "presentation_result": None,
+            
             # 메타 정보
             "started_at": datetime.now(),
             "completed_at": None,
@@ -324,7 +327,7 @@ class EvaluationService:
         
         result = await self.graph.ainvoke(initial_state)
         
-        # 🆕 필수 필드 강제 보장
+        #  필수 필드 강제 보장
         result = self._ensure_required_fields(result)
         
         # 공통 런 타임스탬프
@@ -374,6 +377,13 @@ class EvaluationService:
         stage3_key = f"{evaluation_base_prefix}/stage3_final_integration.json"
         stage3_final_url = self.s3_service.upload_json(stage3_key, stage3_payload)
 
+        #  Stage 4: Presentation 결과 S3 저장
+        presentation_key = f"{evaluation_base_prefix}/stage4_presentation_frontend.json"
+        presentation_s3_url = self.s3_service.upload_json(
+            presentation_key,
+            result.get("presentation_result", {})
+        )
+
         # DB 저장
         db = SessionLocal()
         try:
@@ -386,6 +396,7 @@ class EvaluationService:
                 stage1_evidence_url,
                 stage2_aggregator_url,
                 stage3_final_url,
+                presentation_s3_url, 
                 run_ts_str
             )
             evaluation_id = evaluation_record.id
@@ -407,6 +418,7 @@ class EvaluationService:
             "stage1_evidence_s3_url": stage1_evidence_url,
             "stage2_aggregator_s3_url": stage2_aggregator_url,
             "stage3_final_integration_s3_url": stage3_final_url,
+            "stage4_presentation_s3_url": presentation_s3_url, 
             "evaluation_run_ts": run_ts_str,
             
             "execution_logs": result.get("execution_logs", []),
@@ -426,6 +438,9 @@ class EvaluationService:
             "low_confidence_summary": result.get("final_result", {}).get("low_confidence_summary", {}),
             "collaboration_summary": result.get("final_result", {}).get("collaboration_summary", {}),
             
+            # Presentation 결과 추가
+            "presentation_result": result.get("presentation_result", {}),
+            
             "started_at": result["started_at"].isoformat(),
             "completed_at": datetime.now().isoformat()
         }
@@ -439,6 +454,7 @@ class EvaluationService:
         evidence_s3_url: str,
         stage2_aggregator_s3_url: str,
         stage3_final_s3_url: str,
+        presentation_s3_url: str, 
         evaluation_run_ts: str
     ):
         """평가 결과를 DB에 저장"""
@@ -504,6 +520,7 @@ class EvaluationService:
                 "stage1_evidence": evidence_s3_url,
                 "stage2_aggregator": stage2_aggregator_s3_url,
                 "stage3_final_integration": stage3_final_s3_url,
+                "stage4_presentation_frontend": presentation_s3_url,  
                 "execution_logs": agent_logs_s3_url,
             },
             "evaluation_run_ts": evaluation_run_ts,

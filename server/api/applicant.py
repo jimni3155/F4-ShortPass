@@ -28,7 +28,7 @@ candidate_detail_mock = {
   "job_title": "상품기획(MD) / Retail영업",
   "total_score": 92,
   "grade": "S",
-  "ai_summary": "김지원 지원자는 Data-Driven Insight(95점)와 Strategic Problem Solving(90점) 역량이 매우 뛰어납니다. 특히 매출 하락 원인을 분석할 때 외부 시장 데이터와 내부 CRM 데이터를 결합하여 논리를 전개한 점이 컨설턴트 수준의 사고력으로 평가되었습니다. 다만, 글로벌 파트너와의 협상 경험(Global Mindset)은 검증이 더 필요합니다.",
+  "ai_summary": "데이터 기반 MD로 재고회전율 0.8→1.2 개선(품절률 5%↓), 마진 35→38.5% 달성하며 원가·품질 리스크 관리, 디자인/VMD·공급업체 협업·협상에 강점이고 리스크 관리 체계 학습 의지가 명확한 지원자입니다.",
   "radar_chart_data": {
     "labels": ["Data Insight", "Strategic Solving", "Value Chain", "Marketing", "Stakeholder"],
     "scores": [95, 90, 85, 88, 80]

@@ -24,7 +24,11 @@ export default function useInterviewSession({websocketUrl}) {
   const [turnState, setTurnState] = useState(TURN_STATE.IDLE);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [questionList, setQuestionList] = useState([]);
+  const [personaInfo, setPersonaInfo] = useState(null);
   const [sttText, setSttText] = useState('');
+  const [interviewResults, setInterviewResults] = useState([]);
+  const [transcriptUrl, setTranscriptUrl] = useState(null);
   const [logs, setLogs] = useState([]);
   const [error, setError] = useState(null);
 
@@ -118,6 +122,14 @@ export default function useInterviewSession({websocketUrl}) {
 
         const {type} = data;
 
+        /** 페르소나/질문 세트 수신 */
+        if (type === 'persona_info') {
+          if (data.persona) setPersonaInfo(data.persona);
+          if (Array.isArray(data.questions)) setQuestionList(data.questions);
+          appendLog('페르소나/질문 세트 로드 완료');
+          return;
+        }
+
         /** 연결 성공 */
         if (type === 'connection_success') {
           appendLog(data.message);
@@ -130,10 +142,12 @@ export default function useInterviewSession({websocketUrl}) {
           setSessionState(SESSION_STATE.IN_PROGRESS);
           setTurnState(TURN_STATE.QUESTIONING);
 
-          setCurrentQuestionIndex((prev) => prev + 1);
+          setCurrentQuestionIndex((prev) => {
+            const next = prev + 1;
+            appendLog(`질문 ${next}: ${data.text}`);
+            return next;
+          });
           setCurrentQuestion({text: data.text});
-
-          appendLog(`질문 ${currentQuestionIndex + 1}: ${data.text}`);
 
           if (data.audioUrl) {
             console.log('[WS] 질문 오디오 재생 URL:', data.audioUrl);
@@ -152,10 +166,12 @@ export default function useInterviewSession({websocketUrl}) {
         if (type === 'question') {
           setSessionState(SESSION_STATE.IN_PROGRESS);
           setTurnState(TURN_STATE.QUESTIONING);
-          setCurrentQuestionIndex((prev) => prev + 1);
+          setCurrentQuestionIndex((prev) => {
+            const next = prev + 1;
+            appendLog(`질문 ${next}: ${data.text}`);
+            return next;
+          });
           setCurrentQuestion({text: data.text});
-
-          appendLog(`질문 ${currentQuestionIndex + 1}: ${data.text}`);
           return;
         }
 
@@ -184,6 +200,8 @@ export default function useInterviewSession({websocketUrl}) {
         if (type === 'interview_end') {
           setTurnState(TURN_STATE.END);
           setSessionState(SESSION_STATE.COMPLETED);
+          setInterviewResults(data.results || []);
+          setTranscriptUrl(data.transcriptUrl || null);
           appendLog('인터뷰가 종료되었습니다.');
           socket.close();
           return;
@@ -203,7 +221,8 @@ export default function useInterviewSession({websocketUrl}) {
     };
 
     /** 소켓 종료 */
-    socket.onclose = () => {
+    socket.onclose = (event) => {
+      const {code, reason} = event || {};
       console.log('[WS] onclose', code, reason);
       appendLog('WebSocket closed');
       const state = sessionStateRef.current;
@@ -278,7 +297,11 @@ export default function useInterviewSession({websocketUrl}) {
     turnState,
     currentQuestion,
     currentQuestionIndex,
+    questionList,
+    personaInfo,
     sttText,
+    interviewResults,
+    transcriptUrl,
     logs,
     error,
     requestNextQuestion,

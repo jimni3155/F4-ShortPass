@@ -132,6 +132,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 실행 고려: 이론적 솔루션 vs 실현 가능성 체크
 ✓ 일관성: 모든 문제에서 유사한 구조적 접근
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 Case 질문에서 '왜 이 문제가 발생했는지'부터 접근",
+  "segment_ids": [3, 5, 7, 9],
+  "evidence_type": "원인 분석"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 Case에서 원인 분석 (Segment 3, 5, 7, 9)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [문제해결 프로세스 평가] ⚠️ 중요
 
 우수한 프로세스 = 문제 정의 → 원인 분석 → 옵션 생성 → 평가 → 실행
@@ -368,12 +398,29 @@ Case Interview 답변을 중심으로 평가하세요.
     
     "behavioral_score": 83,
     "behavioral_pattern": {{
+      "behavioral_pattern": {{
       "pattern_description": "모든 Case에서 '왜?' 먼저, 자동 구조화, 옵션 비교 습관",
       "specific_examples": [
-        "모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근 (Segment 3, 5, 7, 9)",
-        "구조화 습관: '자동으로 Issue Tree 그린다' 언급 (Segment 3)",
-        "옵션 생성: 3개 이상 대안 검토 (Segment 5, 7, 9)",
-        "실행 고려: '리스크는 ○○', '필요 자원은 ○○' (Segment 7, 9)"
+        {{
+          "description": "모든 Case 질문(4개)에서 '왜 이 문제가 발생했는지'부터 접근",
+          "segment_ids": [3, 5, 7, 9],
+          "evidence_type": "원인 분석"
+        }},
+        {{
+          "description": "구조화 습관: '자동으로 Issue Tree 그린다' 언급",
+          "segment_ids": [3],
+          "evidence_type": "구조적 사고"
+        }},
+        {{
+          "description": "옵션 생성: 3개 이상 대안 검토",
+          "segment_ids": [5, 7, 9],
+          "evidence_type": "대안 생성"
+        }},
+        {{
+          "description": "실행 고려: '리스크는 ○○', '필요 자원은 ○○'",
+          "segment_ids": [7, 9],
+          "evidence_type": "실행 가능성"
+        }}
       ],
       "consistency_note": "Case와 Behavioral 질문 모두에서 유사한 구조적 패턴"
     }},

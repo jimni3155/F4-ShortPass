@@ -5,7 +5,8 @@ import PdfUpload from '../components/FileUpload';
 import Button from '../components/Button';
 import PentagonChart from '../components/PentagonChart';
 import WeightPentagonDraggable from '../components/WeightPentagonDraggable';
-import {uploadJDAndAnalyze, generatePersona} from '../apis/jdPersona';
+// import {uploadJDAndAnalyze, generatePersona} from '../apis/jdPersona';
+import personaSamsungFashion from '../mock/personaSamsungFashion';
 
 const PersonaGeneration = () => {
   const navigate = useNavigate();
@@ -26,40 +27,37 @@ const PersonaGeneration = () => {
 
   // Step 1: JD 업로드 및 역량 분석
   const handleAnalyze = async () => {
-    if (!formData.jdPdf || !formData.companyName || !formData.jobTitle) {
-      alert('모든 필수 항목을 입력해주세요.');
+    // MOCK: PDF 없이 바로 persona_samsung_fashion 기반 역량 세팅
+    if (!formData.companyName || !formData.jobTitle) {
+      alert('회사명과 채용 포지션을 입력해주세요.');
       return;
     }
 
     setLoading(true);
     try {
-      console.log('📤 JD 업로드 및 분석 시작...');
+      const jobCompetencies =
+        personaSamsungFashion.job_competencies?.map((c) => c.name || c.id) ||
+        personaSamsungFashion.initial_questions ||
+        [];
 
-      const result = await uploadJDAndAnalyze(
-        formData.jdPdf,
-        1, // company_id (임시)
-        formData.jobTitle,
-        formData.companyUrl // 기업 URL 전달 (mock, DB에만 저장)
-      );
+      const mockResult = {
+        job_id: 1,
+        common_competencies:
+          personaSamsungFashion.common_competencies?.map((c) => c.name || c.id) ||
+          ['고객지향', '도전정신', '협동·팀워크', '목표지향', '책임감'],
+        job_competencies: jobCompetencies,
+        analysis_summary: '삼성물산 패션부문 MD/영업 직무 핵심 역량 분석 (Mock)',
+      };
 
-      console.log('✅ 분석 완료:', result);
+      setAnalysisResult(mockResult);
+      setJobId(mockResult.job_id);
 
-      setAnalysisResult(result);
-      setJobId(result.job_id);
-
-      // 직무 역량 5개를 오각형 차트용으로 변환
-      const jobCompetencies = result.job_competencies || [];
       const topFive = jobCompetencies.slice(0, 5).map((comp, index) => ({
         name: comp,
-        score: 80 + (index * 2) // 임시 점수 (추후 실제 분석 결과로 교체)
+        score: 80 + index * 2,
       }));
-
-      // 5개가 안 되면 더미 데이터로 채우기
       while (topFive.length < 5) {
-        topFive.push({
-          name: `역량 ${topFive.length + 1}`,
-          score: 70
-        });
+        topFive.push({name: `역량 ${topFive.length + 1}`, score: 70});
       }
 
       setCompetencies(topFive);
@@ -89,30 +87,13 @@ const PersonaGeneration = () => {
 
     setLoading(true);
     try {
-      console.log('🎭 페르소나 생성 시작...');
-
-      // 기본 질문 3개 (추후 커스터마이징 가능)
-      const defaultQuestions = [
-        '이 역할에서 가장 중요하게 생각하는 가치는 무엇인가요?',
-        '과거 프로젝트에서 겪은 가장 큰 도전과제는 무엇이었나요?',
-        '팀과 협업할 때 어떤 역할을 주로 맡나요?'
-      ];
-
-      const weightPayload =
-        weights && weights.length
-          ? Object.fromEntries(weights.map((w) => [w.id || w.label, Number(w.value.toFixed(3))]))
-          : null;
-
-      const result = await generatePersona(jobId, defaultQuestions, weightPayload);
-
-      console.log('✅ 페르소나 생성 완료:', result);
-
+      // MOCK: 서버 호출 없이 페르소나 준비 완료 처리
       setStep(3);
-
-      // 3초 후 결과 페이지로 이동
       setTimeout(() => {
-        navigate(`/company/result/${jobId}`);
-      }, 2000);
+        navigate(`/company/result/${jobId}`, {
+          state: {personas: personaSamsungFashion.personas},
+        });
+      }, 500);
     } catch (err) {
       console.error('❌ 페르소나 생성 실패:', err);
       alert(`페르소나 생성 중 오류가 발생했습니다: ${err.message}`);

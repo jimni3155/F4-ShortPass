@@ -794,4 +794,184 @@ wscat -c ws://localhost:8000/api/v1/interviews/101/ws?applicant_id=101
 
 ---
 
-**버전:** 1.2.0
+## 15. MAS (Multi-Agent System) 아키텍처
+
+### 15.1 현재 구조
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    LangGraph Orchestrator                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │ Competency  │    │ Competency  │    │ Competency  │     │
+│  │ Agent #1    │    │ Agent #2    │    │ Agent #10   │     │
+│  │ (COMM_01)   │    │ (COMM_02)   │ .. │ (JOB_05)    │     │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘     │
+│         │                  │                  │             │
+│         └──────────────────┼──────────────────┘             │
+│                            ▼                                │
+│                  ┌─────────────────┐                        │
+│                  │   Aggregator    │                        │
+│                  │     Node        │                        │
+│                  └────────┬────────┘                        │
+│                           ▼                                 │
+│                  ┌─────────────────┐                        │
+│                  │ Final Integration│                       │
+│                  │      Node        │                       │
+│                  └─────────────────┘                        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 15.2 에이전트 구성
+
+#### 공통 역량 에이전트 (5개)
+| ID | 에이전트 | 평가 항목 |
+|----|----------|-----------|
+| COMM_01 | Problem Solving Agent | 문제해결력 |
+| COMM_02 | Achievement Motivation Agent | 성취/동기 역량 |
+| COMM_03 | Growth Potential Agent | 성장 잠재력 |
+| COMM_04 | Interpersonal Skill Agent | 대인관계 역량 |
+| COMM_05 | Organizational Fit Agent | 조직 적합성 |
+
+#### 직무 역량 에이전트 (5개)
+| ID | 에이전트 | 평가 항목 |
+|----|----------|-----------|
+| JOB_01 | Data Analysis Agent | 데이터 기반 인사이트 |
+| JOB_02 | Strategic Problem Solving Agent | 전략적 문제해결 |
+| JOB_03 | Value Chain Optimization Agent | 밸류체인 최적화 |
+| JOB_04 | Customer Journey Marketing Agent | 고객 여정/마케팅 |
+| JOB_05 | Stakeholder Management Agent | 이해관계자 관리 |
+
+### 15.3 AWS Step Functions 사용 여부
+
+**결론: 현재 불필요**
+
+| 고려 사항 | 현재 상태 | Step Functions 필요? |
+|-----------|-----------|---------------------|
+| 실행 시간 | 1-5분 | X (15분 미만) |
+| 워크플로우 | LangGraph로 관리 | X (이미 해결) |
+| Human-in-the-loop | 없음 (자동화) | X |
+| AWS 서비스 연계 | 단일 서버 | X |
+| 실행 이력 | DB 로깅 | X |
+
+**향후 고려 시점:**
+- 동시 평가 100건+ 배치 처리
+- HR 담당자 중간 승인 프로세스 추가
+- S3 → Lambda → DynamoDB 서비스 체인 구축
+
+---
+
+## 16. Mock 모드 설정
+
+### 16.1 현재 Mock 설정
+
+| 항목 | Mock 값 | 파일 위치 |
+|------|---------|-----------|
+| 페르소나 | 삼성물산 패션부문 | `/server/assets/persona_samsung_fashion.json` |
+| 지원자 | 김지원 (ID: 101) | `/server/test_data/resume_sample_101.json` |
+| 질문 리스트 | 이력서 기반 6개 | `/server/test_data/interview_questions_101.json` |
+| WebSocket URL | `?applicant_id=101` | `/client/src/pages/AIInterview.jsx:159` |
+
+### 16.2 테스트 흐름
+
+```
+프론트엔드 면접 시작 버튼
+        │
+        ▼
+WebSocket 연결 (?applicant_id=101)
+        │
+        ▼
+interview_service_v4.py
+├── _load_persona_data() → persona_samsung_fashion.json
+├── _get_interviewers() → 3명 면접관
+├── _load_resume_questions(101) → interview_questions_101.json
+└── _merge_resume_questions() → 이력서 기반 질문 병합
+        │
+        ▼
+3인 면접관 순차 면접 진행
+```
+
+---
+
+**버전:** 1.3.0
+**업데이트:** 2025-11-22
+
+---
+
+## 17. 작업 이력 (2025-11-22)
+
+### 17.1 면접 시스템 V4 구현
+
+#### 완료된 작업
+
+| 작업 | 파일 | 설명 |
+|------|------|------|
+| 3인 면접관 페르소나 정의 | `persona_samsung_fashion.json` | 전략형/실행형/조직적합형 3명 |
+| 이력서 샘플 생성 | `resume_sample_101.json` | 김지원 (우수 지원자) |
+| 이력서 샘플 생성 | `resume_sample_1002.json` | 이민수 (약한 지원자) |
+| 이력서 기반 질문 생성 | `interview_questions_101.json` | 김지원 맞춤 질문 6개 |
+| 면접 서비스 수정 | `interview_service_v4.py` | 3인 순차 면접 + 이력서 질문 병합 |
+| API 수정 | `interview.py` | `applicant_id` 쿼리 파라미터 추가 |
+| 프론트 Mock 설정 | `AIInterview.jsx` | `?applicant_id=101` 하드코딩 |
+
+#### 새로 추가된 함수 (`interview_service_v4.py`)
+
+```python
+def _load_resume_questions(self, applicant_id: int)
+    # interview_questions_{applicant_id}.json 로드
+
+def _merge_resume_questions(self, interviewers, resume_data)
+    # 페르소나 면접관에 이력서 기반 질문 병합
+```
+
+#### WebSocket 엔드포인트 변경
+
+```python
+# Before
+@router.websocket("/ws/interview/{interview_id}")
+async def websocket_endpoint(websocket, interview_id):
+    await interview_service_v4.handle_interview_session(websocket, interview_id)
+
+# After
+@router.websocket("/ws/interview/{interview_id}")
+async def websocket_endpoint(websocket, interview_id, applicant_id=None):
+    await interview_service_v4.handle_interview_session(websocket, interview_id, applicant_id)
+```
+
+### 17.2 아키텍처 결정
+
+| 항목 | 결정 | 이유 |
+|------|------|------|
+| AWS Step Functions | 불필요 | LangGraph로 충분, 오버엔지니어링 방지 |
+| 페르소나 하드코딩 | 의도적 | Mock 모드에서 테스트 용이성 |
+| 3인 면접관 구조 | 채택 | 다각도 역량 평가 가능 |
+
+### 17.3 테스트 방법
+
+```bash
+# 1. 서버 실행 (이미 실행 중)
+cd /home/ec2-user/flex/server
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# 2. 프론트 실행 (이미 실행 중)
+cd /home/ec2-user/flex/client
+npm run dev
+
+# 3. 브라우저에서 면접 시작
+http://localhost:5173/interview
+# → "면접 시작" 버튼 클릭
+# → 김지원 이력서 기반 질문으로 3인 면접 진행
+```
+
+### 17.4 다음 작업 (채아 담당)
+
+- [ ] 페르소나 + 질문 리스트 하드코딩 → AI 기반으로 변경
+- [ ] 면접 종료 후 결과 처리 → 프론트 결과 페이지로 전달
+- [ ] 이력서 업로드 → 질문 자동 생성 연동
+
+---
+
+**버전:** 1.4.0
+**업데이트:** 2025-11-22 (작업 이력 추가)

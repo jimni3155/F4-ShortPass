@@ -17,7 +17,7 @@ from .nodes import batch_evaluation_node
 from .aggregator_node import aggregator_node
 from .collaboration_node import collaboration_node
 from .final_integration_node import final_integration_node
-
+from .presentation_formatter_node import presentation_formatter_node
 
 def should_collaborate(state: EvaluationState) -> str:
     """
@@ -67,7 +67,7 @@ def create_evaluation_graph():
     # Stage 3: Final Integration
     graph.add_node("final_integration", final_integration_node)
     
-    
+    graph.add_node("presentation_formatter", presentation_formatter_node)
 
     # 2. Edge 정의   
     # Entry Point
@@ -92,5 +92,7 @@ def create_evaluation_graph():
     # Final Integration → END
     graph.add_edge("final_integration", END)
     
+    graph.add_edge("final_integration", "presentation_formatter")
+    graph.add_edge("presentation_formatter", END)
     
     return graph.compile()

@@ -7,19 +7,25 @@ import Button from '@components/Button';
 import EndButton from './EndButton';
 import SideBar from './SideBar';
 import InterviewLog from './InterviewLog';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import useInterviewSession from '@lib/useInterviewSession';
 
 const InterviewPage = () => {
   const {state} = useLocation();
+  const navigate = useNavigate();
   console.log('state:', state);
   const websocketUrl = state?.websocketUrl;
   const interviewId = state?.interviewId;
 
   const {
     getSocket,
+    sessionState,
     turnState,
     currentQuestion,
+    questionList,
+    personaInfo,
+    interviewResults,
+    transcriptUrl,
     logs,
     finishAnswerManually,
     TURN_STATE,
@@ -46,6 +52,21 @@ const InterviewPage = () => {
       stopRecording();
     }
   }, [turnState]);
+
+  // 면접 종료 시 결과 페이지로 이동하며 데이터 전달
+  useEffect(() => {
+    if (sessionState === 'completed') {
+      navigate('/candidate/done', {
+        state: {
+          interviewId,
+          personaInfo,
+          questionList,
+          interviewResults,
+          transcriptUrl,
+        },
+      });
+    }
+  }, [sessionState, interviewId, personaInfo, questionList, interviewResults, transcriptUrl, navigate]);
 
   return (
     <InterviewPageLayout>

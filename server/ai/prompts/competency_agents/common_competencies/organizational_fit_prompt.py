@@ -138,6 +138,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 스트레스 대응: 압박 상황 어떻게 대응하는가
 ✓ 일관성: 모든 경험에서 유사한 가치관
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 프로젝트에서 일관되게 '시즌 목표'와 '고객 만족' 강조",
+  "segment_ids": [4, 8, 12],
+  "evidence_type": "가치관 일관성"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 프로젝트에서 '시즌 목표' 강조 (Segment 4, 8, 12)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [가치관 일관성 평가] ⚠️ 중요
 
 일관성 = 모든 경험에서 동일한 가치관 표출
@@ -377,10 +407,26 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 경험에서 일관된 시즌 목표 달성 의식, 비판 수용적, 자기 귀인 습관",
       "specific_examples": [
-        "모든 프로젝트(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조 (Segment 4, 8, 12)",
-        "비판 반응 수용적: 교수님 지적(Segment 6), 팀장 피드백(Segment 11) 모두 긍정적 수용",
-        "자기 귀인 습관: '내가 부족했다' 3회 언급 (Segment 6, 10, 12)",
-        "스트레스 대응 양호: 마감 압박 2회(Segment 8, 12), 모두 긍정적 태도"
+        {{
+          "description": "모든 프로젝트(학교 2개, 인턴 1개)에서 일관되게 '시즌 목표'와 '고객 만족' 강조",
+          "segment_ids": [4, 8, 12],
+          "evidence_type": "가치관 일관성"
+        }},
+        {{
+          "description": "비판 반응 수용적: 교수님 지적, 팀장 피드백 모두 긍정적 수용",
+          "segment_ids": [6, 11],
+          "evidence_type": "피드백 수용"
+        }},
+        {{
+          "description": "자기 귀인 습관: '내가 부족했다' 3회 언급",
+          "segment_ids": [6, 10, 12],
+          "evidence_type": "자기 귀인"
+        }},
+        {{
+          "description": "스트레스 대응 양호: 마감 압박 2회, 모두 긍정적 태도",
+          "segment_ids": [8, 12],
+          "evidence_type": "압박 대응"
+        }}
       ],
       "consistency_note": "모든 경험에서 일관된 가치관 (고객 우선, 시즌 목표)"
     }},

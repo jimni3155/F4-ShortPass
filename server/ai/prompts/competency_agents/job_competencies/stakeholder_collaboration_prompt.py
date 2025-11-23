@@ -129,6 +129,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 [설득 커뮤니케이션 패턴 평가] ⚠️ 중요
 설득 커뮤니케이션 = 경청 + 공감 + 논리 + Win-Win
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+  "segment_ids": [3, 5, 7, 9, 10, 11],
+  "evidence_type": "협업 의식"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "대부분 질문에서 협업 언급 (Segment 3, 5, 7)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 ✅ 체계적 설득 커뮤니케이션:
 - 먼저 경청 → "왜 그렇게 생각하시나요?"
 - 상대 입장 공감 → "그 부분 충분히 이해합니다"
@@ -356,10 +386,26 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
       "specific_examples": [
-        "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
-        "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
-        "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
-        "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회"
+        {{
+          "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+          "segment_ids": [3, 5, 7, 9, 10, 11],
+          "evidence_type": "협업 의식"
+        }},
+        {{
+          "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+          "segment_ids": [9, 10, 11],
+          "evidence_type": "설득 커뮤니케이션"
+        }},
+        {{
+          "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+          "segment_ids": [9, 11],
+          "evidence_type": "균형 의식"
+        }},
+        {{
+          "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+          "segment_ids": [11],
+          "evidence_type": "관계 중시"
+        }}
       ],
       "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
     }},

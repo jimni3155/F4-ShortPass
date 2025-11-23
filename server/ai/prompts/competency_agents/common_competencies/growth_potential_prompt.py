@@ -145,6 +145,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 피드백 추구: 스스로 조언 구하는가
 ✓ 일관성: 모든 경험에서 성장 지향적
 
+Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 학습 경험에서 능동적: '혼자서', '스스로 찾아서'",
+  "segment_ids": [3, 5, 9],
+  "evidence_type": "능동적 학습"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 학습 경험에서 능동적 (Segment 3, 5, 9)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [성장 마인드 vs 고정 마인드] ⚠️ 중요
 
 성장 마인드 = "노력하면 개선된다"
@@ -392,11 +422,31 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 학습에서 능동적, 실패 직면, 자기 반성, 성장 마인드",
       "specific_examples": [
-        "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서' (Segment 3, 5, 9)",
-        "실패 직면 태도: 공모전 탈락 후 원인 분석 (Segment 6)",
-        "자기 반성 습관: 프로젝트 후 회고 언급 (Segment 9)",
-        "피드백 추구: 교수님께 조언 구함 (Segment 11)",
-        "성장 마인드: '노력하면 개선', '배우면 된다' 반복"
+        {{
+          "description": "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서'",
+          "segment_ids": [3, 5, 9],
+          "evidence_type": "능동적 학습"
+        }},
+        {{
+          "description": "실패 직면 태도: 공모전 탈락 후 원인 분석",
+          "segment_ids": [6],
+          "evidence_type": "실패 직면"
+        }},
+        {{
+          "description": "자기 반성 습관: 프로젝트 후 회고 언급",
+          "segment_ids": [9],
+          "evidence_type": "자기 반성"
+        }},
+        {{
+          "description": "피드백 추구: 교수님께 조언 구함",
+          "segment_ids": [11],
+          "evidence_type": "피드백 추구"
+        }},
+        {{
+          "description": "성장 마인드: '노력하면 개선', '배우면 된다' 반복",
+          "segment_ids": [3, 9, 11],
+          "evidence_type": "성장 마인드"
+        }}
       ],
       "consistency_note": "모든 경험에서 성장 지향적 태도 일관"
     }},
@@ -461,7 +511,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
+3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.반드시 segment_ids 배열을 포함해야 합니다.
 4. strengths, weaknesses는 필수입니다.
 5. key_observations는 최소 3개 이상 작성하세요.
 6. 모든 점수는 Quote에 기반해야 합니다.

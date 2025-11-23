@@ -146,6 +146,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 협업 태도: 개인 vs 팀 우선
 ✓ 일관성: 모든 관계에서 유사한 패턴
 
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 팀 프로젝트에서 경청 먼저 습관",
+  "segment_ids": [5, 9, 11],
+  "evidence_type": "경청"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 팀 프로젝트에서 경청 먼저 (Segment 5, 9, 11)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
+
 [협업 태도 평가] ⚠️ 중요
 
 팀 우선 태도 = 개인 희생 × 팀 목표 기여
@@ -391,10 +421,26 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
       "specific_examples": [
-        "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급 (Segment 5, 9, 11)",
-        "갈등 반응 직면: 회피하지 않고 대화로 해결 (Segment 5, 9)",
-        "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현 (Segment 9, 11)",
-        "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인"
+        {{
+          "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+          "segment_ids": [5, 9, 11],
+          "evidence_type": "경청"
+        }},
+        {{
+          "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+          "segment_ids": [5, 9],
+          "evidence_type": "갈등 직면"
+        }},
+        {{
+          "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+          "segment_ids": [9, 11],
+          "evidence_type": "팀 우선"
+        }},
+        {{
+          "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+          "segment_ids": [5, 9, 11],
+          "evidence_type": "쌍방향 소통"
+        }}
       ],
       "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
     }},
@@ -459,7 +505,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
+3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.반드시 segment_ids 배열을 포함해야 합니다.
 4. strengths, weaknesses는 필수입니다.
 5. key_observations는 최소 3개 이상 작성하세요.
 6. 모든 점수는 Quote에 기반해야 합니다.

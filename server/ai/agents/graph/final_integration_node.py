@@ -110,8 +110,17 @@ class FinalIntegrator:
         )
         
         print(f"\n  최종 점수: {final_score:.1f}점")
+        if competency_scores:
+            print("  상위 기여 역량:")
+            for cs in competency_scores[:3]:
+                print(
+                    f"    • {cs['competency']}: score={cs['score']} "
+                    f"weight={cs['weight']:.2f} contrib={cs['contribution']}"
+                )
+            if len(competency_scores) > 3:
+                print("    • ...")
         
-        
+
     
         # 3. 평균 Confidence V2 계산
         avg_confidence = FinalIntegrator._calculate_avg_confidence(
@@ -120,8 +129,15 @@ class FinalIntegrator:
         )
         
         print(f"  평균 Confidence V2: {avg_confidence:.2f}")
+        if competency_scores:
+            best_conf = max(competency_scores, key=lambda c: c["confidence_v2"])
+            worst_conf = min(competency_scores, key=lambda c: c["confidence_v2"])
+            print(
+                f"  Confidence 범위: {best_conf['competency']}={best_conf['confidence_v2']:.2f} "
+                f"/ {worst_conf['competency']}={worst_conf['confidence_v2']:.2f}"
+            )
         
-        
+
     
         # 4. 신뢰도 레벨 판단
         reliability = FinalIntegrator._determine_reliability(
@@ -131,8 +147,14 @@ class FinalIntegrator:
         
         print(f"  신뢰도 레벨: {reliability['level']}")
         print(f"  신뢰도 근거: {reliability['note']}")
+        if low_confidence_list:
+            print("  Low Confidence 상세:")
+            for item in low_confidence_list[:5]:
+                print(f"    • {item.get('competency')}: conf={item.get('confidence_v2')}")
+            if len(low_confidence_list) > 5:
+                print("    • ...")
         
-        
+
     
         # 5. 종합 심사평 생성 (AI 호출)
         print("\n   종합 심사평 생성 중 (AI 호출)...")
@@ -186,6 +208,7 @@ class FinalIntegrator:
                     "weighted_contribution": comp_data["overall_score"] * competency_weights.get(comp_name, 0.0),
                     "resume_verified_count": comp_data.get("resume_verified_count", 0),
                     "segment_count": comp_data.get("segment_count", 0),
+                    "perspectives": comp_data.get("perspectives", {}),
                     "strengths": comp_data.get("strengths", []),
                     "weaknesses": comp_data.get("weaknesses", []),
                     "key_observations": comp_data.get("key_observations", []),

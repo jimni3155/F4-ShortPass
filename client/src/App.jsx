@@ -17,6 +17,9 @@ import CandidateListPage from '@pages/CandidateListPage';
 import CandidateDetailPage from '@pages/CandidateDetailPage';
 import PersonaGeneration from '@pages/PersonaGeneration';
 import CandidateJobs from '@pages/CandidateJobs';
+import InterviewPrepare from '@pages/InterviewPrepare';
+import CompanyResultPage from '@pages/CompanyResultPage';
+import EvaluationPage from '@pages/EvaluationPage';
 
 const App = () => {
   const router = createBrowserRouter(
@@ -25,13 +28,14 @@ const App = () => {
         <Route index element={<Start />} />
         <Route path='/candidate/info' element={<CandidateInfo />} />
         <Route path='/candidate/jobs' element={<CandidateJobs />} />
-        <Route path='/candidate/start' element={<InterviewStart />} />
+        <Route path='/candidate/start' element={<InterviewPrepare />} />
         <Route path='/candidate/interview' element={<InterviewPage />} />
         <Route path='/candidate/done' element={<CandidateDone />} />
         <Route path='/company/info' element={<PersonaGeneration />} />
-        <Route path='/company/result' element={<InterviewResult />} />
+        <Route path='/company/result' element={<CompanyResultPage />} />
         <Route path='/company/applicants/:jobId' element={<CandidateListPage />} />
         <Route path='/company/applicants/:jobId/:applicantId' element={<CandidateDetailPage />} />
+        <Route path='/evaluation/:interviewId' element={<EvaluationPage />} />
       </Route>
     )
   );
