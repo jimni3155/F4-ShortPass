@@ -128,7 +128,7 @@ async def test_full_evaluation():
     # 서비스 초기화
     service = EvaluationService()
     
-    print("⏳ 평가 시작...\n")
+    print(" 평가 시작...\n")
     
     try:
         # 평가 실행
@@ -141,7 +141,7 @@ async def test_full_evaluation():
             common_weights=common_weights
         )
         
-        print("\n✅ 평가 완료!\n")
+        print("\n 평가 완료!\n")
         
         # ============================================
         # Phase 1 결과 출력
@@ -153,11 +153,11 @@ async def test_full_evaluation():
         
         # Job 역량
         print("\n" + "-"*80)
-        print("💼 Job 역량 (5개)")
+        print(" Job 역량 (5개)")
         print("-"*80)
         
         job_agg = result["job_aggregation"]
-        print(f"\n📈 종합 점수: {job_agg['overall_job_score']:.1f}점\n")
+        print(f"\n 종합 점수: {job_agg['overall_job_score']:.1f}점\n")
         
         for comp_name in ["structured_thinking", "business_documentation",
                           "financial_literacy", "industry_learning", "stakeholder_management"]:
@@ -172,11 +172,11 @@ async def test_full_evaluation():
         
         # Common 역량
         print("\n" + "-"*80)
-        print("🤝 Common 역량 (5개)")
+        print(" Common 역량 (5개)")
         print("-"*80)
         
         common_agg = result["common_aggregation"]
-        print(f"\n📈 종합 점수: {common_agg['overall_common_score']:.1f}점\n")
+        print(f"\n 종합 점수: {common_agg['overall_common_score']:.1f}점\n")
         
         for comp_name in ["problem_solving", "organizational_fit",
                           "growth_potential", "interpersonal_skills", "achievement_motivation"]:
@@ -203,7 +203,7 @@ async def test_full_evaluation():
         low_conf_list = issues.get("low_confidence_list", [])
         requires_collab = issues.get("requires_collaboration", False)
         
-        print(f"\n⚠️  Evidence 충돌: {len(conflicts)}건")
+        print(f"\n  Evidence 충돌: {len(conflicts)}건")
         if conflicts:
             for conf in conflicts:
                 seg_id = conf.get("segment_id")
@@ -211,7 +211,7 @@ async def test_full_evaluation():
                 gap = conf.get("gap", 0)
                 print(f"  ├─ Segment {seg_id}: {', '.join(comps)} (gap: {gap:.2f})")
         
-        print(f"\n⚠️  Low Confidence: {len(low_conf_list)}개")
+        print(f"\n  Low Confidence: {len(low_conf_list)}개")
         if low_conf_list:
             for issue in low_conf_list:
                 comp = issue.get("competency")
@@ -219,7 +219,7 @@ async def test_full_evaluation():
                 reason = issue.get("reason", "")
                 print(f"  ├─ {comp}: {conf:.2f} (원인: {reason})")
         
-        print(f"\n🔧 협업 필요 여부: {'YES (Phase 3 실행)' if requires_collab else 'NO (Phase 4로 바로 진행)'}")
+        print(f"\n 협업 필요 여부: {'YES (Phase 3 실행)' if requires_collab else 'NO (Phase 4로 바로 진행)'}")
         
         # ============================================
         # Phase 3 결과 출력
@@ -232,17 +232,17 @@ async def test_full_evaluation():
         
         if requires_collab and collab_count > 0:
             print("\n" + "="*80)
-            print("🤝 Phase 3: 협업 처리 결과")
+            print(" Phase 3: 협업 처리 결과")
             print("="*80)
             
-            print(f"\n✅ Evidence 중재: {len(mediation_results)}건")
+            print(f"\n Evidence 중재: {len(mediation_results)}건")
             if mediation_results:
                 for med in mediation_results:
                     seg_id = med.get("segment_id")
                     primary = med.get("primary_competency")
                     print(f"  ├─ Segment {seg_id}: Primary={primary}")
             
-            print(f"\n✅ Adversarial 재평가: {len(adversarial_results)}개")
+            print(f"\n Adversarial 재평가: {len(adversarial_results)}개")
             if adversarial_results:
                 for adv in adversarial_results:
                     comp = adv.get("competency")
@@ -255,7 +255,7 @@ async def test_full_evaluation():
         # ============================================
         
         print("\n" + "="*80)
-        print("🏆 Phase 4: 최종 통합 결과")
+        print(" Phase 4: 최종 통합 결과")
         print("="*80)
         
         final_score = result.get("final_score", 0)
@@ -263,10 +263,10 @@ async def test_full_evaluation():
         final_reliability = result.get("final_reliability", "")
         reliability_note = result.get("reliability_note", "")
         
-        print(f"\n🎯 최종 점수: {final_score:.1f}점")
+        print(f"\n 최종 점수: {final_score:.1f}점")
         print(f" 평균 Confidence: {avg_confidence:.2f}")
         print(f" 신뢰도 레벨: {final_reliability}")
-        print(f"📝 신뢰도 설명: {reliability_note}")
+        print(f" 신뢰도 설명: {reliability_note}")
         
         final_result = result.get("final_result", {})
         if final_result:
@@ -274,7 +274,7 @@ async def test_full_evaluation():
             common_score = final_result.get("common_score", 0)
             ratio = final_result.get("job_common_ratio", {"job": 0.6, "common": 0.4})
             
-            print(f"\n📈 세부 점수:")
+            print(f"\n 세부 점수:")
             print(f"  ├─ Job 점수: {job_score:.1f}점 (가중치 {ratio['job']*100:.0f}%)")
             print(f"  └─ Common 점수: {common_score:.1f}점 (가중치 {ratio['common']*100:.0f}%)")
         
@@ -361,7 +361,7 @@ async def test_full_evaluation():
             calculation = st_data.get('calculation', {})
             if calculation:
                 print(f"\n" + "-"*60)
-                print("🧮 점수 계산 상세")
+                print(" 점수 계산 상세")
                 print("-"*60)
                 print(f"  Base Score: {calculation.get('base_score', 0)}점")
                 print(f"  Evidence Weight: {calculation.get('evidence_weight', 0)}")
@@ -382,8 +382,8 @@ async def test_full_evaluation():
                 internal_cons = confidence.get('internal_consistency', 0)
                 confidence_note = confidence.get('confidence_note', 'N/A')
 
-                print(f"  ├─ Overall Confidence: {overall_conf:.3f} {'⚠️  (낮음)' if overall_conf < 0.7 else '✅ (높음)' if overall_conf >= 0.8 else ''}")
-                print(f"  ├─ Evidence Strength: {evidence_str:.3f} {'⚠️  (부족)' if evidence_str < 0.6 else '✅' if evidence_str >= 0.8 else ''}")
+                print(f"  ├─ Overall Confidence: {overall_conf:.3f} {'  (낮음)' if overall_conf < 0.7 else '✅ (높음)' if overall_conf >= 0.8 else ''}")
+                print(f"  ├─ Evidence Strength: {evidence_str:.3f} {'  (부족)' if evidence_str < 0.6 else '✅' if evidence_str >= 0.8 else ''}")
                 print(f"  ├─ Internal Consistency: {internal_cons:.3f}")
                 print(f"  └─ Note: {confidence_note}")
 
@@ -397,7 +397,7 @@ async def test_full_evaluation():
 
             # 강점/약점/관찰/후속질문
             print(f"\n" + "-"*60)
-            print("📝 평가 요약")
+            print(" 평가 요약")
             print("-"*60)
 
             strengths = st_data.get('strengths', [])
@@ -431,7 +431,7 @@ async def test_full_evaluation():
         execution_logs = result.get("execution_logs", [])
         if execution_logs:
             print("\n" + "="*80)
-            print("⏱️  실행 로그 (Performance)")
+            print("  실행 로그 (Performance)")
             print("="*80 + "\n")
             
             total_duration = 0
@@ -455,7 +455,7 @@ async def test_full_evaluation():
         # ============================================
         
         print("\n" + "="*80)
-        print("✅ 테스트 완료")
+        print(" 테스트 완료")
         print("="*80)
         
         print(f"\n 요약:")
@@ -467,7 +467,7 @@ async def test_full_evaluation():
         print("\n" + "="*80 + "\n")
         
     except Exception as e:
-        print(f"\n❌ 오류 발생: {e}\n")
+        print(f"\n 오류 발생: {e}\n")
         import traceback
         traceback.print_exc()
 

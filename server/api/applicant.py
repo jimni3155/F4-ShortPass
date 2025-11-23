@@ -16,6 +16,9 @@ from schemas.applicant import (
     ApplicantUpdate
 )
 from schemas.evaluation import EvaluationDetailResponse
+from models.evaluation import Evaluation
+from models.interview import Applicant
+from models.job import Job
 
 
 # Mock data, converted from the frontend mock file
@@ -106,13 +109,102 @@ router = APIRouter(prefix="/applicants", tags=["applicants"])
 logger = logging.getLogger("uvicorn")
 
 
+def build_evaluation_detail_from_db(eval_obj, applicant, job):
+    """DB 평가 결과를 프론트엔드 형식으로 변환"""
+    # 레이더 차트 데이터 구성
+    radar_labels = []
+    radar_scores = []
+    competency_details = []
+
+    # job_aggregation에서 역량 점수 추출
+    if eval_obj.job_aggregation:
+        for name, data in eval_obj.job_aggregation.items():
+            score = data.get("score", 0) if isinstance(data, dict) else data
+            radar_labels.append(name)
+            radar_scores.append(score)
+
+            # 상세 정보 구성
+            detail = {
+                "name": name,
+                "score": score,
+                "positive_feedback": data.get("positive_feedback", "") if isinstance(data, dict) else None,
+                "negative_feedback": data.get("negative_feedback") if isinstance(data, dict) else None,
+                "evidence_transcript_id": data.get("evidence_id") if isinstance(data, dict) else None
+            }
+            competency_details.append(detail)
+
+    # AI 요약 추출
+    ai_summary = ""
+    if eval_obj.fit_analysis and isinstance(eval_obj.fit_analysis, dict):
+        ai_summary = eval_obj.fit_analysis.get("summary", "") or eval_obj.fit_analysis.get("overall_assessment", "")
+
+    # 등급 산정
+    score = eval_obj.match_score or 0
+    if score >= 90:
+        grade = "S"
+    elif score >= 80:
+        grade = "A"
+    elif score >= 70:
+        grade = "B"
+    elif score >= 60:
+        grade = "C"
+    else:
+        grade = "D"
+
+    # Deep dive 분석 추출
+    deep_dive_analysis = []
+    if eval_obj.reasoning_log and isinstance(eval_obj.reasoning_log, list):
+        for item in eval_obj.reasoning_log:
+            if isinstance(item, dict):
+                deep_dive_analysis.append({
+                    "question_topic": item.get("topic", ""),
+                    "trigger_reason": item.get("trigger_reason", ""),
+                    "initial_question": item.get("initial_question", ""),
+                    "candidate_initial_response": item.get("initial_response", ""),
+                    "follow_up_question": item.get("follow_up_question", ""),
+                    "candidate_response_summary": item.get("response_summary", ""),
+                    "agent_evaluation": item.get("evaluation", ""),
+                    "score_impact": item.get("score_impact", "0"),
+                    "transcript_segment_id": item.get("segment_id", "")
+                })
+
+    return {
+        "candidate_id": f"CAND_{applicant.id:03d}" if applicant else f"CAND_{eval_obj.applicant_id:03d}",
+        "name": applicant.name if applicant else "Unknown",
+        "job_title": job.title if job else "미정",
+        "total_score": round(score),
+        "grade": grade,
+        "ai_summary": ai_summary,
+        "radar_chart_data": {
+            "labels": radar_labels if radar_labels else ["종합"],
+            "scores": radar_scores if radar_scores else [round(score)]
+        },
+        "competency_details": competency_details if competency_details else [{
+            "name": "종합 평가",
+            "score": round(score),
+            "positive_feedback": None,
+            "negative_feedback": None,
+            "evidence_transcript_id": None
+        }],
+        "deep_dive_analysis": deep_dive_analysis,
+        "feedback_loop": {
+            "is_reviewed": False,
+            "hr_comment": "",
+            "adjusted_score": None
+        },
+        "interview_date": eval_obj.created_at.strftime("%Y-%m-%d") if eval_obj.created_at else "",
+        "priority_review": score >= 85,
+        "rank": 0
+    }
+
+
 @router.get("/{applicant_id}/evaluation-details", response_model=EvaluationDetailResponse)
 async def get_applicant_evaluation_details(
     applicant_id: int,
     db: Session = Depends(get_db)
 ):
     """
-    지원자의 상세 평가 리포트 조회
+    지원자의 상세 평가 리포트 조회 - DB 우선, 없으면 mock
 
     Args:
         applicant_id: 지원자 ID
@@ -121,19 +213,22 @@ async def get_applicant_evaluation_details(
         EvaluationDetailResponse: 지원자의 상세 평가 정보
     """
     logger.info(f"Getting evaluation details for applicant ID: {applicant_id}")
-    
-    # TODO: Replace this with actual service call to fetch and build the response
-    # For now, returning mock data. We ignore the applicant_id for now.
-    
-    # You can add logic here to return different mock data based on applicant_id if needed
-    # For example: if applicant_id == 1: return mock_data_1
-    
+
+    # DB에서 평가 결과 조회
+    eval_obj = db.query(Evaluation).filter(
+        Evaluation.applicant_id == applicant_id
+    ).order_by(Evaluation.created_at.desc()).first()
+
+    if eval_obj:
+        logger.info(f"Found evaluation in DB for applicant_id={applicant_id}")
+        applicant = db.query(Applicant).filter(Applicant.id == applicant_id).first()
+        job = db.query(Job).filter(Job.id == eval_obj.job_id).first() if eval_obj.job_id else None
+        return build_evaluation_detail_from_db(eval_obj, applicant, job)
+
+    # DB에 없으면 mock 반환
+    logger.info(f"No evaluation found for applicant_id={applicant_id}, returning mock data")
     return candidate_detail_mock
 
-
-
-router = APIRouter(prefix="/applicants", tags=["applicants"])
-logger = logging.getLogger("uvicorn")
 
 
 @router.post("/", response_model=ApplicantResponse)

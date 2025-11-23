@@ -6,6 +6,7 @@
     "description_summary": "국내/글로벌 브랜드의 전략과 상품 컨셉을 기획하고 생산, 마케팅, 판매까지의 전 과정을 관리하거나, 온/오프라인 채널의 매출 목표를 달성하기 위한 영업 전략을 수립하는 직무"
   },
   "persona_meta": {
+    "persona_id": "P-VAL_PM",
     "identity": "삼성물산 패션부문 15년 차 시니어 채용 담당자",
     "name": "김삼성 책임",
     "tone_and_manner": [
@@ -19,44 +20,74 @@
   "common_competencies": [
     {
       "id": "COMM_01",
-      "name": "Problem Solving (문제 해결 능력)",
-      "definition": "복잡한 문제의 본질을 파악하고 창의적이고 실용적인 해결책을 찾는 능력",
+      "key": "problem_solving",
+      "name": "Problem Solving (문제해결력)",
+      "definition": "복잡한 문제의 원인을 분석하고, 논리적이고 창의적인 해결책을 도출하여 실행하는 능력",
       "evaluation_criteria": [
-        "문제 정의의 명확성",
-        "해결책 도출 과정의 논리성",
-        "창의적 접근 여부",
-        "실현 가능성"
+        "문제를 구조적으로 분해 (Issue Tree)",
+        "기존 방식에서 벗어난 창의적 솔루션",
+        "트레이드오프 고려한 최적안 선택",
+        "해결책을 실제로 적용한 실행력"
       ],
       "interview_question_guide": "가장 어려웠던 문제와 해결 과정을 STAR 기법으로 질문하여 분석력과 실행력을 평가하세요."
     },
     {
       "id": "COMM_02",
-      "name": "Communication (의사소통 능력)",
-      "definition": "다양한 이해관계자와 명확하고 효과적으로 소통하여 협업을 이끌어내는 능력",
+      "key": "achievement_motivation",
+      "name": "Achievement Motivation (성취/동기 역량)",
+      "definition": "목표 달성을 위한 주도성과 열정, 책임감을 가지고 업무에 몰입하는 태도",
       "evaluation_criteria": [
-        "정보 전달의 명확성",
-        "경청 태도 및 공감 능력",
-        "설득 및 협상 능력",
-        "갈등 해결 능력"
+        "시키기 전에 먼저 행동하는 주도성",
+        "높은 목표 설정 및 달성 지향",
+        "끝까지 완수하는 책임감",
+        "업무에 집중하고 몰입하는 태도"
       ],
-      "interview_question_guide": "의견 충돌 상황에서 어떻게 소통하고 합의를 이끌어냈는지 구체적인 사례를 요청하세요."
+      "interview_question_guide": "스스로 높은 목표를 설정하고 달성했던 경험, 어려움 속에서도 끝까지 완수한 사례를 질문하세요."
     },
     {
       "id": "COMM_03",
-      "name": "Learning Agility (학습 민첩성)",
-      "definition": "새로운 지식과 기술을 빠르게 습득하고 변화하는 환경에 적응하는 능력",
+      "key": "growth_potential",
+      "name": "Growth Potential (성장 잠재력)",
+      "definition": "빠르게 학습하고, 실패에서 회복하며, 자기 자신을 객관적으로 인식하고 개선하는 능력",
       "evaluation_criteria": [
-        "새로운 학습 경험 유무",
-        "학습 과정의 주도성",
-        "학습 내용을 실제 업무에 적용한 사례",
-        "피드백 수용 및 개선 의지"
+        "새로운 개념을 빠르게 습득하는 학습 민첩성",
+        "실패 후 빠르게 재도전하는 회복 탄력성",
+        "자신의 강점/약점을 정확히 인식하는 메타인지",
+        "노력하면 개선된다는 성장 마인드"
       ],
-      "interview_question_guide": "새로운 분야를 학습하여 성과를 낸 경험이나, 실패 후 개선 노력을 질문하세요."
+      "interview_question_guide": "새로운 분야를 학습하여 성과를 낸 경험이나, 실패 후 어떻게 회복하고 개선했는지 질문하세요."
+    },
+    {
+      "id": "COMM_04",
+      "key": "interpersonal_skill",
+      "name": "Interpersonal Skill (대인관계 역량)",
+      "definition": "타인과 효과적으로 소통하고 협업하며, 경청하고 갈등을 건설적으로 해결하는 능력",
+      "evaluation_criteria": [
+        "명확하고 간결한 커뮤니케이션",
+        "상대방 의견을 진심으로 듣는 경청 태도",
+        "팀 목표를 위한 협업 능력",
+        "팀원 간 의견 차이를 조율하는 갈등 해결 능력"
+      ],
+      "interview_question_guide": "팀 프로젝트에서 의견 충돌이 있었을 때 어떻게 소통하고 해결했는지 구체적인 사례를 요청하세요."
+    },
+    {
+      "id": "COMM_05",
+      "key": "organizational_fit",
+      "name": "Organizational Fit (조직 적합성)",
+      "definition": "회사의 가치관 및 문화와 지원자의 성향이 일치하는 정도, 피드백을 수용하고 조직에 융화되는 능력",
+      "evaluation_criteria": [
+        "고객 우선, 데이터 기반 의사결정 등 가치관 일치",
+        "비판을 성장 기회로 받아들이는 피드백 수용성",
+        "팀워크와 다양성을 존중하는 조직 융화력",
+        "시즌 런칭 및 프로모션 마감 압박 대응 능력"
+      ],
+      "interview_question_guide": "우리 회사의 어떤 가치관에 공감하는지, 피드백을 받고 개선한 경험이 있는지 질문하세요."
     }
   ],
   "job_competencies": [
     {
       "id": "JOB_01",
+      "key": "data_insight",
       "name": "Data-Driven Insight (데이터 기반 인사이트 도출)",
       "definition": "시장(Market), 경쟁사(Competitor), 자사(Company) 데이터를 정량/정성적으로 분석하여 논리적인 비즈니스 기회를 포착하는 역량",
       "evaluation_criteria": [
@@ -68,6 +99,7 @@
     },
     {
       "id": "JOB_02",
+      "key": "strategic_problem_solving",
       "name": "Strategic Problem Solving (전략적 문제해결)",
       "definition": "복잡한 비즈니스 이슈를 구조적으로 분해(MECE)하고, 가장 효율적인 해결책(Solution)을 수립하여 실행하는 역량",
       "evaluation_criteria": [
@@ -79,6 +111,7 @@
     },
     {
       "id": "JOB_03",
+      "key": "value_chain_optimization",
       "name": "Value Chain Optimization (밸류체인 최적화)",
       "definition": "기획-생산-유통-판매로 이어지는 전체 프로세스에서 비효율을 제거하고 공급 마진(Margin)과 운영 효율을 극대화하는 역량",
       "evaluation_criteria": [
@@ -89,6 +122,7 @@
     },
     {
       "id": "JOB_04",
+      "key": "customer_journey_marketing",
       "name": "Customer Journey & Marketing Strategy (고객 여정 및 마케팅 전략)",
       "definition": "타겟 고객의 구매 여정(Customer Journey)을 설계하고, 온/오프라인 채널별 최적화된 커뮤니케이션 전략을 실행하는 역량",
       "evaluation_criteria": [
@@ -100,6 +134,7 @@
     },
     {
       "id": "JOB_05",
+      "key": "stakeholder_management",
       "name": "Stakeholder Management (이해관계자 관리 및 협상)",
       "definition": "서로 다른 목표를 가진 유관부서(디자인, 생산, 영업) 및 외부 파트너를 논리와 데이터로 설득하여 합의(Consensus)를 이끌어내는 역량",
       "evaluation_criteria": [
@@ -117,11 +152,11 @@
   ],
   "weights": {
     "category": {
-      "common_competencies": 0.3,
-      "job_competencies": 0.7
+      "common_competencies": 0.5,
+      "job_competencies": 0.5
     },
     "competency": {
-      "COMM_01": 0.35, "COMM_02": 0.35, "COMM_03": 0.3,
+      "COMM_01": 0.2, "COMM_02": 0.2, "COMM_03": 0.2, "COMM_04": 0.2, "COMM_05": 0.2,
       "JOB_01": 0.2, "JOB_02": 0.2, "JOB_03": 0.2, "JOB_04": 0.2, "JOB_05": 0.2
     }
   },

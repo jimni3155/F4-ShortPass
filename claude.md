@@ -431,3 +431,367 @@ flex/
 **작성일:** 2025-11-19
 **작성자:** Claude Code Assistant
 **버전:** 1.0.0
+
+---
+
+## 13. JSON 샘플 파일 (2025-11-22 추가)
+
+### 채아에게 전달할 공식 샘플 파일들
+
+#### 파일 위치
+```
+/server/test_data/
+├── transcript_official_sample.json   # 면접 transcript 형식
+├── evaluation_response_sample.json   # 평가 결과 형식
+├── transcript_top_sample.json        # 좋은 지원자 케이스
+└── transcript_bottom_sample.json     # 약한 지원자 케이스
+```
+
+---
+
+### 13.1 Transcript 공식 형식 (`transcript_official_sample.json`)
+
+```json
+{
+  "company_id": 1,
+  "company_name": "삼성물산 패션부문",
+  "job_id": 1,
+  "job_title": "상품기획/리테일 영업(MD)",
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "interview_id": 90001,
+  "persona_id": "SAMSUNG_FASHION_MD",
+  "persona_meta": {
+    "name": "삼성물산 패션부문 시니어 면접관",
+    "tone": "전문적/압박",
+    "focus": ["데이터 기반 의사결정", "실행력", "협업"]
+  },
+  "weights": {
+    "category": { "common_competencies": 0.5, "job_competencies": 0.5 },
+    "competency": {
+      "COMM_01": 0.2, "COMM_02": 0.2, "COMM_03": 0.2, "COMM_04": 0.2, "COMM_05": 0.2,
+      "JOB_01": 0.2, "JOB_02": 0.2, "JOB_03": 0.2, "JOB_04": 0.2, "JOB_05": 0.2
+    }
+  },
+  "source": {
+    "stt_provider": "mock_ws_stream",
+    "transcript_version": "v1",
+    "collected_at": "2025-11-22T04:00:00Z"
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "segment_order": 1,
+      "turn_type": "main",
+      "question_text": "질문 내용",
+      "answer_text": "답변 내용",
+      "answer_duration_sec": 78,
+      "char_index_start": 0,
+      "char_index_end": 272,
+      "timestamp_start": "2025-11-22T04:00:10Z",
+      "timestamp_end": "2025-11-22T04:01:28Z"
+    }
+  ],
+  "highlights": {
+    "top_segments": [{ "segment_id": 1, "reason": "좋은 이유" }],
+    "under_segments": [{ "segment_id": 3, "reason": "보완 필요 이유" }]
+  }
+}
+```
+
+---
+
+### 13.2 평가 결과 형식 (`evaluation_response_sample.json`)
+
+```json
+{
+  "interview_id": 90001,
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "job_id": 1,
+  "job_title": "상품기획/리테일 영업(MD)",
+  "company_id": 1,
+  "persona_id": "SAMSUNG_FASHION_MD",
+  "weights": { ... },
+  "scores": {
+    "job_overall": 89.2,
+    "common_overall": 84.5,
+    "final_score": 87.0,
+    "confidence_overall": 0.81,
+    "reliability_level": "high"
+  },
+  "competencies": [
+    {
+      "id": "JOB_01",
+      "name": "매출·트렌드 데이터 분석 및 상품 기획",
+      "category": "job",
+      "score": 92,
+      "confidence": { "overall": 0.83, "evidence_strength": 0.82 },
+      "strengths": ["강점1", "강점2"],
+      "weaknesses": ["약점1"],
+      "evidence_segments": [1]
+    }
+  ],
+  "analysis_summary": {
+    "aggregator_summary": "종합 평가 요약",
+    "overall_applicant_summary": "지원자 전체 요약",
+    "positive_keywords": ["키워드1", "키워드2"],
+    "negative_keywords": ["키워드3"],
+    "recommended_questions": ["추천 질문1", "추천 질문2"]
+  },
+  "evidence": {
+    "transcript_s3_key": "logs/evaluations/101/90001/transcript.json",
+    "execution_logs": [...]
+  },
+  "ui_defaults": {
+    "detail_tabs": ["요약", "역량별", "추천질문"],
+    "badges": ["high_confidence", "data_driven"]
+  }
+}
+```
+
+---
+
+### 13.3 역량 정의 (공통 5개 + 직무 5개)
+
+#### 공통 역량 (COMM_01 ~ COMM_05)
+
+| ID | Key | 이름 |
+|----|-----|------|
+| COMM_01 | problem_solving | Problem Solving (문제해결력) |
+| COMM_02 | achievement_motivation | Achievement Motivation (성취/동기 역량) |
+| COMM_03 | growth_potential | Growth Potential (성장 잠재력) |
+| COMM_04 | interpersonal_skill | Interpersonal Skill (대인관계 역량) |
+| COMM_05 | organizational_fit | Organizational Fit (조직 적합성) |
+
+#### 직무 역량 (JOB_01 ~ JOB_05)
+
+| ID | Key | 이름 |
+|----|-----|------|
+| JOB_01 | data_insight | Data-Driven Insight (데이터 기반 인사이트) |
+| JOB_02 | strategic_problem_solving | Strategic Problem Solving (전략적 문제해결) |
+| JOB_03 | value_chain_optimization | Value Chain Optimization (밸류체인 최적화) |
+| JOB_04 | customer_journey_marketing | Customer Journey & Marketing (고객 여정/마케팅) |
+| JOB_05 | stakeholder_management | Stakeholder Management (이해관계자 관리) |
+
+---
+
+### 13.4 페르소나 JSON 위치
+
+```
+/server/assets/
+├── persona_data.json              # 공식 페르소나 (공통5 + 직무5)
+└── persona_samsung_fashion.json   # 삼성물산 패션부문 전용
+```
+
+---
+
+### 13.5 기업 화면 흐름 (PersonaGeneration)
+
+```
+1. JD 업로드 → /api/v1/jd-persona/upload
+   - PDF 업로드
+   - 직무 역량 5개 반환 (persona_data.json 기반)
+
+2. 가중치 설정 → WeightPentagonDraggable
+   - 드래그로 각 역량 가중치 조정
+   - 합계 100% 자동 정규화
+
+3. 페르소나 생성 → /api/v1/jd-persona/generate-persona
+   - 기업 질문 3개 입력
+   - 페르소나 3가지 타입 반환
+```
+
+---
+
+**업데이트:** 2025-11-22
+**버전:** 1.1.0
+
+---
+
+## 14. 면접 시스템 V4 (2025-11-22 추가)
+
+### 14.1 3인 면접관 순차 면접 시스템
+
+#### 핵심 기능
+- 3명의 면접관이 순차적으로 면접 진행
+- 각 면접관별 다른 역량 평가 포커스
+- 이력서 기반 맞춤 질문 지원
+- WebSocket 기반 실시간 음성 면접
+
+#### 면접관 구성 (`persona_samsung_fashion.json`)
+
+| ID | 이름 | 유형 | 평가 포커스 |
+|----|------|------|-------------|
+| INT_01 | 김전략 수석 | 전략형 | 데이터 기반 의사결정, 상품 포트폴리오 |
+| INT_02 | 박협업 팀장 | 실행형 | 유관부서 협업, 갈등 조율 |
+| INT_03 | 이컬처 매니저 | 조직적합형 | 조직 적합성, 학습 민첩성 |
+
+---
+
+### 14.2 파일 구조
+
+```
+/server/
+├── services/
+│   └── interview_service_v4.py      # 3인 면접관 순차 면접 서비스
+├── assets/
+│   └── persona_samsung_fashion.json # 3인 면접관 페르소나 정의
+└── test_data/
+    ├── interview_questions_101.json # 김지원 이력서 기반 질문
+    ├── resume_sample_101.json       # 김지원 이력서 (우수 지원자)
+    └── resume_sample_1002.json      # 이민수 이력서 (약한 지원자)
+```
+
+---
+
+### 14.3 WebSocket 메시지 흐름
+
+```
+클라이언트                           서버
+    │                                 │
+    │─────── WebSocket 연결 ─────────>│
+    │<────── connection_success ──────│
+    │<────── interview_info ──────────│  (면접관 3명 정보)
+    │                                 │
+    │─────── start_interview ────────>│
+    │<────── ack_start ───────────────│
+    │                                 │
+    │    [면접관 1: 김전략 수석]        │
+    │<────── interviewer_change ──────│
+    │<────── question_audio ──────────│  (질문 1)
+    │─────── PCM audio bytes ────────>│
+    │─────── answer_end ─────────────>│
+    │<────── stt_final ───────────────│
+    │        (질문 2~N 반복)            │
+    │<────── interviewer_complete ────│
+    │                                 │
+    │    [면접관 2: 박협업 팀장]        │
+    │<────── interviewer_change ──────│
+    │        (질문/답변 반복)           │
+    │<────── interviewer_complete ────│
+    │                                 │
+    │    [면접관 3: 이컬처 매니저]       │
+    │<────── interviewer_change ──────│
+    │        (질문/답변 반복)           │
+    │<────── interviewer_complete ────│
+    │                                 │
+    │<────── interview_end ───────────│  (결과 JSON URL)
+```
+
+---
+
+### 14.4 핵심 메시지 타입
+
+#### 서버 → 클라이언트
+
+| 타입 | 설명 |
+|------|------|
+| `connection_success` | WebSocket 연결 성공 |
+| `interview_info` | 전체 면접관 정보 (3명) |
+| `ack_start` | 면접 시작 확인 |
+| `interviewer_change` | 면접관 전환 알림 |
+| `question_audio` | 질문 (텍스트 + TTS 오디오 URL) |
+| `question_end` | 질문 전송 완료 |
+| `stt_final` | STT 변환 결과 |
+| `interviewer_complete` | 해당 면접관 면접 종료 |
+| `interview_end` | 전체 면접 종료 + 결과 URL |
+
+#### 클라이언트 → 서버
+
+| 타입 | 설명 |
+|------|------|
+| `start_interview` | 면접 시작 요청 |
+| `answer_end` | 답변 종료 신호 |
+| (binary) | PCM16 오디오 데이터 |
+
+---
+
+### 14.5 이력서 기반 맞춤 질문
+
+#### 질문 파일 형식 (`interview_questions_{applicant_id}.json`)
+
+```json
+{
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "resume_summary": {
+    "current_position": "MD (한섬, 여성 캐주얼 사업부)",
+    "experience_years": 4.5,
+    "key_achievements": ["재고회전율 50% 향상", "마진율 3.5%p 개선"],
+    "strengths": ["데이터 기반 의사결정", "이해관계자 조율"],
+    "weaknesses": ["리스크 관리 체계화 부족"]
+  },
+  "interviewers": [
+    {
+      "id": "INT_01",
+      "name": "김전략 수석",
+      "type": "전략형",
+      "resume_based_questions": [
+        {
+          "question": "재고회전율을 0.8에서 1.2로 50% 개선하셨다고 했는데...",
+          "intent": "데이터 분석력 + 트레이드오프 인식 검증",
+          "related_resume": "재고회전율 개선 프로젝트",
+          "follow_up_if_weak": "회전율만 높이면 품절 리스크가 있을 텐데..."
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### 병합 로직
+
+1. `interview_service_v4.py`가 `interview_questions_{applicant_id}.json` 로드
+2. 각 면접관 ID 매칭 (INT_01, INT_02, INT_03)
+3. `resume_based_questions` → 기존 `questions` 교체
+4. `follow_up_if_weak` → `follow_ups` dict에 저장
+
+---
+
+### 14.6 테스트 방법
+
+#### 1. 서버 실행
+```bash
+cd /home/ec2-user/flex/server
+source ../venv1/bin/activate
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+#### 2. WebSocket 연결 (wscat)
+```bash
+wscat -c ws://localhost:8000/api/v1/interviews/101/ws?applicant_id=101
+```
+
+#### 3. 면접 시작
+```json
+{"type": "start_interview"}
+```
+
+---
+
+### 14.7 이력서 샘플
+
+#### 우수 지원자 - 김지원 (applicant_id: 101)
+
+| 항목 | 내용 |
+|------|------|
+| 현재 직책 | MD (한섬, 여성 캐주얼 사업부) |
+| 경력 | 4.5년 |
+| 핵심 성과 | 재고회전율 50%↑, 마진율 3.5%p↑ |
+| 강점 | 데이터 기반 의사결정, 이해관계자 조율 |
+| 약점 | 리스크 관리 체계화, 글로벌 소싱 경험 |
+
+#### 약한 지원자 - 이민수 (applicant_id: 1002)
+
+| 항목 | 내용 |
+|------|------|
+| 현재 직책 | (신입, 인턴 경험만) |
+| 경력 | 인턴 6개월 |
+| 핵심 성과 | 정량적 성과 없음 |
+| 강점 | 성실함, 팀워크 |
+| 약점 | 데이터 분석 경험 부족, 리더십 경험 없음 |
+
+---
+
+**버전:** 1.2.0

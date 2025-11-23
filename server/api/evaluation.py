@@ -199,6 +199,8 @@ async def get_evaluation_detail(evaluation_id: int):
         "job_aggregation": data["job_aggregation_result"],
         "common_aggregation": data["common_aggregation_result"],
         "validation": data["validation_result"],
+        "analysis_summary": data.get("analysis_summary"),
+        "post_processing": data.get("post_processing"),
         "created_at": data["created_at"],
         "completed_at": data["completed_at"]
     }
@@ -272,6 +274,8 @@ async def run_evaluation_background(
             "job_aggregation_result": result["job_aggregation"],
             "common_aggregation_result": result["common_aggregation"],
             "validation_result": result["validation"],
+            "analysis_summary": result.get("analysis_summary"),
+            "post_processing": result.get("post_processing"),
             "completed_at": datetime.now().isoformat()
         })
         

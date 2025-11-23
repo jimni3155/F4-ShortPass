@@ -450,12 +450,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
     "모든 팀 관계에서 일관된 경청 먼저 패턴",
     "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
-  ],
-  
-  "suggested_followup_questions": [
-    "팀원과 심각한 갈등이 있었던 경험을 구체적으로 말씀해주세요.",
-    "경청한다는 것은 본인에게 어떤 의미인가요?",
-    "팀 목표와 개인 목표가 충돌할 때 어떻게 하시나요?"
   ]
 }}
 
@@ -466,10 +460,12 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
 3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
-6. "관계의 질" > "관계의 수" 우선순위를 유지하세요.
-7. Stakeholder Management(수직)와 구별하여 팀원급 수평 관계 중심 평가하세요.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "관계의 질" > "관계의 수" 우선순위를 유지하세요.
+9. Stakeholder Management(수직)와 구별하여 팀원급 수평 관계 중심 평가하세요.
 """
 
 

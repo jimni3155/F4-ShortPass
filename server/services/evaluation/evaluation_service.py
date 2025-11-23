@@ -23,7 +23,7 @@ load_dotenv(env_path)
 from ai.prompts.competency_agents.common_competencies.problem_solving_prompt import create_problem_solving_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.organizational_fit_prompt import create_organizational_fit_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.growth_potential_prompt import create_growth_potential_evaluation_prompt
-from ai.prompts.competency_agents.common_competencies.interpersonal_skill_prompt import create_interpersonal_skill_evaluation_prompt  # ⚠️ "skill" (단수)
+from ai.prompts.competency_agents.common_competencies.interpersonal_skill_prompt import create_interpersonal_skill_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.achievement_motivation_prompt import create_achievement_motivation_evaluation_prompt
 
 from ai.prompts.competency_agents.job_competencies.customer_journey_marketing_prompt import create_customer_journey_marketing_evaluation_prompt
@@ -71,6 +71,169 @@ class EvaluationService:
             for name, generator in PROMPT_GENERATORS.items()
         }
     
+    def _ensure_required_fields(self, result: Dict) -> Dict:
+        """
+        필수 필드 강제 보장 (Post-processing)
+        
+        누락된 필드를 자동 생성:
+            1. key_observations (역량별 핵심 관찰)
+            2. resume_verification_summary (Resume 검증 근거)
+            3. overall_evaluation_summary (종합 심사평)
+        """
+        print("\n" + "="*60)
+        print("[필수 필드 검증] 시작...")
+        print("="*60)
+        
+        # ========================================
+        # 1. Stage 2: aggregated_competencies 검증
+        # ========================================
+        aggregated_competencies = result.get("aggregated_competencies", {})
+        
+        for comp_name, comp_data in aggregated_competencies.items():
+            print(f"\n[{comp_name}] 검증 중...")
+            
+            # 1-1. key_observations 보장
+            if "key_observations" not in comp_data or not comp_data.get("key_observations"):
+                print(f"  ⚠️  key_observations 누락 → 자동 생성")
+                
+                key_obs = []
+                # Strengths에서 추출 (최대 2개)
+                strengths = comp_data.get("strengths", [])
+                key_obs.extend(strengths[:2])
+                
+                # Weaknesses에서 추출 (최대 1개)
+                weaknesses = comp_data.get("weaknesses", [])
+                if weaknesses:
+                    key_obs.append(weaknesses[0])
+                
+                # 최소 3개 보장
+                if len(key_obs) < 3:
+                    score = comp_data.get("overall_score", 0)
+                    conf_v2 = comp_data.get("confidence_v2", 0.5)
+                    
+                    if score >= 75:
+                        key_obs.append(f"신입 기준 우수한 수준 (점수: {score}, 신뢰도: {conf_v2:.2f})")
+                    elif score >= 60:
+                        key_obs.append(f"신입 기준 양호한 수준 (점수: {score}, 신뢰도: {conf_v2:.2f})")
+                    elif score >= 50:
+                        key_obs.append(f"신입 기준 평균 수준 (점수: {score}, 신뢰도: {conf_v2:.2f})")
+                    else:
+                        key_obs.append(f"신입 기준 미흡한 수준 (점수: {score}, 신뢰도: {conf_v2:.2f})")
+                
+                # 중복 제거 및 최대 5개
+                key_obs = list(dict.fromkeys(key_obs))[:5]
+                comp_data["key_observations"] = key_obs
+                
+                print(f"    → 생성됨 ({len(key_obs)}개)")
+            else:
+                print(f"  ✅ key_observations 존재 ({len(comp_data['key_observations'])}개)")
+            
+            
+            # 1-2. resume_verification_summary 보장
+            if "resume_verification_summary" not in comp_data:
+                print(f"  ⚠️  resume_verification_summary 누락 → 생성")
+                
+                # segment_evaluations_with_resume에서 추출
+                segment_evals = result.get("segment_evaluations_with_resume", [])
+                comp_segments = [s for s in segment_evals if s.get("competency") == comp_name]
+                
+                verified_segments = [
+                    s for s in comp_segments 
+                    if s.get("resume_verified", False)
+                ]
+                
+                high_strength_segments = [
+                    s for s in verified_segments
+                    if s.get("verification_strength") == "high"
+                ]
+                
+                # 검증 강도 순 정렬
+                strength_order = {"high": 3, "medium": 2, "low": 1, "none": 0}
+                verified_segments_sorted = sorted(
+                    verified_segments,
+                    key=lambda s: strength_order.get(s.get("verification_strength", "none"), 0),
+                    reverse=True
+                )
+                
+                # 상위 3개만 추출
+                key_evidence = []
+                for seg in verified_segments_sorted[:3]:
+                    key_evidence.append({
+                        "segment_id": seg.get("segment_id"),
+                        "quote": seg.get("quote_text", ""),
+                        "resume_section": "unknown",
+                        "matched_content": ", ".join(seg.get("resume_evidence", [])),
+                        "verification_strength": seg.get("verification_strength", "none"),
+                        "reasoning": f"Resume 증거: {', '.join(seg.get('resume_evidence', []))}"
+                    })
+                
+                comp_data["resume_verification_summary"] = {
+                    "verified_count": len(verified_segments),
+                    "high_strength_count": len(high_strength_segments),
+                    "key_evidence": key_evidence
+                }
+                
+                print(f"    → 생성됨 (verified: {len(verified_segments)}개)")
+            else:
+                verified = comp_data["resume_verification_summary"].get("verified_count", 0)
+                print(f"  ✅ resume_verification_summary 존재 ({verified}개 검증)")
+        
+        result["aggregated_competencies"] = aggregated_competencies
+        
+        
+        # ========================================
+        # 2. Stage 3: final_result 검증
+        # ========================================
+        final_result = result.get("final_result", {})
+        
+        # 2-1. overall_evaluation_summary 보장
+        if "overall_evaluation_summary" not in final_result or not final_result.get("overall_evaluation_summary"):
+            print(f"\n⚠️  overall_evaluation_summary 누락 → Fallback 생성")
+            
+            final_score = result.get("final_score", 0)
+            avg_confidence = result.get("avg_confidence", 0.5)
+            
+            # 간단한 템플릿 심사평
+            fallback = (
+                f"지원자는 패션 MD 직무에 필요한 역량을 전반적으로 갖추고 있습니다 "
+                f"(종합 점수: {final_score:.1f}점, 평균 신뢰도: {avg_confidence:.2f}). "
+                f"신입 기준으로 평가되며, 입사 후 체계적인 교육과 멘토링을 통해 성장이 기대됩니다."
+            )
+            final_result["overall_evaluation_summary"] = fallback
+            
+            print(f"  → 생성됨 ({len(fallback)} chars)")
+        else:
+            print(f"\n✅ overall_evaluation_summary 존재 ({len(final_result['overall_evaluation_summary'])} chars)")
+        
+        
+        # 2-2. competency_details에 key_observations 및 resume_verification_summary 포함
+        competency_details = final_result.get("competency_details", {})
+        
+        for comp_name, comp_detail in competency_details.items():
+            # aggregated_competencies에서 복사
+            if comp_name in aggregated_competencies:
+                agg_comp = aggregated_competencies[comp_name]
+                
+                if "key_observations" not in comp_detail:
+                    comp_detail["key_observations"] = agg_comp.get("key_observations", [])
+                
+                if "resume_verification_summary" not in comp_detail:
+                    comp_detail["resume_verification_summary"] = agg_comp.get("resume_verification_summary", {
+                        "verified_count": 0,
+                        "high_strength_count": 0,
+                        "key_evidence": []
+                    })
+        
+        final_result["competency_details"] = competency_details
+        result["final_result"] = final_result
+        
+        
+        print("\n" + "="*60)
+        print("[필수 필드 검증] 완료")
+        print("="*60 + "\n")
+        
+        return result
+    
     async def evaluate_interview(
         self,
         interview_id: int,
@@ -89,11 +252,6 @@ class EvaluationService:
             job_id: JD ID
             transcript: 면접 Transcript JSON
             competency_weights: 10개 역량 가중치
-                {
-                    "achievement_motivation": 0.12,
-                    "growth_potential": 0.10,
-                    ...
-                }
             resume_data: 파싱된 Resume JSON (선택적)
         
         Returns:
@@ -101,10 +259,9 @@ class EvaluationService:
         """
         
         transcript_content = transcript
-        transcript_s3_url = f"s3://{self.s3_service.bucket_name}/transcripts/{interview_id}_mock.json"  # 임시 S3 URL
+        transcript_s3_url = f"s3://{self.s3_service.bucket_name}/transcripts/{interview_id}_mock.json"
         prompts = self._load_prompts(transcript_content)
 
-       
         # Initial State 구성
         initial_state = {
             # 기본 정보
@@ -160,7 +317,6 @@ class EvaluationService:
             "execution_logs": []
         }
         
-       
         # 그래프 실행
         print("\n" + "="*80)
         print(f"평가 시작: Interview ID {interview_id}")
@@ -168,15 +324,57 @@ class EvaluationService:
         
         result = await self.graph.ainvoke(initial_state)
         
-       
-        # 1. Save execution logs to S3
-        execution_logs_s3_key = f"logs/evaluations/{applicant_id}/{interview_id}/{datetime.now().isoformat()}_execution_logs.json"
+        # 🆕 필수 필드 강제 보장
+        result = self._ensure_required_fields(result)
+        
+        # 공통 런 타임스탬프
+        run_timestamp = result.get("started_at")
+        if isinstance(run_timestamp, datetime):
+            run_ts_str = run_timestamp.strftime("%Y%m%dT%H%M%S")
+        else:
+            run_ts_str = datetime.now().strftime("%Y%m%dT%H%M%S")
+        evaluation_base_prefix = f"evaluations/{interview_id}/{run_ts_str}"
+
+        # S3 업로드
+        execution_logs_s3_key = f"logs/evaluations/{applicant_id}/{interview_id}/{run_ts_str}_execution_logs.json"
         agent_logs_s3_url = self.s3_service.upload_json(
             execution_logs_s3_key, result["execution_logs"]
         )
 
-       
-        # 2. Save evaluation results to DB
+        stage1_key = f"{evaluation_base_prefix}/stage1_evidence.json"
+        stage1_evidence_url = self.s3_service.upload_json(
+            stage1_key,
+            result.get("aggregated_competencies", {})
+        )
+
+        stage2_payload = {
+            "segment_evaluations_with_resume": result.get("segment_evaluations_with_resume", []),
+            "confidence_v2_calculated": result.get("confidence_v2_calculated", False),
+            "segment_overlap_adjustments": result.get("segment_overlap_adjustments", []),
+            "cross_competency_flags": result.get("cross_competency_flags", []),
+            "aggregated_competencies": result.get("aggregated_competencies", {}),
+            "low_confidence_list": result.get("low_confidence_list", []),
+            "requires_collaboration": result.get("requires_collaboration", False),
+            "competency_weights": competency_weights,
+        }
+        stage2_key = f"{evaluation_base_prefix}/stage2_aggregator.json"
+        stage2_aggregator_url = self.s3_service.upload_json(stage2_key, stage2_payload)
+
+        stage3_payload = {
+            "final_score": result.get("final_score"),
+            "avg_confidence": result.get("avg_confidence"),
+            "final_reliability": result.get("final_reliability"),
+            "reliability_note": result.get("reliability_note"),
+            "final_result": result.get("final_result"),
+            "aggregated_competencies": result.get("aggregated_competencies", {}),
+            "collaboration_results": result.get("collaboration_results", []),
+            "analysis_summary": result.get("analysis_summary"),
+            "post_processing": result.get("post_processing"),
+        }
+        stage3_key = f"{evaluation_base_prefix}/stage3_final_integration.json"
+        stage3_final_url = self.s3_service.upload_json(stage3_key, stage3_payload)
+
+        # DB 저장
         db = SessionLocal()
         try:
             evaluation_record = await asyncio.to_thread(
@@ -184,7 +382,11 @@ class EvaluationService:
                 db, 
                 result, 
                 transcript_s3_url, 
-                agent_logs_s3_url
+                agent_logs_s3_url,
+                stage1_evidence_url,
+                stage2_aggregator_url,
+                stage3_final_url,
+                run_ts_str
             )
             evaluation_id = evaluation_record.id
         finally:
@@ -194,7 +396,6 @@ class EvaluationService:
         print("평가 완료")
         print("="*80)
         
-       
         # 최종 결과 구성
         return {
             "evaluation_id": evaluation_id,
@@ -203,30 +404,28 @@ class EvaluationService:
             "job_id": job_id,
             "transcript_s3_url": transcript_s3_url,
             "agent_logs_s3_url": agent_logs_s3_url,
+            "stage1_evidence_s3_url": stage1_evidence_url,
+            "stage2_aggregator_s3_url": stage2_aggregator_url,
+            "stage3_final_integration_s3_url": stage3_final_url,
+            "evaluation_run_ts": run_ts_str,
             
-            # 디버깅/관찰용 상세 정보 (요청 시 출력)
             "execution_logs": result.get("execution_logs", []),
             "segment_evaluations_with_resume": result.get("segment_evaluations_with_resume", []),
             "segment_overlap_adjustments": result.get("segment_overlap_adjustments", []),
             "cross_competency_flags": result.get("cross_competency_flags", []),
             "aggregated_competencies": result.get("aggregated_competencies", {}),
             
-            # 최종 점수
             "final_score": result.get("final_score"),
             "avg_confidence": result.get("avg_confidence"),
             "final_reliability": result.get("final_reliability"),
             "reliability_note": result.get("reliability_note"),
+            "analysis_summary": result.get("analysis_summary"),
+            "post_processing": result.get("post_processing"),
             
-            # 역량별 상세
             "competency_details": result.get("final_result", {}).get("competency_details", {}),
-            
-            # Low Confidence 요약
             "low_confidence_summary": result.get("final_result", {}).get("low_confidence_summary", {}),
-            
-            # Collaboration 요약
             "collaboration_summary": result.get("final_result", {}).get("collaboration_summary", {}),
             
-            # 메타 정보
             "started_at": result["started_at"].isoformat(),
             "completed_at": datetime.now().isoformat()
         }
@@ -236,13 +435,14 @@ class EvaluationService:
         db: Session, 
         state: Dict, 
         transcript_s3_url: str, 
-        agent_logs_s3_url: str
+        agent_logs_s3_url: str,
+        evidence_s3_url: str,
+        stage2_aggregator_s3_url: str,
+        stage3_final_s3_url: str,
+        evaluation_run_ts: str
     ):
-        """
-        평가 결과를 DB에 저장
-        """
-       
-        # FK가 없는 경우 테스트 편의를 위해 최소 엔터티를 생성
+        """평가 결과를 DB에 저장"""
+        
         applicant_id = state["applicant_id"]
         job_id = state["job_id"]
 
@@ -257,7 +457,6 @@ class EvaluationService:
 
         job = db.query(Job).filter(Job.id == job_id).first()
         if not job:
-            # 회사도 없을 수 있으므로 기본 Company 생성
             company = db.query(Company).filter(Company.id == 1).first()
             if not company:
                 company = Company(id=1, name="Default Company")
@@ -270,7 +469,6 @@ class EvaluationService:
             )
             db.add(job)
 
-        # 인터뷰 세션이 없으면 생성 (FK 보호)
         interview_id = state.get("interview_id")
         if interview_id:
             interview = db.query(InterviewSession).filter(InterviewSession.id == interview_id).first()
@@ -283,21 +481,34 @@ class EvaluationService:
                 )
                 db.add(interview)
 
-        # FK 객체들을 먼저 flush해서 PK를 확정
         db.flush()
 
-       
-        # 1. 역량 평가 결과(증거)를 S3에 업로드
-       
         aggregated_competencies = state.get("aggregated_competencies", {})
-        
-        evidence_s3_key = f"evaluations/{state['interview_id']}/evidence.json"
-        evidence_s3_url = self.s3_service.upload_json(evidence_s3_key, aggregated_competencies)
-
-       
-        # 2. Evaluation 레코드 생성
-       
         final_result = state.get("final_result", {})
+        analysis_summary = state.get("analysis_summary")
+        post_processing = state.get("post_processing")
+        aggregated_eval_payload = {
+            "final_result": final_result,
+            "analysis_summary": analysis_summary,
+            "post_processing": post_processing
+        }
+        
+        evaluation_metadata = {
+            "resume_verified_count": sum(
+                comp.get("resume_verified_count", 0)
+                for comp in aggregated_competencies.values()
+            ),
+            "segment_overlap_adjustments": len(state.get("segment_overlap_adjustments", [])),
+            "collaboration_count": state.get("collaboration_count", 0),
+            "s3_paths": {
+                "stage1_evidence": evidence_s3_url,
+                "stage2_aggregator": stage2_aggregator_s3_url,
+                "stage3_final_integration": stage3_final_s3_url,
+                "execution_logs": agent_logs_s3_url,
+            },
+            "evaluation_run_ts": evaluation_run_ts,
+            "evaluation_prefix": f"evaluations/{state.get('interview_id')}/{evaluation_run_ts}"
+        }
         
         evaluation_record = Evaluation(
             applicant_id=state["applicant_id"],
@@ -305,49 +516,41 @@ class EvaluationService:
             interview_id=state["interview_id"],
             evaluation_status="completed",
             
-            # Scores (최종 점수)
             match_score=state.get("final_score", 0.0),
             normalized_score=state.get("final_score", 0.0),
             weighted_score=state.get("final_score", 0.0),
             confidence_score=state.get("avg_confidence", 0.0),
 
-            # S3 URL
             transcript_s3_url=transcript_s3_url,
             agent_logs_s3_url=agent_logs_s3_url,
             evidence_s3_url=evidence_s3_url,
 
-            # 역량별 점수 (수정됨! - 역량 이름 변경)
             problem_solving=aggregated_competencies.get("problem_solving", {}).get("overall_score", 0),
             organizational_fit=aggregated_competencies.get("organizational_fit", {}).get("overall_score", 0),
             growth_potential=aggregated_competencies.get("growth_potential", {}).get("overall_score", 0),
-            interpersonal_skills=aggregated_competencies.get("interpersonal_skill", {}).get("overall_score", 0),  # ⚠️ "skill" → DB는 "skills"
+            interpersonal_skills=aggregated_competencies.get("interpersonal_skill", {}).get("overall_score", 0),
             achievement_motivation=aggregated_competencies.get("achievement_motivation", {}).get("overall_score", 0),
             
-            # Job Competencies - 수정 필요! (DB 스키마에 컬럼 추가 필요)
-            # 임시로 기존 컬럼 재사용
             structured_thinking=aggregated_competencies.get("customer_journey_marketing", {}).get("overall_score", 0),
             business_documentation=aggregated_competencies.get("md_data_analysis", {}).get("overall_score", 0),
             financial_literacy=aggregated_competencies.get("seasonal_strategy_kpi", {}).get("overall_score", 0),
             industry_learning=aggregated_competencies.get("stakeholder_collaboration", {}).get("overall_score", 0),
             stakeholder_management=aggregated_competencies.get("value_chain_optimization", {}).get("overall_score", 0),
 
-            # Aggregation 결과 (삭제됨!)
-            job_aggregation=None,  # Job/Common 구분 제거
-            common_aggregation=None,  # Job/Common 구분 제거
+            job_aggregation=None,
+            common_aggregation=None,
             
-            # Validation 결과
             validation_result={
                 "low_confidence_list": state.get("low_confidence_list", []),
                 "cross_competency_flags": state.get("cross_competency_flags", []),
             },
 
-            # JSON 필드
             competency_scores={
                 comp_name: comp_data.get("overall_score", 0)
                 for comp_name, comp_data in aggregated_competencies.items()
             },
             individual_evaluations=aggregated_competencies,
-            aggregated_evaluation=final_result,
+            aggregated_evaluation=aggregated_eval_payload,
             match_result={
                 "final_score": state.get("final_score"),
                 "reliability": state.get("final_reliability"),
@@ -356,14 +559,7 @@ class EvaluationService:
             reasoning_log={},
             rubric_scores={},
             normalization_metadata={},
-            evaluation_metadata={
-                "resume_verified_count": sum(
-                    comp.get("resume_verified_count", 0)
-                    for comp in aggregated_competencies.values()
-                ),
-                "segment_overlap_adjustments": len(state.get("segment_overlap_adjustments", [])),
-                "collaboration_count": state.get("collaboration_count", 0)
-            },
+            evaluation_metadata=evaluation_metadata,
             
             created_at=state["started_at"],
             updated_at=datetime.now()

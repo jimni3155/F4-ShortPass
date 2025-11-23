@@ -43,7 +43,7 @@ const MOCK_PERSONAS = [
     archetype: '도전형',
     description: '빠른 성장과 학습 능력을 중시하는 CTO',
     focusAreas: ['학습 능력', '적응력', '성장 마인드', '혁신'],
-    avatar: '🚀',
+    avatar: '',
     questions: [
       '최근 1년간 가장 열심히 학습한 기술이나 개념은 무엇인가요?',
       '실패했던 프로젝트에서 어떤 교훈을 얻으셨나요?',

@@ -136,14 +136,19 @@ async def prepare_interview(
 
 
 @router.websocket("/ws/interview/{interview_id}")
-async def websocket_endpoint(websocket: WebSocket, interview_id: int = Path(...)):
+async def websocket_endpoint(
+    websocket: WebSocket,
+    interview_id: int = Path(...),
+    applicant_id: int = None  # 쿼리 파라미터: ?applicant_id=101
+):
     # interview_id: 준비된 면접 세션 ID
-    
+    # applicant_id: 이력서 기반 맞춤 질문 로드용 (optional)
+
     await websocket.accept()
-   
+
     try: # v3 : 테스트용 / v4 : 실제 로직
-        # await interview_service_v3.handle_interview_session(websocket, interview_id)  
-        await interview_service_v4.handle_interview_session(websocket, interview_id) 
+        # await interview_service_v3.handle_interview_session(websocket, interview_id)
+        await interview_service_v4.handle_interview_session(websocket, interview_id, applicant_id) 
 
     except WebSocketDisconnect:
         print(f"API: 클라이언트 연결 종료됨. (ID: {interview_id})")

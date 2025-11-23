@@ -9,12 +9,79 @@ Sub-steps:
     2.4. Cross-Competency Validation (Rule-based)
 """
 
-from typing import Dict
+from typing import Dict, List
 from datetime import datetime
 from .state import EvaluationState
 from ..aggregators.resume_verifier import ResumeVerifier
 from ..aggregators.confidence_calculator import ConfidenceCalculator
 from ..aggregators.segment_overlap_checker import SegmentOverlapChecker
+
+
+def _extract_resume_verification_summary(comp_segments: List[Dict]) -> Dict:
+    """
+    역량별 Resume 검증 근거 추출 (상위 3개만)
+    
+    Args:
+        comp_segments: 특정 역량의 Segment 평가 목록
+    
+    Returns:
+        {
+            "verified_count": 3,
+            "high_strength_count": 2,
+            "key_evidence": [
+                {
+                    "segment_id": 3,
+                    "quote": "학부생 때 창업 프로젝트를 이끌었습니다",
+                    "resume_section": "projects",
+                    "matched_content": "학부생 창업 프로젝트 (2020.03-2021.02) | 팀장",
+                    "verification_strength": "high",
+                    "reasoning": "면접 답변과 Resume 경력이 정확히 일치. 역할(팀장)도 확인됨."
+                },
+                ...
+            ]
+        }
+    """
+    verified_segments = [
+        s for s in comp_segments 
+        if s.get("resume_verification", {}).get("verified", False)
+    ]
+    
+    high_strength_segments = [
+        s for s in verified_segments
+        if s.get("resume_verification", {}).get("strength") == "high"
+    ]
+    
+    # 검증 강도 순으로 정렬 (high > medium > low)
+    strength_order = {"high": 3, "medium": 2, "low": 1, "none": 0}
+    verified_segments_sorted = sorted(
+        verified_segments,
+        key=lambda s: strength_order.get(s.get("resume_verification", {}).get("strength", "none"), 0),
+        reverse=True
+    )
+    
+    # 상위 3개만 추출
+    key_evidence = []
+    for seg in verified_segments_sorted[:3]:
+        resume_verification = seg.get("resume_verification", {})
+        resume_matches = resume_verification.get("resume_matches", [])
+        
+        # 첫 번째 매칭 정보 사용
+        first_match = resume_matches[0] if resume_matches else {}
+        
+        key_evidence.append({
+            "segment_id": seg.get("segment_id"),
+            "quote": seg.get("quote_text", ""),
+            "resume_section": first_match.get("resume_section", ""),
+            "matched_content": first_match.get("matched_content", ""),
+            "verification_strength": resume_verification.get("strength", "none"),
+            "reasoning": resume_verification.get("reasoning", "")
+        })
+    
+    return {
+        "verified_count": len(verified_segments),
+        "high_strength_count": len(high_strength_segments),
+        "key_evidence": key_evidence
+    }
 
 
 async def aggregator_node(state: EvaluationState) -> Dict:
@@ -31,9 +98,9 @@ async def aggregator_node(state: EvaluationState) -> Dict:
         업데이트할 State 필드:
             - segment_evaluations_with_resume
             - confidence_v2_calculated
-            - segment_overlap_adjustments
-            - cross_competency_flags
-            - aggregated_competencies
+            - segment_overlap_adjustments (내부 로직용)
+            - cross_competency_flags (내부 로직용)
+            - aggregated_competencies (Resume 검증 근거 포함)
             - low_confidence_list
             - requires_collaboration
     """
@@ -88,8 +155,14 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     )
     
     # 통계 출력
-    verified_count = sum(1 for s in segment_evaluations_with_resume if s.get("resume_verified"))
-    high_strength_count = sum(1 for s in segment_evaluations_with_resume if s.get("verification_strength") == "high")
+    verified_count = sum(
+        1 for s in segment_evaluations_with_resume 
+        if s.get("resume_verification", {}).get("verified", False)
+    )
+    high_strength_count = sum(
+        1 for s in segment_evaluations_with_resume 
+        if s.get("resume_verification", {}).get("strength") == "high"
+    )
     
     print(f"\n  Resume 검증 완료:")
     print(f"    - 총 Segment 평가: {len(segment_evaluations_with_resume)}개")
@@ -119,7 +192,7 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     print(f"    - 개선된 평가: {improved_count}개")
     
 
-    # Sub-step 2.3: Segment Overlap Check
+    # Sub-step 2.3: Segment Overlap Check (내부 로직용)
 
     
     print("\n[Sub-step 2.3] Segment Overlap Check (조건부)")
@@ -136,9 +209,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     if segment_overlap_adjustments:
         for adj in segment_overlap_adjustments:
             print(f"      * Segment {adj['segment_id']}: {len(adj['adjustments'])}개 역량 조정 ({adj['adjustment_type']})")
+    print("      이 정보는 내부 로직용이며 프론트엔드에 노출하지 않습니다.")
     
 
-    # Sub-step 2.4: Cross-Competency Validation
+    # Sub-step 2.4: Cross-Competency Validation (내부 로직용)
 
     
     print("\n[Sub-step 2.4] Cross-Competency Validation (Rule-based)")
@@ -193,9 +267,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     if low_confidence_list:
         for item in low_confidence_list:
             print(f"      * {item['competency']}: Conf={item['confidence_v2']:.2f}")
+    print("      이 정보는 내부 로직용이며 프론트엔드에 노출하지 않습니다.")
     
 
-    # 역량별 최종 결과 집계
+    # 역량별 최종 결과 집계 (Resume 검증 근거 포함)
     print("\n[역량별 최종 결과 집계]")
     print("-" * 60)
     
@@ -211,22 +286,32 @@ async def aggregator_node(state: EvaluationState) -> Dict:
         # 원본 점수 (Agent가 계산한 overall_score)
         original_score = comp_result.get("overall_score", 0)
         
+        #  Resume 검증 근거 추출 (상위 3개만)
+        resume_verification_summary = _extract_resume_verification_summary(comp_segments)
+        
         aggregated_competencies[comp_name] = {
             "competency_name": comp_name,
             "overall_score": original_score,  # Agent 점수 유지
             "interview_confidence": comp_result.get("confidence", {}).get("overall_confidence", 0.5),
             "confidence_v2": avg_conf_v2,  # Resume 검증 반영
             "segment_count": len(comp_segments),
-            "resume_verified_count": sum(1 for s in comp_segments if s.get("resume_verified")),
+            "resume_verified_count": sum(
+                1 for s in comp_segments 
+                if s.get("resume_verification", {}).get("verified", False)
+            ),
             "adjusted_by_overlap": any(s.get("adjusted") for s in comp_segments),
             "perspectives": comp_result.get("perspectives"),
             "strengths": comp_result.get("strengths"),
-            "weaknesses": comp_result.get("weaknesses")
+            "weaknesses": comp_result.get("weaknesses"),
+            "key_observations": comp_result.get("key_observations", []),
+            "resume_verification_summary": resume_verification_summary  
         }
     
     print(f"\n  역량별 집계 완료: {len(aggregated_competencies)}개")
     for comp_name, agg in aggregated_competencies.items():
-        print(f"    - {comp_name}: {agg['overall_score']}점 (Conf V2: {agg['confidence_v2']:.2f})")
+        verified = agg['resume_verification_summary']['verified_count']
+        high_strength = agg['resume_verification_summary']['high_strength_count']
+        print(f"    - {comp_name}: {agg['overall_score']}점 (Conf V2: {agg['confidence_v2']:.2f}, Resume: {verified}개 검증, {high_strength}개 강함)")
     
 
     # 협업 필요 여부 판단   
@@ -234,10 +319,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
     
     print("\n" + "-"*60)
     if requires_collaboration:
-        print(f"  협업 필요: Low Confidence 역량 {len(low_confidence_list)}개")
+        print(f"    협업 필요: Low Confidence 역량 {len(low_confidence_list)}개")
         print("   → Collaboration Node로 진행 (선택적)")
     else:
-        print(" 모든 역량 신뢰도 양호 - Final Integration으로 바로 진행")
+        print("   모든 역량 신뢰도 양호 - Final Integration으로 바로 진행")
     print("-"*60)
     
 
@@ -266,10 +351,10 @@ async def aggregator_node(state: EvaluationState) -> Dict:
         # Sub-step 결과
         "segment_evaluations_with_resume": segment_evaluations_with_resume,
         "confidence_v2_calculated": True,
-        "segment_overlap_adjustments": segment_overlap_adjustments,
-        "cross_competency_flags": cross_competency_flags,
+        "segment_overlap_adjustments": segment_overlap_adjustments,  # 내부 로직용
+        "cross_competency_flags": cross_competency_flags,  # 내부 로직용
         
-        # 최종 집계
+        # 최종 집계 (Resume 검증 근거 포함)
         "aggregated_competencies": aggregated_competencies,
         
         # 협업 필요 여부

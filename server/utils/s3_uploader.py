@@ -5,15 +5,16 @@ import os
 import uuid
 from dotenv import load_dotenv
 
-# 1. 현재 서버를 실행한 위치(Current Working Directory) 확인
-current_work_dir = os.getcwd()
-env_path = os.path.join(current_work_dir, ".env")
+# # 1. 현재 서버를 실행한 위치(Current Working Directory) 확인
+# current_work_dir = os.getcwd()
+# env_path = os.path.join(current_work_dir, ".env")
 
-# 2. .env 로드 (override=True로 기존 환경변수 무시하고 덮어쓰기)
-is_loaded = load_dotenv(dotenv_path=env_path, override=True)
-print(f" [DEBUG] 로드 성공 여부: {is_loaded}")
+# # 2. .env 로드 (override=True로 기존 환경변수 무시하고 덮어쓰기)
+# is_loaded = load_dotenv(dotenv_path=env_path, override=True)
+# print(f" [DEBUG] 로드 성공 여부: {is_loaded}")
 
 # 3. 값 확인
+load_dotenv()  # 이미 로드된 경우 중복 로드 방지
 AWS_BUCKET_NAME = os.getenv("S3_BUCKET_NAME")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")  # 기본값 설정
 
@@ -25,7 +26,7 @@ else:
 
 
 def upload_file_and_get_url(file_path: str, folder="interviews") -> str:
-    # (기존 코드와 동일)
+    # file_path: 로컬 파일 경로, folder: 저장할 S3 경로, return: 파일의 presigned URL
     if not AWS_BUCKET_NAME:
         print("❌ [FATAL] AWS 환경변수가 로드되지 않아 업로드를 중단합니다.")
         return None

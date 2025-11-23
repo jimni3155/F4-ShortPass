@@ -1,0 +1,66 @@
+{
+  "interview_id": 124,
+  "applicant_id": 1002,
+  "job_id": 2001,
+  "persona_id": "P-VAL_PM",
+  "persona_meta": {
+    "name": "Value-Driven PM",
+    "role": "면접관",
+    "tone": "차분/구조화",
+    "focus": ["고객집착", "데이터기반"]
+  },
+  "weights": {
+    "competency": {
+      "COMM_01": 0.35,
+      "COMM_02": 0.35,
+      "COMM_03": 0.3,
+      "JOB_01": 0.2,
+      "JOB_02": 0.2,
+      "JOB_03": 0.2,
+      "JOB_04": 0.2,
+      "JOB_05": 0.2
+    },
+    "category": { "common_competencies": 0.3, "job_competencies": 0.7 }
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "segment_order": 1,
+      "turn_type": "main",
+      "question_text": "가장 도전적이었던 프로젝트는 무엇인가요?",
+      "answer_text": "작년에 팀 프로젝트 했는데 바빴어요. 다들 힘들었지만 결국 제출했습니다.",
+      "answer_duration_sec": 25,
+      "char_index_start": 0,
+      "char_index_end": 80,
+      "timestamp_start": "2025-11-22T04:10:00Z",
+      "timestamp_end": "2025-11-22T04:10:25Z",
+      "persona_hints": ["증거 부족", "정량 지표 요청"]
+    },
+    {
+      "segment_id": 2,
+      "segment_order": 2,
+      "turn_type": "main",
+      "question_text": "팀 갈등을 해결한 경험을 말씀해주세요.",
+      "answer_text": "서로 이야기하다가 그냥 넘어갔어요. 결국 잘 됐습니다.",
+      "answer_duration_sec": 18,
+      "char_index_start": 0,
+      "char_index_end": 60,
+      "timestamp_start": "2025-11-22T04:10:30Z",
+      "timestamp_end": "2025-11-22T04:10:48Z",
+      "persona_hints": ["합의 과정/근거 없음"]
+    },
+    {
+      "segment_id": 3,
+      "segment_order": 3,
+      "turn_type": "follow_up",
+      "question_text": "ROI 근거가 되는 데이터는 무엇이었나요?",
+      "answer_text": "숫자는 기억 안 나지만 잘 나왔던 걸로 압니다.",
+      "answer_duration_sec": 12,
+      "char_index_start": 0,
+      "char_index_end": 50,
+      "timestamp_start": "2025-11-22T04:10:55Z",
+      "timestamp_end": "2025-11-22T04:11:07Z",
+      "persona_hints": ["기억 의존, 데이터 부재"]
+    }
+  ]
+}

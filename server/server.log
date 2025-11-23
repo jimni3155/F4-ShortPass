@@ -1,0 +1,678 @@
+[32mINFO[0m:     2025-11-21 04:28:33 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 04:28:33 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 04:28:33 - Started reloader process [[36m[1m191955[0m] using [36m[1mWatchFiles[0m
+[31mERROR[0m:    2025-11-21 04:28:33 - Error loading ASGI app. Could not import module "server.main".
+[32mINFO[0m:     2025-11-21 04:28:43 - Stopping reloader process [[36m[1m191955[0m]
+[32mINFO[0m:     2025-11-21 04:28:55 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 04:28:55 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 04:28:55 - Started reloader process [[36m[1m192041[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 04:28:56 - Started server process [[36m192043[0m]
+[32mINFO[0m:     2025-11-21 04:28:56 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 04:28:56 - ============================================================
+[32mINFO[0m:     2025-11-21 04:28:56 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 04:28:56 - ============================================================
+[32mINFO[0m:     2025-11-21 04:28:56 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 04:28:56 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 04:28:56 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 04:28:56 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 04:28:56 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 04:28:56 - Application startup complete.
+[32mINFO[0m:     2025-11-21 04:30:18 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 04:30:18 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1238s
+[32mINFO[0m:     2025-11-21 04:30:19 - 211.205.53.23:62754 - "WebSocket /api/v1/ws/interview/42" [accepted]
+[32mINFO[0m:     2025-11-21 04:30:19 - connection open
+[32mINFO[0m:     2025-11-21 04:30:19 - 211.205.53.23:62755 - "WebSocket /api/v1/ws/interview/42" [accepted]
+[32mINFO[0m:     2025-11-21 04:30:19 - connection open
+[32mINFO[0m:     2025-11-21 04:30:21 - Shutting down
+[32mINFO[0m:     2025-11-21 04:30:21 - connection closed
+[32mINFO[0m:     2025-11-21 04:30:21 - connection closed
+[32mINFO[0m:     2025-11-21 04:30:21 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 04:30:21 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 04:30:21 - Finished server process [[36m192043[0m]
+[32mINFO[0m:     2025-11-21 04:30:21 - Stopping reloader process [[36m[1m192041[0m]
+[32mINFO[0m:     2025-11-21 04:32:11 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 04:32:11 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 04:32:11 - Started reloader process [[36m[1m192507[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 04:32:13 - Started server process [[36m192509[0m]
+[32mINFO[0m:     2025-11-21 04:32:13 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 04:32:13 - ============================================================
+[32mINFO[0m:     2025-11-21 04:32:13 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 04:32:13 - ============================================================
+[32mINFO[0m:     2025-11-21 04:32:13 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 04:32:13 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 04:32:13 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 04:32:13 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 04:32:13 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 04:32:13 - Application startup complete.
+[32mINFO[0m:     2025-11-21 04:32:24 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 04:32:24 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1005s
+[32mINFO[0m:     2025-11-21 04:32:24 - 211.205.53.23:63223 - "WebSocket /api/v1/ws/interview/43" [accepted]
+[32mINFO[0m:     2025-11-21 04:32:24 - connection open
+[32mINFO[0m:     2025-11-21 04:32:25 - 211.205.53.23:63224 - "WebSocket /api/v1/ws/interview/43" [accepted]
+[32mINFO[0m:     2025-11-21 04:32:25 - connection open
+[32mINFO[0m:     2025-11-21 04:32:47 - connection closed
+[33mWARNING[0m:  2025-11-21 04:32:53 - WatchFiles detected changes in 'services/interview_service_v3.py'. Reloading...
+[32mINFO[0m:     2025-11-21 04:32:53 - Shutting down
+[32mINFO[0m:     2025-11-21 04:32:53 - connection closed
+[32mINFO[0m:     2025-11-21 04:32:53 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 04:32:53 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 04:32:53 - Finished server process [[36m192509[0m]
+[32mINFO[0m:     2025-11-21 04:32:55 - Started server process [[36m192643[0m]
+[32mINFO[0m:     2025-11-21 04:32:55 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 04:32:55 - ============================================================
+[32mINFO[0m:     2025-11-21 04:32:55 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 04:32:55 - ============================================================
+[32mINFO[0m:     2025-11-21 04:32:55 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 04:32:55 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 04:32:55 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 04:32:55 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 04:32:55 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 04:32:55 - Application startup complete.
+[32mINFO[0m:     2025-11-21 04:33:00 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 04:33:00 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1303s
+[32mINFO[0m:     2025-11-21 04:33:01 - 211.205.53.23:63395 - "WebSocket /api/v1/ws/interview/44" [accepted]
+[32mINFO[0m:     2025-11-21 04:33:01 - connection open
+[32mINFO[0m:     2025-11-21 04:33:01 - 211.205.53.23:63396 - "WebSocket /api/v1/ws/interview/44" [accepted]
+[32mINFO[0m:     2025-11-21 04:33:01 - connection open
+[33mWARNING[0m:  2025-11-21 04:35:43 - WatchFiles detected changes in 'api/interview.py'. Reloading...
+[32mINFO[0m:     2025-11-21 04:35:43 - Shutting down
+[32mINFO[0m:     2025-11-21 04:35:43 - connection closed
+[32mINFO[0m:     2025-11-21 04:35:43 - connection closed
+[32mINFO[0m:     2025-11-21 04:35:43 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 04:35:43 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 04:35:43 - Finished server process [[36m192643[0m]
+[32mINFO[0m:     2025-11-21 04:35:45 - Started server process [[36m192952[0m]
+[32mINFO[0m:     2025-11-21 04:35:45 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 04:35:45 - ============================================================
+[32mINFO[0m:     2025-11-21 04:35:45 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 04:35:45 - ============================================================
+[32mINFO[0m:     2025-11-21 04:35:45 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 04:35:45 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 04:35:45 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 04:35:45 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 04:35:45 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 04:35:45 - Application startup complete.
+[33mWARNING[0m:  2025-11-21 04:35:51 - WatchFiles detected changes in 'services/interview_service_v3.py'. Reloading...
+[32mINFO[0m:     2025-11-21 04:35:51 - Shutting down
+[32mINFO[0m:     2025-11-21 04:35:51 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 04:35:51 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 04:35:51 - Finished server process [[36m192952[0m]
+[32mINFO[0m:     2025-11-21 04:35:53 - Started server process [[36m193004[0m]
+[32mINFO[0m:     2025-11-21 04:35:53 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 04:35:53 - ============================================================
+[32mINFO[0m:     2025-11-21 04:35:53 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 04:35:53 - ============================================================
+[32mINFO[0m:     2025-11-21 04:35:53 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 04:35:53 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 04:35:53 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 04:35:53 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 04:35:53 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 04:35:53 - Application startup complete.
+[32mINFO[0m:     2025-11-21 04:36:02 - Shutting down
+[32mINFO[0m:     2025-11-21 04:36:02 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 04:36:02 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 04:36:02 - Finished server process [[36m193004[0m]
+[32mINFO[0m:     2025-11-21 04:36:02 - Stopping reloader process [[36m[1m192507[0m]
+[32mINFO[0m:     2025-11-21 06:26:51 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 06:26:51 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 06:26:51 - Started reloader process [[36m[1m202295[0m] using [36m[1mWatchFiles[0m
+[33mWARNING[0m:  2025-11-21 06:27:54 - WatchFiles detected changes in 'api/interview.py'. Reloading...
+[32mINFO[0m:     2025-11-21 06:27:56 - Started server process [[36m202507[0m]
+[32mINFO[0m:     2025-11-21 06:27:56 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 06:27:56 - ============================================================
+[32mINFO[0m:     2025-11-21 06:27:56 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 06:27:56 - ============================================================
+[32mINFO[0m:     2025-11-21 06:27:56 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 06:27:56 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 06:27:56 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 06:27:56 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 06:27:56 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 06:27:56 - Application startup complete.
+[32mINFO[0m:     2025-11-21 06:28:41 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 06:28:41 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.2032s
+[32mINFO[0m:     2025-11-21 06:28:42 - 211.205.53.23:49731 - "WebSocket /api/v1/ws/interview/45" [accepted]
+[32mINFO[0m:     2025-11-21 06:28:42 - connection open
+[32mINFO[0m:     2025-11-21 06:28:43 - 211.205.53.23:49736 - "WebSocket /api/v1/ws/interview/45" [accepted]
+[32mINFO[0m:     2025-11-21 06:28:43 - connection open
+[32mINFO[0m:     2025-11-21 06:29:33 - Shutting down
+[32mINFO[0m:     2025-11-21 06:29:33 - connection closed
+[32mINFO[0m:     2025-11-21 06:29:33 - connection closed
+[32mINFO[0m:     2025-11-21 06:29:33 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 06:29:33 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 06:29:33 - Finished server process [[36m202507[0m]
+[32mINFO[0m:     2025-11-21 06:29:33 - Stopping reloader process [[36m[1m202295[0m]
+[32mINFO[0m:     2025-11-21 06:38:50 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 06:38:50 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 06:38:50 - Started reloader process [[36m[1m204153[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 06:38:53 - Started server process [[36m204156[0m]
+[32mINFO[0m:     2025-11-21 06:38:53 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 06:38:53 - ============================================================
+[32mINFO[0m:     2025-11-21 06:38:53 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 06:38:53 - ============================================================
+[32mINFO[0m:     2025-11-21 06:38:53 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 06:38:53 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 06:38:53 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 06:38:53 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 06:38:53 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 06:38:53 - Application startup complete.
+[32mINFO[0m:     2025-11-21 06:38:58 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 06:38:58 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.2532s
+[32mINFO[0m:     2025-11-21 06:38:59 - 211.205.53.23:52309 - "WebSocket /api/v1/ws/interview/46" [accepted]
+[32mINFO[0m:     2025-11-21 06:38:59 - connection open
+[32mINFO[0m:     2025-11-21 06:38:59 - 211.205.53.23:52314 - "WebSocket /api/v1/ws/interview/46" [accepted]
+[32mINFO[0m:     2025-11-21 06:38:59 - connection open
+[32mINFO[0m:     2025-11-21 06:40:05 - Shutting down
+[32mINFO[0m:     2025-11-21 06:40:05 - connection closed
+[32mINFO[0m:     2025-11-21 06:40:05 - connection closed
+[32mINFO[0m:     2025-11-21 06:40:05 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 06:40:05 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 06:40:05 - Finished server process [[36m204156[0m]
+[32mINFO[0m:     2025-11-21 06:40:05 - Stopping reloader process [[36m[1m204153[0m]
+[32mINFO[0m:     2025-11-21 06:49:22 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 06:49:22 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 06:49:22 - Started reloader process [[36m[1m204862[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 06:49:23 - Started server process [[36m204864[0m]
+[32mINFO[0m:     2025-11-21 06:49:23 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 06:49:23 - ============================================================
+[32mINFO[0m:     2025-11-21 06:49:23 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 06:49:23 - ============================================================
+[32mINFO[0m:     2025-11-21 06:49:23 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 06:49:23 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 06:49:23 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 06:49:23 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 06:49:23 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 06:49:23 - Application startup complete.
+[32mINFO[0m:     2025-11-21 06:49:39 - Shutting down
+[32mINFO[0m:     2025-11-21 06:49:39 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 06:49:39 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 06:49:39 - Finished server process [[36m204864[0m]
+[32mINFO[0m:     2025-11-21 06:49:39 - Stopping reloader process [[36m[1m204862[0m]
+[32mINFO[0m:     2025-11-21 06:49:41 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 06:49:41 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 06:49:41 - Started reloader process [[36m[1m205001[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 06:49:43 - Started server process [[36m205006[0m]
+[32mINFO[0m:     2025-11-21 06:49:43 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 06:49:43 - ============================================================
+[32mINFO[0m:     2025-11-21 06:49:43 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 06:49:43 - ============================================================
+[32mINFO[0m:     2025-11-21 06:49:43 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 06:49:43 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 06:49:43 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 06:49:43 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 06:49:43 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 06:49:43 - Application startup complete.
+[32mINFO[0m:     2025-11-21 06:49:49 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 06:49:49 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1869s
+[32mINFO[0m:     2025-11-21 06:49:50 - 211.205.53.23:55005 - "WebSocket /api/v1/ws/interview/47" [accepted]
+[32mINFO[0m:     2025-11-21 06:49:50 - connection open
+[32mINFO[0m:     2025-11-21 06:50:05 - Shutting down
+[32mINFO[0m:     2025-11-21 06:50:05 - connection closed
+[32mINFO[0m:     2025-11-21 06:50:05 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 06:50:05 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 06:50:05 - Finished server process [[36m205006[0m]
+[32mINFO[0m:     2025-11-21 06:50:05 - Stopping reloader process [[36m[1m205001[0m]
+[32mINFO[0m:     2025-11-21 07:08:21 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 07:08:21 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 07:08:21 - Started reloader process [[36m[1m206116[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 07:08:22 - Started server process [[36m206118[0m]
+[32mINFO[0m:     2025-11-21 07:08:22 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 07:08:22 - ============================================================
+[32mINFO[0m:     2025-11-21 07:08:22 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 07:08:22 - ============================================================
+[32mINFO[0m:     2025-11-21 07:08:22 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 07:08:22 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 07:08:22 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 07:08:22 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 07:08:22 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 07:08:22 - Application startup complete.
+[32mINFO[0m:     2025-11-21 07:08:31 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 07:08:32 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1840s
+[32mINFO[0m:     2025-11-21 07:08:32 - 211.205.53.23:59596 - "WebSocket /api/v1/ws/interview/48" [accepted]
+[32mINFO[0m:     2025-11-21 07:08:32 - connection open
+[32mINFO[0m:     2025-11-21 07:08:33 - connection closed
+[32mINFO[0m:     2025-11-21 07:10:08 - Shutting down
+[32mINFO[0m:     2025-11-21 07:10:08 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 07:10:08 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 07:10:08 - Finished server process [[36m206118[0m]
+[32mINFO[0m:     2025-11-21 07:10:08 - Stopping reloader process [[36m[1m206116[0m]
+[32mINFO[0m:     2025-11-21 07:10:15 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 07:10:15 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 07:10:15 - Started reloader process [[36m[1m206415[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 07:10:17 - Started server process [[36m206417[0m]
+[32mINFO[0m:     2025-11-21 07:10:17 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 07:10:17 - ============================================================
+[32mINFO[0m:     2025-11-21 07:10:17 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 07:10:17 - ============================================================
+[32mINFO[0m:     2025-11-21 07:10:17 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 07:10:17 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 07:10:17 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 07:10:17 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 07:10:17 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 07:10:17 - Application startup complete.
+[32mINFO[0m:     2025-11-21 07:10:21 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 07:10:21 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1829s
+[32mINFO[0m:     2025-11-21 07:10:21 - 211.205.53.23:60047 - "WebSocket /api/v1/ws/interview/49" [accepted]
+[32mINFO[0m:     2025-11-21 07:10:21 - connection open
+[32mINFO[0m:     2025-11-21 07:43:05 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[31mERROR[0m:    2025-11-21 07:43:05 - [Errno 98] Address already in use
+[32mINFO[0m:     2025-11-21 07:43:32 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[31mERROR[0m:    2025-11-21 07:43:32 - [Errno 98] Address already in use
+[32mINFO[0m:     2025-11-21 07:44:11 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 07:44:11 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 07:44:11 - Started reloader process [[36m[1m212582[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 07:44:14 - Started server process [[36m212584[0m]
+[32mINFO[0m:     2025-11-21 07:44:14 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 07:44:14 - ============================================================
+[32mINFO[0m:     2025-11-21 07:44:14 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 07:44:14 - ============================================================
+[32mINFO[0m:     2025-11-21 07:44:14 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 07:44:14 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 07:44:14 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 07:44:14 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 07:44:14 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 07:44:14 - Application startup complete.
+[32mINFO[0m:     2025-11-21 07:44:19 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 07:44:19 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.2186s
+[32mINFO[0m:     2025-11-21 07:44:19 - 211.205.53.23:52257 - "WebSocket /api/v1/ws/interview/50" [accepted]
+[32mINFO[0m:     2025-11-21 07:44:19 - connection open
+[32mINFO[0m:     2025-11-21 07:45:09 - connection closed
+[33mWARNING[0m:  2025-11-21 07:47:13 - WatchFiles detected changes in 'tests/evaluation_test2.py'. Reloading...
+[32mINFO[0m:     2025-11-21 07:47:13 - Shutting down
+[32mINFO[0m:     2025-11-21 07:47:13 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 07:47:13 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 07:47:13 - Finished server process [[36m212584[0m]
+[32mINFO[0m:     2025-11-21 07:47:14 - Started server process [[36m213115[0m]
+[32mINFO[0m:     2025-11-21 07:47:14 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 07:47:14 - ============================================================
+[32mINFO[0m:     2025-11-21 07:47:14 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 07:47:14 - ============================================================
+[32mINFO[0m:     2025-11-21 07:47:14 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 07:47:14 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 07:47:14 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 07:47:14 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 07:47:14 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 07:47:14 - Application startup complete.
+[32mINFO[0m:     2025-11-21 07:47:36 - Shutting down
+[32mINFO[0m:     2025-11-21 07:47:36 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 07:47:36 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 07:47:36 - Finished server process [[36m213115[0m]
+[32mINFO[0m:     2025-11-21 07:47:36 - Stopping reloader process [[36m[1m212582[0m]
+[32mINFO[0m:     2025-11-21 07:47:39 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 07:47:39 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 07:47:39 - Started reloader process [[36m[1m213231[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 07:47:40 - Started server process [[36m213233[0m]
+[32mINFO[0m:     2025-11-21 07:47:40 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 07:47:40 - ============================================================
+[32mINFO[0m:     2025-11-21 07:47:40 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 07:47:40 - ============================================================
+[32mINFO[0m:     2025-11-21 07:47:40 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 07:47:40 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 07:47:40 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 07:47:40 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 07:47:40 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 07:47:40 - Application startup complete.
+[32mINFO[0m:     2025-11-21 07:47:50 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 07:47:51 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1778s
+[32mINFO[0m:     2025-11-21 07:47:51 - 211.205.53.23:53139 - "WebSocket /api/v1/ws/interview/51" [accepted]
+[32mINFO[0m:     2025-11-21 07:47:51 - connection open
+[32mINFO[0m:     2025-11-21 07:48:41 - connection closed
+[32mINFO[0m:     2025-11-21 07:54:58 - Shutting down
+[32mINFO[0m:     2025-11-21 07:54:58 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 07:54:58 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 07:54:58 - Finished server process [[36m213233[0m]
+[32mINFO[0m:     2025-11-21 07:54:58 - Stopping reloader process [[36m[1m213231[0m]
+[32mINFO[0m:     2025-11-21 14:41:24 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-21 14:41:24 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-21 14:41:24 - Started reloader process [[36m[1m33061[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-21 14:41:26 - Started server process [[36m33063[0m]
+[32mINFO[0m:     2025-11-21 14:41:26 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 14:41:26 - ============================================================
+[32mINFO[0m:     2025-11-21 14:41:26 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 14:41:26 - ============================================================
+[32mINFO[0m:     2025-11-21 14:41:26 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 14:41:26 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 14:41:26 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 14:41:26 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 14:41:26 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 14:41:26 - Application startup complete.
+[32mINFO[0m:     2025-11-21 14:41:42 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-21 14:41:42 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.2171s
+[32mINFO[0m:     2025-11-21 14:41:43 - 61.79.222.247:54472 - "WebSocket /api/v1/ws/interview/52" [accepted]
+[32mINFO[0m:     2025-11-21 14:41:43 - connection open
+[32mINFO[0m:     2025-11-21 14:43:15 - connection closed
+[33mWARNING[0m:  2025-11-21 14:48:56 - WatchFiles detected changes in 'services/interview_service_v4.py'. Reloading...
+[32mINFO[0m:     2025-11-21 14:48:57 - Shutting down
+[32mINFO[0m:     2025-11-21 14:48:57 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 14:48:57 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 14:48:57 - Finished server process [[36m33063[0m]
+[32mINFO[0m:     2025-11-21 14:48:59 - Started server process [[36m34604[0m]
+[32mINFO[0m:     2025-11-21 14:48:59 - Waiting for application startup.
+[32mINFO[0m:     2025-11-21 14:48:59 - ============================================================
+[32mINFO[0m:     2025-11-21 14:48:59 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-21 14:48:59 - ============================================================
+[32mINFO[0m:     2025-11-21 14:48:59 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-21 14:48:59 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-21 14:48:59 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-21 14:48:59 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-21 14:48:59 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-21 14:48:59 - Application startup complete.
+[32mINFO[0m:     2025-11-21 14:49:26 - Shutting down
+[32mINFO[0m:     2025-11-21 14:49:26 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-21 14:49:26 - Application shutdown complete.
+[32mINFO[0m:     2025-11-21 14:49:26 - Finished server process [[36m34604[0m]
+[32mINFO[0m:     2025-11-21 14:49:26 - Stopping reloader process [[36m[1m33061[0m]
+INFO:     2025-11-22 04:02:39 - Started server process [90978]
+INFO:     2025-11-22 04:02:39 - Waiting for application startup.
+INFO:     2025-11-22 04:02:39 - ============================================================
+INFO:     2025-11-22 04:02:39 - AWS_FLEX 서버 시작 중...
+INFO:     2025-11-22 04:02:39 - ============================================================
+INFO:     2025-11-22 04:02:39 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     2025-11-22 04:02:39 -    - 회사: Unknown
+INFO:     2025-11-22 04:02:39 -    - 직무: Unknown
+INFO:     2025-11-22 04:02:39 -    - 핵심 역량: 0개
+INFO:     2025-11-22 04:02:39 - ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     2025-11-22 04:02:39 - Application startup complete.
+INFO:     2025-11-22 04:02:39 - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     2025-11-22 04:12:45 - Shutting down
+INFO:     2025-11-22 04:12:45 - Waiting for application shutdown.
+INFO:     2025-11-22 04:12:45 - Application shutdown complete.
+INFO:     2025-11-22 04:12:45 - Finished server process [90978]
+[32mINFO[0m:     2025-11-22 11:14:18 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[31mERROR[0m:    2025-11-22 11:14:18 - [Errno 98] Address already in use
+[32mINFO[0m:     2025-11-22 11:14:52 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-22 11:14:52 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-22 11:14:52 - Started reloader process [[36m[1m190015[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-22 11:14:53 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[33mWARNING[0m:  2025-11-22 11:15:53 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:15:57 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[33mWARNING[0m:  2025-11-22 11:18:10 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:18:11 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[33mWARNING[0m:  2025-11-22 11:22:30 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:22:35 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[33mWARNING[0m:  2025-11-22 11:23:05 - WatchFiles detected changes in 'api/applicant.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:23:10 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:23:11 - Started server process [[36m198330[0m]
+[32mINFO[0m:     2025-11-22 11:23:11 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:23:11 - ============================================================
+[32mINFO[0m:     2025-11-22 11:23:11 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:23:11 - ============================================================
+[32mINFO[0m:     2025-11-22 11:23:11 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:23:11 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:23:11 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:23:11 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:23:11 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:23:11 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:24:08 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:24:08 - Shutting down
+[32mINFO[0m:     2025-11-22 11:24:08 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:24:08 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:24:08 - Finished server process [[36m198330[0m]
+[33mWARNING[0m:  2025-11-22 11:24:12 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:24:13 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:24:15 - Started server process [[36m199221[0m]
+[32mINFO[0m:     2025-11-22 11:24:15 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:24:15 - ============================================================
+[32mINFO[0m:     2025-11-22 11:24:15 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:24:15 - ============================================================
+[32mINFO[0m:     2025-11-22 11:24:15 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:24:15 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:24:15 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:24:15 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:24:15 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:24:15 - Application startup complete.
+[32mINFO[0m:     2025-11-22 11:24:17 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:24:17 - Started server process [[36m199314[0m]
+[32mINFO[0m:     2025-11-22 11:24:17 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:24:17 - ============================================================
+[32mINFO[0m:     2025-11-22 11:24:17 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:24:17 - ============================================================
+[32mINFO[0m:     2025-11-22 11:24:17 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:24:17 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:24:17 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:24:17 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:24:17 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:24:17 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:25:41 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:25:41 - Shutting down
+[32mINFO[0m:     2025-11-22 11:25:41 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:25:41 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:25:41 - Finished server process [[36m199314[0m]
+[32mINFO[0m:     2025-11-22 11:25:44 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:25:44 - Started server process [[36m200409[0m]
+[32mINFO[0m:     2025-11-22 11:25:44 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:25:44 - ============================================================
+[32mINFO[0m:     2025-11-22 11:25:44 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:25:44 - ============================================================
+[32mINFO[0m:     2025-11-22 11:25:44 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:25:44 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:25:44 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:25:44 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:25:44 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:25:44 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:25:46 - WatchFiles detected changes in 'api/evaluation_db.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:25:46 - Shutting down
+[32mINFO[0m:     2025-11-22 11:25:46 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:25:46 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:25:46 - Finished server process [[36m200409[0m]
+[32mINFO[0m:     2025-11-22 11:25:50 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:25:50 - Started server process [[36m200486[0m]
+[32mINFO[0m:     2025-11-22 11:25:50 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:25:50 - ============================================================
+[32mINFO[0m:     2025-11-22 11:25:50 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:25:50 - ============================================================
+[32mINFO[0m:     2025-11-22 11:25:50 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:25:50 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:25:50 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:25:50 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:25:50 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:25:50 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:28:28 - WatchFiles detected changes in 'ai/prompts/competency_agents/common_competencies/achievement_motivation_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:28:28 - Shutting down
+[32mINFO[0m:     2025-11-22 11:28:28 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:28:28 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:28:28 - Finished server process [[36m200486[0m]
+[32mINFO[0m:     2025-11-22 11:28:31 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:28:31 - Started server process [[36m200890[0m]
+[32mINFO[0m:     2025-11-22 11:28:31 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:28:31 - ============================================================
+[32mINFO[0m:     2025-11-22 11:28:31 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:28:31 - ============================================================
+[32mINFO[0m:     2025-11-22 11:28:31 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:28:31 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:28:31 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:28:31 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:28:31 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:28:31 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:28:38 - WatchFiles detected changes in 'ai/prompts/competency_agents/common_competencies/growth_potential_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:28:38 - Shutting down
+[32mINFO[0m:     2025-11-22 11:28:38 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:28:38 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:28:38 - Finished server process [[36m200890[0m]
+[32mINFO[0m:     2025-11-22 11:28:40 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:28:41 - Started server process [[36m200999[0m]
+[32mINFO[0m:     2025-11-22 11:28:41 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:28:41 - ============================================================
+[32mINFO[0m:     2025-11-22 11:28:41 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:28:41 - ============================================================
+[32mINFO[0m:     2025-11-22 11:28:41 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:28:41 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:28:41 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:28:41 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:28:41 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:28:41 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:30:21 - WatchFiles detected changes in 'ai/prompts/competency_agents/common_competencies/organizational_fit_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:30:21 - Shutting down
+[32mINFO[0m:     2025-11-22 11:30:21 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:30:21 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:30:21 - Finished server process [[36m200999[0m]
+[32mINFO[0m:     2025-11-22 11:30:23 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:23 - Started server process [[36m201188[0m]
+[32mINFO[0m:     2025-11-22 11:30:23 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:30:23 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:23 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:30:23 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:23 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:23 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:30:23 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:30:23 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:30:23 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:30:23 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:30:30 - WatchFiles detected changes in 'ai/prompts/competency_agents/common_competencies/interpersonal_skill_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:30:30 - Shutting down
+[32mINFO[0m:     2025-11-22 11:30:30 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:30:30 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:30:30 - Finished server process [[36m201188[0m]
+[32mINFO[0m:     2025-11-22 11:30:33 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:33 - Started server process [[36m201288[0m]
+[32mINFO[0m:     2025-11-22 11:30:33 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:30:33 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:33 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:30:33 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:33 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:33 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:30:33 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:30:33 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:30:33 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:30:33 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:30:39 - WatchFiles detected changes in 'ai/prompts/competency_agents/common_competencies/problem_solving_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:30:40 - Shutting down
+[32mINFO[0m:     2025-11-22 11:30:40 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:30:40 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:30:40 - Finished server process [[36m201288[0m]
+[32mINFO[0m:     2025-11-22 11:30:42 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:42 - Started server process [[36m201471[0m]
+[32mINFO[0m:     2025-11-22 11:30:42 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:30:42 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:42 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:30:42 - ============================================================
+[32mINFO[0m:     2025-11-22 11:30:42 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:30:42 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:30:42 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:30:42 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:30:42 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:30:42 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:31:32 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/v.1/business_documentation_prompt.py', 'ai/prompts/competency_agents/job_competencies/business_documentation_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:31:32 - Shutting down
+[32mINFO[0m:     2025-11-22 11:31:32 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:31:32 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:31:32 - Finished server process [[36m201471[0m]
+[32mINFO[0m:     2025-11-22 11:31:38 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:31:39 - Started server process [[36m201683[0m]
+[32mINFO[0m:     2025-11-22 11:31:39 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:31:39 - ============================================================
+[32mINFO[0m:     2025-11-22 11:31:39 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:31:39 - ============================================================
+[32mINFO[0m:     2025-11-22 11:31:39 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:31:39 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:31:39 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:31:39 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:31:39 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:31:39 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:32:46 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/customer_journey_marketing_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:32:46 - Shutting down
+[32mINFO[0m:     2025-11-22 11:32:46 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:32:46 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:32:46 - Finished server process [[36m201683[0m]
+[32mINFO[0m:     2025-11-22 11:32:50 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:32:51 - Started server process [[36m201875[0m]
+[32mINFO[0m:     2025-11-22 11:32:51 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:32:51 - ============================================================
+[32mINFO[0m:     2025-11-22 11:32:51 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:32:51 - ============================================================
+[32mINFO[0m:     2025-11-22 11:32:51 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:32:51 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:32:51 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:32:51 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:32:51 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:32:51 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:33:03 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/data_analysis_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:33:03 - Shutting down
+[32mINFO[0m:     2025-11-22 11:33:04 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:33:04 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:33:04 - Finished server process [[36m201875[0m]
+[32mINFO[0m:     2025-11-22 11:33:06 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:06 - Started server process [[36m201995[0m]
+[32mINFO[0m:     2025-11-22 11:33:06 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:33:06 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:06 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:33:06 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:06 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:06 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:33:06 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:33:06 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:33:06 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:33:06 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:33:24 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/financing_literacy_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:33:24 - Shutting down
+[32mINFO[0m:     2025-11-22 11:33:24 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:33:24 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:33:24 - Finished server process [[36m201995[0m]
+[32mINFO[0m:     2025-11-22 11:33:26 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:26 - Started server process [[36m202095[0m]
+[32mINFO[0m:     2025-11-22 11:33:26 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:33:26 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:26 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:33:26 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:26 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:26 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:33:26 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:33:26 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:33:26 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:33:26 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:33:38 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/financing_literacy_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:33:38 - Shutting down
+[32mINFO[0m:     2025-11-22 11:33:38 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:33:38 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:33:38 - Finished server process [[36m202095[0m]
+[32mINFO[0m:     2025-11-22 11:33:40 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:40 - Started server process [[36m202196[0m]
+[32mINFO[0m:     2025-11-22 11:33:40 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:33:40 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:40 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:33:40 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:40 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:40 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:33:40 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:33:40 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:33:40 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:33:40 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:33:43 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/v.1/financing_literacy_prompt.py', 'ai/prompts/competency_agents/job_competencies/financing_literacy_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:33:43 - Shutting down
+[32mINFO[0m:     2025-11-22 11:33:43 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:33:43 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:33:43 - Finished server process [[36m202196[0m]
+[32mINFO[0m:     2025-11-22 11:33:49 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:50 - Started server process [[36m202247[0m]
+[32mINFO[0m:     2025-11-22 11:33:50 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:33:50 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:50 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:33:50 - ============================================================
+[32mINFO[0m:     2025-11-22 11:33:50 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:33:50 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:33:50 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:33:50 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:33:50 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:33:50 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:33:59 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/v.1/industry_learning_prompt.py', 'ai/prompts/competency_agents/job_competencies/industry_learning_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:33:59 - Shutting down
+[32mINFO[0m:     2025-11-22 11:33:59 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:33:59 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:33:59 - Finished server process [[36m202247[0m]
+[32mINFO[0m:     2025-11-22 11:34:04 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:34:05 - Started server process [[36m202377[0m]
+[32mINFO[0m:     2025-11-22 11:34:05 - Waiting for application startup.
+[32mINFO[0m:     2025-11-22 11:34:05 - ============================================================
+[32mINFO[0m:     2025-11-22 11:34:05 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-22 11:34:05 - ============================================================
+[32mINFO[0m:     2025-11-22 11:34:05 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-22 11:34:05 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-22 11:34:05 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-22 11:34:05 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-22 11:34:05 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-22 11:34:05 - Application startup complete.
+[33mWARNING[0m:  2025-11-22 11:34:41 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/seasonal_strategy_kpi_prompt.py'. Reloading...
+[32mINFO[0m:     2025-11-22 11:34:45 - Shutting down
+[32mINFO[0m:     2025-11-22 11:34:46 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-22 11:34:46 - Application shutdown complete.
+[32mINFO[0m:     2025-11-22 11:34:46 - Finished server process [[36m202377[0m]
+[33mWARNING[0m:  2025-11-22 11:34:47 - WatchFiles detected changes in 'ai/prompts/competency_agents/job_competencies/seasonal_strategy_kpi_prompt.py'. Reloading...

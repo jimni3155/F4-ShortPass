@@ -178,45 +178,134 @@ class ResumeVerifier:
         """
         AI 검증 프롬프트 생성
         """
-        prompt = f"""# Task: Resume Verification (Batch)
+        prompt = f"""# Task: Resume Verification (Batch) with Detailed Reasoning
 
-Verify if the following interview segment evaluations are supported by the candidate's resume.
+    당신은 면접 답변이 Resume 경력과 일치하는지 검증하는 전문가입니다.
 
-## Resume Data:
-```json
-{json.dumps(resume_data, ensure_ascii=False, indent=2)}
-```
+    ## 역할:
+    1. 면접에서 지원자가 언급한 경험/스킬이 Resume에 실제로 있는지 확인
+    2. Resume의 어느 부분(education, experience, projects 등)과 매칭되는지 **구체적으로** 명시
+    3. 검증 신뢰도(high/medium/low/none)를 판단하고 **그 근거를 상세히** 제시
 
-## Segment Evaluations to Verify:
-```json
-{json.dumps(segment_evaluations, ensure_ascii=False, indent=2)}
-```
+    ## Resume Data:
+    ```json
+    {json.dumps(resume_data, ensure_ascii=False, indent=2)}
+    ```
 
-## Instructions:
-For each segment evaluation, check if the claims are supported by resume evidence.
+    ## Segment Evaluations to Verify:
+    ```json
+    {json.dumps(segment_evaluations, ensure_ascii=False, indent=2)}
+    ```
 
-Output JSON format:
-{{
-  "verifications": [
+    ## 검증 기준:
+
+    **high (강한 검증):**
+    - Resume에 구체적으로 명시됨 (프로젝트명, 역할, 기술 등)
+    - 여러 섹션에서 일관되게 확인됨
+    - 시간적으로 모순 없음
+
+    **medium (중간 검증):**
+    - Resume에 간접적으로 언급됨 (관련 경험은 있으나 구체적 내용 다름)
+    - 일부 섹션에서만 확인됨
+    - 시간적으로 약간의 불일치
+
+    **low (약한 검증):**
+    - Resume에 매우 간접적으로만 언급됨
+    - 추론 가능하지만 직접 언급 없음
+
+    **none (검증 실패):**
+    - Resume에 전혀 관련 내용 없음
+    - 시간적으로 명백한 모순
+
+    ## 출력 형식 (JSON):
     {{
-      "competency": "achievement_motivation",
-      "segment_id": 3,
-      "resume_verified": true,
-      "verification_strength": "high",  // "high"/"medium"/"low"/"none"
-      "resume_evidence": ["학부생 창업 경험", "프로젝트 수상 경력"]
-    }},
-    ...
-  ]
-}}
+    "verifications": [
+        {{
+        "competency": "achievement_motivation",
+        "segment_id": 3,
+        "quote_text": "학부생 때 창업 프로젝트를 이끌었습니다",
+        
+        "resume_verified": true,
+        "verification_strength": "high",
+        
+        "reasoning": "지원자는 Resume의 'projects' 섹션에 '학부생 창업 프로젝트 (2020.03-2021.02, 팀장)'가 명시되어 있음. 기간, 역할, 프로젝트명이 모두 일치하므로 검증 강도 high. 또한 'awards' 섹션에 '대학생 창업 공모전 대상 (2021.11)'이 있어 프로젝트 성과도 확인됨.",
+        
+        "resume_matches": [
+            {{
+            "resume_section": "projects",
+            "matched_content": "학부생 창업 프로젝트 (2020.03-2021.02) | 팀장 | 패션 큐레이션 플랫폼 개발 및 운영",
+            "relevance": "면접 답변의 '창업 프로젝트 이끌었다'와 직접 매칭. 역할(팀장)도 일치."
+            }},
+            {{
+            "resume_section": "awards",
+            "matched_content": "대학생 창업 공모전 대상 (2021.11, 중소벤처기업부)",
+            "relevance": "프로젝트의 성과를 입증. 시간적으로도 프로젝트 종료 시점과 일치."
+            }}
+        ],
+        
+        "confidence_factors": {{
+            "direct_evidence": true,
+            "multiple_sources": true,
+            "time_consistency": true,
+            "detail_level": "high"
+        }}
+        }},
+        {{
+        "competency": "problem_solving",
+        "segment_id": 1,
+        "quote_text": "문제를 수요, 공급, 가격 세 축으로 나눠서 분석하는 MECE 방식을 선호합니다",
+        
+        "resume_verified": true,
+        "verification_strength": "medium",
+        
+        "reasoning": "지원자는 Resume의 'education' 섹션에 '경영학 전공'이 있으며, MECE는 경영학 필수 프레임워크임. 그러나 Resume에 MECE를 직접 언급한 프로젝트는 없음. 'projects'의 '리테일 데이터 분석 공모전'에서 '시장 세분화' 경험이 있어 간접적으로 구조적 분석 능력 추정 가능. 직접 증거는 아니므로 medium.",
+        
+        "resume_matches": [
+            {{
+            "resume_section": "education",
+            "matched_content": "서울대학교 경영학 전공 (2018.03-2022.02)",
+            "relevance": "경영학 커리큘럼에 MECE, Issue Tree 등 구조적 분석 프레임워크 포함됨. 간접 증거."
+            }},
+            {{
+            "resume_section": "projects",
+            "matched_content": "리테일 데이터 분석 공모전 (2021.09-2021.11) | 데이터 분석 담당",
+            "relevance": "데이터 분석 시 구조적 접근이 필요하나, MECE 직접 언급 없음."
+            }}
+        ],
+        
+        "confidence_factors": {{
+            "direct_evidence": false,
+            "multiple_sources": true,
+            "time_consistency": true,
+            "detail_level": "medium"
+        }}
+        }}
+    ]
+    }}
 
-Verification Strength Guidelines:
-- "high": Strong evidence in resume (직접적 경험)
-- "medium": Indirect evidence (관련 경험)
-- "low": Weak connection (추정 가능)
-- "none": No evidence in resume
+    ## 중요 지침:
+    1. **reasoning은 반드시 구체적으로 작성**
+    - Resume의 어느 섹션, 어떤 내용과 매칭되는지 명시
+    - 왜 그 verification_strength인지 논리적 근거 제시
+    - 시간적 일관성, 역할 일치 여부 등 언급
 
-CRITICAL: Output ONLY valid JSON. NO markdown, NO explanations.
-"""
+    2. **resume_matches는 1개 이상 필수**
+    - 여러 섹션에서 확인되면 모두 나열
+    - matched_content는 Resume 원문 그대로 인용
+    - relevance는 면접 답변과의 관련성 설명
+
+    3. **confidence_factors로 검증 신뢰도 근거 명시**
+    - direct_evidence: Resume에 직접 언급 여부
+    - multiple_sources: 여러 섹션에서 확인 여부
+    - time_consistency: 시간적 모순 없음
+    - detail_level: Resume 기술의 구체성 수준
+
+    4. **Output ONLY valid JSON**
+    - NO markdown code blocks
+    - NO explanations outside JSON
+    - ALL text in Korean
+
+    """
         return prompt
     
     
@@ -242,9 +331,14 @@ CRITICAL: Output ONLY valid JSON. NO markdown, NO explanations.
             
             merged_seg = {
                 **seg,
-                "resume_verified": verification.get("resume_verified", False),
-                "verification_strength": verification.get("verification_strength", "none"),
-                "resume_evidence": verification.get("resume_evidence", [])
+                
+                "resume_verification": {
+                    "verified": verification.get("resume_verified", False),
+                    "strength": verification.get("verification_strength", "none"),
+                    "reasoning": verification.get("reasoning", ""),  # 🆕
+                    "resume_matches": verification.get("resume_matches", []),  # 🆕
+                    "confidence_factors": verification.get("confidence_factors", {})  # 🆕
+                }
             }
             merged.append(merged_seg)
         
@@ -261,9 +355,18 @@ CRITICAL: Output ONLY valid JSON. NO markdown, NO explanations.
         return [
             {
                 **seg,
-                "resume_verified": False,
-                "verification_strength": "none",
-                "resume_evidence": []
+                "resume_verification": { 
+                    "verified": False,
+                    "strength": "none",
+                    "reasoning": "Resume 데이터 없음",
+                    "resume_matches": [],
+                    "confidence_factors": {
+                        "direct_evidence": False,
+                        "multiple_sources": False,
+                        "time_consistency": False,
+                        "detail_level": "none"
+                    }
+                }
             }
             for seg in segment_evaluations
         ]

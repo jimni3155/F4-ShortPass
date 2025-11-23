@@ -1,0 +1,184 @@
+{
+  "job_info": {
+    "jd_id": "JD-001",
+    "company_id": 1,
+    "company_name": "삼성물산 패션부문",
+    "job_id": 1,
+    "job_title": "상품기획/리테일 영업(MD)",
+    "source": "samsung_fashion_md_mock"
+  },
+  "persona_meta": {
+    "persona_id": "SAMSUNG_FASHION_MD",
+    "name": "삼성물산 패션부문 시니어 면접관",
+    "role": "면접관",
+    "tone": "전문적/압박",
+    "focus": ["데이터 기반 의사결정", "실행력", "협업 커뮤니케이션"],
+    "goals": [
+      "매출/재고/트렌드 데이터를 근거로 문제 정의 여부 확인",
+      "밸류체인 운영 경험 및 리스크 관리 역량 검증",
+      "이해관계자 협업/설득 과정에서의 책임감 확인"
+    ],
+    "follow_up_style": [
+      "근거 재확인: 숫자·증거가 없으면 즉시 근거 요구",
+      "리스크 파고들기: 실패/리스크 대응 방식을 구체적으로 질문",
+      "협업 맥락: 이해관계자 조율 사례를 추가로 파고듦"
+    ]
+  },
+  "weights": {
+    "category": {
+      "common_competencies": 0.4,
+      "job_competencies": 0.6
+    },
+    "competency": {
+      "COMM_01": 0.15,
+      "COMM_02": 0.1,
+      "COMM_03": 0.1,
+      "COMM_04": 0.1,
+      "COMM_05": 0.05,
+      "JOB_01": 0.2,
+      "JOB_02": 0.15,
+      "JOB_03": 0.1,
+      "JOB_04": 0.1,
+      "JOB_05": 0.05
+    }
+  },
+  "common_competencies": [
+    {
+      "id": "COMM_01",
+      "name": "고객지향",
+      "definition": "내부/외부 고객의 니즈를 파악하고 상품·서비스·매장 경험으로 충족",
+      "evaluation_criteria": ["VOC/리뷰/데이터를 근거로 의사결정 여부", "고객 문제 정의→대안 실행까지의 흐름"],
+      "interview_question_guide": "최근 고객 문제를 발견하고 개선한 사례를 데이터와 함께 설명해주세요.",
+      "behavioral_indicators": [
+        "고객/사용자 데이터 정기 수집 및 의사결정 반영",
+        "개선안 제시 시 고객 가치/경험을 먼저 언급"
+      ]
+    },
+    {
+      "id": "COMM_02",
+      "name": "도전정신",
+      "definition": "불확실성 속에서도 새로운 시도와 변화를 주도",
+      "evaluation_criteria": ["도전 목표 및 리스크 인식/관리", "실패 후 학습/재도전 사례"],
+      "interview_question_guide": "높은 목표를 설정하고 추진했던 경험과 리스크 대응을 말씀해주세요.",
+      "behavioral_indicators": [
+        "리스크를 정의하고 완화 계획을 세움",
+        "실패 경험에서 구체적 학습 포인트를 설명"
+      ]
+    },
+    {
+      "id": "COMM_03",
+      "name": "협동·팀워크",
+      "definition": "유관부서와 협업해 공동 목표 달성",
+      "evaluation_criteria": ["갈등 상황 조율 방식", "역할 분담/커뮤니케이션 명확성"],
+      "interview_question_guide": "팀 내 의견 충돌을 해결했던 경험을 알려주세요.",
+      "behavioral_indicators": [
+        "상대 KPI/제약을 이해하려는 질문을 함",
+        "합의안을 데이터/고객 관점으로 설득"
+      ]
+    },
+    {
+      "id": "COMM_04",
+      "name": "목표지향",
+      "definition": "명확한 목표 설정과 실행 관리로 결과를 만듦",
+      "evaluation_criteria": ["KPI 설정/트래킹 방식", "중간점검·피벗 사례"],
+      "interview_question_guide": "설정한 KPI를 달성하기 위해 어떤 실행 전략을 세웠나요?",
+      "behavioral_indicators": [
+        "목표-실적 간 차이를 근거로 분석",
+        "우선순위/액션 아이템을 주기적으로 재정렬"
+      ]
+    },
+    {
+      "id": "COMM_05",
+      "name": "책임감",
+      "definition": "성과/실패에 대한 주도적 책임과 개선 실행",
+      "evaluation_criteria": ["문제 발생 시 소유자 역할 수행", "후속 개선 조치 실행"],
+      "interview_question_guide": "예상치 못한 문제에 책임지고 해결한 사례를 공유해주세요.",
+      "behavioral_indicators": [
+        "이슈 발생 시 원인 규명과 해결책 제시를 주도",
+        "지연/실패를 투명하게 공유하고 대안을 실행"
+      ]
+    }
+  ],
+  "job_competencies": [
+    {
+      "id": "JOB_01",
+      "name": "매출·트렌드 데이터 분석 및 상품 기획",
+      "definition": "판매/트렌드 데이터를 해석해 시즌 상품 전략과 라인업을 설계",
+      "evaluation_criteria": ["데이터 기반 인사이트 도출", "포트폴리오/라인업 결정 근거"],
+      "interview_question_guide": "데이터 분석으로 상품 전략을 수정하거나 개선한 사례를 말씀해주세요.",
+      "behavioral_indicators": [
+        "매출/재고/회전율 등 핵심 지표를 사용해 문제 정의",
+        "트렌드 리포트를 기획안에 반영"
+      ]
+    },
+    {
+      "id": "JOB_02",
+      "name": "시즌 전략 수립 및 KPI 관리",
+      "definition": "시즌 목표 설정, KPI 설계, 실행 점검을 통해 성과 관리",
+      "evaluation_criteria": ["목표/KPI 설정 타당성", "중간 점검 및 피벗 사례"],
+      "interview_question_guide": "시즌 목표 대비 실적을 어떻게 모니터링하고 조정했나요?",
+      "behavioral_indicators": [
+        "목표-실적 차이 분석 후 구체적 액션 실행",
+        "주기적 리포트/대시보드로 지표 관리"
+      ]
+    },
+    {
+      "id": "JOB_03",
+      "name": "소싱·생산·유통 밸류체인 최적화",
+      "definition": "원가·마진·리드타임을 관리하며 밸류체인을 최적화",
+      "evaluation_criteria": ["원가 절감/마진 개선 사례", "리드타임/품질 리스크 관리"],
+      "interview_question_guide": "밸류체인 최적화로 비용/리스크를 개선한 경험을 공유해주세요.",
+      "behavioral_indicators": [
+        "단가/MOQ/리드타임/품질 제약을 이해하고 협상",
+        "공급 이슈 대응 프로세스를 설명"
+      ]
+    },
+    {
+      "id": "JOB_04",
+      "name": "고객 여정 기반 VMD·마케팅 통합 전략",
+      "definition": "고객 경험 관점에서 VMD와 마케팅을 통합 설계",
+      "evaluation_criteria": ["세그먼트별 메시지/채널 설계", "VMD 개선 근거"],
+      "interview_question_guide": "고객 여정 관점으로 VMD/마케팅을 설계한 사례를 설명해주세요.",
+      "behavioral_indicators": [
+        "인지→관심→구매 여정을 수치로 관리",
+        "온/오프라인 채널을 연계한 캠페인 실행"
+      ]
+    },
+    {
+      "id": "JOB_05",
+      "name": "이해관계자 협업 및 협상",
+      "definition": "디자인/생산/영업 등 이해관계자와 목표를 정렬·조율",
+      "evaluation_criteria": ["요구사항 충돌 조정 사례", "협상 전략과 결과"],
+      "interview_question_guide": "내·외부 이해관계자 협업으로 중요한 결정을 이끌어낸 사례가 있나요?",
+      "behavioral_indicators": [
+        "충돌 원인을 KPI/고객 관점에서 재정의",
+        "협상 과정과 결과를 구체적으로 설명"
+      ]
+    }
+  ],
+  "scoring_guide": {
+    "score_range": { "min": 1, "max": 5 },
+    "rubric": {
+      "1": "질문 의도 이해 부족, 실제 경험 부재, 근거 없는 주장",
+      "2": "개념 설명 위주, 데이터/근거 부족, 경험 연결 약함",
+      "3": "기본 개념·프로세스 이해, 1~2개 실무 사례 제시",
+      "4": "데이터 기반 문제 정의/실행/피드백을 설명, 본인 기여 명확",
+      "5": "복잡한 상황을 데이터+현장 인사이트로 해결, KPI/손익/CX까지 연결"
+    }
+  },
+  "question_guides": {
+    "opening": [
+      "최근 1~2년간 패션/소비재에서 주목한 트렌드와 이를 적용한 사례가 있나요?",
+      "시즌 단위로 목표를 세우고 성과를 추적했던 경험을 말씀해주세요."
+    ],
+    "follow_up": [
+      "숫자/지표 근거를 더 구체적으로 말씀해주세요.",
+      "당시 리스크를 어떻게 인식하고 관리했나요?",
+      "이해관계자 반대가 있었을 때 설득 과정을 설명해주세요."
+    ],
+    "red_flag_checks": [
+      "과장/모순 여부 확인을 위해 사실/지표를 재확인",
+      "소유권 회피, 문제 전가 발언 여부 체크"
+    ]
+  }
+}

@@ -10,6 +10,7 @@ import API_V1 from '../lib/apiConfig';
  */
 
 export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
+    console.log('Preparing questions for candidate:', candidateId, 'with companies:', selectedCompanyIds);
     if (!candidateId || selectedCompanyIds.length === 0) {
       throw new Error(
         'Candidate ID and at least one company selection are required.'
@@ -33,6 +34,7 @@ export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('Error response from server:', errorData);
         throw new Error(
           errorData.detail ||  `Failed to prepare interview. Status: ${response.status}`
         );
@@ -40,7 +42,9 @@ export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
       
 
       // 서버는 생성된 인터뷰 세션 ID를 반환
-      return await response.json();
+      const responseData = await response.json();
+      console.log('Successfully prepared questions:', responseData);
+      return responseData;
     } catch (error) {
       console.error('Error preparing questions:', error);
       throw error;
@@ -54,6 +58,7 @@ export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
    * @returns {Promise<Object>} 매칭 결과 객체 (지원자 정보, 회사별 매칭 점수 등).
    */
   export const fetchCandidateCompanyScores = async (interviewId) => {
+    console.log('Fetching company scores for interview ID:', interviewId);
     if (!interviewId) {
       throw new Error('Interview ID is required to fetch scores.');
     }
@@ -68,6 +73,7 @@ export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('Error response from server:', errorData);
         throw new Error(
           errorData.message ||
             `Failed to fetch company scores. Status: ${response.status}`
@@ -75,10 +81,11 @@ export const prepareQuestions = async (candidateId, selectedCompanyIds) => {
       }
 
       // 서버 응답이 기대하는 배열 형태라고 가정합니다.
-      return await response.json();
+      const responseData = await response.json();
+      console.log('Successfully fetched company scores:', responseData);
+      return responseData;
     } catch (error) {
       console.error('Error fetching company scores:', error);
       throw error;
     }
   };
-  
