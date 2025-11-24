@@ -1,0 +1,86 @@
+[
+    {
+        "global_index": 0,
+        "interviewer_id": "INT_01",
+        "interviewer_name": "김전략 수석",
+        "interviewer_type": "전략형 면접관",
+        "question_index": 0,
+        "question": "최근 시즌에서 매출 또는 마진을 개선한 사례를 데이터로 설명해 주세요.",
+        "answer": "어 저는요 잘 못했어. 뭐도 모르겠어요. 네.",
+        "target_competencies": [
+            "JOB_01",
+            "JOB_02"
+        ]
+    },
+    {
+        "global_index": 1,
+        "interviewer_id": "INT_01",
+        "interviewer_name": "김전략 수석",
+        "interviewer_type": "전략형 면접관",
+        "question_index": 1,
+        "question": "상품 포트폴리오를 조정했던 경험이 있다면, 의사결정 프레임과 결과를 공유해 주세요.",
+        "answer": "어",
+        "target_competencies": [
+            "JOB_01",
+            "JOB_02"
+        ]
+    },
+    {
+        "global_index": 2,
+        "interviewer_id": "INT_02",
+        "interviewer_name": "박협업 팀장",
+        "interviewer_type": "실행형 면접관",
+        "question_index": 0,
+        "question": "디자인·생산·영업 간 이해관계가 엇갈렸을 때 어떻게 합의했는지 구체적으로 말해 주세요.",
+        "answer": "(인식 실패)",
+        "target_competencies": [
+            "JOB_03",
+            "JOB_04",
+            "COMM_04"
+        ]
+    },
+    {
+        "global_index": 3,
+        "interviewer_id": "INT_02",
+        "interviewer_name": "박협업 팀장",
+        "interviewer_type": "실행형 면접관",
+        "question_index": 1,
+        "question": "납기나 재고 이슈가 있었을 때 어떤 데이터와 소통 방식으로 해결했나요?",
+        "answer": "잘 모르겠어요.",
+        "target_competencies": [
+            "JOB_03",
+            "JOB_04",
+            "COMM_04"
+        ]
+    },
+    {
+        "global_index": 4,
+        "interviewer_id": "INT_03",
+        "interviewer_name": "이컬처 매니저",
+        "interviewer_type": "조직적합형 면접관",
+        "question_index": 0,
+        "question": "피드백을 받고 행동을 바꿔 성과를 낸 사례를 말해 주세요.",
+        "answer": "아 모르겠는데요. 아 뭐야? 아. 아 뭔데?",
+        "target_competencies": [
+            "JOB_05",
+            "COMM_01",
+            "COMM_02",
+            "COMM_03"
+        ]
+    },
+    {
+        "global_index": 5,
+        "interviewer_id": "INT_03",
+        "interviewer_name": "이컬처 매니저",
+        "interviewer_type": "조직적합형 면접관",
+        "question_index": 1,
+        "question": "압박이 큰 시즌에 팀을 어떻게 유지하고 동기부여했나요?",
+        "answer": "(인식 실패)",
+        "target_competencies": [
+            "JOB_05",
+            "COMM_01",
+            "COMM_02",
+            "COMM_03"
+        ]
+    }
+]

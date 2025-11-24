@@ -13,7 +13,7 @@ import json
 import hashlib
 from typing import Dict
 from datetime import datetime
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, RateLimitError, APIStatusError
 
 
 class CompetencyAgent:
@@ -30,11 +30,17 @@ class CompetencyAgent:
         "confidence": dict
     }
     
-    def __init__(self, openai_client: AsyncOpenAI, max_concurrent: int = 5):
+    def __init__(
+        self,
+        openai_client: AsyncOpenAI,
+        max_concurrent: int = 5,
+        max_retries: int = 5,
+    ):
         self.client = openai_client
         self.model = "gpt-4o"
         self.semaphore = Semaphore(max_concurrent)
         self.cache = {}
+        self.max_retries = max_retries
     
     def _get_cache_key(self, competency_name: str, transcript: Dict) -> str:
         """캐시 키 생성"""
@@ -186,7 +192,7 @@ class CompetencyAgent:
             
             try:
                 # OpenAI 호출 (재시도 포함)
-                for attempt in range(3):
+                for attempt in range(self.max_retries):
                     try:
                         response = await self.client.chat.completions.create(
                             model=self.model,
@@ -233,15 +239,52 @@ class CompetencyAgent:
                         
                         return result
                         
-                    except (json.JSONDecodeError, Exception) as e:
-                        if attempt < 2:
-                            print(f"[재시도 {attempt+1}/3] {competency_name}: {e}")
-                            await asyncio.sleep(1)
+                    except RateLimitError as e:
+                        await self._handle_rate_limit(e, attempt, competency_name)
+                        continue
+                    except APIStatusError as e:
+                        if e.status_code == 429:
+                            await self._handle_rate_limit(e, attempt, competency_name)
+                            continue
+                        raise
+                    except json.JSONDecodeError as e:
+                        if attempt < self.max_retries - 1:
+                            print(f"[재시도 {attempt+1}/{self.max_retries}] {competency_name}: JSON 파싱 오류 → 백오프 후 재시도")
+                            await asyncio.sleep(1 + attempt)
+                        else:
+                            raise
+                    except Exception as e:
+                        if attempt < self.max_retries - 1:
+                            print(f"[재시도 {attempt+1}/{self.max_retries}] {competency_name}: {e}")
+                            await asyncio.sleep(1 + attempt)
                         else:
                             raise
                             
             except Exception as e:
                 raise RuntimeError(f"[{competency_name}] 평가 실패: {e}")
+
+    async def _handle_rate_limit(self, error: Exception, attempt: int, competency_name: str):
+        """429 오류 대응: retry-after 또는 지수 백오프 기반 대기"""
+        retry_after = None
+        response = getattr(error, "response", None)
+        if response:
+            retry_after = response.headers.get("retry-after") or response.headers.get("Retry-After")
+        if retry_after:
+            try:
+                wait_seconds = float(retry_after)
+            except ValueError:
+                wait_seconds = None
+        else:
+            wait_seconds = None
+        if wait_seconds is None:
+            import re
+            match = re.search(r"try again in ([0-9.]+)s", str(error))
+            if match:
+                wait_seconds = float(match.group(1))
+        if wait_seconds is None:
+            wait_seconds = min(30, 2 ** attempt * 2)
+        print(f"[대기] {competency_name} rate limit 감지 → {wait_seconds:.1f}s 후 재시도 ({attempt+1}/{self.max_retries})")
+        await asyncio.sleep(wait_seconds)
 
 
 async def evaluate_all_competencies(

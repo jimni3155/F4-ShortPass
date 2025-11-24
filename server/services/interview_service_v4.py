@@ -12,6 +12,8 @@ from pathlib import Path
 from openai import OpenAI
 from utils.s3_uploader import upload_file_and_get_url
 from utils.stt_tts_translator import stt_tts_translator
+from db.database import SessionLocal
+from models.interview import InterviewSession
 
 class InterviewServiceV4:
     def __init__(self):
@@ -22,14 +24,24 @@ class InterviewServiceV4:
     async def _evaluate_answer_quality(self, question: str, answer: str, intent: str = None) -> bool:
         """
         LLM으로 답변 품질 판단. 약한 답변이면 True 반환.
-        - 답변이 너무 짧거나 (50자 미만)
+        - 답변이 너무 짧거나 (100자 미만)
         - 구체적 사례/수치가 없거나
         - 질문 의도에 맞지 않으면 → 꼬리질문 필요
         """
-        # 빠른 체크: 너무 짧은 답변
-        if len(answer.strip()) < 50:
-            print(f"⚠️ 답변이 너무 짧음 ({len(answer)}자) → 꼬리질문 필요")
+        answer_stripped = answer.strip()
+
+        # 빠른 체크 1: 너무 짧은 답변
+        if len(answer_stripped) < 100:
+            print(f"!!! 답변이 너무 짧음 ({len(answer_stripped)}자) → 꼬리질문 필요")
             return True
+
+        # 빠른 체크 2: 회피/무응답 키워드
+        evasive_keywords = ["모르겠", "없어요", "없습니다", "잘 모르", "기억이 안", "생각이 안", "그냥", "별로"]
+        answer_lower = answer_stripped.lower()
+        for keyword in evasive_keywords:
+            if keyword in answer_lower and len(answer_stripped) < 150:
+                print(f"!!! 회피성 답변 감지 ('{keyword}') → 꼬리질문 필요")
+                return True
 
         # LLM 판단
         try:
@@ -40,13 +52,15 @@ class InterviewServiceV4:
 
 답변: {answer}
 
-다음 기준으로 답변의 충실도를 판단해주세요:
-1. 구체적인 사례나 경험이 포함되어 있는가?
-2. 수치나 정량적 결과가 언급되어 있는가?
-3. 질문의 핵심을 제대로 답변했는가?
+다음 기준으로 답변의 충실도를 **엄격하게** 판단해주세요:
+1. 구체적인 사례나 경험이 포함되어 있는가? (구체적 상황, 시기, 배경 등)
+2. 수치나 정량적 결과가 언급되어 있는가? (%, 건수, 기간 등)
+3. 질문의 핵심을 제대로 답변했는가? (질문과 관련 없는 답변이면 WEAK)
 4. STAR 기법(상황-과제-행동-결과)으로 구조화되어 있는가?
+5. 답변이 질문과 관련이 있는가? (엉뚱한 답변이면 WEAK)
 
-위 기준 중 2개 이상 충족하지 못하면 "WEAK", 충족하면 "STRONG"으로만 답변하세요."""
+위 기준 중 3개 이상 충족하지 못하면 "WEAK", 충족하면 "STRONG"으로만 답변하세요.
+애매하면 "WEAK"로 판단하세요."""
 
             response = self.openai_client.chat.completions.create(
                 model="gpt-4o-mini",
@@ -57,12 +71,12 @@ class InterviewServiceV4:
 
             result = response.choices[0].message.content.strip().upper()
             is_weak = "WEAK" in result
-            print(f"🔍 답변 품질 판단: {result} → 꼬리질문 {'필요' if is_weak else '불필요'}")
+            print(f"답변 품질 판단: {result} → 꼬리질문 {'필요' if is_weak else '불필요'}")
             return is_weak
 
         except Exception as e:
-            print(f"❌ 답변 품질 판단 실패: {e}")
-            return False  # 에러 시 꼬리질문 안 함
+            print(f"답변 품질 판단 실패: {e}")
+            return True  # 에러 시에도 꼬리질문 실행 (더 안전)
 
     def _load_persona_data(self):
         """
@@ -76,15 +90,15 @@ class InterviewServiceV4:
                 persona_file = Path(__file__).resolve().parent.parent / "assets" / "persona_data.json"
 
             if not persona_file.exists():
-                print(f"⚠️  페르소나 파일이 없습니다")
+                print(f"!!! 페르소나 파일이 없습니다")
                 return None
 
             with open(persona_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                print(f"✅ 페르소나 로드: {persona_file.name}")
+                print(f"페르소나 로드: {persona_file.name}")
                 return data
         except Exception as e:
-            print(f"❌ 페르소나 데이터 로드 실패: {e}")
+            print(f"!!! 페르소나 데이터 로드 실패: {e}")
             return None
 
     def _get_interviewers(self, persona_data):
@@ -104,7 +118,7 @@ class InterviewServiceV4:
         # interviewers 배열이 있으면 그대로 사용
         interviewers = persona_data.get("interviewers", [])
         if interviewers:
-            print(f"✅ 면접관 {len(interviewers)}명 로드됨")
+            print(f"면접관 {len(interviewers)}명 로드됨")
             return interviewers
 
         # 없으면 기존 방식으로 fallback
@@ -124,15 +138,15 @@ class InterviewServiceV4:
         try:
             questions_file = Path(__file__).resolve().parent.parent / "test_data" / f"interview_questions_{applicant_id}.json"
             if not questions_file.exists():
-                print(f"⚠️  이력서 기반 질문 파일 없음: {questions_file.name}")
+                print(f"!!! 이력서 기반 질문 파일 없음: {questions_file.name}")
                 return None
 
             with open(questions_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                print(f"✅ 이력서 기반 질문 로드: {data.get('applicant_name', 'Unknown')}")
+                print(f"이력서 기반 질문 로드: {data.get('applicant_name', 'Unknown')}")
                 return data
         except Exception as e:
-            print(f"❌ 이력서 질문 로드 실패: {e}")
+            print(f"!!! 이력서 질문 로드 실패: {e}")
             return None
 
     def _merge_resume_questions(self, interviewers, resume_data):
@@ -156,7 +170,7 @@ class InterviewServiceV4:
                     interviewer["questions"] = [q["question"] for q in resume_q]
                     interviewer["follow_ups"] = {q["question"]: q.get("follow_up_if_weak") for q in resume_q}
                     interviewer["resume_context"] = [q.get("related_resume") for q in resume_q]
-                    print(f"  📝 {interviewer.get('name')}: 이력서 기반 질문 {len(resume_q)}개 적용")
+                    print(f"{interviewer.get('name')}: 이력서 기반 질문 {len(resume_q)}개 적용")
 
         return interviewers
 
@@ -174,12 +188,15 @@ class InterviewServiceV4:
             resume_data = self._load_resume_questions(applicant_id)
             if resume_data:
                 interviewers = self._merge_resume_questions(interviewers, resume_data)
-                print(f"✅ 이력서 기반 질문 병합 완료 (applicant_id: {applicant_id})")
+                print(f"이력서 기반 질문 병합 완료 (applicant_id: {applicant_id})")
+                # 병합 결과 확인
+                for i in interviewers:
+                    print(f"{i.get('name')}: 질문 {len(i.get('questions', []))}개, 꼬리질문 {len(i.get('follow_ups', {}))}개")
 
         # 1. 연결 성공 메시지 전송
         await websocket.send_json({
             "type": "connection_success",
-            "message": f"WebSocket 연결 성공! (Interview ID: {interview_id})",
+            "message": f"WebSocket 연결 성공 (Interview ID: {interview_id})",
             "company": company_info.get("company_name", "기업"),
             "job_title": company_info.get("job_title", "직무")
         })
@@ -211,7 +228,7 @@ class InterviewServiceV4:
             questions = interviewer.get("questions", [])
 
             print(f"\n{'='*50}")
-            print(f"🎭 [{interviewer_idx + 1}/{len(interviewers)}] {interviewer_name} ({interviewer_type}) 면접 시작")
+            print(f"[{interviewer_idx + 1}/{len(interviewers)}] {interviewer_name} ({interviewer_type}) 면접 시작")
             print(f"{'='*50}")
 
             # 면접관 전환 알림
@@ -255,18 +272,92 @@ class InterviewServiceV4:
 
                 await websocket.send_json(payload)
                 await websocket.send_json({"type": "question_end"})
+                print(f"[Q{q_idx}] 질문 전송 완료 : {question_text}")
 
                 # (3) 답변 대기 및 처리
                 user_answer_text = await self._process_user_answer(websocket, interview_id, global_q_idx)
 
                 # STT 결과 전송
-                print(f"📨 STT 결과: {user_answer_text[:30]}...")
+                print(f"[Q{q_idx}] STT 결과: {user_answer_text[:30]}...")
                 await websocket.send_json({
                     "type": "stt_final",
                     "text": user_answer_text
                 })
 
-                # (4) 결과 저장
+                # (4) 꼬리질문 판단 및 실행
+                follow_ups = interviewer.get("follow_ups", {})
+                follow_up_question = follow_ups.get(question_text)
+
+                # 디버그 로그 (상세)
+                # print(f"\n  === 꼬리질문 생성 ===")
+                # print(f"   꼬리질문 생성 중 ...")
+                # print(f"   생성된 꼬리질문: {follow_up_question}")
+                # print(f"   ===================\n")
+
+                if follow_up_question:
+                    # 답변 품질 판단
+                    intent = None
+                    resume_context = interviewer.get("resume_context", [])
+                    if q_idx < len(resume_context):
+                        intent = resume_context[q_idx]
+
+                    is_weak = await self._evaluate_answer_quality(question_text, user_answer_text, intent)
+
+                    if is_weak:
+                        print(f"\n  === 꼬리질문 생성 ===")
+                        print(f"   꼬리질문 생성 중 ...")
+                        print(f"   생성된 꼬리질문: {follow_up_question}")
+                        print(f"   =====================\n")
+                        
+                        print(f"[Q{q_idx}] 꼬리질문 실행: {follow_up_question[:30]}...")
+
+                        # 꼬리질문 TTS 생성
+                        follow_up_audio_url = stt_tts_translator.text_to_audio(
+                            text=follow_up_question,
+                            folder=f"interviews/interview_{interview_id}/questions"
+                        )
+
+                        # 꼬리질문 전송
+                        follow_up_payload = {
+                            "type": "follow_up_question",
+                            "text": follow_up_question,
+                            "interviewer_id": interviewer.get("id"),
+                            "interviewer_name": interviewer_name,
+                            "original_question": question_text,
+                            "question_index": q_idx,
+                            "global_index": global_q_idx
+                        }
+                        if follow_up_audio_url:
+                            follow_up_payload["audioUrl"] = follow_up_audio_url
+
+                        await websocket.send_json(follow_up_payload)
+                        await websocket.send_json({"type": "question_end"})
+
+                        # 꼬리질문 답변 수신
+                        follow_up_answer = await self._process_user_answer(websocket, interview_id, f"{global_q_idx}_followup")
+
+                        # 꼬리질문 STT 결과 전송
+                        print(f"[Q{q_idx}] 꼬리질문 STT 결과: {follow_up_answer[:30]}...")
+                        await websocket.send_json({
+                            "type": "stt_final",
+                            "text": follow_up_answer
+                        })
+
+                        # 꼬리질문 결과 저장
+                        self.interview_results.append({
+                            "global_index": f"{global_q_idx}_followup",
+                            "interviewer_id": interviewer.get("id"),
+                            "interviewer_name": interviewer_name,
+                            "interviewer_type": interviewer_type,
+                            "question_index": q_idx,
+                            "question": follow_up_question,
+                            "answer": follow_up_answer,
+                            "is_follow_up": True,
+                            "original_question": question_text,
+                            "target_competencies": interviewer.get("target_competencies", [])
+                        })
+
+                # (5) 결과 저장
                 self.interview_results.append({
                     "global_index": global_q_idx,
                     "interviewer_id": interviewer.get("id"),
@@ -300,7 +391,7 @@ class InterviewServiceV4:
             "total_questions": global_q_idx,
             "results": self.interview_results
         })
-        print(f"✅ 인터뷰 세션 종료 (ID: {interview_id})")
+        print(f"인터뷰 세션 종료 (ID: {interview_id})")
 
     async def _wait_for_start_signal(self, websocket: WebSocket):
         """클라이언트로부터 start_interview 신호를 기다립니다."""
@@ -324,7 +415,7 @@ class InterviewServiceV4:
         """
         [수정됨] PCM16 스트림을 받아서 -> WAV 파일로 변환 저장 -> STT 요청
         """
-        print(f"👂 [Q{q_idx}] 답변 수신 대기 중 (PCM16 스트리밍)")
+        print(f"[Q{q_idx}] 답변 수신 대기 중...")
         
         # 1. 오디오 데이터를 메모리에 모으기 위한 버퍼
         audio_frames = bytearray()
@@ -341,7 +432,7 @@ class InterviewServiceV4:
                 try:
                     data = json.loads(message["text"])
                     if data.get("type") == "answer_end":
-                        print(f"🛑 [Q{q_idx}] 답변 종료 신호 수신. (데이터 크기: {len(audio_frames)} bytes)")
+                        print(f"[Q{q_idx}] 답변 종료 신호 수신. 수신한 오디오 데이터 {len(audio_frames)} bytes")
                         break
                 except: 
                     pass
@@ -363,7 +454,7 @@ class InterviewServiceV4:
                 wf.setframerate(SAMPLE_RATE)
                 wf.writeframes(audio_frames)
                 
-            print(f"💾 [Q{q_idx}] WAV 파일 저장 완료 ({local_path})")
+            print(f"[Q{q_idx}] WAV 파일 저장 완료 ({local_path})")
 
             # 3. Translator에게 변환 요청 
             transcribed_text = stt_tts_translator.audio_to_text(
@@ -376,13 +467,13 @@ class InterviewServiceV4:
                 os.remove(local_path)
 
             if transcribed_text:
-                print(f"📝 [Q{q_idx}] 변환된 텍스트: {transcribed_text}")
+                print(f"[Q{q_idx}] 변환된 텍스트: {transcribed_text}")
                 return transcribed_text
             else:
                 return "(인식 실패)"
 
         except Exception as e:
-            print(f"❌ [Q{q_idx}] 오디오 처리 중 에러: {e}")
+            print(f"[Q{q_idx}] 오디오 처리 중 에러: {e}")
             return "(오디오 처리 에러)"
         
 
@@ -397,9 +488,25 @@ class InterviewServiceV4:
                 file_path=filename,
                 folder=f"interviews/interview_{interview_id}"
             )
+
+            # DB에 transcript_s3_url 업데이트
+            if s3_url:
+                try:
+                    db = SessionLocal()
+                    session = db.query(InterviewSession).filter(InterviewSession.id == interview_id).first()
+                    if session:
+                        session.transcript_s3_url = s3_url
+                        db.commit()
+                        print(f"DB 업데이트 완료: transcript_s3_url = {s3_url}")
+                    else:
+                        print(f"InterviewSession {interview_id} 를 찾을 수 없음")
+                    db.close()
+                except Exception as db_error:
+                    print(f"DB 업데이트 실패: {db_error}")
+
             return s3_url
         except Exception as e:
-            print(f"❌ 결과 저장 실패: {e}")
+            print(f"!!! 결과 저장 실패: {e}")
             return None
 
 interview_service_v4 = InterviewServiceV4()

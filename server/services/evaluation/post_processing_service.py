@@ -66,8 +66,17 @@ class PostProcessingService:
         strengths: List[str] = []
         weaknesses: List[str] = []
         for comp in aggregated_competencies.values():
-            strengths.extend(comp.get("strengths", []))
-            weaknesses.extend(comp.get("weaknesses", []))
+            comp_data = comp or {}
+            comp_strengths = comp_data.get("strengths") or []
+            comp_weaknesses = comp_data.get("weaknesses") or []
+
+            if not isinstance(comp_strengths, list):
+                comp_strengths = [comp_strengths]
+            if not isinstance(comp_weaknesses, list):
+                comp_weaknesses = [comp_weaknesses]
+
+            strengths.extend(comp_strengths)
+            weaknesses.extend(comp_weaknesses)
         # 중복 제거, 순서 유지
         strengths = list(dict.fromkeys(strengths))
         weaknesses = list(dict.fromkeys(weaknesses))
@@ -84,7 +93,7 @@ class PostProcessingService:
         # 높은 점수 역량명을 키워드로 추가
         high_scores = sorted(
             [
-                (comp_name, comp_data.get("overall_score", 0))
+                (comp_name, (comp_data or {}).get("overall_score", 0))
                 for comp_name, comp_data in aggregated_competencies.items()
             ],
             key=lambda x: x[1],
@@ -115,20 +124,19 @@ class PostProcessingService:
         # 점수가 낮은 역량을 우선으로 질문을 만든다.
         low_comps = sorted(
             [
-                (comp_name, comp_data.get("overall_score", 0), comp_data)
+                (comp_name, (comp_data or {}).get("overall_score", 0), comp_data or {})
                 for comp_name, comp_data in aggregated_competencies.items()
-                if comp_data.get("overall_score", 100) < self.low_score_threshold
+                if (comp_data or {}).get("overall_score", 100) < self.low_score_threshold
             ],
             key=lambda x: x[1],
         )
 
         questions: List[str] = []
         for comp_name, score, comp_data in low_comps:
-            weakness_snippet = (
-                comp_data.get("weaknesses", ["추가 설명 필요"])[0]
-                if comp_data.get("weaknesses")
-                else "추가 설명 필요"
-            )
+            weaknesses_raw = comp_data.get("weaknesses") or []
+            if not isinstance(weaknesses_raw, list):
+                weaknesses_raw = [weaknesses_raw]
+            weakness_snippet = weaknesses_raw[0] if weaknesses_raw else "추가 설명 필요"
             questions.append(
                 f"{comp_name}({int(score)}점) 보완 사례를 구체적 지표와 함께 설명해주세요: {weakness_snippet}"
             )

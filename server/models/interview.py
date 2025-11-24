@@ -140,6 +140,7 @@ class InterviewSession(Base):
     completed_at = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     evaluation_completed = Column(Boolean, default=False, nullable=False)
+    transcript_s3_url = Column(Text, nullable=True)  # S3 transcript 경로
 
     # Relationships
     results = relationship("InterviewResult", back_populates="session", cascade="all, delete-orphan")

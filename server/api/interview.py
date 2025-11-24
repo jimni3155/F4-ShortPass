@@ -114,7 +114,7 @@ async def prepare_interview(
         host_and_port = fastapi_request.url.netloc
 
         # ws_url = f"{ws_protocol}://{host_and_port}/ws/interview/{new_session.id}"
-        ws_url = f"{ws_protocol}://{host_and_port}/api/v1/ws/interview/{new_session.id}"
+        ws_url = f"{ws_protocol}://{host_and_port}/api/v1/ws/interview/{new_session.id}?applicant_id={new_session.applicant_id}"
         print(f"생성된 WebSocket URL: {ws_url}")
 
         # API 응답 반환

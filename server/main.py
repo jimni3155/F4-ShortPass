@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from api import interview, evaluation, job, applicant, company, persona, interview_report, jd_persona
-from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream
+from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
 import json
 import logging # Import logging
 from pathlib import Path
@@ -93,8 +93,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Vite 개발 서버
+        "http://localhost:5174",  # Vite 개발 서버 (추가 포트)
         "http://localhost:3000",  # React 개발 서버
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
         "http://127.0.0.1:3000",
         #"*",  # 개발 중에는 모든 origin 허용 (프로덕션에서는 제거)
     ],
@@ -113,6 +115,8 @@ app.include_router(evaluation_mock.router, prefix="/api/v1", tags=["Mock Evaluat
 app.include_router(applicant.router, prefix="/api/v1", tags=["Applicant"])
 app.include_router(company.router, prefix="/api/v1", tags=["Company"])
 app.include_router(evaluation_stream.router, prefix="/api/v1", tags=["Evaluation Stream"])
+app.include_router(evaluation_result.router, prefix="/api/v1", tags=["Evaluation Result"])
+app.include_router(agent_logs.router, prefix="/api/v1", tags=["Agent Logs"])
 # app.include_router(interview_report.router, prefix="/api/v1", tags=["Interview Report"])
 # app.include_router(persona.router, prefix="/api/v1/personas", tags=["Persona"])
 # app.include_router(evaluation.router, prefix= "/api/v1", tags=["Evaluation"]) 

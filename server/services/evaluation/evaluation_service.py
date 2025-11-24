@@ -18,7 +18,8 @@ from models.interview import Applicant, Company, InterviewSession, InterviewStat
 from models.job import Job
 
 env_path = Path(__file__).parent.parent.parent / '.env'
-load_dotenv(env_path)
+# Force override so .env values (e.g., OPENAI_API_KEY) are used even if the shell has others.
+load_dotenv(env_path, override=True)
 
 from ai.prompts.competency_agents.common_competencies.problem_solving_prompt import create_problem_solving_evaluation_prompt
 from ai.prompts.competency_agents.common_competencies.organizational_fit_prompt import create_organizational_fit_evaluation_prompt

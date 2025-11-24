@@ -43,7 +43,7 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     # Agent 생성
     agent = CompetencyAgent(
         state["openai_client"],
-        max_concurrent=5  # 동시 실행 최대 5개
+        max_concurrent=4  # 동시 실행 최대 4개 (TPM 초과 방지)
     )
 
 

@@ -133,8 +133,22 @@ class PresentationFormatter:
                 })
             }
         
+        
         total_evidences = sum(len(cd.get('evidences', [])) for cd in competency_details.values())
         print(f"  배치 생성 완료: 총 {total_evidences}개 근거")
+        
+        # Connected Summary 추가
+        print(f"  Connected Summary 생성 중...")
+        competency_details = await self._add_connected_summaries(competency_details)
+        
+        total_evidences = sum(
+            len(cd.get('evidences', [])) 
+            for cd in competency_details.values()
+        )
+        
+        print(f"\n  총 근거 생성: {total_evidences}개")
+        print(f"  강점/약점/관찰 평서형 변환: 10개 역량")
+        print(f"  Resume 검증 결과 포함: 완료")
         
         return {
             "overall_summary": overall_summary,
@@ -142,7 +156,6 @@ class PresentationFormatter:
             "competency_scores": competency_scores,
             "competency_details": competency_details
         }
-    
     
     def _extract_overall_summary(self, final_result: Dict) -> Dict:
         """전체 요약 추출"""
@@ -712,8 +725,78 @@ __COMPETENCY_DATA__
             return answer_text[char_index: char_index + 120]
         
         return answer_text
-    
-    
+    async def _add_connected_summaries(
+        self,
+        competency_details: Dict
+    ) -> Dict:
+        """
+        각 역량의 evidences.summary를 자연스럽게 연결한 문단 생성
+        """
+        
+        for comp_name, comp_data in competency_details.items():
+            evidences = comp_data.get("evidences", [])
+            if not evidences:
+                comp_data["connected_summary"] = ""
+                continue
+            
+            individual_summaries = [ev.get("summary", "") for ev in evidences]
+            connected = await self._connect_summaries_naturally(
+                individual_summaries,
+                comp_data.get("competency_display_name", comp_name)
+            )
+            comp_data["connected_summary"] = connected
+        
+        return competency_details
+
+
+    async def _connect_summaries_naturally(
+        self,
+        summaries: List[str],
+        competency_name: str
+    ) -> str:
+        """
+        여러 summary를 하나의 자연스러운 문단으로 연결
+        """
+        
+        if not summaries:
+            return ""
+        bullet_block = "\n".join(f"{i+1}. {s}" for i, s in enumerate(summaries))
+        prompt = f"""다음은 "{competency_name}" 역량에 대한 여러 개의 근거 문장입니다.
+이것들을 하나의 자연스러운 문단으로 연결해주세요.
+
+규칙:
+1. "지원자는"을 반복하지 말고, 한 번만 사용하거나 생략
+2. 접속사(또한, 그리고, 아울러)로 자연스럽게 연결
+3. 존댓말 유지 (했습니다 체)
+4. 핵심 내용은 모두 포함
+5. 3-5문장으로 구성
+6. Negative 근거는 "다만," 또는 "그러나"로 구분
+
+개별 근거들:
+{bullet_block}
+
+연결된 문단:"""
+
+        try:
+            response = await self.client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are an expert at writing natural, flowing Korean prose."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.3,
+                max_tokens=500
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            print(f"        Summary 연결 실패: {e}")
+            return " ".join(summaries)
+
     def _fallback_all_batch(
         self,
         aggregated_competencies: Dict
