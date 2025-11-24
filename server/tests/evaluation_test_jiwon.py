@@ -24,7 +24,7 @@ async def test_jiwon_evaluation():
     data_dir = Path(__file__).resolve().parent.parent / "test_data"
 
     transcript_path = data_dir / "transcript_jiwon_101.json"
-    resume_path = data_dir / "resume_sample_101.json"
+    resume_path = data_dir / "resume_jiwon.json"
 
     if not transcript_path.exists():
         raise FileNotFoundError(f"Transcript file not found: {transcript_path}")

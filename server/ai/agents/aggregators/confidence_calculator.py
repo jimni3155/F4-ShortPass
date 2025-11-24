@@ -11,16 +11,14 @@ class ConfidenceCalculator:
     Confidence V2 계산기
     
     공식:
-        overall_confidence_v2 = (
-            interview_confidence × 0.60 +
-            resume_boost × 0.40
-        )
+        - Resume 검증 없음(none) → interview_confidence 그대로 사용
+        - Resume 검증 있음 → interview_confidence × 0.60 + resume_boost × 0.40
     
     resume_boost:
         - "high": 1.0
         - "medium": 0.7
         - "low": 0.4
-        - "none": 0.0
+        - "none": N/A (사용 안 함)
     """
     
     # Resume 검증 강도별 Boost 값
@@ -40,6 +38,10 @@ class ConfidenceCalculator:
         """
         Confidence V2 계산
         
+        전략:
+            - Resume 검증 없음(none) → Interview Confidence 그대로
+            - Resume 검증 있음 → Interview + Resume 조합
+        
         Args:
             interview_confidence: Agent가 계산한 원본 Confidence (0.0~1.0)
             verification_strength: Resume 검증 강도 ("high"/"medium"/"low"/"none")
@@ -47,15 +49,21 @@ class ConfidenceCalculator:
         Returns:
             overall_confidence_v2: 0.0~1.0
         """
-        resume_boost = ConfidenceCalculator.RESUME_BOOST_MAP.get(
-            verification_strength,
-            0.0  # default
-        )
         
-        confidence_v2 = (
-            interview_confidence * 0.60 +
-            resume_boost * 0.40
-        )
+        if verification_strength == "none":
+            # Resume 검증 없음 → Interview Confidence 그대로 사용
+            confidence_v2 = interview_confidence
+        else:
+            # Resume 검증 있음 → Interview + Resume 조합
+            resume_boost = ConfidenceCalculator.RESUME_BOOST_MAP.get(
+                verification_strength,
+                0.0
+            )
+            
+            confidence_v2 = (
+                interview_confidence * 0.60 +
+                resume_boost * 0.40
+            )
         
         # Clamp to [0.3, 0.98]
         confidence_v2 = max(0.3, min(0.98, confidence_v2))
@@ -77,8 +85,10 @@ class ConfidenceCalculator:
                         "competency": "achievement_motivation",
                         "segment_id": 3,
                         "interview_confidence": 0.85,
-                        "resume_verified": true,
-                        "verification_strength": "high"
+                        "resume_verification": {
+                            "verified": true,
+                            "strength": "high"
+                        }
                     },
                     ...
                 ]
@@ -90,7 +100,10 @@ class ConfidenceCalculator:
         
         for seg_eval in segment_evaluations:
             interview_conf = seg_eval.get("interview_confidence", 0.5)
-            verification_strength = seg_eval.get("verification_strength", "none")
+            
+            # ✅ Resume 검증 정보 올바르게 추출
+            resume_verification = seg_eval.get("resume_verification", {})
+            verification_strength = resume_verification.get("strength", "none")
             
             confidence_v2 = ConfidenceCalculator.calculate_confidence_v2(
                 interview_conf,

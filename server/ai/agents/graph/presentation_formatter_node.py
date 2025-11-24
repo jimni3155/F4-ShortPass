@@ -4,10 +4,12 @@ Presentation Formatter Node
 """
 
 import json
+import os
 from typing import Dict, List
 from datetime import datetime
 from openai import AsyncOpenAI
 from pathlib import Path
+from dotenv import load_dotenv
 
 
 class PresentationFormatter:
@@ -57,6 +59,12 @@ class PresentationFormatter:
     
     def __init__(self, openai_client: AsyncOpenAI):
         self.client = openai_client
+        
+        env_path = Path(__file__).resolve().parents[3] / ".env"
+        load_dotenv(env_path, override=False)
+        # 기본값은 gpt-4o, 필요 시 .env에서 OPENAI_MODEL로 오버라이드
+        self.model = os.getenv("OPENAI_MODEL", "gpt-4o")
+        self.summary_model = os.getenv("OPENAI_SUMMARY_MODEL", self.model)
         self._transcript_data = None
     
     
@@ -219,6 +227,7 @@ class PresentationFormatter:
     ) -> Dict[str, Dict]:
 
         self.transcript = transcript
+        self._transcript_data = transcript
     
         """
         배치: 모든 역량의 근거/강점/약점/관찰을 1번의 LLM 호출로 재생성
@@ -297,7 +306,7 @@ class PresentationFormatter:
         # 3. LLM 1회 호출
         try:
             response = await self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=self.model,
                 messages=[
                     {
                         "role": "system",
@@ -789,6 +798,7 @@ __COMPETENCY_DATA__
                         "content": prompt
                     }
                 ],
+                model=self.summary_model,
                 temperature=0.3,
                 max_tokens=500
             )
