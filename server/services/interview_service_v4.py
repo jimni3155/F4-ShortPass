@@ -32,7 +32,8 @@ class InterviewServiceV4:
 
         # 빠른 체크 1: 너무 짧은 답변
         if len(answer_stripped) < 100:
-            print(f"!!! 답변이 너무 짧음 ({len(answer_stripped)}자) → 꼬리질문 필요")
+            # print(f"!!! 답변이 너무 짧음 ({len(answer_stripped)}자) → 꼬리질문 필요")
+            print(f"!!! 답변 품질 판단 : WEAK → 꼬리질문 필요")
             return True
 
         # 빠른 체크 2: 회피/무응답 키워드
@@ -192,6 +193,17 @@ class InterviewServiceV4:
                 # 병합 결과 확인
                 for i in interviewers:
                     print(f"{i.get('name')}: 질문 {len(i.get('questions', []))}개, 꼬리질문 {len(i.get('follow_ups', {}))}개")
+        
+        # [면접 영상 촬영을 위한 일시 수정] 이컬처 매니저(INT_03)를 맨 앞으로 이동
+        # =========================================================================
+        # INT_03이 있다면, 리스트 정렬 기준: (ID == 'INT_03' ? 0 : 1)
+        # 즉, 0번 그룹(이컬처) -> 1번 그룹(나머지) 순서가 됩니다.
+        interviewers.sort(key=lambda x: 0 if x.get("id") == "INT_03" else 1)
+        
+        print("\n[면접 진행 순서]")
+        for i, iv in enumerate(interviewers):
+            print(f" {i+1}. {iv.get('name')} ({iv.get('type')}) - {iv.get('id')}")
+        print("==========================================\n")
 
         # 1. 연결 성공 메시지 전송
         await websocket.send_json({

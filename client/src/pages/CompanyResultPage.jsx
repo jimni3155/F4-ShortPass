@@ -14,7 +14,7 @@ function getMockCompanyMatchingResult(jobId) {
     employment_type: '정규직',
     hiring_status: '진행중',
     interview_period: '2025.10.23 – 2025.12.15',
-    total_applicants: 4, // 전체 인터뷰 완료 인원 수 (mock)
+    total_applicants: 7, // 전체 인터뷰 완료 인원 수 (mock)
     applicants: [
       {
         applicant_id: 1,
@@ -36,6 +36,7 @@ function getMockCompanyMatchingResult(jobId) {
         ai_one_line_summary:
           '데이터 기반 MD로 재고회전율 0.8→1.2 개선(품절률 5%↓), 마진 35→38.5% 달성하며 원가·품질 리스크 관리, 디자인/VMD·공급업체 협업·협상에 강점이고 리스크 관리 체계 학습 의지가 명확한 지원자입니다.',
         is_highlighted: true,
+        is_bookmarked: true,
       },
       {
         applicant_id: 2,
@@ -57,6 +58,7 @@ function getMockCompanyMatchingResult(jobId) {
         ai_one_line_summary:
           '리테일 영업 경험을 바탕으로 매장·현장 관점에서 상품 포트폴리오를 해석할 수 있는 지원자입니다.',
         is_highlighted: true,
+        is_bookmarked: false,
       },
       {
         applicant_id: 3,
@@ -78,6 +80,7 @@ function getMockCompanyMatchingResult(jobId) {
         ai_one_line_summary:
           '브랜드·컬렉션 스토리 구성에 강점을 보이지만 수치 기반 기획은 보완 여지가 있는 지원자입니다.',
         is_highlighted: false,
+        is_bookmarked: false,
       },
       {
         applicant_id: 4,
@@ -99,9 +102,76 @@ function getMockCompanyMatchingResult(jobId) {
         ai_one_line_summary:
           '글로벌, 특히 중국 패션 시장 트렌드 인사이트가 강점인 지원자로 해외 리테일 확장에 기여 가능성이 있습니다.',
         is_highlighted: false,
+        is_bookmarked: false,
+      },
+      {
+        applicant_id: 5,
+        applicant_name: '박서진',
+        interview_id: 90005,
+        interview_date: '2025-03-21',
+        interview_status: 'completed',
+        school: '가천대학교',
+        major: '패션디자인학과',
+        gpa: 3.2,
+        scores: {
+          final_score: 69.5,
+          job_overall: 68.0,
+          common_overall: 70.3,
+          confidence_overall: 0.69,
+        },
+        top_strengths: ['현장 판매 경험', '동료 지원 및 협업 태도'],
+        top_weaknesses: ['데이터 리터러시 부족', '브랜드 포지셔닝 이해 부족'],
+        ai_one_line_summary:
+          '현장 감각과 팀워크는 좋지만 데이터 분석과 기획 논리가 약해 추가 학습이 필요한 지원자입니다.',
+        is_highlighted: false,
+        is_bookmarked: true,
+      },
+      {
+        applicant_id: 6,
+        applicant_name: '최민수',
+        interview_id: 90006,
+        interview_date: '2025-03-22',
+        interview_status: 'completed',
+        school: '부산대학교',
+        major: '경제학과',
+        gpa: 3.0,
+        scores: {
+          final_score: 62.3,
+          job_overall: 61.0,
+          common_overall: 63.5,
+          confidence_overall: 0.62,
+        },
+        top_strengths: ['수요 예측 기본 이해', '정리된 커뮤니케이션'],
+        top_weaknesses: ['패션 산업 지식 부족', '주도적 실행 사례 부족'],
+        ai_one_line_summary:
+          '기초 정량 감각은 있으나 패션 도메인 경험과 실행 드라이브가 부족해 멘토링이 필요한 지원자입니다.',
+        is_highlighted: false,
+        is_bookmarked: false,
+      },
+      {
+        applicant_id: 7,
+        applicant_name: '윤하나',
+        interview_id: 90007,
+        interview_date: '2025-03-24',
+        interview_status: 'completed',
+        school: '경기대학교',
+        major: '영문학과',
+        gpa: 2.8,
+        scores: {
+          final_score: 58.4,
+          job_overall: 57.0,
+          common_overall: 59.2,
+          confidence_overall: 0.58,
+        },
+        top_strengths: ['고객 응대 경험', '팀 플레이'],
+        top_weaknesses: ['데이터 분석 역량 부족', '패션 트렌드 이해 부족'],
+        ai_one_line_summary:
+          '서비스 마인드는 있으나 직무 적합성과 정량 역량이 낮아 추가 교육이 필수적인 지원자입니다.',
+        is_highlighted: false,
+        is_bookmarked: false,
       },
     ],
-    total_count: 4, // 현재 응답에 포함된 전체 지원자 수
+    total_count: 7, // 현재 응답에 포함된 전체 지원자 수
     page: 1,
     page_size: 20,
   };
@@ -368,7 +438,7 @@ export default function CompanyResultPage() {
                     AI 한줄 평가
                   </th>
                   <th className='px-4 py-3 text-center text-xs font-medium text-gray-600'>
-                    주목
+                    주목/북마크
                   </th>
                 </tr>
               </thead>
@@ -420,18 +490,27 @@ export default function CompanyResultPage() {
                         {applicant.scores.common_overall}
                       </span>
                     </td>
-                    <td className='px-4 py-3 max-w-xs'>
-                      <span className='text-sm text-gray-700 line-clamp-2'>
-                        {applicant.ai_one_line_summary}
-                      </span>
-                    </td>
-                    <td className='px-3 py-3 text-center whitespace-nowrap'>
+                  <td className='px-4 py-3 max-w-xs'>
+                    <span className='text-sm text-gray-700 line-clamp-2'>
+                      {applicant.ai_one_line_summary}
+                    </span>
+                  </td>
+                  <td className='px-3 py-3 text-center whitespace-nowrap'>
+                    <div className='flex items-center justify-center gap-2'>
                       {applicant.is_highlighted && (
                         <Badge variant='secondary'>주목 인재</Badge>
                       )}
-                    </td>
-                  </tr>
-                ))}
+                      {applicant.is_bookmarked && (
+                        <Badge
+                          variant='ghost'
+                          classname='px-2 py-1 rounded-lg border border-amber-200 bg-amber-50 text-amber-700 text-xs font-medium'>
+                          북마크
+                        </Badge>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
               </tbody>
             </table>
           </div>

@@ -1,0 +1,26 @@
+{
+    "job_expertise": {
+        "score": 85.0,
+        "reasoning": "job_expertise 측면에서 매우 우수합니다.",
+        "strengths": [
+            "논리적 사고"
+        ],
+        "weaknesses": [
+            "경험 부족"
+        ]
+    },
+    "soft_skills": {
+        "score": 85.0,
+        "reasoning": "soft_skills 측면에서 매우 우수합니다.",
+        "strengths": [
+            "논리적 사고"
+        ],
+        "weaknesses": [
+            "경험 부족"
+        ]
+    },
+    "competency_weights": {
+        "job_expertise": 0.6,
+        "soft_skills": 0.4
+    }
+}

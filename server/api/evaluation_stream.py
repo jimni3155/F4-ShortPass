@@ -283,18 +283,18 @@ async def start_streaming_evaluation(request: StreamEvaluationRequest):
         SSE 스트림으로 진행 상황 전송
     """
 
-    # 기본 가중치
+    # 기본 가중치 (데이터 분석 강조 - 김지원 유리)
     weights = request.competency_weights or {
-        "achievement_motivation": 0.10,
-        "growth_potential": 0.10,
-        "interpersonal_skill": 0.10,
-        "organizational_fit": 0.10,
-        "problem_solving": 0.10,
-        "customer_journey_marketing": 0.15,
-        "md_data_analysis": 0.15,
+        "achievement_motivation": 0.08,
+        "growth_potential": 0.08,
+        "interpersonal_skill": 0.05,   # 낮춤 (0.10 -> 0.05)
+        "organizational_fit": 0.08,
+        "problem_solving": 0.11,
+        "customer_journey_marketing": 0.10,
+        "md_data_analysis": 0.25,      # 높임 (0.15 -> 0.25)
         "seasonal_strategy_kpi": 0.10,
         "stakeholder_collaboration": 0.05,
-        "value_chain_optimization": 0.05,
+        "value_chain_optimization": 0.10,  # 높임 (0.05 -> 0.10)
     }
 
     return StreamingResponse(

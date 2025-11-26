@@ -73,6 +73,7 @@ def _extract_resume_verification_summary(comp_segments: List[Dict]) -> Dict:
             "quote": seg.get("quote_text", ""),
             "resume_section": first_match.get("resume_section", ""),
             "matched_content": first_match.get("matched_content", ""),
+            "resume_verification": seg.get("resume_verification", {}),
             "verification_strength": resume_verification.get("strength", "none"),
             "reasoning": resume_verification.get("reasoning", ""),
             "char_index": seg.get("char_index"), 

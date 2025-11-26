@@ -22,10 +22,15 @@ const InterviewPage = () => {
     sessionState,
     turnState,
     currentQuestion,
+    currentQuestionIndex,
     questionList,
     personaInfo,
+    interviewers,
+    currentInterviewer,
     interviewResults,
     transcriptUrl,
+    messages,
+    sttText,
     logs,
     finishAnswerManually,
     TURN_STATE,
@@ -70,17 +75,22 @@ const InterviewPage = () => {
 
   return (
     <InterviewPageLayout>
-      <SideBar />
+      <SideBar interviewers={interviewers} currentInterviewer={currentInterviewer} />
 
       {/* Center Content */}
       <main className='flex flex-1 flex-col p-6'>
         {/* Video Screens Container */}
         <section className='grid flex-1 grid-cols-2 gap-6 items-center *:flex *:flex-col *:gap-4'>
-          <AgentPanel />
+          <AgentPanel
+            currentInterviewer={currentInterviewer}
+            currentQuestion={currentQuestion}
+            currentQuestionIndex={currentQuestionIndex}
+            turnState={turnState}
+          />
           <CameraPreview />
         </section>
 
-        <div className='flex-center gap-10'>
+        {/* <div className='flex-center gap-10'>
           <Button
             variant='outline'
             className='text-white font-bold hover:text-grey'
@@ -93,12 +103,15 @@ const InterviewPage = () => {
             onClick={stopRecording}>
             CLOSE
           </Button>
-        </div>
+        </div> */}
 
-        <EndButton />
+        {/* <EndButton /> */}
       </main>
 
-      <InterviewLog />
+      <InterviewLog 
+        messages={messages}
+        currentStt={turnState === 'answering' ? sttText : ''} 
+      />
     </InterviewPageLayout>
   );
 };

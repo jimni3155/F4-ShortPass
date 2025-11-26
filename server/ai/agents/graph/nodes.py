@@ -36,7 +36,7 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     start_time = datetime.now()
 
     print("\n" + "="*60)
-    print("[Stage 1] 10개 역량 병렬 평가 시작")
+    print("[Stage 1] 에이전트들이 역량 평가를 시작합니다 (10개 병렬)")
     print("="*60)
 
 
@@ -56,17 +56,34 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
 
 
     # 결과 검증
-    success_count = sum(1 for r in all_results.values() if r.get("overall_score", 0) > 0)
-    error_count = sum(1 for r in all_results.values() if "error" in r)
+    success_count = sum(
+        1
+        for r in all_results.values()
+        if isinstance(r, dict) and r.get("overall_score", 0) > 0
+    )
+    error_count = sum(
+        1
+        for r in all_results.values()
+        if isinstance(r, dict) and "error" in r
+    )
+    scores = [
+        r.get("overall_score", 0)
+        for r in all_results.values()
+        if isinstance(r, dict)
+    ]
+    avg_score = round(sum(scores) / len(scores), 1) if scores else 0.0
+    max_score = max(scores) if scores else 0.0
+    min_score = min(scores) if scores else 0.0
     
     print(f"\n[Stage 1] 평가 결과:")
     print(f"  - 성공: {success_count}개")
     print(f"  - 실패: {error_count}개")
+    print(f"  - 점수 요약: avg={avg_score:.1f}, max={max_score:.1f}, min={min_score:.1f}")
     
     if error_count > 0:
         print(f"\n    실패한 역량:")
         for name, result in all_results.items():
-            if "error" in result:
+            if isinstance(result, dict) and "error" in result:
                 print(f"    - {name}: {result['error']}")
 
 

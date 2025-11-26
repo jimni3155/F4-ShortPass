@@ -63,7 +63,7 @@ const CandidateInfo = () => {
     school: '',
     major: '',
     // 파일
-    portfolioPdf: [],
+    portfolioPdfs: [],
     // 직무 선택: 여러 개 subRole만 저장
     subRoles: [], // ['서비스기획', '전략 컨설턴트', ...]
   });
@@ -84,7 +84,7 @@ const CandidateInfo = () => {
     formData.email.trim() &&
     isEmailValid;
 
-  const isFinalSubmitValid = isBasicInfoValid && formData.portfolioPdf !== null;
+  const isFinalSubmitValid = isBasicInfoValid && formData.portfolioPdfs.length !== 0 ;
 
   // -------------------- 헬퍼: subRole 토글 --------------------
 
@@ -131,25 +131,32 @@ const CandidateInfo = () => {
         name: formData.name,
         email: formData.email,
         gender: formData.gender || undefined,
-        education: formData.education || undefined,
+        education: [formData.school, formData.major].filter(Boolean).join(' ') || undefined,
         birthdate: formData.birthdate || undefined,
-        school: formData.school || undefined,
-        major: formData.major || undefined,
+        // school: formData.school || undefined,
+        // major: formData.major || undefined,
         // 여러 개 선택된 직무 (subRole들)
-        subRoles: formData.subRoles,
+        // subRoles: formData.subRoles,
       };
+
+      const portfolioPdf = formData.portfolioPdfs[0]
+
+      console.log(portfolioPdf)
 
       const savedCandidate = await saveCandidate(
         payload,
-        formData.portfolioPdf
+        portfolioPdf
       );
 
       localStorage.setItem('currentCandidateId', savedCandidate.id);
+
       navigate('/candidate/jobs');
+      
 
       // await new Promise((resolve) => setTimeout(resolve, 800));
 
-      // navigate('/candidate/jobs');
+      
+
     } catch (error) {
       console.error('Failed to save candidate:', error);
       alert(
@@ -442,7 +449,6 @@ const CandidateInfo = () => {
               <Button
                 type='button'
                 variant='ghost'
-                className={isLoading ? 'hidden' : ''}
                 onClick={handlePrev}
                 disabled={isLoading}>
                 이전
@@ -455,19 +461,8 @@ const CandidateInfo = () => {
                   className={
                     isLoading ? 'w-fit p-3 px-4 whitespace-nowrap' : ''
                   }
-                  disabled={!isFinalSubmitValid || isLoading}>
-                  {isLoading ? (
-                    <span className='flex items-center gap-2'>
-                      <img
-                        className='w-4 h-4 animate-spin'
-                        src={loader}
-                        alt='로딩'
-                      />
-                      질문 세트를 준비하고 있습니다…
-                    </span>
-                  ) : (
-                    '제출하기'
-                  )}
+                  >
+                    제출하기
                 </Button>
               ) : (
                 <Button type='button' onClick={handleNextStep}>

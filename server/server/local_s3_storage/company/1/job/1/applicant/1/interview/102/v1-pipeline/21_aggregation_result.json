@@ -1,0 +1,9 @@
+{
+    "normalized_score": 85.0,
+    "weighted_score": 85.0,
+    "match_score": 85.0,
+    "metadata": {
+        "pipeline_version": "aggregation-v1.0",
+        "weight_profile": "default_v2"
+    }
+}

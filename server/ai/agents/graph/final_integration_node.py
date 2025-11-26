@@ -623,6 +623,15 @@ async def final_integration_node(state: EvaluationState) -> Dict:
         final_result=final_result
     )
 
+    # Stage 3 요약 로그
+    final_score = final_result.get("final_score")
+    avg_confidence = final_result.get("avg_confidence")
+    reliability = final_result.get("reliability", {}).get("level_display") or final_result.get("reliability", {}).get("level")
+    print("\n[Stage 3 요약]")
+    print(f"  - final_score: {final_score}")
+    print(f"  - avg_confidence: {avg_confidence}")
+    print(f"  - reliability: {reliability}")
+
     duration = (datetime.now() - start_time).total_seconds()
 
     execution_log = {

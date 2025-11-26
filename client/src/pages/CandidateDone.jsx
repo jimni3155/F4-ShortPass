@@ -9,17 +9,11 @@ const CandidateDone = () => {
   const transcriptUrl = state?.transcriptUrl;
   const interviewId = state?.interviewId;
 
-  const companyScores = [
-    {company: '테크 스타트업 A', matchingScore: 92},
-    {company: '글로벌 기업 B', matchingScore: 85},
-    {company: '핀테크 회사 C', matchingScore: 78},
-  ];
-
   return (
     <div className='w-full min-h-screen flex justify-center items-center'>
       <div className='md:w-1/2 flex flex-col gap-10'>
         <div className='flex flex-col items-center space-y-5 text-center'>
-          <h1 className='text-4xl md:text-6xl font-bold text-dark'>
+          <h1 className='text-4xl md:text-5xl font-bold text-blue'>
             면접이 종료되었습니다
           </h1>
           <p className='text-base md:text-lg leading-relaxed text-grey'>
@@ -28,7 +22,7 @@ const CandidateDone = () => {
         </div>
 
         {/* 회사별 매칭 점수 */}
-        <div className='w-full space-y-5'>
+        {/* <div className='w-full space-y-5'>
           <h2 className='text-center text-lg md:text-xl font-semibold text-dark'>
             회사별 매칭 점수
           </h2>
@@ -46,7 +40,7 @@ const CandidateDone = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
         {/* 인터뷰 결과 요약 */}
         <div className='w-full space-y-3 rounded-2xl border border-gray-200 px-6 py-5'>

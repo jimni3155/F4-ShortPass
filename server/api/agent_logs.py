@@ -10,6 +10,7 @@ from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from db.database import SessionLocal
 from models.evaluation import Evaluation
+from models.interview import Applicant
 from services.storage.s3_service import S3Service
 from core.config import S3_BUCKET_NAME, AWS_REGION
 
@@ -266,18 +267,21 @@ async def get_recent_evaluations(limit: int = 10):
     """
     db = SessionLocal()
     try:
-        evaluations = db.query(Evaluation)\
+        # Evaluation과 Applicant 조인
+        evaluations = db.query(Evaluation, Applicant)\
+            .outerjoin(Applicant, Evaluation.applicant_id == Applicant.id)\
             .order_by(Evaluation.created_at.desc())\
             .limit(limit)\
             .all()
 
         result = []
-        for ev in evaluations:
+        for ev, applicant in evaluations:
             metadata = ev.evaluation_metadata or {}
             result.append({
                 "evaluation_id": ev.id,
                 "interview_id": ev.interview_id,
                 "applicant_id": ev.applicant_id,
+                "applicant_name": applicant.name if applicant else f"지원자 {ev.applicant_id}",
                 "job_id": ev.job_id,
                 "match_score": ev.match_score,
                 "confidence_score": ev.confidence_score,

@@ -328,15 +328,20 @@ class ResumeVerifier:
         for seg in original_segments:
             key = (seg.get("competency"), seg.get("segment_id"))
             verification = verification_map.get(key, {})
+
+            # ✅ 기본 검증 플래그/강도 결정 (빈 매칭이면 검증 실패로 처리)
+            resume_matches = verification.get("resume_matches", [])
+            resume_verified = bool(verification.get("resume_verified", False)) and bool(resume_matches)
+            verification_strength = verification.get("verification_strength", "none") if resume_verified else "none"
             
             merged_seg = {
                 **seg,
                 
                 "resume_verification": {
-                    "verified": verification.get("resume_verified", False),
-                    "strength": verification.get("verification_strength", "none"),
+                    "verified": resume_verified,
+                    "strength": verification_strength,
                     "reasoning": verification.get("reasoning", ""),  # 🆕
-                    "resume_matches": verification.get("resume_matches", []),  # 🆕
+                    "resume_matches": resume_matches,  # 🆕
                     "confidence_factors": verification.get("confidence_factors", {})  # 🆕
                 }
             }

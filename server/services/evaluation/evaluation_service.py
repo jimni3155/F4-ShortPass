@@ -95,8 +95,6 @@ class EvaluationService:
             
             # 1-1. key_observations 보장
             if "key_observations" not in comp_data or not comp_data.get("key_observations"):
-                print(f"    key_observations 누락 → 자동 생성")
-                
                 key_obs = []
                 # Strengths에서 추출 (최대 2개)
                 strengths = comp_data.get("strengths", [])
@@ -124,10 +122,6 @@ class EvaluationService:
                 # 중복 제거 및 최대 5개
                 key_obs = list(dict.fromkeys(key_obs))[:5]
                 comp_data["key_observations"] = key_obs
-                
-                print(f"    → 생성됨 ({len(key_obs)}개)")
-            else:
-                print(f"   key_observations 존재 ({len(comp_data['key_observations'])}개)")
             
             
             # 1-2. resume_verification_summary 보장
@@ -174,12 +168,22 @@ class EvaluationService:
                     "key_evidence": key_evidence
                 }
                 
-                print(f"    → 생성됨 (verified: {len(verified_segments)}개)")
-            else:
-                verified = comp_data["resume_verification_summary"].get("verified_count", 0)
-                print(f"   resume_verification_summary 존재 ({verified}개 검증)")
+                print(f"    → resume_verification_summary 생성 (verified: {len(verified_segments)}개, high: {len(high_strength_segments)}개)")
         
         result["aggregated_competencies"] = aggregated_competencies
+
+        # 요약 로그: Resume 검증 총합
+        total_verified = sum(
+            comp.get("resume_verification_summary", {}).get("verified_count", 0)
+            for comp in aggregated_competencies.values()
+        )
+        total_high = sum(
+            comp.get("resume_verification_summary", {}).get("high_strength_count", 0)
+            for comp in aggregated_competencies.values()
+        )
+        print("\n[요약] Resume 검증 총합")
+        print(f"  - verified_count 합계: {total_verified}")
+        print(f"  - high_strength_count 합계: {total_high}")
         
         
         # ========================================
@@ -345,11 +349,21 @@ class EvaluationService:
             execution_logs_s3_key, result["execution_logs"]
         )
 
+        # Stage 1 결과만 별도로 저장 (Resume 검증 전 raw agent 결과)
+        stage1_payload = {
+            "achievement_motivation": result.get("achievement_motivation_result"),
+            "growth_potential": result.get("growth_potential_result"),
+            "interpersonal_skill": result.get("interpersonal_skill_result"),
+            "organizational_fit": result.get("organizational_fit_result"),
+            "problem_solving": result.get("problem_solving_result"),
+            "customer_journey_marketing": result.get("customer_journey_marketing_result"),
+            "md_data_analysis": result.get("md_data_analysis_result"),
+            "seasonal_strategy_kpi": result.get("seasonal_strategy_kpi_result"),
+            "stakeholder_collaboration": result.get("stakeholder_collaboration_result"),
+            "value_chain_optimization": result.get("value_chain_optimization_result"),
+        }
         stage1_key = f"{evaluation_base_prefix}/stage1_evidence.json"
-        stage1_evidence_url = self.s3_service.upload_json(
-            stage1_key,
-            result.get("aggregated_competencies", {})
-        )
+        stage1_evidence_url = self.s3_service.upload_json(stage1_key, stage1_payload)
 
         stage2_payload = {
             "segment_evaluations_with_resume": result.get("segment_evaluations_with_resume", []),

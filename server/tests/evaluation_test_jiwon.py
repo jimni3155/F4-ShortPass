@@ -1,5 +1,5 @@
 """
-김지원 면접 평가 테스트 (transcript_jiwon_101.json + resume_sample_101.json)
+김지원 면접 평가 (transcript_jiwon_101.json + resume_sample_101.json)
 
 Usage:
     python server/tests/evaluation_test_jiwon.py
@@ -16,7 +16,7 @@ from services.evaluation.evaluation_service import EvaluationService
 
 
 async def test_jiwon_evaluation():
-    """김지원 면접 평가 테스트"""
+    """김지원 면접 평가"""
 
     # ========================================
     # 1. 테스트 데이터 로드
@@ -73,7 +73,7 @@ async def test_jiwon_evaluation():
     # ========================================
 
     print("\n" + "=" * 80)
-    print(" AI 면접 평가 시스템 - 김지원 평가 테스트")
+    print(" AI 면접 평가 시스템 - 김지원 평가")
     print("=" * 80 + "\n")
 
     print(f"  Applicant: {resume_data.get('applicant_name', '김지원')}")

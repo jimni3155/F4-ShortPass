@@ -11,8 +11,8 @@ export const STREAM_STATUS = {
 
 // VAD용 임계값 (RMS)
 const VAD_THRESHOLD = 0.01;
-// 무음 허용 시간(ms)
-const SILENCE_TIMEOUT = 4000;
+// 무음 허용 시간(ms) - 2초로 단축
+const SILENCE_TIMEOUT = 1500;
 
 export default function useAudioStreaming({getSocket, turnState} = {}) {
   const [status, setStatus] = useState(STREAM_STATUS.IDLE);
