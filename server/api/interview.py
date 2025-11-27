@@ -8,7 +8,7 @@ from models.interview import InterviewSession, InterviewStatus
 from schemas.interview import PrepareInterviewRequest, PrepareInterviewResponse 
 from datetime import datetime
 import logging
-from services.local_s3_service import LocalS3Service
+from services.s3_service_factory import get_s3_service
 from services.evaluation_pipeline_service import EvaluationPipelineService
 from pydantic import BaseModel
 from services.interview_service_v3 import interview_service_v3
@@ -42,7 +42,7 @@ async def run_evaluation_pipeline(
     placeholder_applicant_id = 1
 
     try:
-        s3_service = LocalS3Service()
+        s3_service = get_s3_service()
         pipeline_service = EvaluationPipelineService(s3_service=s3_service)
         
         result = pipeline_service.run_pipeline(

@@ -3,10 +3,11 @@
 면접 평가 파이프라인을 실행하고 중간 산출물을 S3(시뮬레이션)에 저장하는 서비스
 """
 import json
-from .local_s3_service import LocalS3Service
+from datetime import datetime
+from typing import Any
 
 class EvaluationPipelineService:
-    def __init__(self, s3_service: LocalS3Service):
+    def __init__(self, s3_service: Any):
         self.s3 = s3_service
 
     def run_pipeline(self, company_id: int, job_id: int, applicant_id: int, interview_id: int) -> dict:
@@ -16,42 +17,53 @@ class EvaluationPipelineService:
         """
         print(f"\n Starting evaluation pipeline for interview {interview_id}...")
 
-        # 1. 기본 경로 설정
-        pipeline_version = "v1-pipeline"
-        base_key = f"company/{company_id}/job/{job_id}/applicant/{applicant_id}/interview/{interview_id}/{pipeline_version}"
+        # 1. 기본 경로 설정 (문서화된 스킴에 맞춤)
+        timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        base_key = f"evaluations/{interview_id}/{timestamp}"
 
-        # 2. 각 단계별 모의 데이터 생성 및 S3(로컬) 저장
-        # 01_transcript.json
+        # 2. 각 단계별 모의 데이터 생성 및 S3 저장
+        # Stage 1: 증적 및 세부 평가
         transcript_data = self._generate_mock_transcript()
-        self.s3.save_json_log(transcript_data, f"{base_key}/01_transcript.json")
-
-        # 10_persona_job_expertise.json
         job_expertise_data = self._generate_mock_persona_eval("job_expertise")
-        self.s3.save_json_log(job_expertise_data, f"{base_key}/10_persona_job_expertise.json")
-
-        # 11_persona_soft_skills.json (가정)
         soft_skills_data = self._generate_mock_persona_eval("soft_skills")
-        self.s3.save_json_log(soft_skills_data, f"{base_key}/11_persona_soft_skills.json")
+        stage1_payload = {
+            "transcript": transcript_data,
+            "persona_evaluations": {
+                "job_expertise": job_expertise_data,
+                "soft_skills": soft_skills_data
+            }
+        }
+        self.s3.save_json_log(stage1_payload, f"{base_key}/stage1_evidence.json")
 
-        # 20_aggregation_input.json
+        # Stage 2: 집계 입력/결과
         agg_input_data = {
             "job_expertise": job_expertise_data["parsed_output"],
             "soft_skills": soft_skills_data["parsed_output"],
             "competency_weights": {"job_expertise": 0.6, "soft_skills": 0.4}
         }
-        self.s3.save_json_log(agg_input_data, f"{base_key}/20_aggregation_input.json")
-        
-        # 21_aggregation_result.json (Python 코드로 실제 계산)
         agg_result_data = self._run_aggregation(agg_input_data)
-        self.s3.save_json_log(agg_result_data, f"{base_key}/21_aggregation_result.json")
+        stage2_payload = {
+            "aggregation_input": agg_input_data,
+            "aggregation_result": agg_result_data
+        }
+        self.s3.save_json_log(stage2_payload, f"{base_key}/stage2_aggregator.json")
 
-        # 30_validation_report.json
+        # Stage 3: 검증 및 최종 통합
         validation_data = self._run_validation(agg_result_data)
-        self.s3.save_json_log(validation_data, f"{base_key}/30_validation_report.json")
-        
-        # 40_hr_report_llm_output.json
+        stage3_payload = {
+            "validation": validation_data,
+            "final_scores": agg_result_data
+        }
+        self.s3.save_json_log(stage3_payload, f"{base_key}/stage3_final_integration.json")
+
+        # Stage 4: 프런트엔드 표현용 요약
         hr_report_data = self._generate_hr_report(agg_result_data)
-        self.s3.save_json_log(hr_report_data, f"{base_key}/40_hr_report_llm_output.json")
+        stage4_payload = {
+            "hr_report": hr_report_data,
+            "match_score": agg_result_data.get("match_score"),
+            "recommendation": hr_report_data.get("recommendation")
+        }
+        self.s3.save_json_log(stage4_payload, f"{base_key}/stage4_presentation_frontend.json")
 
         print(f"✅ Pipeline completed successfully for interview {interview_id}.")
         

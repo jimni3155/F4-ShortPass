@@ -8,6 +8,7 @@ load_dotenv()
 BEDROCK_REGION = os.getenv("BEDROCK_REGION", "us-east-1")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME", "linkbig-ht-06-f4") # 실제 이름으로 변경해주세요
+USE_AWS_S3 = os.getenv("USE_AWS_S3", "false").lower() == "true"
 
 # Bedrock / LLM Configuration
 BEDROCK_MODEL_ID = os.getenv(
