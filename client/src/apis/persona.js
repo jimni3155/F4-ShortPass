@@ -14,6 +14,7 @@ const API_BASE_URL = API_V1;
  * @returns {Promise<Object>} 생성된 페르소나 정보
  */
 export const uploadPersonaPdf = async (companyId, pdfFile) => {
+  console.log('Uploading persona PDF for company ID:', companyId);
   const formData = new FormData();
   formData.append('company_id', companyId);
   formData.append('pdf_file', pdfFile);
@@ -25,10 +26,13 @@ export const uploadPersonaPdf = async (companyId, pdfFile) => {
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 업로드 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully uploaded persona PDF:', responseData);
+  return responseData;
 };
 
 /**
@@ -37,14 +41,18 @@ export const uploadPersonaPdf = async (companyId, pdfFile) => {
  * @returns {Promise<Object>} 페르소나 정보
  */
 export const getPersona = async (personaId) => {
+  console.log('Getting persona with ID:', personaId);
   const response = await fetch(`${API_BASE_URL}/personas/${personaId}`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched persona:', responseData);
+  return responseData;
 };
 
 /**
@@ -53,14 +61,18 @@ export const getPersona = async (personaId) => {
  * @returns {Promise<Array>} 질문 리스트
  */
 export const getPersonaQuestions = async (personaId) => {
+  console.log('Getting questions for persona ID:', personaId);
   const response = await fetch(`${API_BASE_URL}/personas/${personaId}/questions`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '질문 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched persona questions:', responseData);
+  return responseData;
 };
 
 /**
@@ -69,14 +81,18 @@ export const getPersonaQuestions = async (personaId) => {
  * @returns {Promise<Object>} 페르소나 리스트
  */
 export const getPersonasByCompany = async (companyId) => {
+  console.log('Getting personas for company ID:', companyId);
   const response = await fetch(`${API_BASE_URL}/personas/company/${companyId}`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 목록 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched personas by company:', responseData);
+  return responseData;
 };
 
 /**
@@ -84,14 +100,18 @@ export const getPersonasByCompany = async (companyId) => {
  * @returns {Promise<Object>} 전체 페르소나 리스트
  */
 export const getAllPersonas = async () => {
+  console.log('Getting all personas');
   const response = await fetch(`${API_BASE_URL}/personas/`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 목록 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched all personas:', responseData);
+  return responseData;
 };
 
 /**
@@ -100,14 +120,17 @@ export const getAllPersonas = async () => {
  * @returns {Promise<void>}
  */
 export const deletePersona = async (personaId) => {
+  console.log('Deleting persona with ID:', personaId);
   const response = await fetch(`${API_BASE_URL}/personas/${personaId}`, {
     method: 'DELETE',
   });
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 삭제 실패');
   }
 
+  console.log('Successfully deleted persona');
   return;
 };

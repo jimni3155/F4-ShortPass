@@ -1,0 +1,2720 @@
+INFO:     Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [200684] using WatchFiles
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [200699]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Request: GET /health - Status: 200 - Time: 0.0006s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:53394 - "GET /health HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [200699]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [201685]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Request: GET /api/v1/agent-logs/38 - Status: 200 - Time: 0.4394s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:41766 - "GET /api/v1/agent-logs/38 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [201685]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [206737]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [206737]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [206782]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [206782]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [207005]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [207005]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [207221]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [207221]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [207577]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [207577]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [207635]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'api/agent_logs.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [207635]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [210295]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'api/agent_logs.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [210295]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [210393]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.2082s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:46132 - "GET /api/v1/agent-logs/list/recent?limit=3 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0272s
+INFO:     127.0.0.1:54906 - "GET /api/v1/agent-logs/list/recent?limit=3 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'ai/agents/aggregators/confidence_calculator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [210393]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [213978]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/aggregators/confidence_calculator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [213978]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [214761]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/evaluation_test_jiwon.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [214761]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [215932]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/evaluation_test_jiwon.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [215932]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [215951]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Request: GET /docs - Status: 200 - Time: 0.0004s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     1.209.144.252:63476 - "GET /docs HTTP/1.1" 200 OK
+INFO:     Request: GET /openapi.json - Status: 200 - Time: 0.1869s
+INFO:     1.209.144.252:63476 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [215951]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [218457]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [218457]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [218951]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [218951]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [219646]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [219646]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [219852]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [219852]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [221368]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [221368]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [221503]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [221503]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [221547]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [221547]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [223140]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [223140]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224039]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224039]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224248]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224248]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224458]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224458]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224483]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224483]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224518]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/presentation_formatter_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224518]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224658]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224658]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224929]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224929]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [224960]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224960]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [228559]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'services/evaluation/evaluation_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [228559]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [228590]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [228590]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [229143]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'services/evaluation/evaluation_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [229143]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [229187]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'services/evaluation/evaluation_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [229187]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [229793]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [229793]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [232533]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [232533]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [232593]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/final_integration_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [232593]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [232635]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/nodes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [232635]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [234134]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [234134]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [234815]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/competency_agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [234815]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [235965]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [235965]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-42:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-43:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-44:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-45:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-46:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-47:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'tests/evaluation_test_seojin.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-48:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-49:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'tests/evaluation_test_seojin.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+Process SpawnProcess-50:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/home/ec2-user/flex/venv1/lib64/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib64/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/home/ec2-user/flex/server/main.py", line 9, in <module>
+    from api import interview, jd_persona, job, evaluation_db, jd_parser, evaluation_mock, company, applicant, evaluation_stream, evaluation_result, agent_logs
+  File "/home/ec2-user/flex/server/api/evaluation_stream.py", line 14, in <module>
+    from services.evaluation.evaluation_service import EvaluationService
+  File "/home/ec2-user/flex/server/services/evaluation/evaluation_service.py", line 12, in <module>
+    from ai.agents.graph.evaluation import create_evaluation_graph
+  File "/home/ec2-user/flex/server/ai/agents/graph/evaluation.py", line 17, in <module>
+    from .aggregator_node import aggregator_node
+  File "/home/ec2-user/flex/server/ai/agents/graph/aggregator_node.py", line 18, in <module>
+    from ..aggregators.cross_competency_validator import CrossCompetencyValidator
+ModuleNotFoundError: No module named 'ai.agents.aggregators.cross_competency_validator'
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [239952]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/evaluation_test_seojin.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [239952]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [240628]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:33444 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33456 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1840s
+INFO:     127.0.0.1:33456 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0560s
+INFO:     127.0.0.1:33444 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50470 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50478 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0409s
+INFO:     127.0.0.1:50478 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0413s
+INFO:     127.0.0.1:50470 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50470 - "OPTIONS /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2810s
+INFO:     127.0.0.1:50470 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0421s
+INFO:     127.0.0.1:50470 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2112s
+INFO:     127.0.0.1:58272 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'ai/agents/aggregators/resume_verifier.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [240628]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [243656]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:48436 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48440 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1467s
+INFO:     127.0.0.1:48440 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0428s
+INFO:     127.0.0.1:48436 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36330 - "OPTIONS /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.3209s
+INFO:     127.0.0.1:36330 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0432s
+INFO:     127.0.0.1:50748 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47126 - "OPTIONS /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2403s
+INFO:     127.0.0.1:47126 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0434s
+INFO:     127.0.0.1:36204 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.1793s
+INFO:     127.0.0.1:36204 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:42646 - "OPTIONS /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42658 - "OPTIONS /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2611s
+INFO:     127.0.0.1:42658 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.1294s
+INFO:     127.0.0.1:42646 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45454 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45466 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1412s
+INFO:     127.0.0.1:45454 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1287s
+INFO:     127.0.0.1:45454 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45478 - "OPTIONS /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2612s
+INFO:     127.0.0.1:45478 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.1818s
+INFO:     127.0.0.1:47180 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.1277s
+INFO:     127.0.0.1:47184 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0502s
+INFO:     127.0.0.1:35820 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35820 - "OPTIONS /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.3666s
+INFO:     127.0.0.1:35820 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0436s
+INFO:     127.0.0.1:35824 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.2260s
+INFO:     127.0.0.1:48246 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: POST /api/v1/evaluation-stream/102 - Status: 404 - Time: 0.0006s
+INFO:     127.0.0.1:40700 - "POST /api/v1/evaluation-stream/102 HTTP/1.1" 404 Not Found
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0462s
+INFO:     127.0.0.1:48254 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /openapi.json - Status: 200 - Time: 0.2582s
+INFO:     127.0.0.1:41192 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Request: GET /openapi.json - Status: 200 - Time: 0.0029s
+INFO:     127.0.0.1:57582 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.2027s
+INFO:     127.0.0.1:57584 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Triggering evaluation pipeline for interview ID: 102
+INFO:     Request: POST /api/v1/interviews/102/run-evaluation - Status: 200 - Time: 0.0076s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+
+ Starting evaluation pipeline for interview 102...
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/01_transcript.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/10_persona_job_expertise.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/11_persona_soft_skills.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/20_aggregation_input.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/21_aggregation_result.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/30_validation_report.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/40_hr_report_llm_output.json
+✅ Pipeline completed successfully for interview 102.
+INFO:     127.0.0.1:57596 - "POST /api/v1/interviews/102/run-evaluation HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0421s
+INFO:     127.0.0.1:52422 - "GET /api/v1/agent-logs/list/recent HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0475s
+INFO:     127.0.0.1:57588 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2580s
+INFO:     127.0.0.1:57588 - "GET /api/v1/agent-logs/44 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45/stage/1 - Status: 200 - Time: 0.0427s
+INFO:     127.0.0.1:55134 - "GET /api/v1/agent-logs/45/stage/1 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45/stage/1 - Status: 200 - Time: 0.0961s
+INFO:     127.0.0.1:60526 - "GET /api/v1/agent-logs/45/stage/1 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45/stage/1 - Status: 200 - Time: 0.0895s
+INFO:     127.0.0.1:60540 - "GET /api/v1/agent-logs/45/stage/1 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/44/stage/1 - Status: 200 - Time: 0.1356s
+INFO:     127.0.0.1:50958 - "GET /api/v1/agent-logs/44/stage/1 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0425s
+INFO:     127.0.0.1:60996 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.2380s
+INFO:     127.0.0.1:60996 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1606s
+INFO:     127.0.0.1:40224 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Triggering evaluation pipeline for interview ID: 102
+INFO:     Request: POST /api/v1/interviews/102/run-evaluation - Status: 200 - Time: 0.0065s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+
+ Starting evaluation pipeline for interview 102...
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/01_transcript.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/10_persona_job_expertise.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/11_persona_soft_skills.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/20_aggregation_input.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/21_aggregation_result.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/30_validation_report.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/40_hr_report_llm_output.json
+✅ Pipeline completed successfully for interview 102.
+INFO:     127.0.0.1:40484 - "POST /api/v1/interviews/102/run-evaluation HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0311s
+INFO:     127.0.0.1:53926 - "GET /api/v1/agent-logs/list/recent?limit=3 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.2935s
+INFO:     127.0.0.1:40228 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/45/stage/1 - Status: 200 - Time: 0.0994s
+INFO:     127.0.0.1:56072 - "GET /api/v1/agent-logs/45/stage/1 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0479s
+INFO:     127.0.0.1:40228 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53549 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0309s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/76?applicant_id=1
+INFO:     1.209.144.250:53549 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53553 - "WebSocket /api/v1/ws/interview/76?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.2206s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+[Q0] 답변 종료 신호 수신. 수신한 오디오 데이터 250368 bytes
+[Q0] WAV 파일 저장 완료 (./answer_76_0_837d77c1-dfe2-43c3-b783-83a43286f0ca.wav)
+[Q0] 변환된 텍스트: 아 음 네 뭐 이런 식으로 접근했습니다.
+[Q0] STT 결과: 아 음 네 뭐 이런 식으로 접근했습니다....
+!!! 답변이 너무 짧음 (22자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?
+   =====================
+
+[Q0] 꼬리질문 실행: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?...
+[Q0_followup] 답변 수신 대기 중...
+INFO:     127.0.0.1:54588 - "GET /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     connection closed
+WARNING:  WatchFiles detected changes in 'tests/compare_weights_test.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [243656]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [267616]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1081s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/77?applicant_id=1
+INFO:     1.209.144.250:53620 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53624 - "WebSocket /api/v1/ws/interview/77?applicant_id=1" [accepted]
+INFO:     connection open
+WARNING:  WatchFiles detected changes in 'services/evaluation/evaluation_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [267616]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [268938]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     1.209.144.250:53752 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1180s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/78?applicant_id=1
+INFO:     1.209.144.250:53752 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53756 - "WebSocket /api/v1/ws/interview/78?applicant_id=1" [accepted]
+INFO:     connection open
+WARNING:  WatchFiles detected changes in 'ai/agents/graph/aggregator_node.py'. Reloading...
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [268938]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [270936]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1134s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/79?applicant_id=1
+INFO:     1.209.144.250:53884 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53888 - "WebSocket /api/v1/ws/interview/79?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 79) - Cannot call "receive" once a disconnect message has been received.
+INFO:     1.209.144.250:53948 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0164s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/80?applicant_id=1
+INFO:     1.209.144.250:53948 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:53953 - "WebSocket /api/v1/ws/interview/80?applicant_id=1" [accepted]
+INFO:     connection open
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+[Q0] 답변 종료 신호 수신. 수신한 오디오 데이터 413184 bytes
+[Q0] WAV 파일 저장 완료 (./answer_80_0_b14e88bc-3dfd-4d87-b6cf-9d839dfada54.wav)
+[Q0] 변환된 텍스트: 그런데 당시 재고 회전율이 업계 평균보다 낮다는 걸 주간 리포트에서 발견했습니다. 결과적으로 판매율 칠십삼 퍼센트를 달성하면서도 품절률도 오 퍼센트 이하로 유지했습니다.
+[Q0] STT 결과: 그런데 당시 재고 회전율이 업계 평균보다 낮다는 걸 주...
+!!! 답변이 너무 짧음 (94자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?
+   =====================
+
+[Q0] 꼬리질문 실행: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?...
+[Q0_followup] 답변 수신 대기 중...
+[Q0_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 515072 bytes
+[Q0_followup] WAV 파일 저장 완료 (./answer_80_0_followup_1b3cdfa8-6661-418d-aeb5-3ab6de95af05.wav)
+[Q0_followup] 변환된 텍스트: 어 어 어 보고서 먼저 확인했던 것 같습니다.
+[Q0] 꼬리질문 STT 결과: 어 어 어 보고서 먼저 확인했던 것 같습니다....
+
+--- [김전략 수석] Question 2/3 ---
+[Q1] 질문 전송 완료 : 업무 중 예상치 못한 어려움이 생겼을 때 어떻게 대처하셨나요? 구체적인 사례가 있으면 말씀해주세요.
+[Q1] 답변 수신 대기 중...
+[Q1] 답변 종료 신호 수신. 수신한 오디오 데이터 709120 bytes
+[Q1] WAV 파일 저장 완료 (./answer_80_1_4ddb6a82-b34f-4197-b908-38e194907d6b.wav)
+[Q1] 변환된 텍스트: 원단 소재비를 삼십 퍼센트 정도 절감한 프로젝트에서요. 신규 업체 첫 납품치 품절 이슈가 있었는데 바로 원사 교체 요청하고 이전에 해결했습니다. 이 과정에서 체크리스트를 만들었고요.
+[Q1] STT 결과: 원단 소재비를 삼십 퍼센트 정도 절감한 프로젝트에서요....
+답변 품질 판단: 답변은 다음 기준을 충족하지 못 → 꼬리질문 불필요
+
+--- [김전략 수석] Question 3/3 ---
+[Q2] 질문 전송 완료 : 본인이 주도적으로 진행한 프로젝트나 업무가 있었나요?
+[Q2] 답변 수신 대기 중...
+[Q2] 답변 종료 신호 수신. 수신한 오디오 데이터 674304 bytes
+[Q2] WAV 파일 저장 완료 (./answer_80_2_d9d43b4a-0d8b-4d8f-b4f8-5d9301337545.wav)
+[Q2] 변환된 텍스트: 고객 리뷰 분석 프로젝트를 제가 먼저 제안해서 천 개 이상 분석했습니다. 판매율도 칠십삼 퍼센트에서 팔십오 퍼센트까지 끌어올렸고요.
+[Q2] STT 결과: 고객 리뷰 분석 프로젝트를 제가 먼저 제안해서 천 개 ...
+!!! 답변이 너무 짧음 (73자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 왜 그 일을 시작하게 되었나요?
+   =====================
+
+[Q2] 꼬리질문 실행: 왜 그 일을 시작하게 되었나요?...
+[Q2_followup] 답변 수신 대기 중...
+[Q2_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 402688 bytes
+[Q2_followup] WAV 파일 저장 완료 (./answer_80_2_followup_f5a8d9a4-92e9-4934-9f0f-00dc57bfad90.wav)
+[Q2_followup] 변환된 텍스트: 어 그냥 하고 싶었습니다.
+[Q2] 꼬리질문 STT 결과: 어 그냥 하고 싶었습니다....
+
+==================================================
+[2/3] 박협업 팀장 (실행형 면접관) 면접 시작
+==================================================
+
+--- [박협업 팀장] Question 1/3 ---
+[Q0] 질문 전송 완료 : 다른 팀이나 동료와 의견이 달랐던 적이 있으신가요? 어떻게 해결하셨나요?
+[Q3] 답변 수신 대기 중...
+[Q3] 답변 종료 신호 수신. 수신한 오디오 데이터 689920 bytes
+[Q3] WAV 파일 저장 완료 (./answer_80_3_b60a745c-f1e3-4d0a-a8df-c2fc9cdb015d.wav)
+[Q3] 변환된 텍스트: 어 디자인 팀과 베이직 디자인 비율 조정 때 의견 충돌이 있었습니다. 최종적으로 디자인은 아이템의 포인트를 가미하는 방식으로 합의했고 결과도 좋아서 디자인 팀도 납득하셨습니다.
+[Q0] STT 결과: 어 디자인 팀과 베이직 디자인 비율 조정 때 의견 충돌...
+!!! 답변이 너무 짧음 (98자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 상대방 의견을 어떻게 이해하려고 노력하셨나요?
+   =====================
+
+[Q0] 꼬리질문 실행: 상대방 의견을 어떻게 이해하려고 노력하셨나요?...
+[Q3_followup] 답변 수신 대기 중...
+[Q3_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 427776 bytes
+[Q3_followup] WAV 파일 저장 완료 (./answer_80_3_followup_e1f6ae59-e8f6-4656-bc81-b3cd18b5c467.wav)
+[Q3_followup] 변환된 텍스트: 어 그냥 대화를 많이 했던 것 같습니다.
+[Q0] 꼬리질문 STT 결과: 어 그냥 대화를 많이 했던 것 같습니다....
+
+--- [박협업 팀장] Question 2/3 ---
+[Q1] 질문 전송 완료 : 팀 프로젝트에서 본인은 주로 어떤 역할을 맡으셨나요?
+[Q4] 답변 수신 대기 중...
+[Q4] 답변 종료 신호 수신. 수신한 오디오 데이터 834560 bytes
+[Q4] WAV 파일 저장 완료 (./answer_80_4_ce858265-1368-4cc9-887c-656694beded5.wav)
+[Q4] 변환된 텍스트: 어 저는 주로 전체 방향을 잡고 추진하는 역할을 맡았습니다. 어 다른 분들은 실행을 맡으셨고요. 제가 데이터를 분석해서 결론을 내리면 팀원들이 따라오는 시기였습니다. vmt 과 의견 충돌이 있었는데 제 분석이 맞았기 때문에 결국 제 안대로 진행했습니다.
+[Q1] STT 결과: 어 저는 주로 전체 방향을 잡고 추진하는 역할을 맡았습...
+답변 품질 판단: 답변은 다음 기준을 충족하지 못 → 꼬리질문 불필요
+
+--- [박협업 팀장] Question 3/3 ---
+[Q2] 질문 전송 완료 : 업무에서 피드백을 받았던 경험이 있으신가요? 어떻게 받아들이셨나요?
+[Q5] 답변 수신 대기 중...
+[Q5] 답변 종료 신호 수신. 수신한 오디오 데이터 915200 bytes
+[Q5] WAV 파일 저장 완료 (./answer_80_5_1e5f33e2-e9ce-4dee-82b5-8462eda6f8b3.wav)
+[Q5] 변환된 텍스트: 피드백이요? 어 팀장님이 리스크 관리가 부족하다고 하셨는데 솔직히 당시 상황에서는 어쩔 수 없었다고 생각합니다. 일정에 촉박했고 우선순위를 정해야 했거든요. 물론 개선하려고는 하는데 현실적으로 모든 리스크를 예측하기는 어렵잖아요.
+[Q2] STT 결과: 피드백이요? 어 팀장님이 리스크 관리가 부족하다고 하셨...
+답변 품질 판단: 답변은 다음 기준을 충족하지 못 → 꼬리질문 불필요
+
+==================================================
+[3/3] 이컬처 매니저 (조직적합형 면접관) 면접 시작
+==================================================
+
+--- [이컬처 매니저] Question 1/3 ---
+[Q0] 질문 전송 완료 : 일하면서 가장 보람 있었던 순간은 언제였나요?
+INFO:     connection closed
+INFO:     1.209.144.250:54007 - "WebSocket /api/v1/ws/interview/80?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0164s
+[Q6] 답변 수신 대기 중...
+[Q6] 답변 종료 신호 수신. 수신한 오디오 데이터 134400 bytes
+[Q6] WAV 파일 저장 완료 (./answer_80_6_ab36a04d-96a3-4f46-ba2f-8e58e4319cd8.wav)
+[Q0] STT 결과: (인식 실패)...
+!!! 답변이 너무 짧음 (7자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 왜 그 순간이 특별했나요?
+   =====================
+
+[Q0] 꼬리질문 실행: 왜 그 순간이 특별했나요?...
+[Q6_followup] 답변 수신 대기 중...
+[Q6_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 489472 bytes
+[Q6_followup] WAV 파일 저장 완료 (./answer_80_6_followup_a6e8ded1-e4d8-4522-af57-c7d101c2256a.wav)
+[Q6_followup] 변환된 텍스트: 제가 분석한 데이터로 팀 전체 방향 어 제가 분석한 데이터로 팀 전체 방향이 바뀌었으니까요.
+[Q0] 꼬리질문 STT 결과: 제가 분석한 데이터로 팀 전체 방향 어 제가 분석한 데...
+
+--- [이컬처 매니저] Question 2/3 ---
+[Q1] 질문 전송 완료 : 무언가에 실패했던 경험과 이를 어떻게 극복했는지 말씀해 주세요.
+[Q7] 답변 수신 대기 중...
+[Q7] 답변 종료 신호 수신. 수신한 오디오 데이터 57600 bytes
+[Q7] WAV 파일 저장 완료 (./answer_80_7_a36be609-7643-40cc-9cad-36235044cb95.wav)
+[Q1] STT 결과: (인식 실패)...
+!!! 답변이 너무 짧음 (7자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 조금 더 구체적으로 말씀해 주세요. 그 경험에서 배운 점은 무엇인가요?
+   =====================
+
+[Q1] 꼬리질문 실행: 조금 더 구체적으로 말씀해 주세요. 그 경험에서 배운 ...
+[Q7_followup] 답변 수신 대기 중...
+API: 예외 발생 (ID: 80) - Cannot call "receive" once a disconnect message has been received.
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 80) - Cannot call "receive" once a disconnect message has been received.
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/81?applicant_id=1
+INFO:     1.209.144.250:54052 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54056 - "WebSocket /api/v1/ws/interview/81?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+[Q0] 답변 종료 신호 수신. 수신한 오디오 데이터 854784 bytes
+[Q0] WAV 파일 저장 완료 (./answer_81_0_52b73ca3-82b5-4cb7-81c7-c185539b40d8.wav)
+[Q0] 변환된 텍스트: 네, 당시 재고 회전율이 업계 평균보다 낮다는 걸 주간 리포트에서 발견했습니다. 저는 먼저 sku 별 판매 속도와 재고 수준을 분석했고 상위 하위 비율과 베이직 디자인 비율에서 문제를 찾았습니다. 데이터를 기반으로 비율을 조정했고 카테고리별 안전 재고도 자동 차등 설정했습니다. 결과적으로 판매율 칠십삼 퍼센트를 달성하면서도 품절률도 오 퍼센트 이하로 유지했습니다.
+[Q0] STT 결과: 네, 당시 재고 회전율이 업계 평균보다 낮다는 걸 주간...
+답변 품질 판단: 답변은 다음 기준을 충족하지 못 → 꼬리질문 불필요
+
+--- [김전략 수석] Question 2/3 ---
+[Q1] 질문 전송 완료 : 업무 중 예상치 못한 어려움이 생겼을 때 어떻게 대처하셨나요? 구체적인 사례가 있으면 말씀해주세요.
+[Q1] 답변 수신 대기 중...
+[Q1] 답변 종료 신호 수신. 수신한 오디오 데이터 748800 bytes
+[Q1] WAV 파일 저장 완료 (./answer_81_1_0ab0d1e3-38e7-4ad1-9a1e-b4b468cdf646.wav)
+[Q1] 변환된 텍스트: 그 어 어 신규 업체 납품에서 품질 문제가 생겼었는데 어 팀원에게 연락을 빨리 해서 해결한 적이 있습니다.
+[Q1] STT 결과: 그 어 어 신규 업체 납품에서 품질 문제가 생겼었는데 ...
+!!! 답변이 너무 짧음 (59자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 그 경험에서 배운 점이 있다면요?
+   =====================
+
+[Q1] 꼬리질문 실행: 그 경험에서 배운 점이 있다면요?...
+[Q1_followup] 답변 수신 대기 중...
+[Q1_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 905728 bytes
+[Q1_followup] WAV 파일 저장 완료 (./answer_81_1_followup_fa046f86-17ca-451d-af3f-b9814b81ca2a.wav)
+[Q1_followup] 변환된 텍스트: 어 배운 점이요? 어 사전에 품질 기준을 명확히 공유하는 게 중요하다는 걸 배웠습니다. 그 이후로 모든 신규 업체의 품질 체크리스트를 먼저 공유하는 프로세스를 만들었고 품질 확인 기준을 문서화 했습니다. 덕분에 이후에는 비슷한 이슈가 발생하지 않았습니다.
+[Q1] 꼬리질문 STT 결과: 어 배운 점이요? 어 사전에 품질 기준을 명확히 공유하...
+
+--- [김전략 수석] Question 3/3 ---
+[Q2] 질문 전송 완료 : 본인이 주도적으로 진행한 프로젝트나 업무가 있었나요?
+[Q2] 답변 수신 대기 중...
+API: 예외 발생 (ID: 81) - Cannot call "receive" once a disconnect message has been received.
+INFO:     1.209.144.250:54124 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0153s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/82?applicant_id=1
+INFO:     1.209.144.250:54124 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54128 - "WebSocket /api/v1/ws/interview/82?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0151s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+[Q0] 답변 종료 신호 수신. 수신한 오디오 데이터 816384 bytes
+[Q0] WAV 파일 저장 완료 (./answer_82_0_17606075-3ed8-4fd5-b5e7-58ad27ae3086.wav)
+[Q0] 변환된 텍스트: 당시 재고 회전율이 업계 평균보다 낮다는 걸 주간 리포트에서 발견했습니다. 저는 먼저 sku 별 판매 속도와 재고 수준을 분석했고 상이하의 비율과 베이직 디자인 비율에서 문제를 찾았습니다. 데이터를 기반으로 비율을 조정했고, 카테고리별 안전 제고도 차등 설정했습니다. 결과적으로 판매율 칠십삼 퍼센트를 달성하면서도 품절률도 오 퍼센트 이하로 유지했습니다.
+[Q0] STT 결과: 당시 재고 회전율이 업계 평균보다 낮다는 걸 주간 리포...
+답변 품질 판단: 답변은 다음 기준을 충족하지 못 → 꼬리질문 불필요
+
+--- [김전략 수석] Question 2/3 ---
+[Q1] 질문 전송 완료 : 업무 중 예상치 못한 어려움이 생겼을 때 어떻게 대처하셨나요? 구체적인 사례가 있으면 말씀해주세요.
+[Q1] 답변 수신 대기 중...
+[Q1] 답변 종료 신호 수신. 수신한 오디오 데이터 643072 bytes
+[Q1] WAV 파일 저장 완료 (./answer_82_1_e95cadbf-8b79-4cba-9f8a-9b3a8576820f.wav)
+[Q1] STT 결과: (인식 실패)...
+!!! 답변이 너무 짧음 (7자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 그 경험에서 배운 점이 있다면요?
+   =====================
+
+[Q1] 꼬리질문 실행: 그 경험에서 배운 점이 있다면요?...
+[Q1_followup] 답변 수신 대기 중...
+API: 예외 발생 (ID: 82) - Cannot call "receive" once a disconnect message has been received.
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/83?applicant_id=1
+INFO:     1.209.144.250:54141 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54145 - "WebSocket /api/v1/ws/interview/83?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WARNING:  WatchFiles detected changes in 'tests/test_jiwon_data_weights.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [270936]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [281287]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     1.209.144.250:54532 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1328s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/84?applicant_id=1
+INFO:     1.209.144.250:54532 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54537 - "WebSocket /api/v1/ws/interview/84?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0145s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 84) - Cannot call "receive" once a disconnect message has been received.
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/85?applicant_id=1
+INFO:     1.209.144.250:54562 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54563 - "WebSocket /api/v1/ws/interview/85?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Request: GET / - Status: 200 - Time: 0.0008s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 85) - Cannot call "receive" once a disconnect message has been received.
+INFO:     3.130.96.91:46186 - "GET / HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'api/evaluation_stream.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [281287]
+INFO:     ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:     Started server process [283311]
+INFO:     Waiting for application startup.
+INFO:     ============================================================
+INFO:     AWS_FLEX 서버 시작 중...
+INFO:     ============================================================
+INFO:     ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+INFO:        - 회사: Unknown
+INFO:        - 직무: Unknown
+INFO:        - 핵심 역량: 0개
+INFO:     ✅ 모든 초기화 완료. 서버 준비 완료!
+INFO:     Application startup complete.
+INFO:     Request: GET /openapi.json - Status: 200 - Time: 0.2739s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+✅ [성공] 버킷 이름 로드됨: linkbig-ht-06-f4
+✅ [Translator] AWS Polly & Transcribe 연결 성공
+INFO:     127.0.0.1:51458 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Request: GET /health - Status: 200 - Time: 0.0005s
+INFO:     127.0.0.1:34184 - "GET /health HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1106s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/86?applicant_id=1
+INFO:     1.209.144.250:54619 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54623 - "WebSocket /api/v1/ws/interview/86?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 86) - Cannot call "receive" once a disconnect message has been received.
+INFO:     127.0.0.1:37364 - "OPTIONS /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37374 - "OPTIONS /api/v1/agent-logs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37374 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0657s
+INFO:     127.0.0.1:37374 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET / - Status: 200 - Time: 0.0005s
+INFO:     3.130.96.91:60212 - "GET / HTTP/1.1" 200 OK
+INFO:     Triggering evaluation pipeline for interview ID: 102
+INFO:     Request: POST /api/v1/interviews/102/run-evaluation - Status: 200 - Time: 0.0090s
+🗂️  LocalS3Service initialized. Storage path: /home/ec2-user/flex/server/server/local_s3_storage
+
+ Starting evaluation pipeline for interview 102...
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/01_transcript.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/10_persona_job_expertise.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/11_persona_soft_skills.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/20_aggregation_input.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/21_aggregation_result.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/30_validation_report.json
+✅ Log saved locally: /home/ec2-user/flex/server/server/local_s3_storage/company/1/job/1/applicant/1/interview/102/v1-pipeline/40_hr_report_llm_output.json
+✅ Pipeline completed successfully for interview 102.
+INFO:     127.0.0.1:43598 - "POST /api/v1/interviews/102/run-evaluation HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0254s
+INFO:     127.0.0.1:39484 - "GET /api/v1/agent-logs/list/recent?limit=3 HTTP/1.1" 200 OK
+INFO:     Request: POST /api/v1/evaluations/stream/start - Status: 200 - Time: 0.0014s
+INFO:     127.0.0.1:56578 - "POST /api/v1/evaluations/stream/start HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0750s
+Object with key 'interviews/102/transcript.json' not found in bucket 'linkbig-ht-06-f4'.
+INFO:     127.0.0.1:48524 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0575s
+INFO:     127.0.0.1:48524 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: POST /api/v1/evaluations/stream/start - Status: 200 - Time: 0.0026s
+INFO:     127.0.0.1:42338 - "POST /api/v1/evaluations/stream/start HTTP/1.1" 200 OK
+Object with key 'applicants/102/resume.json' not found in bucket 'linkbig-ht-06-f4'.
+
+================================================================================
+평가 시작: Interview ID 102
+================================================================================
+
+============================================================
+[Stage 1] 에이전트들이 역량 평가를 시작합니다 (10개 병렬)
+============================================================
+============================================================
+10개 역량 배치 평가 시작
+============================================================
+[평가 시작] achievement_motivation
+[평가 시작] growth_potential
+[평가 시작] interpersonal_skill
+[평가 시작] organizational_fit
+  [검증] interpersonal_skill 응답 검증 중...
+[평가 완료] interpersonal_skill: 82점
+[평가 시작] problem_solving
+  [검증] achievement_motivation 응답 검증 중...
+[평가 완료] achievement_motivation: 65점
+[평가 시작] customer_journey_marketing
+  [검증] growth_potential 응답 검증 중...
+[평가 완료] growth_potential: 70점
+[평가 시작] md_data_analysis
+INFO:     127.0.0.1:48540 - "OPTIONS /api/v1/agent-logs/46 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3087s
+INFO:     127.0.0.1:48540 - "GET /api/v1/agent-logs/46 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0630s
+INFO:     127.0.0.1:48540 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+  [검증] md_data_analysis 응답 검증 중...
+[평가 완료] md_data_analysis: 60점
+[평가 시작] seasonal_strategy_kpi
+  [검증] problem_solving 응답 검증 중...
+[평가 완료] problem_solving: 54점
+[평가 시작] stakeholder_collaboration
+  [검증] customer_journey_marketing 응답 검증 중...
+[평가 완료] customer_journey_marketing: 67점
+[평가 시작] value_chain_optimization
+  [검증] organizational_fit 응답 검증 중...
+[평가 완료] organizational_fit: 75점
+  [검증] seasonal_strategy_kpi 응답 검증 중...
+[평가 완료] seasonal_strategy_kpi: 60점
+  [검증] stakeholder_collaboration 응답 검증 중...
+[평가 완료] stakeholder_collaboration: 81점
+  [검증] value_chain_optimization 응답 검증 중...
+[평가 완료] value_chain_optimization: 58점
+============================================================
+배치 평가 완료
+============================================================
+
+[Stage 1] 평가 결과:
+  - 성공: 10개
+  - 실패: 0개
+  - 점수 요약: avg=67.2, max=82.0, min=54.0
+
+[Stage 1] 배치 평가 완료 (147.98초)
+============================================================
+
+============================================================
+[Stage 2] Aggregator 시작
+============================================================
+
+✓ 평가 완료된 역량: 10개
+
+[Sub-step 2.1] Resume Verification (AI 1회, Batch)
+------------------------------------------------------------
+
+[Resume Verifier] Segment 평가 추출: 25개
+  Resume 데이터 없음 - 검증 스킵
+
+  Resume 검증 완료:
+    - 총 Segment 평가: 25개
+    - 검증됨: 0개
+    - 강한 검증 (high): 0개
+    - 샘플(상위 3개):
+      • seg#1 [achievement_motivation] verified=False strength=none
+      • seg#2 [achievement_motivation] verified=False strength=none
+      • seg#10 [growth_potential] verified=False strength=none
+
+[Sub-step 2.2] Confidence V2 재계산 (Rule-based)
+------------------------------------------------------------
+
+  Confidence V2 계산 완료:
+    - 평균 Confidence V2: 0.71
+    - 개선된 평가: 0개
+    - 최고/최저: seg#5=0.85 / seg#9=0.53
+
+[Sub-step 2.3] Segment Overlap Check (조건부)
+------------------------------------------------------------
+
+[Segment Overlap Checker] 시작
+  총 Segment 수: 11개
+  중복 평가된 Segment: 3개
+  조정 필요 Segment: 0개
+   조정 불필요 - 모든 Segment 일관적
+
+  Segment Overlap 체크 완료:
+    - 조정된 Segment: 0개
+
+[Sub-step 2.4] Cross-Competency Validation (Rule-based)
+------------------------------------------------------------
+
+  Cross-Competency 검증 완료 (Threshold < 0.7):
+    - Low Confidence 역량: 5개
+      * 성취/동기 (achievement_motivation): Conf=0.65
+      * 문제 해결 (problem_solving): Conf=0.53
+      * 고객 여정 마케팅 (customer_journey_marketing): Conf=0.68
+      * 시즌 전략/KPI (seasonal_strategy_kpi): Conf=0.55
+      * 가치사슬 최적화 (value_chain_optimization): Conf=0.68
+    - Confidence 상위 3:
+        · 대인관계 (interpersonal_skill): Conf=0.85, Score=82
+        · 이해관계자 협업 (stakeholder_collaboration): Conf=0.77, Score=81
+        · 조직 적합성 (organizational_fit): Conf=0.76, Score=75
+    - Confidence 하위 3:
+        · 성취/동기 (achievement_motivation): Conf=0.65, Score=65
+        · 시즌 전략/KPI (seasonal_strategy_kpi): Conf=0.55, Score=60
+        · 문제 해결 (problem_solving): Conf=0.53, Score=54
+
+[역량별 최종 결과 집계]
+------------------------------------------------------------
+
+  역량별 집계 완료: 10개
+    - 성취/동기 (achievement_motivation): 65점 (Conf V2: 0.65, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+    - 성장 잠재력 (growth_potential): 70점 (Conf V2: 0.75, Resume: 0개 검증, 0개 강함)
+      · segments=3 resume_verified=0 overlap_adjusted=False
+    - 대인관계 (interpersonal_skill): 82점 (Conf V2: 0.85, Resume: 0개 검증, 0개 강함)
+      · segments=4 resume_verified=0 overlap_adjusted=False
+    - 조직 적합성 (organizational_fit): 75점 (Conf V2: 0.76, Resume: 0개 검증, 0개 강함)
+      · segments=3 resume_verified=0 overlap_adjusted=False
+    - 문제 해결 (problem_solving): 54점 (Conf V2: 0.53, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+    - 고객 여정 마케팅 (customer_journey_marketing): 67점 (Conf V2: 0.68, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+    - MD 데이터 분석 (md_data_analysis): 60점 (Conf V2: 0.70, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+    - 시즌 전략/KPI (seasonal_strategy_kpi): 60점 (Conf V2: 0.55, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+    - 이해관계자 협업 (stakeholder_collaboration): 81점 (Conf V2: 0.77, Resume: 0개 검증, 0개 강함)
+      · segments=3 resume_verified=0 overlap_adjusted=False
+    - 가치사슬 최적화 (value_chain_optimization): 58점 (Conf V2: 0.68, Resume: 0개 검증, 0개 강함)
+      · segments=2 resume_verified=0 overlap_adjusted=False
+
+[Stage 2 요약] avg_score=67.2, avg_conf_v2=0.69, resume_verified_total=0
+
+------------------------------------------------------------
+    협업 필요: Low Confidence 역량 5개
+------------------------------------------------------------
+
+  Stage 2 완료: 0.00초
+============================================================
+
+============================================================
+[Stage 3] Final Integration 시작
+============================================================
+
+[Final Integrator] 최종 통합 시작
+  Collaboration 결과 없음 (스킵)
+
+  최종 점수: 64.4점
+  상위 기여 역량:
+    • md_data_analysis: score=60 weight=0.25 contrib=15.0
+    • customer_journey_marketing: score=67 weight=0.10 contrib=6.7
+    • organizational_fit: score=75 weight=0.08 contrib=6.0
+    • ...
+  평균 Confidence V2: 0.68
+  Confidence 범위: interpersonal_skill=0.85 / problem_solving=0.53
+  신뢰도 레벨: medium
+  신뢰도 근거: 평균 Confidence V2: 0.68 | Low Confidence 역량: 5개 |   - achievement_motivation: 0.65 |   - problem_solving: 0.53 |   - customer_journey_marketing: 0.68 |   - seasonal_strategy_kpi: 0.55 |   - value_chain_optimization: 0.68
+  Low Confidence 상세:
+    • achievement_motivation: conf=0.65
+    • problem_solving: conf=0.53
+    • customer_journey_marketing: conf=0.68
+    • seasonal_strategy_kpi: conf=0.55
+    • value_chain_optimization: conf=0.68
+
+   종합 심사평 생성 중 (AI 호출)...
+   종합 심사평 생성 완료 (270 chars)
+
+[Final Integrator] 최종 통합 완료
+
+[Stage 3 요약]
+  - final_score: 64.4
+  - avg_confidence: 0.68
+  - reliability: 중간
+
+============================================================
+[Presentation Formatter] 프론트용 데이터 변환 시작
+============================================================
+
+[Presentation Formatter] 근거 배치 재생성 시작...
+  10개 역량의 근거/강점/약점/관찰을 1번의 LLM 호출로 배치 생성 중...
+INFO:     1.209.144.250:54858 - "OPTIONS /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0164s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/87?applicant_id=1
+INFO:     1.209.144.250:54858 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54862 - "WebSocket /api/v1/ws/interview/87?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0149s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 87) - Cannot call "receive" once a disconnect message has been received.
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/88?applicant_id=1
+INFO:     1.209.144.250:54903 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54905 - "WebSocket /api/v1/ws/interview/88?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0274s
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 3개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 3개, 꼬리질문 3개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 업무 중 예상치 못한 어려움이 생겼을 때 어떻게 대처하셨나요? 구체적인 사례가 있으면 말씀해주세요.
+[Q0] 답변 수신 대기 중...
+API: 예외 발생 (ID: 88) - Cannot call "receive" once a disconnect message has been received.
+INFO:     127.0.0.1:46740 - "GET /api/v1/agent-logs/list/recent?limit=5 HTTP/1.1" 200 OK
+INFO:     Preparing interview for applicant: 1, company: 1
+INFO:     Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0159s
+생성된 WebSocket URL: ws://54.226.166.45:8000/api/v1/ws/interview/89?applicant_id=1
+INFO:     1.209.144.250:54972 - "POST /api/v1/interviews/prepare HTTP/1.1" 200 OK
+INFO:     1.209.144.250:54976 - "WebSocket /api/v1/ws/interview/89?applicant_id=1" [accepted]
+INFO:     connection open
+INFO:     connection closed
+페르소나 로드: persona_samsung_fashion.json
+면접관 3명 로드됨
+이력서 기반 질문 로드: 김지원
+김전략 수석: 이력서 기반 질문 3개 적용
+박협업 팀장: 이력서 기반 질문 4개 적용
+이컬처 매니저: 이력서 기반 질문 3개 적용
+이력서 기반 질문 병합 완료 (applicant_id: 1)
+김전략 수석: 질문 3개, 꼬리질문 3개
+박협업 팀장: 질문 4개, 꼬리질문 4개
+이컬처 매니저: 질문 3개, 꼬리질문 3개
+SERVICE: 시작 신호 대기 중...
+SERVICE: 'start_interview' 신호 수신.
+
+==================================================
+[1/3] 김전략 수석 (전략형 면접관) 면접 시작
+==================================================
+
+--- [김전략 수석] Question 1/3 ---
+[Q0] 질문 전송 완료 : 재고회전율을 50% 개선하셨는데, 이 문제를 처음 발견했을 때 어떻게 접근하셨나요?
+[Q0] 답변 수신 대기 중...
+[Q0] 답변 종료 신호 수신. 수신한 오디오 데이터 58112 bytes
+[Q0] WAV 파일 저장 완료 (./answer_89_0_b9279b97-c88a-4bc2-9fd0-1fe756a4d8ad.wav)
+[Q0] STT 결과: (인식 실패)...
+!!! 답변이 너무 짧음 (7자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?
+   =====================
+
+[Q0] 꼬리질문 실행: 문제를 분석할 때 어떤 데이터를 가장 먼저 확인했나요?...
+[Q0_followup] 답변 수신 대기 중...
+[Q0_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 253696 bytes
+[Q0_followup] WAV 파일 저장 완료 (./answer_89_0_followup_0f22d123-ca24-46eb-9ba2-d9c4edc4a433.wav)
+[Q0_followup] 변환된 텍스트: 자기소개서가 올렸대? 나 나를 위해서. 아.
+[Q0] 꼬리질문 STT 결과: 자기소개서가 올렸대? 나 나를 위해서. 아....
+
+--- [김전략 수석] Question 2/3 ---
+[Q1] 질문 전송 완료 : 업무 중 예상치 못한 어려움이 생겼을 때 어떻게 대처하셨나요? 구체적인 사례가 있으면 말씀해주세요.
+[Q1] 답변 수신 대기 중...
+[Q1] 답변 종료 신호 수신. 수신한 오디오 데이터 163328 bytes
+[Q1] WAV 파일 저장 완료 (./answer_89_1_19abc90b-20cf-4bdd-9ca7-39199c181fd7.wav)
+[Q1] 변환된 텍스트: 근데 채취를 할 분이 뭐
+[Q1] STT 결과: 근데 채취를 할 분이 뭐...
+!!! 답변이 너무 짧음 (13자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 그 경험에서 배운 점이 있다면요?
+   =====================
+
+[Q1] 꼬리질문 실행: 그 경험에서 배운 점이 있다면요?...
+[Q1_followup] 답변 수신 대기 중...
+[Q1_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 67072 bytes
+[Q1_followup] WAV 파일 저장 완료 (./answer_89_1_followup_b68c94b5-de4f-4178-bb18-3761753d74af.wav)
+[Q1_followup] 변환된 텍스트: 그래서
+[Q1] 꼬리질문 STT 결과: 그래서...
+
+--- [김전략 수석] Question 3/3 ---
+[Q2] 질문 전송 완료 : 본인이 주도적으로 진행한 프로젝트나 업무가 있었나요?
+[Q2] 답변 수신 대기 중...
+[Q2] 답변 종료 신호 수신. 수신한 오디오 데이터 208384 bytes
+[Q2] WAV 파일 저장 완료 (./answer_89_2_5d66d96e-6a9a-4c48-817e-93aca55d8ddf.wav)
+[Q2] 변환된 텍스트: 응. 지금 순서 받겠어.
+[Q2] STT 결과: 응. 지금 순서 받겠어....
+!!! 답변이 너무 짧음 (13자) → 꼬리질문 필요
+
+  === 꼬리질문 생성 ===
+   꼬리질문 생성 중 ...
+   생성된 꼬리질문: 왜 그 일을 시작하게 되었나요?
+   =====================
+
+[Q2] 꼬리질문 실행: 왜 그 일을 시작하게 되었나요?...
+[Q2_followup] 답변 수신 대기 중...
+[Q2_followup] 답변 종료 신호 수신. 수신한 오디오 데이터 105728 bytes
+[Q2_followup] WAV 파일 저장 완료 (./answer_89_2_followup_347e1043-c1cf-4317-9788-b80b075a5e20.wav)
+[Q2] 꼬리질문 STT 결과: (인식 실패)...
+
+==================================================
+[2/3] 박협업 팀장 (실행형 면접관) 면접 시작
+==================================================
+
+--- [박협업 팀장] Question 1/4 ---
+[Q0] 질문 전송 완료 : 다른 팀이나 동료와 의견이 달랐던 적이 있으신가요? 어떻게 해결하셨나요?
+[Q3] 답변 수신 대기 중...
+API: 예외 발생 (ID: 89) - Cannot call "receive" once a disconnect message has been received.
+INFO:     127.0.0.1:53654 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53664 - "OPTIONS /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0523s
+INFO:     127.0.0.1:53664 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0709s
+INFO:     127.0.0.1:53654 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59602 - "OPTIONS /api/v1/agent-logs/38 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/38 - Status: 200 - Time: 0.4088s
+INFO:     127.0.0.1:59602 - "GET /api/v1/agent-logs/38 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0456s
+INFO:     127.0.0.1:49524 - "GET /api/v1/agent-logs/list/recent?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51202 - "OPTIONS /api/v1/agent-logs/46 HTTP/1.1" 200 OK
+INFO:     Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2825s
+INFO:     127.0.0.1:51202 - "GET /api/v1/agent-logs/46 HTTP/1.1" 200 OK
+[32mINFO[0m:     2025-11-24 12:11:29 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[31mERROR[0m:    2025-11-24 12:11:29 - [Errno 98] Address already in use
+[32mINFO[0m:     2025-11-24 12:11:56 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-24 12:11:56 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-24 12:11:56 - Started reloader process [[36m[1m298340[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-24 12:11:58 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:11:59 - Started server process [[36m298342[0m]
+[32mINFO[0m:     2025-11-24 12:11:59 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 12:11:59 - ============================================================
+[32mINFO[0m:     2025-11-24 12:11:59 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 12:11:59 - ============================================================
+[32mINFO[0m:     2025-11-24 12:11:59 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:11:59 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 12:11:59 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 12:11:59 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 12:11:59 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 12:11:59 - Application startup complete.
+[32mINFO[0m:     2025-11-24 12:12:22 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:12:23 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1198s
+[32mINFO[0m:     2025-11-24 12:12:23 - 220.87.66.119:55564 - "WebSocket /api/v1/ws/interview/90?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:12:23 - connection open
+[32mINFO[0m:     2025-11-24 12:12:38 - connection closed
+[32mINFO[0m:     2025-11-24 12:13:10 - Shutting down
+[32mINFO[0m:     2025-11-24 12:13:10 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 12:13:10 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 12:13:10 - Finished server process [[36m298342[0m]
+[32mINFO[0m:     2025-11-24 12:13:10 - Stopping reloader process [[36m[1m298340[0m]
+[32mINFO[0m:     2025-11-24 12:13:14 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-24 12:13:14 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-24 12:13:14 - Started reloader process [[36m[1m298610[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-24 12:13:15 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:13:16 - Started server process [[36m298612[0m]
+[32mINFO[0m:     2025-11-24 12:13:16 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 12:13:16 - ============================================================
+[32mINFO[0m:     2025-11-24 12:13:16 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 12:13:16 - ============================================================
+[32mINFO[0m:     2025-11-24 12:13:16 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:13:16 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 12:13:16 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 12:13:16 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 12:13:16 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 12:13:16 - Application startup complete.
+[32mINFO[0m:     2025-11-24 12:13:32 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:13:32 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1075s
+[32mINFO[0m:     2025-11-24 12:13:32 - 220.87.66.119:55591 - "WebSocket /api/v1/ws/interview/91?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:13:32 - connection open
+[32mINFO[0m:     2025-11-24 12:13:38 - connection closed
+[33mWARNING[0m:  2025-11-24 12:18:51 - WatchFiles detected changes in 'services/interview_service_v4.py'. Reloading...
+[32mINFO[0m:     2025-11-24 12:18:51 - Shutting down
+[32mINFO[0m:     2025-11-24 12:18:51 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 12:18:51 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 12:18:51 - Finished server process [[36m298612[0m]
+[32mINFO[0m:     2025-11-24 12:18:53 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:18:53 - Started server process [[36m299236[0m]
+[32mINFO[0m:     2025-11-24 12:18:53 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 12:18:53 - ============================================================
+[32mINFO[0m:     2025-11-24 12:18:53 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 12:18:53 - ============================================================
+[32mINFO[0m:     2025-11-24 12:18:53 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:18:53 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 12:18:53 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 12:18:53 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 12:18:53 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 12:18:53 - Application startup complete.
+[32mINFO[0m:     2025-11-24 12:21:49 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:21:49 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1098s
+[32mINFO[0m:     2025-11-24 12:21:50 - 220.87.66.119:55690 - "WebSocket /api/v1/ws/interview/92?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:21:50 - connection open
+[32mINFO[0m:     2025-11-24 12:22:51 - connection closed
+[33mWARNING[0m:  2025-11-24 12:23:51 - WatchFiles detected changes in 'services/interview_service_v4.py'. Reloading...
+[32mINFO[0m:     2025-11-24 12:23:51 - Shutting down
+[32mINFO[0m:     2025-11-24 12:23:51 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 12:23:51 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 12:23:51 - Finished server process [[36m299236[0m]
+[32mINFO[0m:     2025-11-24 12:23:53 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:23:54 - Started server process [[36m300062[0m]
+[32mINFO[0m:     2025-11-24 12:23:54 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 12:23:54 - ============================================================
+[32mINFO[0m:     2025-11-24 12:23:54 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 12:23:54 - ============================================================
+[32mINFO[0m:     2025-11-24 12:23:54 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 12:23:54 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 12:23:54 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 12:23:54 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 12:23:54 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 12:23:54 - Application startup complete.
+[32mINFO[0m:     2025-11-24 12:27:26 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:27:26 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1176s
+[32mINFO[0m:     2025-11-24 12:27:27 - 1.209.144.250:55728 - "WebSocket /api/v1/ws/interview/93?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:27:27 - connection open
+[32mINFO[0m:     2025-11-24 12:27:45 - connection closed
+[32mINFO[0m:     2025-11-24 12:28:02 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:28:03 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0190s
+[32mINFO[0m:     2025-11-24 12:28:03 - 1.209.144.250:55738 - "WebSocket /api/v1/ws/interview/94?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:28:03 - connection open
+[32mINFO[0m:     2025-11-24 12:28:47 - connection closed
+[32mINFO[0m:     2025-11-24 12:29:07 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0560s
+[32mINFO[0m:     2025-11-24 12:29:08 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0506s
+[32mINFO[0m:     2025-11-24 12:29:15 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2757s
+[32mINFO[0m:     2025-11-24 12:30:30 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0475s
+[32mINFO[0m:     2025-11-24 12:30:34 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2855s
+[32mINFO[0m:     2025-11-24 12:31:01 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:31:01 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0175s
+[32mINFO[0m:     2025-11-24 12:31:02 - 1.209.144.250:55829 - "WebSocket /api/v1/ws/interview/95?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:31:02 - connection open
+[32mINFO[0m:     2025-11-24 12:33:21 - connection closed
+[32mINFO[0m:     2025-11-24 12:34:28 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-24 12:34:28 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0162s
+[32mINFO[0m:     2025-11-24 12:34:29 - 1.209.144.250:55965 - "WebSocket /api/v1/ws/interview/96?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-24 12:34:29 - connection open
+[32mINFO[0m:     2025-11-24 12:36:20 - connection closed
+[32mINFO[0m:     2025-11-24 12:58:16 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0509s
+[32mINFO[0m:     2025-11-24 12:58:16 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0444s
+[32mINFO[0m:     2025-11-24 12:58:20 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3042s
+[32mINFO[0m:     2025-11-24 12:58:59 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0451s
+[32mINFO[0m:     2025-11-24 12:59:01 - Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.3186s
+[32mINFO[0m:     2025-11-24 13:03:10 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0431s
+[32mINFO[0m:     2025-11-24 13:18:13 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0437s
+[32mINFO[0m:     2025-11-24 13:18:13 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0447s
+[32mINFO[0m:     2025-11-24 13:18:16 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2939s
+[33mWARNING[0m:  2025-11-24 13:40:45 - WatchFiles detected changes in 'tests/evaluation_test_jiwon.py'. Reloading...
+[32mINFO[0m:     2025-11-24 13:40:45 - Shutting down
+[32mINFO[0m:     2025-11-24 13:40:45 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 13:40:45 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 13:40:45 - Finished server process [[36m300062[0m]
+[32mINFO[0m:     2025-11-24 13:40:47 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 13:40:47 - Started server process [[36m308404[0m]
+[32mINFO[0m:     2025-11-24 13:40:47 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 13:40:47 - ============================================================
+[32mINFO[0m:     2025-11-24 13:40:47 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 13:40:47 - ============================================================
+[32mINFO[0m:     2025-11-24 13:40:47 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 13:40:47 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 13:40:47 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 13:40:47 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 13:40:47 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 13:40:47 - Application startup complete.
+[33mWARNING[0m:  2025-11-24 13:40:53 - WatchFiles detected changes in 'tests/evaluation_test_seojin.py'. Reloading...
+[32mINFO[0m:     2025-11-24 13:40:53 - Shutting down
+[32mINFO[0m:     2025-11-24 13:40:53 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 13:40:53 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 13:40:53 - Finished server process [[36m308404[0m]
+[32mINFO[0m:     2025-11-24 13:40:55 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 13:40:55 - Started server process [[36m308523[0m]
+[32mINFO[0m:     2025-11-24 13:40:55 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 13:40:55 - ============================================================
+[32mINFO[0m:     2025-11-24 13:40:55 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 13:40:55 - ============================================================
+[32mINFO[0m:     2025-11-24 13:40:55 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 13:40:55 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 13:40:55 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 13:40:55 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 13:40:55 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 13:40:55 - Application startup complete.
+[32mINFO[0m:     2025-11-24 14:51:26 - Shutting down
+[32mINFO[0m:     2025-11-24 14:51:26 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 14:51:26 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 14:51:26 - Finished server process [[36m308523[0m]
+[32mINFO[0m:     2025-11-24 14:51:26 - Stopping reloader process [[36m[1m298610[0m]
+[32mINFO[0m:     2025-11-24 16:28:49 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-24 16:28:49 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-24 16:28:49 - Started reloader process [[36m[1m320921[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-24 16:28:50 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 16:28:51 - Started server process [[36m320923[0m]
+[32mINFO[0m:     2025-11-24 16:28:51 - Waiting for application startup.
+[32mINFO[0m:     2025-11-24 16:28:51 - ============================================================
+[32mINFO[0m:     2025-11-24 16:28:51 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-24 16:28:51 - ============================================================
+[32mINFO[0m:     2025-11-24 16:28:51 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-24 16:28:51 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-24 16:28:51 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-24 16:28:51 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-24 16:28:51 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-24 16:28:51 - Application startup complete.
+[32mINFO[0m:     2025-11-24 16:29:04 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1901s
+[32mINFO[0m:     2025-11-24 16:29:04 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0656s
+[32mINFO[0m:     2025-11-24 16:29:06 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3253s
+[32mINFO[0m:     2025-11-24 16:54:22 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3338s
+[32mINFO[0m:     2025-11-24 16:54:22 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1214s
+[32mINFO[0m:     2025-11-24 16:56:06 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2524s
+[32mINFO[0m:     2025-11-24 16:56:07 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1286s
+[32mINFO[0m:     2025-11-24 16:57:45 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2119s
+[32mINFO[0m:     2025-11-24 16:58:28 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2119s
+[32mINFO[0m:     2025-11-24 16:58:29 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1395s
+[32mINFO[0m:     2025-11-24 17:17:44 - Request: GET /aaa9 - Status: 404 - Time: 0.0007s
+[32mINFO[0m:     2025-11-24 17:17:44 - Request: GET /aab8 - Status: 404 - Time: 0.0004s
+[32mINFO[0m:     2025-11-24 17:17:45 - Request: GET / - Status: 200 - Time: 0.0005s
+[32mINFO[0m:     2025-11-24 17:48:33 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0891s
+[32mINFO[0m:     2025-11-24 17:48:35 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.4074s
+[32mINFO[0m:     2025-11-24 21:02:08 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3480s
+[32mINFO[0m:     2025-11-24 21:02:09 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1225s
+[32mINFO[0m:     2025-11-24 23:59:09 - Shutting down
+[32mINFO[0m:     2025-11-24 23:59:09 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-24 23:59:09 - Application shutdown complete.
+[32mINFO[0m:     2025-11-24 23:59:09 - Finished server process [[36m320923[0m]
+[32mINFO[0m:     2025-11-24 23:59:09 - Stopping reloader process [[36m[1m320921[0m]
+[32mINFO[0m:     2025-11-25 00:23:18 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-25 00:23:18 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-25 00:23:18 - Started reloader process [[36m[1m345341[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-25 00:23:20 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 00:23:20 - Started server process [[36m345343[0m]
+[32mINFO[0m:     2025-11-25 00:23:20 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 00:23:20 - ============================================================
+[32mINFO[0m:     2025-11-25 00:23:20 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 00:23:20 - ============================================================
+[32mINFO[0m:     2025-11-25 00:23:20 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 00:23:20 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 00:23:20 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 00:23:20 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 00:23:20 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 00:23:20 - Application startup complete.
+[32mINFO[0m:     2025-11-25 00:23:43 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1438s
+[32mINFO[0m:     2025-11-25 00:23:43 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0418s
+[32mINFO[0m:     2025-11-25 00:23:45 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3126s
+[32mINFO[0m:     2025-11-25 00:31:09 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.3679s
+[32mINFO[0m:     2025-11-25 00:31:26 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1641s
+[32mINFO[0m:     2025-11-25 00:31:27 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1245s
+[32mINFO[0m:     2025-11-25 00:34:24 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0454s
+[32mINFO[0m:     2025-11-25 00:34:26 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.4813s
+[32mINFO[0m:     2025-11-25 02:00:20 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-25 02:00:20 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-25 02:00:20 - Started reloader process [[36m[1m350799[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-25 02:00:22 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 02:00:22 - Started server process [[36m350801[0m]
+[32mINFO[0m:     2025-11-25 02:00:22 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 02:00:22 - ============================================================
+[32mINFO[0m:     2025-11-25 02:00:22 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 02:00:22 - ============================================================
+[32mINFO[0m:     2025-11-25 02:00:22 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 02:00:22 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 02:00:22 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 02:00:22 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 02:00:22 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 02:00:22 - Application startup complete.
+[32mINFO[0m:     2025-11-25 02:04:26 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:04:26 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1879s
+[32mINFO[0m:     2025-11-25 02:04:27 - 61.79.222.247:64572 - "WebSocket /api/v1/ws/interview/97?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:04:27 - connection open
+[32mINFO[0m:     2025-11-25 02:04:38 - connection closed
+[32mINFO[0m:     2025-11-25 02:04:50 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:04:50 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0237s
+[32mINFO[0m:     2025-11-25 02:04:51 - 61.79.222.247:64594 - "WebSocket /api/v1/ws/interview/98?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:04:51 - connection open
+[32mINFO[0m:     2025-11-25 02:06:26 - connection closed
+[32mINFO[0m:     2025-11-25 02:07:15 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:07:15 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0183s
+[32mINFO[0m:     2025-11-25 02:07:15 - 61.79.222.247:64624 - "WebSocket /api/v1/ws/interview/99?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:07:15 - connection open
+[32mINFO[0m:     2025-11-25 02:09:27 - connection closed
+[32mINFO[0m:     2025-11-25 02:10:50 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:10:50 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0176s
+[32mINFO[0m:     2025-11-25 02:10:50 - 61.79.222.247:64665 - "WebSocket /api/v1/ws/interview/100?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:10:50 - connection open
+[32mINFO[0m:     2025-11-25 02:10:52 - connection closed
+[32mINFO[0m:     2025-11-25 02:11:00 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:11:00 - Request: POST /api/v1/interviews/prepare - Status: 500 - Time: 0.0068s
+[32mINFO[0m:     2025-11-25 02:11:02 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:11:02 - Request: POST /api/v1/interviews/prepare - Status: 500 - Time: 0.0059s
+[32mINFO[0m:     2025-11-25 02:11:04 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:11:04 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0151s
+[32mINFO[0m:     2025-11-25 02:11:05 - 61.79.222.247:64684 - "WebSocket /api/v1/ws/interview/103?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:11:05 - connection open
+[32mINFO[0m:     2025-11-25 02:12:45 - connection closed
+[32mINFO[0m:     2025-11-25 02:20:42 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:20:42 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0180s
+[32mINFO[0m:     2025-11-25 02:20:43 - 61.79.222.247:64731 - "WebSocket /api/v1/ws/interview/104?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:20:43 - connection open
+[32mINFO[0m:     2025-11-25 02:23:35 - connection closed
+[32mINFO[0m:     2025-11-25 02:23:44 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:23:44 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0167s
+[32mINFO[0m:     2025-11-25 02:23:44 - 61.79.222.247:64769 - "WebSocket /api/v1/ws/interview/105?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:23:44 - connection open
+[32mINFO[0m:     2025-11-25 02:24:24 - connection closed
+[32mINFO[0m:     2025-11-25 02:24:36 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 02:24:36 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0311s
+[32mINFO[0m:     2025-11-25 02:24:36 - 61.79.222.247:64821 - "WebSocket /api/v1/ws/interview/106?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 02:24:36 - connection open
+[32mINFO[0m:     2025-11-25 02:26:50 - connection closed
+[32mINFO[0m:     2025-11-25 02:38:35 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0636s
+[32mINFO[0m:     2025-11-25 02:38:35 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0452s
+[32mINFO[0m:     2025-11-25 02:38:51 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2703s
+[32mINFO[0m:     2025-11-25 02:46:18 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-25 02:46:18 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-25 02:46:18 - Started reloader process [[36m[1m355778[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-25 02:46:19 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 02:46:20 - Started server process [[36m355780[0m]
+[32mINFO[0m:     2025-11-25 02:46:20 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 02:46:20 - ============================================================
+[32mINFO[0m:     2025-11-25 02:46:20 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 02:46:20 - ============================================================
+[32mINFO[0m:     2025-11-25 02:46:20 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 02:46:20 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 02:46:20 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 02:46:20 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 02:46:20 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 02:46:20 - Application startup complete.
+[33mWARNING[0m:  2025-11-25 04:12:22 - WatchFiles detected changes in 'services/interview_service_v4.py'. Reloading...
+[32mINFO[0m:     2025-11-25 04:12:22 - Shutting down
+[32mINFO[0m:     2025-11-25 04:12:22 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-25 04:12:22 - Application shutdown complete.
+[32mINFO[0m:     2025-11-25 04:12:22 - Finished server process [[36m355780[0m]
+[32mINFO[0m:     2025-11-25 04:12:24 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 04:12:25 - Started server process [[36m358409[0m]
+[32mINFO[0m:     2025-11-25 04:12:25 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 04:12:25 - ============================================================
+[32mINFO[0m:     2025-11-25 04:12:25 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 04:12:25 - ============================================================
+[32mINFO[0m:     2025-11-25 04:12:25 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 04:12:25 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 04:12:25 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 04:12:25 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 04:12:25 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 04:12:25 - Application startup complete.
+[32mINFO[0m:     2025-11-25 04:24:21 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 04:24:21 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.1316s
+[32mINFO[0m:     2025-11-25 04:24:22 - 1.209.144.252:62188 - "WebSocket /api/v1/ws/interview/107?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 04:24:22 - connection open
+[32mINFO[0m:     2025-11-25 04:25:17 - Shutting down
+[32mINFO[0m:     2025-11-25 04:25:17 - connection closed
+[32mINFO[0m:     2025-11-25 04:25:17 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-25 04:25:17 - Application shutdown complete.
+[32mINFO[0m:     2025-11-25 04:25:17 - Finished server process [[36m358409[0m]
+[32mINFO[0m:     2025-11-25 04:25:17 - Stopping reloader process [[36m[1m355778[0m]
+[32mINFO[0m:     2025-11-25 09:47:13 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-25 09:47:13 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-25 09:47:13 - Started reloader process [[36m[1m7123[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-25 09:47:16 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 09:47:17 - Started server process [[36m7125[0m]
+[32mINFO[0m:     2025-11-25 09:47:17 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 09:47:17 - ============================================================
+[32mINFO[0m:     2025-11-25 09:47:17 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 09:47:17 - ============================================================
+[32mINFO[0m:     2025-11-25 09:47:17 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 09:47:17 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 09:47:17 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 09:47:17 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 09:47:17 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 09:47:17 - Application startup complete.
+[32mINFO[0m:     2025-11-25 09:47:47 - Shutting down
+[32mINFO[0m:     2025-11-25 09:47:47 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-25 09:47:47 - Application shutdown complete.
+[32mINFO[0m:     2025-11-25 09:47:47 - Finished server process [[36m7125[0m]
+[32mINFO[0m:     2025-11-25 09:47:47 - Stopping reloader process [[36m[1m7123[0m]
+[32mINFO[0m:     2025-11-25 09:48:20 - Will watch for changes in these directories: ['/home/ec2-user/flex/server']
+[32mINFO[0m:     2025-11-25 09:48:20 - Uvicorn running on [1mhttp://0.0.0.0:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     2025-11-25 09:48:20 - Started reloader process [[36m[1m7569[0m] using [36m[1mWatchFiles[0m
+[32mINFO[0m:     2025-11-25 09:48:21 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 09:48:22 - Started server process [[36m7571[0m]
+[32mINFO[0m:     2025-11-25 09:48:22 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 09:48:22 - ============================================================
+[32mINFO[0m:     2025-11-25 09:48:22 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 09:48:22 - ============================================================
+[32mINFO[0m:     2025-11-25 09:48:22 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 09:48:22 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 09:48:22 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 09:48:22 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 09:48:22 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 09:48:22 - Application startup complete.
+[32mINFO[0m:     2025-11-25 09:48:40 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1877s
+[32mINFO[0m:     2025-11-25 09:48:40 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0430s
+[32mINFO[0m:     2025-11-25 09:48:47 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2639s
+[32mINFO[0m:     2025-11-25 09:49:45 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1438s
+[32mINFO[0m:     2025-11-25 09:51:17 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2680s
+[32mINFO[0m:     2025-11-25 09:51:17 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1198s
+[32mINFO[0m:     2025-11-25 09:51:21 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0537s
+[32mINFO[0m:     2025-11-25 09:51:21 - Creating or updating applicant with email: jiwon.kim@email.com
+[32mINFO[0m:     2025-11-25 09:51:21 - Request: POST /api/v1/applicants/ - Status: 200 - Time: 1.4048s
+[32mINFO[0m:     2025-11-25 09:51:43 - Request: GET /api/v1/agent-logs/44 - Status: 200 - Time: 0.2858s
+[32mINFO[0m:     2025-11-25 09:51:45 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0611s
+[32mINFO[0m:     2025-11-25 09:51:58 - Request: GET /api/v1/agent-logs/38 - Status: 200 - Time: 0.3068s
+[32mINFO[0m:     2025-11-25 09:52:13 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0464s
+[32mINFO[0m:     2025-11-25 09:52:49 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2015s
+[32mINFO[0m:     2025-11-25 09:53:18 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0602s
+[32mINFO[0m:     2025-11-25 09:53:21 - Creating or updating applicant with email: jiwon.kim@email.com
+[32mINFO[0m:     2025-11-25 09:53:21 - Request: POST /api/v1/applicants/ - Status: 200 - Time: 0.1264s
+[32mINFO[0m:     2025-11-25 09:53:32 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 09:53:32 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0251s
+[32mINFO[0m:     2025-11-25 09:53:33 - 211.217.131.15:51892 - "WebSocket /api/v1/ws/interview/108?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 09:53:33 - connection open
+[32mINFO[0m:     2025-11-25 09:53:40 - connection closed
+[32mINFO[0m:     2025-11-25 09:54:44 - 211.217.131.15:51915 - "WebSocket /api/v1/ws/interview/108?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 09:54:44 - connection open
+[32mINFO[0m:     2025-11-25 09:54:45 - connection closed
+[32mINFO[0m:     2025-11-25 09:55:00 - Request: GET /api/v1/agent-logs/45 - Status: 200 - Time: 0.3022s
+[32mINFO[0m:     2025-11-25 09:55:04 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.1899s
+[32mINFO[0m:     2025-11-25 09:55:20 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.2731s
+[32mINFO[0m:     2025-11-25 09:55:30 - Request: GET /api/v1/agent-logs/list/recent - Status: 200 - Time: 0.0637s
+[32mINFO[0m:     2025-11-25 09:55:53 - Creating or updating applicant with email: jiwon.kim@email.com
+[32mINFO[0m:     2025-11-25 09:55:53 - Request: POST /api/v1/applicants/ - Status: 200 - Time: 0.5321s
+[32mINFO[0m:     2025-11-25 09:55:53 - Request: GET /api/v1/agent-logs/46 - Status: 200 - Time: 0.1948s
+[32mINFO[0m:     2025-11-25 09:56:00 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 09:56:00 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0207s
+[32mINFO[0m:     2025-11-25 09:56:01 - 211.217.131.15:51948 - "WebSocket /api/v1/ws/interview/109?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 09:56:01 - connection open
+[32mINFO[0m:     2025-11-25 09:56:52 - connection closed
+[32mINFO[0m:     2025-11-25 10:01:52 - Creating or updating applicant with email: jiwon.kim@email.com
+[32mINFO[0m:     2025-11-25 10:01:52 - Request: POST /api/v1/applicants/ - Status: 200 - Time: 0.5750s
+[32mINFO[0m:     2025-11-25 10:02:02 - Preparing interview for applicant: 1, company: 1
+[32mINFO[0m:     2025-11-25 10:02:02 - Request: POST /api/v1/interviews/prepare - Status: 200 - Time: 0.0159s
+[32mINFO[0m:     2025-11-25 10:02:02 - 211.217.131.15:52014 - "WebSocket /api/v1/ws/interview/110?applicant_id=1" [accepted]
+[32mINFO[0m:     2025-11-25 10:02:02 - connection open
+[32mINFO[0m:     2025-11-25 10:02:46 - connection closed
+[33mWARNING[0m:  2025-11-25 10:09:24 - WatchFiles detected changes in 'tests/evaluation_test_yeonsu.py'. Reloading...
+[32mINFO[0m:     2025-11-25 10:09:24 - Shutting down
+[32mINFO[0m:     2025-11-25 10:09:24 - Waiting for application shutdown.
+[32mINFO[0m:     2025-11-25 10:09:24 - Application shutdown complete.
+[32mINFO[0m:     2025-11-25 10:09:24 - Finished server process [[36m7571[0m]
+[32mINFO[0m:     2025-11-25 10:09:28 - ✅ 페르소나 JSON 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 10:09:29 - Started server process [[36m19734[0m]
+[32mINFO[0m:     2025-11-25 10:09:29 - Waiting for application startup.
+[32mINFO[0m:     2025-11-25 10:09:29 - ============================================================
+[32mINFO[0m:     2025-11-25 10:09:29 - AWS_FLEX 서버 시작 중...
+[32mINFO[0m:     2025-11-25 10:09:29 - ============================================================
+[32mINFO[0m:     2025-11-25 10:09:29 - ✅ 페르소나 데이터 로드 완료: /home/ec2-user/flex/server/assets/persona_data.json
+[32mINFO[0m:     2025-11-25 10:09:29 -    - 회사: Unknown
+[32mINFO[0m:     2025-11-25 10:09:29 -    - 직무: Unknown
+[32mINFO[0m:     2025-11-25 10:09:29 -    - 핵심 역량: 0개
+[32mINFO[0m:     2025-11-25 10:09:29 - ✅ 모든 초기화 완료. 서버 준비 완료!
+[32mINFO[0m:     2025-11-25 10:09:29 - Application startup complete.

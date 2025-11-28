@@ -1,6 +1,6 @@
 """
 Stakeholder Management & Collaboration Agent - 유관부서 협업 및 이해관계자 협상
-
+ 
 역량 정의:
 서로 다른 목표를 가진 유관부서(디자인, 생산, 영업)와 원활히 협업하고,
 이해관계 충돌 시 논리와 데이터로 설득하여 Win-Win 합의를 도출하는 능력
@@ -93,11 +93,12 @@ STAKEHOLDER_COLLABORATION_PROMPT = """당신은 "유관부서 협업 및 이해�
 - Quote 0개
 
 [Evidence Weight 계산]
-- Quote 4개 이상 + 완전한 사이클: 1.0
-- Quote 3개 + 기본 사이클: 0.85
-- Quote 2개: 0.7
-- Quote 1개: 0.5
-- Quote 0개: 0.3
+- Quote 5개 이상 + 완전한 사이클: 1.0
+- Quote 4개 + 완전한 사이클: 0.85
+- Quote 3개 + 기본 사이클: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -127,6 +128,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 
 [설득 커뮤니케이션 패턴 평가] ⚠️ 중요
 설득 커뮤니케이션 = 경청 + 공감 + 논리 + Win-Win
+
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+  "segment_ids": [3, 5, 7, 9, 10, 11],
+  "evidence_type": "협업 의식"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "대부분 질문에서 협업 언급 (Segment 3, 5, 7)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 ✅ 체계적 설득 커뮤니케이션:
 - 먼저 경청 → "왜 그렇게 생각하시나요?"
@@ -183,23 +214,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **일방적 설득** (Severity: Minor → -5점)
+❌ **일방적 설득** (Severity: Minor → -3점)
 - "제가 설득했다"만 강조
 - 상대 입장 고려 없음
 
-❌ **감정적 설득** (Severity: Minor → -5점)
+❌ **감정적 설득** (Severity: Minor → -3점)
 - "부탁했다", "사정했다"
 - 논리/데이터 없이 감정만
 
-❌ **Win-Lose 결과** (Severity: Moderate → -10점)
+❌ **Win-Lose 결과** (Severity: Moderate → -5점)
 - "제가 이겼다", "설득 성공"
 - 상대방 손해는 무시
 
-❌ **협업 과장** (Severity: Moderate → -10점)
+❌ **협업 과장** (Severity: Major → -10점)
 - "완벽한 협업"인데 구체적 설명 없음
 - 의견 충돌 경험 없는데 "조정 잘했다"
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Segment 3 "항상 경청" ↔ Segment 8 "제 의견 관철"
 - 설득 방식 앞뒤 안 맞음
 
@@ -213,11 +244,11 @@ critical_reasoning은 발견된 문제를 설명합니다.
 
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 10에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 10에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
 
-예시 2 (-15점):
-"Critical: Red Flag 2건. (1) Segment 6에서 '부탁하고 사정했다'며 감정적 설득(-5점). (2) Segment 9에서 '제가 이겼다'며 Win-Lose 결과, 상대방 손해 무시(-10점). 총 감점 -15점."
+예시 2 (-8점):
+"Critical: Red Flag 2건. (1) Segment 6에서 '부탁하고 사정했다'며 감정적 설득(-3점). (2) Segment 9에서 '제가 이겼다'며 Win-Lose 결과, 상대방 손해 무시(-5점). 총 감점 -8점."
 
 ───────────────────────────────────────
 
@@ -259,30 +290,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 81점, Weight 0.85 (Quote 3개)
+Evidence: 81점, Weight 0.70 (Quote 3개)
 Behavioral: 78점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 81 × 0.85 × 0.94 = 64.7
-Critical: -5점
-Overall: 64.7 - 5 = 59.7 → 60점
+Adjusted: 81 × 0.70 × 0.94 = 53.3
+Amplified: 53.3 × 1.3 = 69.3
+Critical: -3점 (Minor Flag 1개)
+Overall: 69.3 - 3 = 66.3 → 66점
 
 Evidence-Behavioral 일관성: 1 - |81-78|/100 = 0.97
-Confidence: (0.85 × 0.6) + (0.97 × 0.4) = 0.90
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.70 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.77
 
 ═══════════════════════════════════════
  입력 데이터
@@ -341,29 +386,45 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
       "specific_examples": [
-        "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
-        "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
-        "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
-        "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회"
+        {{
+          "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+          "segment_ids": [3, 5, 7, 9, 10, 11],
+          "evidence_type": "협업 의식"
+        }},
+        {{
+          "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+          "segment_ids": [9, 10, 11],
+          "evidence_type": "설득 커뮤니케이션"
+        }},
+        {{
+          "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+          "segment_ids": [9, 11],
+          "evidence_type": "균형 의식"
+        }},
+        {{
+          "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+          "segment_ids": [11],
+          "evidence_type": "관계 중시"
+        }}
       ],
       "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득' 등 협업 관련 표현 언급. 경청→공감→논리 패턴 4회('먼저 들어보고'→'이해한다'→'데이터로 설명'). '양쪽 다', 'Win-Win' 같은 균형 표현 3회. '장기적 관계' 언급 2회. Case 질문에서 특히 논리적 설득 명확. Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 배려. 75-89점 기준 충족하여 78점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "one_sided_persuasion",
         "description": "Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 11, char_index: 3520-3650"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-5점). 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
   }},
   
-  "overall_score": 60,
+  "overall_score": 81,
   "confidence": {{
     "evidence_strength": 0.85,
     "internal_consistency": 0.97,
@@ -375,10 +436,11 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "base_score": 81,
     "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 64.7,
-    "critical_penalties": -5,
-    "final_score": 59.7,
-    "formula": "81 × 0.85 × 0.94 - 5 = 59.7 → 60점"
+    "adjusted_score": 64.7,
+    "amplified_score": 84.1,
+    "critical_penalties": -3,
+    "final_score": 81.1,
+    "formula": "81 × 0.85 × 0.94 × 1.3 - 3 = 81.1 → 81점"
   }},
   
   "strengths": [
@@ -399,12 +461,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "Case 질문에서 특히 체계적 사고 (충돌→입장→설득→합의)",
     "상대 입장 이해 능력 우수 ('생산팀은', '영업팀은')",
     "감정보다는 논리 우선, 데이터 활용"
-  ],
-  
-  "suggested_followup_questions": [
-    "생산팀과 영업팀의 입장을 어떻게 파악하셨나요? 구체적으로 어떤 대화를 나누셨나요?",
-    "절충안(디자인 70%, 실용성 30%)을 도출하는 과정에서 가장 어려웠던 점은 무엇인가요?",
-    "만약 한쪽이 절충안을 받아들이지 않았다면, 어떻게 대응하셨을 것 같나요?"
   ]
 }}
 
@@ -415,13 +471,14 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
 3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
-7. "상대 입장 이해" > "협상 기술" 우선순위를 유지하세요.
-8. 일방적 설득 ("제가 설득했다"만)은 낮은 점수입니다.
-9. 감정적 설득 ("부탁했다")은 감점입니다.
-10. Win-Lose 결과 ("제가 이겼다")는 감점입니다.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "상대 입장 이해" > "협상 기술" 우선순위를 유지하세요.
+9. 일방적 설득 ("제가 설득했다"만)은 낮은 점수입니다.
+10. 감정적 설득 ("부탁했다")은 감점입니다.
+11. Win-Lose 결과 ("제가 이겼다")는 감점입니다.
 """
 
 

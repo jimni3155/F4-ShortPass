@@ -1,0 +1,68 @@
+{
+  "interview_id": 123,
+  "applicant_id": 1001,
+  "job_id": 2001,
+  "persona_id": "P-VAL_PM",
+  "persona_meta": {
+    "name": "Value-Driven PM",
+    "role": "면접관",
+    "tone": "차분/구조화",
+    "focus": ["고객집착", "데이터기반"]
+  },
+  "weights": {
+    "competency": {
+      "COMM_01": 0.35,
+      "COMM_02": 0.2,
+      "COMM_03": 0.1,
+      "COMM_04": 0.15,
+      "COMM_05": 0.2,
+      "JOB_01": 0.2,
+      "JOB_02": 0.2,
+      "JOB_03": 0.2,
+      "JOB_04": 0.2,
+      "JOB_05": 0.2
+    },
+    "category": { "common_competencies": 0.3, "job_competencies": 0.7 }
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "segment_order": 1,
+      "turn_type": "main",
+      "question_text": "가장 도전적이었던 프로젝트는 무엇인가요?",
+      "answer_text": "6개월치 디지털 마케팅 데이터를 통합해 ROI 150%를 달성했습니다. 엑셀 15개 소스의 형식을 맞추고, 캠페인별 ROI를 재계산해 고ROI 채널에 예산을 재배분했습니다. 다음 분기 효율이 20% 개선됐고, 이 과정에서 데이터 파이프라인 템플릿을 표준화했습니다.",
+      "answer_duration_sec": 78,
+      "char_index_start": 0,
+      "char_index_end": 220,
+      "timestamp_start": "2025-11-22T04:00:00Z",
+      "timestamp_end": "2025-11-22T04:01:18Z",
+      "persona_hints": ["ROI 근거 확인", "데이터 파이프라인 표준화"]
+    },
+    {
+      "segment_id": 2,
+      "segment_order": 2,
+      "turn_type": "main",
+      "question_text": "팀 갈등을 해결한 경험을 말씀해주세요.",
+      "answer_text": "기술 완성도 vs 시장성으로 갈라졌을 때, 각 기준을 표로 정리하고 교수·업계 멘토 의견을 받아 MVP 우선 출시로 합의했습니다. 이후 반복 실험을 통해 3주 만에 사용자 유지율을 15%p 개선했습니다.",
+      "answer_duration_sec": 65,
+      "char_index_start": 0,
+      "char_index_end": 200,
+      "timestamp_start": "2025-11-22T04:01:20Z",
+      "timestamp_end": "2025-11-22T04:02:25Z",
+      "persona_hints": ["합의 과정 증거", "정량 지표 확인"]
+    },
+    {
+      "segment_id": 3,
+      "segment_order": 3,
+      "turn_type": "follow_up",
+      "question_text": "ROI 150%의 근거가 된 지표는 무엇이었나요?",
+      "answer_text": "캠페인별 투입비용 대비 신규 매출 증가를 기준으로 했고, 리텐션을 감안한 LTV 추정치를 포함했습니다. 원본 GA·광고 계정 데이터를 재가공했고, 재현 가능한 스프레드시트를 남겼습니다.",
+      "answer_duration_sec": 42,
+      "char_index_start": 0,
+      "char_index_end": 180,
+      "timestamp_start": "2025-11-22T04:02:30Z",
+      "timestamp_end": "2025-11-22T04:03:12Z",
+      "persona_hints": ["지표 정의", "재현성 강조"]
+    }
+  ]
+}

@@ -468,7 +468,7 @@ async def create_and_save_persona(
 
         # Step 1: Analyze competencies
         competency_data = await self.competency_service.analyze_jd_competencies(jd_text)
-        print(f"📊 Extracted competencies: {len(competency_data['job_competencies'])} job-specific")
+        print(f" Extracted competencies: {len(competency_data['job_competencies'])} job-specific")
 
         # Step 2: Generate persona data
         persona_data = await self.competency_service.generate_persona_data(

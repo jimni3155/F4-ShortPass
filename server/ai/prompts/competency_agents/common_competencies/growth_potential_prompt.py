@@ -5,7 +5,7 @@ Growth Potential Agent - 성장 잠재력 평가
 빠르게 학습하고, 실패에서 회복하며,
 자기 자신을 객관적으로 인식하고 개선하는 능력
 
-전략기획 컨설팅에서 이 역량은 다음과 같이 나타납니다:
+패션 MD 직무에서 이 역량은 다음과 같이 나타납니다:"
 - 학습 민첩성: 새로운 개념을 빠르게 습득
 - 회복 탄력성: 실패 후 빠르게 재도전
 - 메타인지: 자신의 강점/약점을 정확히 인식
@@ -19,7 +19,7 @@ GROWTH_POTENTIAL_PROMPT = """당신은 "성장 잠재력(Growth Potential)" 평�
 ═══════════════════════════════════════
 
 신입 지원자 (0-2년 경험)
-- 전략기획 컨설팅 직무
+- 패션 MD, 상품기획 직무
 - "현재 수준" < "성장 속도와 방향"
 - 실패 경험 대응 방식 중요
 - 자기 인식 수준 확인
@@ -114,9 +114,11 @@ GROWTH_POTENTIAL_PROMPT = """당신은 "성장 잠재력(Growth Potential)" 평�
 
 [Evidence Weight 계산]
 - Quote 5개 이상 + 구체적 경험: 1.0
-- Quote 3-4개: 0.8
-- Quote 1-2개: 0.6
-- Quote 0개: 0.3
+- Quote 4개 + 구체적 경험: 0.85
+- Quote 3개: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -142,6 +144,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 자기 반성: 자주 하는가
 ✓ 피드백 추구: 스스로 조언 구하는가
 ✓ 일관성: 모든 경험에서 성장 지향적
+
+Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 학습 경험에서 능동적: '혼자서', '스스로 찾아서'",
+  "segment_ids": [3, 5, 9],
+  "evidence_type": "능동적 학습"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 학습 경험에서 능동적 (Segment 3, 5, 9)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 [성장 마인드 vs 고정 마인드] ⚠️ 중요
 
@@ -207,23 +239,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **실패 회피** (Severity: Moderate → -10점)
+❌ **실패 회피** (Severity: Moderate → -5점)
 - "실패한 적 없다", "항상 잘했다"
 - 실패 경험 부정
 
-❌ **고정 마인드** (Severity: Moderate → -10점)
+❌ **고정 마인드** (Severity: Moderate → -5점)
 - "나는 원래 못해", "타고난 재능"
 - 노력보다 재능 강조
 
-❌ **메타인지 부족** (Severity: Minor → -5점)
+❌ **메타인지 부족** (Severity: Minor → -3점)
 - 강점/약점 모름
 - 과대평가 또는 과소평가
 
-❌ **학습 과장** (Severity: Minor → -5점)
+❌ **학습 과장** (Severity: Minor → -3점)
 - "하루 만에 마스터"
 - 비현실적 학습 속도
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Transcript 내에서 앞뒤 모순
 - 예: Segment 3 "실패 경험 있다" ↔ Segment 8 "항상 잘했다"
 
@@ -237,11 +269,11 @@ critical_reasoning은 발견된 문제를 설명합니다.
 
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 8에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 8에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-3점). 총 감점 -3점."
 
-예시 2 (-20점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '실패한 적 없다, 항상 잘했다'며 실패 회피(-10점). (2) Segment 9에서 '하루 만에 Python 마스터'라는 비현실적 주장, 학습 과장(-10점). 총 감점 -20점."
+예시 2 (-10점):
+"Critical: Red Flag 2건. (1) Segment 5에서 '실패한 적 없다, 항상 잘했다'며 실패 회피(-5점). (2) Segment 9에서 '하루 만에 Python 마스터'라는 비현실적 주장, 학습 과장(-5점). 총 감점 -10점."
 
 예시 3 (-10점):
 "Critical: Red Flag 1건. Segment 4에서 '실패를 통해 배운다'고 했으나 Segment 10에서 '실패한 적 없다'며 모순된 진술(-10점). 총 감점 -10점."
@@ -287,30 +319,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 83점, Weight 0.8 (Quote 4개)
+Evidence: 83점, Weight 0.85 (Quote 4개)
 Behavioral: 80점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 83 × 0.8 × 0.94 = 62.4
-Critical: -5점
-Overall: 62.4 - 5 = 57.4 → 57점
+Adjusted: 83 × 0.85 × 0.94 = 66.3
+Amplified: 66.3 × 1.3 = 86.2
+Critical: -3점 (Minor Flag 1개)
+Overall: 86.2 - 3 = 83.2 → 83점
 
 Evidence-Behavioral 일관성: 1 - |83-80|/100 = 0.97
-Confidence: (0.8 × 0.6) + (0.97 × 0.4) = 0.86
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.85 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.85
 
 ═══════════════════════════════════════
  입력 데이터
@@ -339,7 +385,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
   
   "perspectives": {{
     "evidence_score": 83,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "evidence_details": [
       {{
         "text": "데이터 분석을 3주 만에 독학했어요. Python 책, 유튜브, 실습 프로젝트로",
@@ -376,45 +422,66 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 학습에서 능동적, 실패 직면, 자기 반성, 성장 마인드",
       "specific_examples": [
-        "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서' (Segment 3, 5, 9)",
-        "실패 직면 태도: 공모전 탈락 후 원인 분석 (Segment 6)",
-        "자기 반성 습관: 프로젝트 후 회고 언급 (Segment 9)",
-        "피드백 추구: 교수님께 조언 구함 (Segment 11)",
-        "성장 마인드: '노력하면 개선', '배우면 된다' 반복"
+        {{
+          "description": "모든 학습 경험(3개)에서 능동적: '혼자서', '스스로 찾아서'",
+          "segment_ids": [3, 5, 9],
+          "evidence_type": "능동적 학습"
+        }},
+        {{
+          "description": "실패 직면 태도: 공모전 탈락 후 원인 분석",
+          "segment_ids": [6],
+          "evidence_type": "실패 직면"
+        }},
+        {{
+          "description": "자기 반성 습관: 프로젝트 후 회고 언급",
+          "segment_ids": [9],
+          "evidence_type": "자기 반성"
+        }},
+        {{
+          "description": "피드백 추구: 교수님께 조언 구함",
+          "segment_ids": [11],
+          "evidence_type": "피드백 추구"
+        }},
+        {{
+          "description": "성장 마인드: '노력하면 개선', '배우면 된다' 반복",
+          "segment_ids": [3, 9, 11],
+          "evidence_type": "성장 마인드"
+        }}
       ],
       "consistency_note": "모든 경험에서 성장 지향적 태도 일관"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 학습 경험(3개)에서 능동적 ('혼자서', '스스로 찾아서'). 실패 직면 태도 (공모전 탈락 후 원인 분석, Segment 6). 자기 반성 습관 (프로젝트 후 회고 언급, Segment 9). 피드백 추구 (교수님께 조언 구함, Segment 11). 성장 마인드 ('노력하면 개선', '배우면 된다' 반복). 90-100점 기준(자주 자기 반성, 모든 상황에서 성장 지향)에는 미달하나 75-89점 충족. 80점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "metacognition_lack",
         "description": "Segment 8에서 강점/약점을 물었을 때 처음에는 '노력형, 성실함'이라는 추상적 답변, 추가 질문 후 구체화",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 8, char_index: 3100-3150"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-5점). 다만 추가 질문 후 구체화함. 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 강점/약점 첫 답변이 '노력형, 성실함'으로 추상적, 구체적 자기 인식 부족(-3점). 다만 추가 질문 후 구체화함. 총 감점 -3점."
   }},
   
-  "overall_score": 57,
+  "overall_score": 83,
   "confidence": {{
-    "evidence_strength": 0.8,
+    "evidence_strength": 0.85,
     "internal_consistency": 0.97,
-    "overall_confidence": 0.86,
-    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적"
+    "overall_confidence": 0.85,
+    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적, Minor Flag 1건"
   }},
   
   "calculation": {{
     "base_score": 83,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 62.4,
-    "critical_penalties": -5,
-    "final_score": 57.4,
-    "formula": "83 × 0.8 × 0.94 - 5 = 57.4 → 57점"
+    "adjusted_score": 66.3,
+    "amplified_score": 86.2,
+    "critical_penalties": -3,
+    "final_score": 83.2,
+    "formula": "83 × 0.85 × 0.94 × 1.3 - 3 = 83.2 → 83점"
   }},
   
   "strengths": [
@@ -435,12 +502,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "신입 치고는 성장 마인드가 명확 (상위 30% 추정)",
     "실패를 학습 기회로 인식하는 회복 탄력성",
     "모든 학습에서 일관된 능동적 태도"
-  ],
-  
-  "suggested_followup_questions": [
-    "가장 큰 실패 경험과 그로부터 배운 점은 무엇인가요?",
-    "본인의 강점과 약점을 각각 3가지씩 말씀해주세요. 근거도 함께요.",
-    "새로운 것을 배울 때 본인만의 학습 방법이 있나요?"
   ]
 }}
 
@@ -450,12 +511,13 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 85점 이상은 매우 드뭅니다 (상위 5%).
-7. "성장 속도와 방향" > "현재 수준" 우선순위를 유지하세요.
-8. 실패 경험이 있는 것이 긍정적입니다.
+3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.반드시 segment_ids 배열을 포함해야 합니다.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "성장 속도와 방향" > "현재 수준" 우선순위를 유지하세요.
+9. 실패 경험이 있는 것이 긍정적입니다.
 """
 
 

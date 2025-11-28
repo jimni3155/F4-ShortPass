@@ -1,0 +1,75 @@
+{
+  "company_id": 1,
+  "company_name": "삼성물산 패션부문",
+  "job_id": 1,
+  "job_title": "상품기획/리테일 영업(MD)",
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "interview_id": 90001,
+  "persona_id": "SAMSUNG_FASHION_MD",
+  "persona_meta": {
+    "name": "삼성물산 패션부문 시니어 면접관",
+    "tone": "전문적/압박",
+    "focus": ["데이터 기반 의사결정", "실행력", "협업"],
+    "persona_hints": ["근거 재확인", "리스크 파고들기"]
+  },
+  "weights": {
+    "category": { "common_competencies": 0.4, "job_competencies": 0.6 },
+    "competency": {
+      "COMM_01": 0.15, "COMM_02": 0.1, "COMM_03": 0.1, "COMM_04": 0.1, "COMM_05": 0.05,
+      "JOB_01": 0.2, "JOB_02": 0.15, "JOB_03": 0.1, "JOB_04": 0.1, "JOB_05": 0.05
+    }
+  },
+  "source": {
+    "stt_provider": "mock_ws_stream",
+    "transcript_version": "v1",
+    "collected_at": "2025-11-22T04:00:00Z"
+  },
+  "segments": [
+    {
+      "segment_id": 1,
+      "segment_order": 1,
+      "turn_type": "main",
+      "question_text": "시즌 상품 믹스 최적화 프로젝트에서 문제를 어떻게 정의하고 해결했나요?",
+      "answer_text": "여성 캐주얼 재고회전율이 0.8회로 업계 평균 1.5회보다 낮았습니다. 판매/재고/트렌드 데이터를 3축으로 분석해 상의:하의 비율을 5:5로 조정하고, 3만원대 비중을 40%→25%로 줄이며 4-5만원대를 늘렸습니다. 베이직:디자인 비율도 6:4→5:5로 조정해 3개월 뒤 판매율 73%, 회전율 1.2회로 개선했습니다.",
+      "answer_duration_sec": 78,
+      "char_index_start": 0,
+      "char_index_end": 272,
+      "timestamp_start": "2025-11-22T04:00:10Z",
+      "timestamp_end": "2025-11-22T04:01:28Z"
+    },
+    {
+      "segment_id": 2,
+      "segment_order": 2,
+      "turn_type": "follow_up",
+      "question_text": "당시 디자인팀 반대를 어떻게 설득했는지 구체적으로 알려주세요.",
+      "answer_text": "디자인팀은 '베이직이 브랜드 정체성'이라며 반대했습니다. 저는 고객 리뷰 300개 중 '심심하다' 피드백 32%와 경쟁사 베이직:디자인 5:5 사례를 근거로 제시했고, 베이직 라인은 유지하되 신규 라인에서 디자인 포인트를 강화하는 절충안을 제안했습니다. 결국 데이터+브랜드 정체성을 모두 반영하는 안으로 합의했습니다.",
+      "answer_duration_sec": 62,
+      "char_index_start": 273,
+      "char_index_end": 540,
+      "timestamp_start": "2025-11-22T04:01:40Z",
+      "timestamp_end": "2025-11-22T04:02:42Z"
+    },
+    {
+      "segment_id": 3,
+      "segment_order": 3,
+      "turn_type": "main",
+      "question_text": "리드타임/원가 관점에서 밸류체인을 최적화한 경험이 있나요?",
+      "answer_text": "평균 마진율 35%를 40%로 끌어올리기 위해 원단 단가를 재협상했습니다. 기존 업체 대비 18% 저렴한 업체를 테스트하고, 품질·리드타임 검증 후 전환했습니다. 발주량 증가 조건으로 2% 추가 할인도 확보해 소재비를 원가의 42%→35%로 낮추고 마진율을 38.5%까지 개선했습니다.",
+      "answer_duration_sec": 58,
+      "char_index_start": 541,
+      "char_index_end": 812,
+      "timestamp_start": "2025-11-22T04:03:05Z",
+      "timestamp_end": "2025-11-22T04:04:03Z"
+    }
+  ],
+  "highlights": {
+    "top_segments": [
+      { "segment_id": 1, "reason": "데이터 기반 문제 정의/해결, KPI 개선 수치 제시" },
+      { "segment_id": 2, "reason": "이해관계자 설득 근거(리뷰/벤치마크) 제시" }
+    ],
+    "under_segments": [
+      { "segment_id": 3, "reason": "원가/마진 근거는 명확하나 리스크 관리 설명이 짧음" }
+    ]
+  }
+}

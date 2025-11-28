@@ -12,11 +12,56 @@ const COMPANIES = [
   {id: '6', name: '글로벌 IT 기업 F', positions: 'AI 개발자'},
 ];
 
+const API_BASE = 'http://54.226.166.45:8000'
+
 const InterviewStart = () => {
-  const navigate = useNavigate();
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); // 에러 상태 추가
+
+
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const startInterview = async () => {
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/interviews/prepare`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          candidateId: "1",
+          companyId: "1",
+          personaInstanceIds: ["1", "2"],
+        }),
+      });
+
+      const text = await res.text();
+      console.log("prepare status:", res.status);
+      console.log("prepare body:", text);
+
+      if (!res.ok) {
+        // 여기서 500 + 에러 메시지(detail)가 보일 거야
+        return;
+      }
+
+      const data = JSON.parse(text);
+
+      // 👉 인터뷰 페이지로 이동하며 websocketUrl 전달
+      navigate("/candidate/interview", {
+        state: {
+          websocketUrl: data.websocketUrl,
+          interviewId: data.interviewId,
+        },
+      });
+    } catch (err) {
+      console.error("인터뷰 준비 실패", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const handleCompanyToggle = (companyId) => {
     setError(null); // 새로운 선택 시 에러 메시지 초기화
@@ -32,42 +77,6 @@ const InterviewStart = () => {
     });
   };
 
-  const handleStartInterview = async () => {
-    if (!isValidSelection) return;
-
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      // ocalStorage에서 지원자 ID를 가져오기
-      const candidateId = localStorage.getItem('currentCandidateId');
-
-      if (!candidateId) {
-        throw new Error(
-          '지원자 정보가 없습니다. 이전 페이지로 돌아가 정보를 입력해주세요.'
-        );
-      }
-
-      // API 호출: 질문 준비
-      const result = await prepareQuestions(candidateId, selectedCompanies);
-
-      // API 응답에서 인터뷰 ID를 localStorage에 저장
-      if (result.interviewId) {
-        localStorage.setItem("currentInterviewId", result.interviewId);
-      }
-
-      // 다음 페이지로 이동
-      navigate('/candidate/interview');
-    } catch (err) {
-      console.error('Failed to prepare questions:', err);
-      // 사용자에게 에러 메시지를 표시
-      setError(
-        err.message || '인터뷰 질문 준비에 실패했습니다. 다시 시도해 주세요.'
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const isValidSelection =
     selectedCompanies.length >= 1 && selectedCompanies.length <= 3;
@@ -158,7 +167,7 @@ const InterviewStart = () => {
             Mock 면접 (텍스트)
           </Button>
           <Button
-            onClick={handleStartInterview}
+            onClick={startInterview}
             disabled={!isValidSelection || isLoading}>
             {isLoading ? '준비 중...' : '실제 면접 시작'}
           </Button>

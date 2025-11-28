@@ -155,8 +155,8 @@ const AIInterview = () => {
         setInterviewId(newInterviewId);
         console.log('면접 세션 준비 완료. Interview ID:', newInterviewId);
 
-        // 2. WebSocket 연결
-        const wsUrl = getWebSocketURL(`/api/v1/ws/interview/${newInterviewId}`);
+        // 2. WebSocket 연결 (Mock: applicant_id=101 김지원 이력서 기반 질문)
+        const wsUrl = getWebSocketURL(`/api/v1/ws/interview/${newInterviewId}?applicant_id=101`);
         console.log('WebSocket 연결 시도:', wsUrl);
         const ws = new WebSocket(wsUrl);
         wsRef.current = ws;

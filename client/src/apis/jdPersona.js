@@ -12,13 +12,28 @@ const API_BASE_URL = API_V1;
  * @param {File} pdfFile - JD PDF 파일
  * @param {number} companyId - 회사 ID
  * @param {string} title - 채용 공고 제목
+ * @param {string} companyUrl - 기업 웹사이트 URL (선택)
+ * @param {Object} weights - 역량 가중치(옵션, key-value)
  * @returns {Promise<Object>} 역량 분석 결과
  */
-export const uploadJDAndAnalyze = async (pdfFile, companyId, title) => {
+export const uploadJDAndAnalyze = async (
+  pdfFile,
+  companyId,
+  title,
+  companyUrl = null,
+  weights = null
+) => {
+  console.log('Uploading JD and analyzing for company:', companyId, 'title:', title);
   const formData = new FormData();
   formData.append('pdf_file', pdfFile);
   formData.append('company_id', companyId);
   formData.append('title', title);
+  if (companyUrl) {
+    formData.append('company_url', companyUrl);
+  }
+  if (weights) {
+    formData.append('weights_json', JSON.stringify(weights));
+  }
 
   const response = await fetch(`${API_BASE_URL}/jd-persona/upload`, {
     method: 'POST',
@@ -27,19 +42,24 @@ export const uploadJDAndAnalyze = async (pdfFile, companyId, title) => {
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || 'JD 업로드 및 분석 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully uploaded and analyzed JD:', responseData);
+  return responseData;
 };
 
 /**
  * AI 면접관 페르소나 생성
  * @param {number} jobId - Job ID
  * @param {string[]} companyQuestions - 필수 질문 3개
+ * @param {Object} weights - 역량 가중치(옵션)
  * @returns {Promise<Object>} 생성된 페르소나 정보
  */
-export const generatePersona = async (jobId, companyQuestions) => {
+export const generatePersona = async (jobId, companyQuestions, weights = null) => {
+  console.log('Generating persona for job ID:', jobId);
   const response = await fetch(`${API_BASE_URL}/jd-persona/generate-persona`, {
     method: 'POST',
     headers: {
@@ -48,15 +68,19 @@ export const generatePersona = async (jobId, companyQuestions) => {
     body: JSON.stringify({
       job_id: jobId,
       company_questions: companyQuestions,
+      weights,
     }),
   });
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '페르소나 생성 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully generated persona:', responseData);
+  return responseData;
 };
 
 /**
@@ -65,14 +89,18 @@ export const generatePersona = async (jobId, companyQuestions) => {
  * @returns {Promise<Object>} 역량 분석 결과
  */
 export const getCompetencyAnalysis = async (jobId) => {
+  console.log('Getting competency analysis for job ID:', jobId);
   const response = await fetch(`${API_BASE_URL}/jd-persona/analysis/${jobId}`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '역량 분석 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched competency analysis:', responseData);
+  return responseData;
 };
 
 /**
@@ -81,14 +109,18 @@ export const getCompetencyAnalysis = async (jobId) => {
  * @returns {Promise<Object>} Job 기본 정보
  */
 export const getJobBasicInfo = async (jobId) => {
+  console.log('Getting basic info for job ID:', jobId);
   const response = await fetch(`${API_BASE_URL}/jd-persona/jobs/${jobId}/basic-info`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || 'Job 정보 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched job basic info:', responseData);
+  return responseData;
 };
 
 /**
@@ -96,12 +128,16 @@ export const getJobBasicInfo = async (jobId) => {
  * @returns {Promise<Object>} 샘플 역량 데이터
  */
 export const getSampleCompetencies = async () => {
+  console.log('Getting sample competencies');
   const response = await fetch(`${API_BASE_URL}/jd-persona/test/sample-competencies`);
 
   if (!response.ok) {
     const error = await response.json();
+    console.error('Error response from server:', error);
     throw new Error(error.detail || '샘플 데이터 조회 실패');
   }
 
-  return response.json();
+  const responseData = await response.json();
+  console.log('Successfully fetched sample competencies:', responseData);
+  return responseData;
 };

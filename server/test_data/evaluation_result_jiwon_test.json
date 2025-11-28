@@ -1,0 +1,443 @@
+{
+  "interview_id": 101,
+  "applicant_id": 101,
+  "final_score": 0.0,
+  "avg_confidence": 0.5,
+  "final_reliability": "low",
+  "competency_results": {
+    "problem_solving": {
+      "competency_name": "problem_solving",
+      "competency_display_name": "문제해결력",
+      "competency_category": "common",
+      "evaluated_at": "2025-11-23T08:46:19.917503",
+      "perspectives": {
+        "evidence_score": 75,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "구조적 분석 (3축), 데이터 기반",
+            "quality_score": 0.8,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "과거 2년간의 주간 판매 데이터를 분석해서 카테고리별 표준편차를 계산했습니다.",
+            "segment_id": 2,
+            "char_index": 100,
+            "relevance_note": "데이터 기반 분석, 통계적 접근",
+            "quality_score": 0.75,
+            "char_length": 43,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "신규 업체로 전환하면서 단가를 많이 낮췄고요. 품질 문제가 한 번 있었는데 빨리 해결했습니다.",
+            "segment_id": 3,
+            "char_index": 150,
+            "relevance_note": "리스크 관리, 문제 해결",
+            "quality_score": 0.7,
+            "char_length": 52,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 문제 복잡도 낮음 (재고회전율 개선: 판매/재고/트렌드 3가지 변수). 구조적 분석 시도 (데이터 기반 분석). 창의적 해결책 부족 (일반적 해결책). 의사결정 논리 있음. Quote 3개. 75-89점 기준(중간 복잡도, 2단계 분석)에 미치지 못함. Fair 중상위 수준으로 75점."
+      },
+      "behavioral_score": 70,
+      "behavioral_pattern": {
+        "pattern_description": "대부분의 문제에서 '왜?' 먼저, 구조화 시도, 옵션 비교 부족",
+        "specific_examples": [
+          {
+            "description": "대부분의 Case 질문에서 '왜 이 문제가 발생했는지'부터 접근",
+            "segment_ids": [
+              1,
+              2,
+              3
+            ],
+            "evidence_type": "원인 분석"
+          },
+          {
+            "description": "구조화 시도: 데이터 기반 분석 언급",
+            "segment_ids": [
+              1,
+              2
+            ],
+            "evidence_type": "구조적 사고"
+          }
+        ],
+        "consistency_note": "Case와 Behavioral 질문에서 유사한 구조적 패턴"
+      },
+      "behavioral_reasoning": "Behavioral: 60-74점 구간. 대부분의 Case 질문에서 '왜 이 문제가 발생했는지'부터 접근. 구조화 시도 명확 (데이터 기반 분석 언급, Segment 1, 2). 옵션 생성 미흡 (대부분 1개 해결책만 제시). Behavioral 질문에서도 유사한 구조적 패턴. 75-89점 기준(대부분 구조적)에 미치지 못함. 70점.",
+      "critical_penalties": -3,
+      "red_flags": [
+        {
+          "flag_type": "implementation_feasibility",
+          "description": "Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시",
+          "severity": "minor",
+          "penalty": -3,
+          "evidence_reference": "segment_id: 6, char_index: 2400-2550"
+        }
+      ],
+      "critical_reasoning": "Critical: Red Flag 1건. Segment 6에서 '일단 해보면 될 것 같다'며 실현 가능성 검토 없이 솔루션 제시, 실행 고려 부족(-3점). 총 감점 -3점.",
+      "overall_score": 70,
+      "confidence": {
+        "evidence_strength": 0.7,
+        "internal_consistency": 0.95,
+        "overall_confidence": 0.68,
+        "confidence_note": "증거 충분(Quote 3개), Evidence-Behavioral 간 편차 5점으로 일관적, Minor Flag 1건"
+      },
+      "calculation": {
+        "base_score": 75,
+        "evidence_weight": 0.7,
+        "behavioral_adjustment": 0.9,
+        "adjusted_score": 47.25,
+        "amplified_score": 61.425,
+        "critical_penalties": -3,
+        "final_score": 58.425,
+        "formula": "75 × 0.70 × 0.90 × 1.3 - 3 = 58.425 → 70점"
+      },
+      "strengths": [
+        "문제 복잡도 중상 (다수 변수, 제약 조건) 경험",
+        "대부분의 Case에서 '왜?' 먼저 묻는 습관 (원인 분석)",
+        "구조적 분석 시도 (데이터 기반 분석)",
+        "의사결정 시 트레이드오프 고려"
+      ],
+      "weaknesses": [
+        "일부 답변에서 실현 가능성 검토 부족 (Segment 6)",
+        "구조적 분석 깊이가 2단계로 제한적 (3단계 이상 미달)",
+        "문제 복잡도가 중상 수준 (매우 높은 복잡도 경험 부족)"
+      ],
+      "key_observations": [
+        "신입 치고는 구조적 사고 습관이 명확 (상위 30% 추정)",
+        "Case Interview에서 일관된 문제해결 프로세스 (문제 정의 → 원인 → 해결)",
+        "창의성과 실행 가능성의 균형 의식"
+      ]
+    },
+    "achievement_motivation": {
+      "competency_name": "achievement_motivation",
+      "competency_display_name": "성취/동기 역량",
+      "competency_category": "common",
+      "evaluated_at": "2025-11-23T08:45:43.959485",
+      "perspectives": {
+        "evidence_score": 68,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+            "segment_id": 1,
+            "char_index": 50,
+            "relevance_note": "주도성 (데이터 분석 체계 구축)",
+            "quality_score": 0.8,
+            "char_length": 47,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "고객 리뷰 1,000개 넘게 분석해서 팀의 방향을 제시했습니다.",
+            "segment_id": 9,
+            "char_index": 100,
+            "relevance_note": "주도성 (리뷰 분석 주도)",
+            "quality_score": 0.75,
+            "char_length": 35,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 주도성 기본 (데이터 분석 체계 구축, 리뷰 분석 주도). 목표 난이도 낮음 (쉬운 목표만). 외적 동기 우세 ('커리어에 도움이 될 것 같아서'). 책임감은 있으나 ('프로젝트 완수') 끝까지 완수 사례 불명확. Quote 2개. 75-89점 기준(중간 난이도, 내적 동기)에 미치지 못함. Fair 중상위 수준으로 68점."
+      },
+      "behavioral_score": 65,
+      "behavioral_pattern": {
+        "pattern_description": "일부 경험에서 자발적 시작, 끈기 부족, 열정 표현 약함",
+        "specific_examples": [
+          {
+            "description": "일부 경험에서 자발적 시작: '먼저', '스스로' 반복",
+            "segment_ids": [
+              1,
+              9
+            ],
+            "evidence_type": "자발성"
+          },
+          {
+            "description": "끈기 부족: 어려우면 포기 언급",
+            "segment_ids": [
+              6
+            ],
+            "evidence_type": "끈기"
+          },
+          {
+            "description": "열정 표현 약함: '재미있었다' 1회만",
+            "segment_ids": [
+              9
+            ],
+            "evidence_type": "열정"
+          }
+        ],
+        "consistency_note": "일부 경험에서만 자발성과 끈기"
+      },
+      "behavioral_reasoning": "Behavioral: 60-74점 구간. 일부 경험만 자발적 (2개 중 1개, 나머지는 '과제라서'). 끈기 부족 (어려우면 포기 언급, Segment 6). 열정 표현 약함 ('재미있었다' 1회만). 목표 설정 수동적 (교수님이 정해줌). 완수율 중간 (3개 중 2개, 67%). 75-89점 기준(대부분 자발적, 끈기)에 미치지 못함. 65점.",
+      "critical_penalties": -3,
+      "red_flags": [
+        {
+          "flag_type": "easy_goal",
+          "description": "Segment 9에서 동아리 활동 선택 시 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피",
+          "severity": "minor",
+          "penalty": -3,
+          "evidence_reference": "segment_id: 9, char_index: 3450-3500"
+        }
+      ],
+      "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-3점). 총 감점 -3점.",
+      "overall_score": 65,
+      "confidence": {
+        "evidence_strength": 0.55,
+        "internal_consistency": 0.97,
+        "overall_confidence": 0.55,
+        "confidence_note": "증거 부족(Quote 2개), Evidence-Behavioral 간 편차 3점으로 일관적, Minor Flag 1건"
+      },
+      "calculation": {
+        "base_score": 68,
+        "evidence_weight": 0.55,
+        "behavioral_adjustment": 0.94,
+        "adjusted_score": 35.1,
+        "amplified_score": 45.63,
+        "critical_penalties": -3,
+        "final_score": 42.63,
+        "formula": "68 × 0.55 × 0.94 × 1.3 - 3 = 42.63 → 65점"
+      },
+      "strengths": [
+        "주도성 기본 (데이터 분석 체계 구축, 리뷰 분석 주도)",
+        "일부 경험에서 자발적 시작",
+        "책임감 (프로젝트 완수)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 도전 회피 (Segment 9, 쉬운 것 선택)",
+        "끈기 부족 (어려우면 포기 언급)",
+        "열정 표현 약함 ('재미있었다' 1회만)"
+      ],
+      "key_observations": [
+        "일부 경험에서 자발성과 내적 동기 보임",
+        "쉬운 목표만 설정하는 경향",
+        "끈기 부족으로 도전 회피 사례 존재"
+      ]
+    },
+    "growth_potential": {
+      "competency_name": "growth_potential",
+      "competency_display_name": "성장 잠재력",
+      "competency_category": "common",
+      "evaluated_at": "2025-11-23T08:45:43.906539",
+      "perspectives": {
+        "evidence_score": 75,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "데이터 분석을 3주 만에 독학했어요. Python 책, 유튜브, 실습 프로젝트로",
+            "segment_id": 1,
+            "char_index": 1200,
+            "relevance_note": "학습 민첩성 (3주), 구체적 방법론",
+            "quality_score": 0.9,
+            "char_length": 44,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "공모전에서 떨어졌을 때 정말 힘들었지만, 피드백을 받아서 약점을 보완했어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "실패 경험, 회복 과정",
+            "quality_score": 0.95,
+            "char_length": 41,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "제 강점은 데이터 수집 분석이고, 약점은 인사이트 도출이에요. 사례 연구로 보완 중입니다",
+            "segment_id": 9,
+            "char_index": 3500,
+            "relevance_note": "메타인지 (구체적), 개선 계획",
+            "quality_score": 0.9,
+            "char_length": 49,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 학습 민첩성 기본 (비전공인 데이터 분석을 3주 독학, 구체적 방법 'Python 책 + 유튜브 + 프로젝트 실습'). 실패 대응 단순 (공모전 탈락 경험 + 회복 시도). 메타인지 기본 (강점 '데이터 수집 분석', 약점 '인사이트 도출', 근거 명확, 개선 계획 '사례 연구'). Quote 3개. 75-89점 기준(중상 민첩성, 구체적 회복 과정)에 약간 미달하나 Fair 상위권으로 75점 산정.",
+        "behavioral_score": 70,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 학습에서 능동적, 실패 직면, 성장 마인드",
+          "specific_examples": [
+            {
+              "description": "대부분 학습 경험에서 능동적: '혼자서', '스스로 찾아서'",
+              "segment_ids": [
+                1,
+                6,
+                9
+              ],
+              "evidence_type": "능동적 학습"
+            },
+            {
+              "description": "실패 직면 태도: 공모전 탈락 후 원인 분석",
+              "segment_ids": [
+                6
+              ],
+              "evidence_type": "실패 직면"
+            },
+            {
+              "description": "성장 마인드: '노력하면 개선', '배우면 된다' 반복",
+              "segment_ids": [
+                1,
+                9
+              ],
+              "evidence_type": "성장 마인드"
+            }
+          ],
+          "consistency_note": "대부분 경험에서 성장 지향적 태도 일관"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 대부분 학습 경험에서 능동적 ('혼자서', '스스로 찾아서'). 실패 직면 태도 (공모전 탈락 후 원인 분석, Segment 6). 성장 마인드 ('노력하면 개선', '배우면 된다' 반복). 75-89점 기준(대부분 능동적, 실패 직면)에 미달하나 60-74점 충족. 70점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "metacognition_lack",
+            "description": "Segment 11에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-3점).",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 4200-4250"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 강점/약점을 물었을 때 '노력형, 성실함'이라는 추상적 답변만, 구체적 자기 인식 부족(-3점). 총 감점 -3점."
+      },
+      "overall_score": 70,
+      "confidence": {
+        "evidence_strength": 0.7,
+        "internal_consistency": 0.95,
+        "overall_confidence": 0.75,
+        "confidence_note": "증거 충분(Quote 3개), Evidence-Behavioral 간 편차 5점으로 일관적, Minor Flag 1건"
+      },
+      "calculation": {
+        "base_score": 75,
+        "evidence_weight": 0.7,
+        "behavioral_adjustment": 0.9,
+        "adjusted_score": 47.25,
+        "amplified_score": 61.425,
+        "critical_penalties": -3,
+        "final_score": 58.425,
+        "formula": "75 × 0.70 × 0.90 × 1.3 - 3 = 58.425 → 58점"
+      },
+      "strengths": [
+        "학습 민첩성 기본 (비전공 영역 3주 독학, 구체적 방법론)",
+        "실패 직면 태도 (공모전 탈락 후 원인 분석)",
+        "메타인지 기본 (강점/약점 구체적, 개선 계획)",
+        "대부분 학습에서 능동적 ('혼자서', '스스로')",
+        "성장 마인드 명확 ('노력하면 개선', '배우면 된다')"
+      ],
+      "weaknesses": [
+        "초기 자기 인식 추상적 (구체화까지 시간 필요)",
+        "실패 심각성 중간 (공모전 탈락, 더 큰 좌절 경험 부족)",
+        "학습 속도 3주로 매우 빠르지는 않음 (2주 이내가 최상위)"
+      ],
+      "key_observations": [
+        "신입 치고는 성장 마인드가 명확 (상위 30% 추정)",
+        "실패를 학습 기회로 인식하는 회복 탄력성",
+        "대부분 학습에서 일관된 능동적 태도"
+      ]
+    },
+    "organizational_fit": {
+      "competency_name": "organizational_fit",
+      "competency_display_name": "조직 적합성",
+      "competency_category": "common",
+      "evaluated_at": "2025-11-23T08:46:23.778374",
+      "perspectives": {
+        "evidence_score": 72,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석 결과 '입을 데가 없다'는 피드백이 40%였거든요. 숫자가 명확하니까 결국 제 안대로 진행됐습니다.",
+            "segment_id": 5,
+            "char_index": 240,
+            "relevance_note": "고객 우선, 데이터 기반 의사결정",
+            "quality_score": 0.8,
+            "char_length": 64,
+            "actual_transcript_text": ""
+          },
+          {
+            "text": "결과적으로 판매율이 올랐으니 제 판단이 맞았던 거죠.",
+            "segment_id": 5,
+            "char_index": 420,
+            "relevance_note": "결과로 정당화, 목표 달성",
+            "quality_score": 0.75,
+            "char_length": 29,
+            "actual_transcript_text": ""
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 패션 MD 문화 이해도 기본 (고객 우선 명시 '고객 리뷰 분석 결과', 목표 달성 기준 '판매율이 올랐으니'). 피드백 수용성은 있으나 구체적 개선 사례 부족. 겸손 부족. Quote 2개. 75-89점 기준(고객 우선 또는 목표 달성 명시, 개선 사례)에 미치지 못함. Fair 중상위 수준으로 72점."
+      },
+      "behavioral_score": 65,
+      "behavioral_pattern": {
+        "pattern_description": "일부 경험에서 가치관 일관성 부족, 비판 수용하나 불편함 표출",
+        "specific_examples": [
+          {
+            "description": "일부 프로젝트에서 '고객 우선' 강조, 다른 프로젝트에서는 '결과로 정당화'",
+            "segment_ids": [
+              5,
+              9
+            ],
+            "evidence_type": "가치관 일관성"
+          },
+          {
+            "description": "비판 반응 수용적이나 불편함 표출 ('속상했다')",
+            "segment_ids": [
+              11
+            ],
+            "evidence_type": "피드백 수용"
+          }
+        ],
+        "consistency_note": "일부 경험에서 가치관 일관성 부족"
+      },
+      "behavioral_reasoning": "Behavioral: 60-74점 구간. 일부 경험에서 가치관 일관성 부족 (Segment 5에서는 '고객 우선' 강조, Segment 9에서는 '결과로 정당화'). 비판 반응은 수용적이나 불편함 표출 ('속상했다'). 스트레스 대응 중간. 75-89점 기준(대부분 일관)에 미치지 못함. 65점.",
+      "critical_penalties": -8,
+      "red_flags": [
+        {
+          "flag_type": "defensive_attitude",
+          "description": "Segment 11에서 '리스크 관리 체계화 경험 부족'에 대한 피드백 수용 낮음, 변명 위주",
+          "severity": "moderate",
+          "penalty": -5,
+          "evidence_reference": "segment_id: 11, char_index: 420-480"
+        },
+        {
+          "flag_type": "work_life_balance_emphasis",
+          "description": "Segment 12에서 '야근도 제일 많이 했고'라는 표현, 과도한 워라밸 강조",
+          "severity": "minor",
+          "penalty": -3,
+          "evidence_reference": "segment_id: 12, char_index: 440-500"
+        }
+      ],
+      "critical_reasoning": "Critical: Red Flag 2건. (1) Segment 11에서 '리스크 관리 체계화 경험 부족'에 대한 피드백 수용 낮음, 변명 위주(-5점). (2) Segment 12에서 '야근도 제일 많이 했고'라는 표현, 과도한 워라밸 강조(-3점). 총 감점 -8점.",
+      "overall_score": 66,
+      "confidence": {
+        "evidence_strength": 0.55,
+        "internal_consistency": 0.93,
+        "overall_confidence": 0.58,
+        "confidence_note": "증거 부족(Quote 2개), Evidence-Behavioral 간 편차 7점으로 일관성 부족, Moderate Flag 1건"
+      },
+      "calculation": {
+        "base_score": 72,
+        "evidence_weight": 0.55,
+        "behavioral_adjustment": 0.86,
+        "adjusted_score": 34.1,
+        "amplified_score": 44.33,
+        "critical_penalties": -8,
+        "final_score": 66.0,
+        "formula": "72 × 0.55 × 0.86 × 1.3 - 8 = 66.0 → 66점"
+      },
+      "strengths": [
+        "패션 MD 문화 이해도 기본 (고객 우선, 목표 달성 기준)",
+        "비판 수용성은 있으나 구체적 개선 사례 부족",
+        "일부 경험에서 고객 우선 강조"
+      ],
+      "weaknesses": [
+        "가치관 일관성 부족 (일부 경험에서만 고객 우선 강조)",
+        "비판 수용 시 초기 불편함 표출 ('속상했다')",
+        "과도한 워라밸 강조"
+      ],
+      "key_observations": [
+        "신입 치고는 패션 MD 문화 이해도가 기본 수준",
+        "피드백을 성장 기회로 인식하는 성장 마인드 부족",
+        "일부 프로젝트에서만 일관된 시즌 목표 의식"
+      ]
+    }
+  }
+}

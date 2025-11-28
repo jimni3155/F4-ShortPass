@@ -42,7 +42,8 @@ class JobService:
         pdf_content: bytes,
         file_name: str,
         company_id: int,
-        title: str
+        title: str,
+        company_url: str = None
     ) -> Job:
         """
         JD PDF 전체 처리 플로우
@@ -90,16 +91,17 @@ class JobService:
             print(f"  - Total text length: {len(full_text)} characters")
             print(f"  - Number of chunks: {len(chunks)}")
 
-            # 2-1. JD에서 회사 가중치 추출 및 업데이트
-            print("\n[Step 2-1/6] Extracting company weights from JD...")
-            print(f"  - JD text length: {len(full_text)} characters")
+            # 2-1. JD에서 회사 가중치 추출 및 업데이트 (임시 비활성화 - persona_data.json 사용)
+            print("\n[Step 2-1/6] Skipping company weights extraction (using pre-generated persona_data.json)")
+            weights_data = None
 
-            try:
-                weights_data = await self._extract_company_weights(full_text)
-            except Exception as e:
-                print(f"  ✗ Failed to extract company weights: {e}")
-                print(f"  → Continuing without weight extraction...")
-                weights_data = None
+            # 아래 LLM 호출 코드는 OpenAI API 키가 필요하므로 임시 비활성화
+            # try:
+            #     weights_data = await self._extract_company_weights(full_text)
+            # except Exception as e:
+            #     print(f"  ✗ Failed to extract company weights: {e}")
+            #     print(f"  → Continuing without weight extraction...")
+            #     weights_data = None
 
             if weights_data and "weights" in weights_data and Company:
                 # Company 테이블 업데이트 (Company 모델이 있는 경우에만)
@@ -124,7 +126,8 @@ class JobService:
             job = Job(
                 company_id=company_id,
                 title=title,
-                description=full_text
+                description=full_text,
+                company_url=company_url  # 기업 URL 저장 (향후 파싱 예정)
             )
             db.add(job)
             db.flush()  # ID 생성을 위해 flush

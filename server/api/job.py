@@ -5,13 +5,154 @@ Job 관련 API 엔드포인트
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from typing import Optional, List
+import logging
 
 from db.database import get_db
 from services.job_service import JobService
+from schemas.evaluation import ApplicantListResponse
 from pydantic import BaseModel
 
 
+# Mock data, converted from the frontend mock file
+candidate_list_mock = {
+  "company_name": "삼성물산 패션부문",
+  "job_title": "상품기획(MD) / Retail영업",
+  "total_applicants": 5,
+  "completed_evaluations": 3,
+  "average_score": 83.3,
+  "applicants": [
+    {
+      "applicant_id": "CAND_001",
+      "job_id": "JOB_001",
+      "rank": 1,
+      "applicant_name": "김지원",
+      "track": "상품기획(MD)",
+      "total_score": 92,
+      "strengths": "Data-Driven Insight",
+      "weaknesses": "Global Mindset",
+      "ai_summary_comment": "데이터 기반 MD로 재고회전율 0.8→1.2 개선(품절률 5%↓), 마진 35→38.5% 달성하며 원가·품질 리스크 관리, 디자인/VMD·공급업체 협업·협상에 강점이고 리스크 관리 체계 학습 의지가 명확한 지원자.",
+      "status": "🟢 추천",
+      "competency_scores": [
+          {"name": "Data Insight", "score": 95},
+          {"name": "Strategic Solving", "score": 90},
+          {"name": "Value Chain", "score": 85},
+          {"name": "Marketing", "score": 88},
+          {"name": "Stakeholder", "score": 80}
+      ]
+    },
+    {
+      "applicant_id": "CAND_002",
+      "job_id": "JOB_001",
+      "rank": 2,
+      "applicant_name": "이삼성",
+      "track": "Retail영업",
+      "total_score": 88,
+      "strengths": "Stakeholder Mgmt",
+      "weaknesses": "Creativity & Execution",
+      "ai_summary_comment": "유관부서 설득 논리가 명확하나, 위기 상황 대처의 구체성이 다소 부족함.",
+      "status": "🟢 추천",
+      "competency_scores": [
+          {"name": "Data Insight", "score": 80},
+          {"name": "Strategic Solving", "score": 85},
+          {"name": "Value Chain", "score": 88},
+          {"name": "Marketing", "score": 90},
+          {"name": "Stakeholder", "score": 95}
+      ]
+    },
+    {
+      "applicant_id": "CAND_003",
+      "job_id": "JOB_001",
+      "rank": 3,
+      "applicant_name": "박물산",
+      "track": "상품기획(MD)",
+      "total_score": 74,
+      "strengths": "Value Chain Optimization",
+      "weaknesses": "Strategic Problem Solving",
+      "ai_summary_comment": "실무 경험은 풍부하나, 전략적 의사결정의 근거가 직관에 의존함.",
+      "status": "🟡 보류",
+      "competency_scores": [
+          {"name": "Data Insight", "score": 60},
+          {"name": "Strategic Solving", "score": 65},
+          {"name": "Value Chain", "score": 90},
+          {"name": "Marketing", "score": 75},
+          {"name": "Stakeholder", "score": 80}
+      ]
+    },
+    {
+      "applicant_id": "CAND_004",
+      "job_id": "JOB_001",
+      "rank": 4,
+      "applicant_name": "최혁신",
+      "track": "Retail영업",
+      "total_score": 65,
+      "strengths": "Customer Journey & Marketing Strategy",
+      "weaknesses": "Data-Driven Insight",
+      "ai_summary_comment": "마케팅 전략 수립에 강점이나, 데이터 분석 능력 향상 필요.",
+      "status": "🟠 검토 필요",
+      "competency_scores": [
+          {"name": "Data Insight", "score": 50},
+          {"name": "Strategic Solving", "score": 60},
+          {"name": "Value Chain", "score": 70},
+          {"name": "Marketing", "score": 85},
+          {"name": "Stakeholder", "score": 60}
+      ]
+    },
+    {
+      "applicant_id": "CAND_005",
+      "job_id": "JOB_001",
+      "rank": 5,
+      "applicant_name": "정열정",
+      "track": "상품기획(MD)",
+      "total_score": 58,
+      "strengths": "Creativity & Execution",
+      "weaknesses": "All competencies need improvement",
+      "ai_summary_comment": "열정적이나, 직무 관련 핵심 역량 전반에 걸쳐 보완이 필요함.",
+      "status": "🔴 미흡",
+      "competency_scores": [
+          {"name": "Data Insight", "score": 55},
+          {"name": "Strategic Solving", "score": 50},
+          {"name": "Value Chain", "score": 60},
+          {"name": "Marketing", "score": 65},
+          {"name": "Stakeholder", "score": 60}
+      ]
+    }
+  ]
+}
+
+
 router = APIRouter(prefix="/jobs", tags=["jobs"])
+logger = logging.getLogger("uvicorn")
+
+@router.get("/{job_id}/applicants", response_model=ApplicantListResponse)
+async def get_applicants_for_job(
+    job_id: int,
+    db: Session = Depends(get_db)
+):
+    """
+    특정 Job에 대한 지원자 목록 및 평가 요약 조회
+
+    Args:
+        job_id: Job ID
+
+    Returns:
+        ApplicantListResponse: 지원자 목록 및 요약 정보
+    """
+    logger.info(f"Getting applicants for job ID: {job_id}")
+    
+    # TODO: Replace this with actual service call to fetch and build the response
+    # For now, returning mock data.
+    # Note: In a real implementation, you would check if job_id exists.
+    
+    # The job_id in the mock is 'JOB_001', but we ignore the input job_id for now
+    
+    return candidate_list_mock
+
+
+
+
+
+router = APIRouter(prefix="/jobs", tags=["jobs"])
+logger = logging.getLogger("uvicorn")
 
 
 # Response Models
@@ -78,6 +219,7 @@ async def upload_jd_pdf(
     Returns:
         JobResponse: 생성된 Job 정보
     """
+    logger.info(f"Uploading JD for company ID: {company_id}, title: {title}")
     # PDF 파일 검증
     if not pdf_file.filename.endswith('.pdf'):
         raise HTTPException(
@@ -138,6 +280,7 @@ async def get_job(
     Returns:
         JobDetailResponse: Job 상세 정보
     """
+    logger.info(f"Getting job with ID: {job_id}")
     job_service = JobService()
     job_data = job_service.get_job_with_chunks(db, job_id)
 
@@ -181,6 +324,7 @@ async def search_similar_chunks(
     Returns:
         List[SearchResult]: 유사한 청크 리스트
     """
+    logger.info(f"Searching for similar chunks with query: {query}")
     try:
         job_service = JobService()
         results = job_service.search_similar_chunks(
@@ -222,6 +366,7 @@ async def delete_job(
     Returns:
         Dict: 삭제 결과
     """
+    logger.info(f"Deleting job with ID: {job_id}")
     job_service = JobService()
     success = job_service.delete_job(db, job_id)
 
@@ -265,6 +410,7 @@ async def analyze_jd_competencies(
     Returns:
         CompetencyAnalysisResponse: 역량 분석 결과
     """
+    logger.info(f"Analyzing JD competencies for company ID: {company_id}")
     # PDF 파일 검증
     if not pdf_file.filename.endswith('.pdf'):
         raise HTTPException(

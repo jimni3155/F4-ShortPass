@@ -1,0 +1,26 @@
+{                                                                                        
+    "interview_id": "sample_interview_id",                                                 
+    "candidate_id": "sample_candidate_id",                                                 
+    "conducted_at": "2025-01-01T00:00:00Z",                                                
+    "total_duration_sec": 0,                                                               
+    "segments": [                                                                          
+      {                                                                                    
+        "segment_id": 1,                                                                   
+        "segment_order": 1,                                                                
+        "question_text": "",                                                               
+        "answer_text": "",                                                                 
+        "answer_duration_sec": 0,                                                          
+        "char_index_start": 0,                                                             
+        "char_index_end": 0
+      },                                                                                   
+      {                                                                                    
+        "segment_id": 2,                                                                   
+        "segment_order": 2,                                                                
+        "question_text": "",
+        "answer_text": "",                                                                 
+        "answer_duration_sec": 0,                                                          
+        "char_index_start": 0,                                                             
+        "char_index_end": 0                                                                
+      }                                                                                    
+    ]                                                                                      
+  }

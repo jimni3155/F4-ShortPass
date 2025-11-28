@@ -22,7 +22,7 @@ class PersonaService:
         self.parser = PersonaQuestionParser()
         self.generator = PersonaGenerator()
 
-   """
+   
     def create_persona_from_pdf(
         self,
         company_id: int,

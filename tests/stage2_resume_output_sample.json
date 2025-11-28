@@ -1,0 +1,32 @@
+{
+  "segment_evaluations_with_resume": [
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 1,
+      "quote_text": "재고회전율 개선 프로젝트에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축했습니다.",
+      "relevance_note": "주도성 (스스로 데이터 분석 체계 구축)",
+      "quality_score": 0.8,
+      "overall_score": 70,
+      "score": 70,
+      "interview_confidence": 0.75,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에 '시즌 상품 믹스 최적화 프로젝트'에서 판매/재고/트렌드 3축 데이터 분석 체계를 구축한 경험이 명시되어 있음. 프로젝트의 내용과 면접 답변이 일치하며, 시간적으로도 모순이 없음.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "시즌 상품 믹스 최적화 프로젝트 | 데이터 기반 상품 믹스 재설계",
+            "relevance": "면접 답변의 '판매/재고/트렌드 3축 데이터 분석 체계 구축'과 직접 매칭됨."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    }
+  ]
+}

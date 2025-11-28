@@ -5,6 +5,7 @@ Company 관련 API 엔드포인트
 from fastapi import APIRouter, Depends, HTTPException, Form
 from sqlalchemy.orm import Session
 from typing import Optional, List
+import logging
 
 from db.database import get_db
 from services.company_service import CompanyService
@@ -19,6 +20,7 @@ from schemas.company import (
 
 
 router = APIRouter(prefix="/companies", tags=["companies"])
+logger = logging.getLogger("uvicorn")
 
 
 @router.post("/", response_model=CompanyResponse)
@@ -42,6 +44,7 @@ async def create_company(
     Returns:
         CompanyResponse: 생성된 기업 정보
     """
+    logger.info(f"Creating company with name: {name}")
     try:
         company_service = CompanyService()
 
@@ -77,6 +80,7 @@ async def get_company(
     Returns:
         CompanyDetailResponse: 기업 상세 정보
     """
+    logger.info(f"Getting company with ID: {company_id}")
     company_service = CompanyService()
     company_data = company_service.get_company_with_jobs(db, company_id)
 
@@ -103,6 +107,7 @@ async def get_companies(
     Returns:
         List[CompanyResponse]: 기업 목록
     """
+    logger.info(f"Getting companies with skip: {skip}, limit: {limit}")
     company_service = CompanyService()
     companies = company_service.get_companies(db, skip=skip, limit=limit)
 
@@ -126,6 +131,7 @@ async def update_company(
     Returns:
         CompanyResponse: 수정된 기업 정보
     """
+    logger.info(f"Updating company with ID: {company_id}")
     company_service = CompanyService()
 
     update_data = company_update.model_dump(exclude_unset=True)
@@ -156,6 +162,7 @@ async def delete_company(
     Returns:
         dict: 삭제 결과
     """
+    logger.info(f"Deleting company with ID: {company_id}")
     company_service = CompanyService()
     success = company_service.delete_company(db, company_id)
 
@@ -184,6 +191,7 @@ async def create_company_questions(
     Returns:
         List[QuestionResponse]: 생성된 질문 리스트
     """
+    logger.info(f"Creating questions for company ID: {company_id}")
     company_service = CompanyService()
 
     # 기업 존재 여부 확인
@@ -225,6 +233,7 @@ async def get_company_questions(
     Returns:
         List[QuestionResponse]: 질문 목록
     """
+    logger.info(f"Getting questions for company ID: {company_id}")
     company_service = CompanyService()
 
     # 기업 존재 여부 확인

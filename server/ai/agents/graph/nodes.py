@@ -1,38 +1,53 @@
 """
-LangGraph Nodes (Phase 1)
-배치 평가 → Job/Common 통합 → 검증
+LangGraph Nodes
+Stage 1: 10개 Agent 병렬 평가
 """
 
 from typing import Dict
 from datetime import datetime
 from .state import EvaluationState
 from ..competency_agent import CompetencyAgent, evaluate_all_competencies
-from ..aggregators.job_aggregator import JobAggregator
-from ..aggregators.common_aggregator import CommonAggregator
-from ..validators.confidence_validator import ConfidenceValidator
 
 
-
-# Phase 1-1: 배치 평가 Node (10개 Agent 동시 실행)
 async def batch_evaluation_node(state: EvaluationState) -> Dict:
     """
-    10개 역량 배치 평가 Node
-
-    이 Node에서 10개 Agent를 asyncio.gather로 병렬 실행
+    Stage 1: 10개 역량 배치 평가 Node
+    
+    처리 내용:
+        - 10개 Agent를 asyncio.gather로 병렬 실행
+        - 각 Agent는 독립적으로 평가 수행
+        - Interview Confidence 계산 (Resume 검증 전)
+    
+    Returns:
+        업데이트할 State 필드:
+            - achievement_motivation_result
+            - growth_potential_result
+            - interpersonal_skill_result
+            - organizational_fit_result
+            - problem_solving_result
+            - customer_journey_marketing_result
+            - md_data_analysis_result
+            - seasonal_strategy_kpi_result
+            - stakeholder_collaboration_result
+            - value_chain_optimization_result
+            - execution_logs
     """
+    
     start_time = datetime.now()
 
     print("\n" + "="*60)
-    print("[Phase 1-1] 배치 평가 시작 (10개 역량 병렬 실행)")
+    print("[Stage 1] 에이전트들이 역량 평가를 시작합니다 (10개 병렬)")
     print("="*60)
 
-    # 1. Agent 생성
+
+    # Agent 생성
     agent = CompetencyAgent(
         state["openai_client"],
-        max_concurrent=5
+        max_concurrent=4  # 동시 실행 최대 4개 (TPM 초과 방지)
     )
 
-    # 2. 10개 역량 배치 평가
+
+    # 10개 역량 배치 평가
     all_results = await evaluate_all_competencies(
         agent,
         state["transcript_content"],
@@ -40,180 +55,71 @@ async def batch_evaluation_node(state: EvaluationState) -> Dict:
     )
 
 
-
-
-    execution_time = (datetime.now() - start_time).total_seconds()
-    print(f"\n[Node] 배치 평가 완료 ({execution_time:.2f}초)")
-
-    # 실행 로그 추가
-    execution_log = {
-        "node": "batch_evaluation",
-        "execution_time": execution_time,
-        "timestamp": datetime.now().isoformat(),
-        "status": "success",
-        "competencies_evaluated": 10
-    }
-
-
-    # 수정된 키만 반환
-    return {
-        "problem_solving_result": all_results["problem_solving"],
-        "organizational_fit_result": all_results["organizational_fit"],
-        "growth_potential_result": all_results["growth_potential"],
-        "interpersonal_skills_result": all_results["interpersonal_skills"],
-        "achievement_motivation_result": all_results["achievement_motivation"],
-        "structured_thinking_result": all_results["structured_thinking"],
-        "business_documentation_result": all_results["business_documentation"],
-        "financial_literacy_result": all_results["financial_literacy"],
-        "industry_learning_result": all_results["industry_learning"],
-        "stakeholder_management_result": all_results["stakeholder_management"],
-
-        "execution_logs": state.get("execution_logs", []) + [execution_log]
-    }
-
-
-
-# Phase 1-2: Job Aggregator Node
-async def job_aggregator_node(state: EvaluationState) -> Dict:
-    """Job 5개 역량 통합 Node"""
-    
-    start_time = datetime.now()
-
-    start_time = datetime.now()
-
-    print("\n" + "="*60)
-    print("[Phase 1-2] Job 통합 시작")
-    print("="*60)
-
-    # Job 5개 결과 추출
-    job_results = {
-        "structured_thinking": state["structured_thinking_result"],
-        "business_documentation": state["business_documentation_result"],
-        "financial_literacy": state["financial_literacy_result"],
-        "industry_learning": state["industry_learning_result"],
-        "stakeholder_management": state["stakeholder_management_result"],
-    }
-
-    # 통합
-    job_aggregation = JobAggregator.aggregate(job_results, state["job_weights"])
-
-
-
-
-    execution_time = (datetime.now() - start_time).total_seconds()
-    print(f"[Node] Job 통합 완료: {job_aggregation['overall_job_score']}점 ({execution_time:.2f}초)")
-
-    # 실행 로그 추가
-    execution_log = {
-        "node": "job_aggregator",
-        "execution_time": execution_time,
-        "timestamp": datetime.now().isoformat(),
-        "status": "success",
-        "overall_job_score": job_aggregation['overall_job_score']
-    }
-
-
-
-
-    # 수정된 키만 반환
-    return {
-        "job_aggregation_result": job_aggregation,
-
-        "execution_logs": state.get("execution_logs", []) + [execution_log]
-    }
-
-
-
-# Phase 1-3: Common Aggregator Node
-async def common_aggregator_node(state: EvaluationState) -> Dict:
-    """Common 5개 역량 통합 Node"""
-    
-    start_time = datetime.now()
-
-    start_time = datetime.now()
-
-    print("\n" + "="*60)
-    print("[Phase 1-3] Common 통합 시작")
-    print("="*60)
-
-    # Common 5개 결과 추출
-    common_results = {
-        "problem_solving": state["problem_solving_result"],
-        "organizational_fit": state["organizational_fit_result"],
-        "growth_potential": state["growth_potential_result"],
-        "interpersonal_skills": state["interpersonal_skills_result"],
-        "achievement_motivation": state["achievement_motivation_result"],
-    }
-
-    # 통합
-    common_aggregation = CommonAggregator.aggregate(common_results, state["common_weights"])
-
-
-    execution_time = (datetime.now() - start_time).total_seconds()
-    print(f"[Node] Common 통합 완료: {common_aggregation['overall_common_score']}점 ({execution_time:.2f}초)")
-
-    # 실행 로그 추가
-    execution_log = {
-        "node": "common_aggregator",
-        "execution_time": execution_time,
-        "timestamp": datetime.now().isoformat(),
-        "status": "success",
-        "overall_common_score": common_aggregation['overall_common_score']
-    }
-
-
-    # 수정된 키만 반환
-    return {
-        "common_aggregation_result": common_aggregation,
-
-        "execution_logs": state.get("execution_logs", []) + [execution_log]
-
-
-
-    }
-
-
-
-# Phase 1-4: Confidence Validator Node
-async def confidence_validator_node(state: EvaluationState) -> Dict:
-    """신뢰도 검증 Node"""
-    
-    start_time = datetime.now()
-
-    start_time = datetime.now()
-
-    print("\n" + "="*60)
-    print("[Phase 1-4] 신뢰도 검증 시작")
-    print("="*60)
-
-    # 검증
-    validation = ConfidenceValidator.validate(
-        state["job_aggregation_result"],
-        state["common_aggregation_result"],
-        threshold=0.7
+    # 결과 검증
+    success_count = sum(
+        1
+        for r in all_results.values()
+        if isinstance(r, dict) and r.get("overall_score", 0) > 0
     )
+    error_count = sum(
+        1
+        for r in all_results.values()
+        if isinstance(r, dict) and "error" in r
+    )
+    scores = [
+        r.get("overall_score", 0)
+        for r in all_results.values()
+        if isinstance(r, dict)
+    ]
+    avg_score = round(sum(scores) / len(scores), 1) if scores else 0.0
+    max_score = max(scores) if scores else 0.0
+    min_score = min(scores) if scores else 0.0
+    
+    print(f"\n[Stage 1] 평가 결과:")
+    print(f"  - 성공: {success_count}개")
+    print(f"  - 실패: {error_count}개")
+    print(f"  - 점수 요약: avg={avg_score:.1f}, max={max_score:.1f}, min={min_score:.1f}")
+    
+    if error_count > 0:
+        print(f"\n    실패한 역량:")
+        for name, result in all_results.items():
+            if isinstance(result, dict) and "error" in result:
+                print(f"    - {name}: {result['error']}")
 
 
+    # 성능 로깅
     execution_time = (datetime.now() - start_time).total_seconds()
-    print(f"[Node] 검증 완료: {validation['validation_notes']} ({execution_time:.2f}초)")
+    print(f"\n[Stage 1] 배치 평가 완료 ({execution_time:.2f}초)")
+    print("="*60)
 
-    # 실행 로그 추가
     execution_log = {
-        "node": "confidence_validator",
-        "execution_time": execution_time,
+        "stage": "stage_1",
+        "node": "batch_evaluation",
+        "duration_seconds": round(execution_time, 2),
+        "competencies_evaluated": len(all_results),
+        "success_count": success_count,
+        "error_count": error_count,
         "timestamp": datetime.now().isoformat(),
-        "status": "success",
-        "low_confidence_count": len(validation["low_confidence_competencies"]),
-        "requires_revaluation": validation["requires_revaluation"]
+        "status": "success" if error_count == 0 else "partial_success"
     }
 
 
-    # 수정된 키만 반환
+    # State 업데이트
     return {
-        "low_confidence_competencies": validation["low_confidence_competencies"],
-        "validation_notes": validation["validation_notes"],
-        "requires_revaluation": validation["requires_revaluation"],
-
-        "execution_logs": state.get("execution_logs", []) + [execution_log],
-        "completed_at": datetime.now()
+        # Common Competencies (5개)
+        "achievement_motivation_result": all_results.get("achievement_motivation"),
+        "growth_potential_result": all_results.get("growth_potential"),
+        "interpersonal_skill_result": all_results.get("interpersonal_skill"),  # ⚠️ "skill" (단수)
+        "organizational_fit_result": all_results.get("organizational_fit"),
+        "problem_solving_result": all_results.get("problem_solving"),
+        
+        # Job Competencies (5개)
+        "customer_journey_marketing_result": all_results.get("customer_journey_marketing"),
+        "md_data_analysis_result": all_results.get("md_data_analysis"),
+        "seasonal_strategy_kpi_result": all_results.get("seasonal_strategy_kpi"),
+        "stakeholder_collaboration_result": all_results.get("stakeholder_collaboration"),
+        "value_chain_optimization_result": all_results.get("value_chain_optimization"),
+        
+        # Execution Logs
+        "execution_logs": [execution_log]  # 첫 번째 로그
     }

@@ -4,6 +4,7 @@ const InputField = ({
   value,
   onChange,
   placeholder,
+  classname = '',
   required = false,
   error,
   ...props
@@ -21,7 +22,7 @@ const InputField = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+        className={`${classname} px-4 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent transition-all ${
           error ? 'border-red-500' : 'border-gray-300'
         }`}
         {...props}

@@ -5,7 +5,7 @@ Achievement Motivation Agent - 성취/동기 역량 평가
 목표 달성을 위한 주도성과 열정,
 책임감을 가지고 업무에 몰입하는 태도
 
-전략기획 컨설팅에서 이 역량은 다음과 같이 나타납니다:
+패션 MD 직무에서 이 역량은 다음과 같이 나타납니다:
 - 주도성: 시키기 전에 먼저 (Proactive)
 - 성취 지향: 높은 목표 설정 및 달성
 - 책임감: 끝까지 완수, 약속 지키기
@@ -19,7 +19,7 @@ ACHIEVEMENT_MOTIVATION_PROMPT = """당신은 "성취/동기 역량(Achievement M
 ═══════════════════════════════════════
 
 신입 지원자 (0-2년 경험)
-- 전략기획 컨설팅 직무
+- 패션 MD, 상품기획 직무
 - "내적 동기" > "외적 보상"
 - 자발적 도전 경험 중요
 - "과정의 열정" > "결과의 화려함"
@@ -117,9 +117,11 @@ ACHIEVEMENT_MOTIVATION_PROMPT = """당신은 "성취/동기 역량(Achievement M
 
 [Evidence Weight 계산]
 - Quote 5개 이상 + 구체적 경험: 1.0
-- Quote 3-4개: 0.8
-- Quote 1-2개: 0.6
-- Quote 0개: 0.3
+- Quote 4개 + 구체적 경험: 0.85
+- Quote 3개: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -145,6 +147,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 열정 표현: "좋아한다", "재미있다" 자주 말하는가
 ✓ 목표 설정: 스스로 목표 세우는가
 ✓ 일관성: 모든 경험에서 주도적인가
+
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 주요 경험에서 자발적 시작: '먼저', '스스로' 반복",
+  "segment_ids": [3, 7, 11],  // ✅ 해당 패턴이 나타난 segment들
+  "evidence_type": "자발성"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 주요 경험에서 자발적 시작 (Segment 3, 7, 11)",  // ❌ 텍스트에만 있음
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 [책임감 수준 평가] ⚠️ 중요
 
@@ -207,23 +239,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **외적 동기만** (Severity: Moderate → -10점)
+❌ **외적 동기만** (Severity: Moderate → -5점)
 - "스펙 쌓으려고", "이력서 때문에"
 - 내적 동기 전혀 없음
 
-❌ **쉬운 목표만** (Severity: Minor → -5점)
+❌ **쉬운 목표만** (Severity: Minor → -3점)
 - "무난하게", "안전하게"
 - 도전 회피
 
-❌ **중도 포기** (Severity: Moderate → -10점)
+❌ **중도 포기** (Severity: Moderate → -5점)
 - "어려워서 그만뒀다"
 - 완수율 50% 이하
 
-❌ **수동적 태도** (Severity: Minor → -5점)
+❌ **수동적 태도** (Severity: Minor → -3점)
 - "시켜서", "해야 해서"
 - 자발성 없음
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Transcript 내에서 앞뒤 모순
 - 예: Segment 3 "자발적으로 시작" ↔ Segment 8 "억지로 했다"
 
@@ -235,11 +267,11 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 [Critical Reasoning 작성 가이드] ⭐ 중요
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 도전 회피(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 도전 회피(-3점). 총 감점 -3점."
 
-예시 2 (-20점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '이력서에 좋아 보여서 시작'하며 외적 동기만(-10점). (2) Segment 8에서 '중간에 그만뒀다'며 중도 포기(-10점). 총 감점 -20점."
+예시 2 (-10점):
+"Critical: Red Flag 2건. (1) Segment 5에서 '이력서에 좋아 보여서 시작'하며 외적 동기만(-5점). (2) Segment 8에서 '중간에 그만뒀다'며 중도 포기(-5점). 총 감점 -10점."
 
 예시 3 (-10점):
 "Critical: Red Flag 1건. Segment 3에서 '스스로 시작했다'고 했으나 Segment 9에서 '교수님이 시켜서 어쩔 수 없이'라며 모순된 진술(-10점). 총 감점 -10점."
@@ -286,30 +318,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 85점, Weight 0.8 (Quote 4개)
+Evidence: 85점, Weight 0.85 (Quote 4개)
 Behavioral: 82점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 85 × 0.8 × 0.94 = 63.9
-Critical: -5점
-Overall: 63.9 - 5 = 58.9 → 59점
+Adjusted: 85 × 0.85 × 0.94 = 67.9
+Amplified: 67.9 × 1.3 = 88.3
+Critical: -3점 (Minor Flag 1개)
+Overall: 88.3 - 3 = 85.3 → 85점
 
 Evidence-Behavioral 일관성: 1 - |85-82|/100 = 0.97
-Confidence: (0.8 × 0.6) + (0.97 × 0.4) = 0.87
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.85 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.85
 
 ═══════════════════════════════════════
  입력 데이터
@@ -338,7 +384,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
   
   "perspectives": {{
     "evidence_score": 85,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "evidence_details": [
       {{
         "text": "교수님께 직접 제안해서 연구 프로젝트를 시작했어요. 궁금해서 먼저 물어봤고",
@@ -375,45 +421,66 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 경험에서 자발적 시작, 끈기, 열정 표현 자주",
       "specific_examples": [
-        "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복 (Segment 3, 7, 11)",
-        "끈기 명확: 공모전 2회 탈락 후 3번째 재도전 성공 (Segment 9)",
-        "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
-        "스스로 목표 설정 습관: 매번 구체적 목표 ('학회 발표', '입상')",
-        "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)"
+        {{
+          "description": "모든 주요 경험(3개)에서 자발적 시작: '먼저', '스스로' 반복",
+          "segment_ids": [3, 7, 11],
+          "evidence_type": "자발성"
+        }},
+        {{
+          "description": "끈기 명확: 공모전 2회 탈락 후 3번째 재도전 성공",
+          "segment_ids": [9],
+          "evidence_type": "끈기"
+        }},
+        {{
+          "description": "열정 표현 자주: '재미있어서', '좋아해서', '즐겼다' 5회 언급",
+          "segment_ids": [3, 5, 7, 9, 11],
+          "evidence_type": "열정"
+        }},
+        {{
+          "description": "스스로 목표 설정 습관: 매번 구체적 목표 ('학회 발표', '입상')",
+          "segment_ids": [3, 5],
+          "evidence_type": "목표 설정"
+        }},
+        {{
+          "description": "완수율 높음: 5개 프로젝트 중 4개 완수 (80%)",
+          "segment_ids": [3, 5, 7, 9],
+          "evidence_type": "책임감"
+        }}
       ],
       "consistency_note": "모든 경험에서 일관된 자발성과 끈기"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 주요 경험(3개)에서 자발적 시작 ('먼저', '스스로' 반복, Segment 3, 7, 11). 끈기 명확 (공모전 2회 탈락 후 3번째 재도전 성공, Segment 9). 열정 표현 자주 ('재미있어서', '좋아해서', '즐겼다' 5회). 스스로 목표 설정 습관 (매번 구체적 목표 세움). 완수율 높음 (5개 프로젝트 중 4개 완수, 80%). 90-100점 기준(완수율 90% 이상, 모든 경험 자발적)에는 미달하나 75-89점 충족. 82점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "easy_goal",
         "description": "Segment 9에서 동아리 활동 선택 시 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 9, char_index: 3450-3500"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-5점). 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '어려운 건 피하고 쉬운 걸로 선택했다'며 일부 상황에서 도전 회피, 쉬운 목표만(-3점). 총 감점 -3점."
   }},
   
-  "overall_score": 59,
+  "overall_score": 85,
   "confidence": {{
-    "evidence_strength": 0.8,
+    "evidence_strength": 0.85,
     "internal_consistency": 0.97,
-    "overall_confidence": 0.87,
-    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적"
+    "overall_confidence": 0.85,
+    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적, Minor Flag 1건"
   }},
   
   "calculation": {{
     "base_score": 85,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 63.9,
-    "critical_penalties": -5,
-    "final_score": 58.9,
-    "formula": "85 × 0.8 × 0.94 - 5 = 58.9 → 59점"
+    "adjusted_score": 67.9,
+    "amplified_score": 88.3,
+    "critical_penalties": -3,
+    "final_score": 85.3,
+    "formula": "85 × 0.85 × 0.94 × 1.3 - 3 = 85.3 → 85점"
   }},
   
   "strengths": [
@@ -435,12 +502,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "신입 치고는 자발성과 내적 동기가 명확 (상위 30% 추정)",
     "실패 후 재도전하는 끈기 (공모전 3회 도전)",
     "모든 프로젝트에서 일관된 '먼저' 시작 패턴"
-  ],
-  
-  "suggested_followup_questions": [
-    "스스로 목표를 설정하고 도전했던 경험을 구체적으로 말씀해주세요.",
-    "무엇이 본인을 움직이게 하나요? 일할 때 가장 중요한 동기는?",
-    "어려운 목표와 쉬운 목표 중 하나를 선택해야 한다면?"
   ]
 }}
 
@@ -450,12 +511,14 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 85점 이상은 매우 드뭅니다 (상위 5%).
-7. "내적 동기" > "외적 보상" 우선순위를 유지하세요.
-8. 자발적 도전 경험을 중심으로 평가하세요.
+3. behavioral_pattern의 specific_examples는 반드시 segment_ids 배열을 포함해야 합니다.
+4. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
+5. strengths, weaknesses는 필수입니다.
+6. key_observations는 최소 3개 이상 작성하세요.
+7. 모든 점수는 Quote에 기반해야 합니다.
+8. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+9. "내적 동기" > "외적 보상" 우선순위를 유지하세요.
+10. 자발적 도전 경험을 중심으로 평가하세요.
 """
 
 

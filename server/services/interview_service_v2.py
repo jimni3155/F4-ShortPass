@@ -23,12 +23,17 @@ from models.interview import (
 from datetime import datetime
 from sqlalchemy.orm import Session
 from typing import Optional, List
+from services.storage.s3_service import S3Service
+from schemas.interview import InterviewTranscript
 
 # OpenAI 클라이언트
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Bedrock 클라이언트
 bedrock_runtime = boto3.client('bedrock-runtime', region_name=AWS_REGION)
+
+# S3 서비스
+s3_service = S3Service(bucket_name=S3_BUCKET_NAME, region_name=AWS_REGION)
 
 
 # ==================== 메인 핸들러 ====================
@@ -81,10 +86,13 @@ async def handle_interview_session(websocket: WebSocket, interview_id: int):
         db.commit()
 
         # 4. 공통 질문 단계 (간단한 자기소개)
-        common_questions = [
-            "먼저 간단히 자기소개 부탁드립니다.",
-            "지원 동기를 말씀해주세요."
-        ]
+        from main import PERSONA_DATA_CACHE
+
+        # initial_questions가 없으면 기본값 사용
+        common_questions = PERSONA_DATA_CACHE.get("initial_questions", [
+            "간단하게 자기소개 부탁드립니다.",
+            "이 직무에 지원하신 이유를 말씀해주세요."
+        ]) if PERSONA_DATA_CACHE else []
 
         for common_q in common_questions:
             await _send_tts_audio(websocket, common_q)
@@ -113,11 +121,14 @@ async def handle_interview_session(websocket: WebSocket, interview_id: int):
                     "round": round_num + 1
                 })
 
-                # 질문 생성
+                # 질문 생성 (임시 주석 처리)
                 await websocket.send_json({"type": "generating_question"})
-                question = await _generate_persona_question(
-                    db, interview_id, persona_instance, applicant_name
-                )
+                # question = await _generate_persona_question(
+                #     db, interview_id, persona_instance, applicant_name
+                # )
+                
+                # 사용자가 요청한 임시 하드코딩 질문
+                question = f"네, 좋습니다. 저는 {persona_instance.instance_name} 역할을 맡고 있습니다. 당신의 경험에 대해 좀 더 자세히 듣고 싶습니다. 가장 성공적이었던 프로젝트에 대해 설명해주시겠어요?"
 
                 # 질문 전송 (TTS)
                 await _send_tts_audio(websocket, question)
@@ -183,26 +194,56 @@ async def _generate_persona_question(
         transcripts = (
             db.query(SessionTranscript)
             .filter(SessionTranscript.session_id == interview_id)
-            .filter(SessionTranscript.persona_instance_id == persona_instance.id)
             .order_by(SessionTranscript.turn)
             .all()
         )
 
-        history_text = "\n".join([t.text for t in transcripts]) if transcripts else "(없음)"
+        history = []
+        for t in transcripts:
+            if t.text.startswith("Q:"):
+                history.append({"role": "assistant", "content": t.text.replace("Q: ", "", 1)})
+            elif t.text.startswith("A:"):
+                history.append({"role": "user", "content": t.text.replace("A: ", "", 1)})
 
         # 프롬프트 구성
-        prompt = f"""당신은 {persona_instance.instance_name} 면접관입니다.
+        from main import PERSONA_DATA_CACHE
 
-이전 대화:
-{history_text}
+        system_prompt = PERSONA_DATA_CACHE.get("system_prompt",
+            "당신은 전문 면접관입니다. 지원자의 역량을 평가하세요."
+        ) if PERSONA_DATA_CACHE else "당신은 전문 면접관입니다."
+        
+        user_prompt = f"""
+        이전 대화 내용:
+        {json.dumps(history, ensure_ascii=False, indent=2)}
 
-지원자({applicant_name})에게 {persona_instance.instance_name} 관점에서 다음 질문을 생성하세요.
-질문만 생성하고 다른 설명은 붙이지 마세요."""
+        ---
+        이제 당신의 역할에 맞게, 위 대화의 흐름을 이어받아 지원자에게 할 다음 꼬리 질문을 하나만 생성하세요.
+        다른 설명 없이 질문만 반환해야 합니다.
+        """
 
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ]
+
+        # Bedrock API 호출을 OpenAI SDK의 Chat Completion 형식에 맞게 변경
+        # 참고: 모델이 Claude-3-Sonnet이면 Anthropic의 Messages API 형식을 따라야 함
+        # AWS Bedrock에서 Claude 3 Sonnet을 사용하기 위한 요청 본문 형식은 다음과 같습니다.
         body = json.dumps({
             "anthropic_version": "bedrock-2023-05-31",
-            "max_tokens": 256,
-            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 512,
+            "system": system_prompt,
+            "messages": [
+                {
+                    "role": "user",
+                    "content": f"""이전 대화 내용:
+{json.dumps(history, ensure_ascii=False, indent=2)}
+
+---
+이제 당신의 역할에 맞게, 위 대화의 흐름을 이어받아 지원자에게 할 다음 꼬리 질문을 하나만 생성하세요.
+다른 설명 없이 질문만 반환해야 합니다."""
+                }
+            ],
             "temperature": 0.7
         })
 
@@ -303,6 +344,51 @@ async def _finalize_interview(db: Session, interview_id: int, websocket: WebSock
 
     session = db.query(InterviewSession).filter(InterviewSession.id == interview_id).first()
     if session:
+        # 1. 전체 대화 기록을 S3에 업로드
+        try:
+            transcripts = (
+                db.query(SessionTranscript)
+                .filter(SessionTranscript.session_id == interview_id)
+                .order_by(SessionTranscript.turn)
+                .all()
+            )
+            
+            full_transcript_text = "\n".join([t.text for t in transcripts])
+            
+            # InterviewTranscript Pydantic 모델에 맞게 데이터 구성
+            # 현재 SessionTranscript에는 segment별 상세 정보가 부족하므로, 우선 단순화된 구조로 저장
+            transcript_data = {
+                "interview_id": interview_id,
+                "applicant_id": session.applicant_id,
+                "company_id": session.job.company_id if session.job else None,
+                "job_id": session.job_id,
+                "started_at": session.started_at.isoformat() if session.started_at else None,
+                "completed_at": datetime.utcnow().isoformat(),
+                "segments": [
+                    {
+                        "segment_id": t.id,
+                        "turn": t.turn,
+                        "speaker": "Interviewer" if t.text.startswith("Q:") else "Applicant",
+                        "text": t.text,
+                        "timestamp": t.created_at.isoformat(),
+                        "meta": t.meta_json
+                    } for t in transcripts
+                ],
+                "full_transcript": full_transcript_text
+            }
+
+            # S3에 업로드
+            s3_key = f"transcripts/{interview_id}.json"
+            s3_uri = s3_service.upload_json(s3_key, transcript_data)
+
+            # 세션에 S3 URL 업데이트
+            session.transcript_s3_url = s3_uri
+            print(f"Service: Transcript for interview {interview_id} saved to {s3_uri}")
+
+        except Exception as e:
+            print(f"Service: Failed to save transcript to S3 for interview {interview_id}: {e}")
+            # 실패하더라도 면접 완료 상태는 유지
+            
         session.status = InterviewStatus.COMPLETED
         session.completed_at = datetime.utcnow()
         db.commit()

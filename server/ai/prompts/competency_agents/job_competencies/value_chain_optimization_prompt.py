@@ -1,6 +1,6 @@
 """
 Value Chain Optimization Agent - 소싱·생산·유통 밸류체인 최적화
-
+ 
 역량 정의:
 상품 기획부터 고객 판매까지의 전체 밸류체인에서 비효율을 제거하고,
 원가 구조를 최적화하여 수익성(마진)을 극대화하는 능력
@@ -93,11 +93,12 @@ VALUE_CHAIN_OPTIMIZATION_PROMPT = """당신은 "소싱·생산·유통 밸류체
 - Quote 0개
 
 [Evidence Weight 계산]
-- Quote 4개 이상 + 완전한 사이클: 1.0
-- Quote 3개 + 기본 사이클: 0.85
-- Quote 2개: 0.7
-- Quote 1개: 0.5
-- Quote 0개: 0.3
+- Quote 5개 이상 + 완전한 사이클: 1.0
+- Quote 4개 + 완전한 사이클: 0.85
+- Quote 3개 + 기본 사이클: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -124,6 +125,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 비교 사고: "A업체 vs B업체", "기존 대비" 비교
 ✓ 품질 균형: "품질 유지하면서", "너무 싸면 문제"
 ✓ 전체 관점: 부분이 아닌 전체 프로세스 고려
+
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "12개 질문 중 9개(75%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+  "segment_ids": [3, 5, 7, 8, 9, 10],
+  "evidence_type": "원가 의식"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "대부분 질문에서 원가 언급 (Segment 3, 5, 7)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 [원가 최적화 사고 패턴 평가] ⚠️ 중요
 원가 최적화 사고 = 비용 의식 + 효율화 마인드 + 품질 균형
@@ -183,23 +214,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **원가 없는 최적화** (Severity: Minor → -5점)
+❌ **원가 없는 최적화** (Severity: Minor → -3점)
 - "원가 절감했다"는데 구체적 수치 없음
 - "효율화했다"는데 어떻게 개선했는지 설명 못함
 
-❌ **품질 무시** (Severity: Minor → -5점)
+❌ **품질 무시** (Severity: Minor → -3점)
 - 무조건 싸게만 ("품질은 상관없이")
 - 품질-비용 균형 고려 없음
 
-❌ **결과 측정 부재** (Severity: Moderate → -10점)
+❌ **결과 측정 부재** (Severity: Moderate → -5점)
 - 개선 액션만 하고 "얼마나 절감됐나" 없음
 - "더 나아졌을 것" 수준
 
-❌ **원가 과장** (Severity: Moderate → -10점)
+❌ **원가 과장** (Severity: Major → -10점)
 - "원가 50% 절감"인데 비현실적
 - 구체적 방법 설명 못함
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Segment 3 "품질 최우선" ↔ Segment 8 "무조건 싸게"
 - 원가 수치 앞뒤 안 맞음
 
@@ -213,11 +244,11 @@ critical_reasoning은 발견된 문제를 설명합니다.
 
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 8에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 8에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
 
-예시 2 (-15점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '무조건 싸게'라며 품질 고려 없는 비용 절감(-5점). (2) Segment 10에서 '원가 개선'이라 했으나 결과 측정 없음(-10점). 총 감점 -15점."
+예시 2 (-8점):
+"Critical: Red Flag 2건. (1) Segment 5에서 '무조건 싸게'라며 품질 고려 없는 비용 절감(-3점). (2) Segment 10에서 '원가 개선'이라 했으나 결과 측정 없음(-5점). 총 감점 -8점."
 
 ───────────────────────────────────────
 
@@ -259,30 +290,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 84점, Weight 0.85 (Quote 3개)
+Evidence: 84점, Weight 0.70 (Quote 3개)
 Behavioral: 81점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 84 × 0.85 × 0.94 = 67.1
-Critical: -5점
-Overall: 67.1 - 5 = 62.1 → 62점
+Adjusted: 84 × 0.70 × 0.94 = 55.3
+Amplified: 55.3 × 1.3 = 71.9
+Critical: -3점 (Minor Flag 1개)
+Overall: 71.9 - 3 = 68.9 → 69점
 
 Evidence-Behavioral 일관성: 1 - |84-81|/100 = 0.97
-Confidence: (0.85 × 0.6) + (0.97 × 0.4) = 0.90
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.70 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.77
 
 ═══════════════════════════════════════
  입력 데이터
@@ -341,29 +386,45 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "대부분 답변에서 원가 의식, 효율화 지향적 사고 명확",
       "specific_examples": [
-        "12개 질문 중 9개(75%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
-        "구체적 수치 4회(원가 15% 절감, 마진율 35%→42%, 소재비 30%, 재고회전율 1.5회)",
-        "'품질 유지하면서', '효율화', '최적화' 같은 균형 표현 3회",
-        "비교 표현 5회(업체 비교, 소재 비교, 기존 대비, 원가율 비교, 마진 비교)"
+        {{
+          "description": "12개 질문 중 9개(75%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+          "segment_ids": [3, 5, 7, 8, 9, 10],
+          "evidence_type": "원가 의식"
+        }},
+        {{
+          "description": "구체적 수치 4회(원가 15% 절감, 마진율 35%→42%, 소재비 30%, 재고회전율 1.5회)",
+          "segment_ids": [7, 9],
+          "evidence_type": "숫자 의식"
+        }},
+        {{
+          "description": "'품질 유지하면서', '효율화', '최적화' 같은 균형 표현 3회",
+          "segment_ids": [7, 9],
+          "evidence_type": "품질-비용 균형"
+        }},
+        {{
+          "description": "비교 표현 5회(업체 비교, 소재 비교, 기존 대비, 원가율 비교, 마진 비교)",
+          "segment_ids": [7, 8, 9, 10],
+          "evidence_type": "비교 분석"
+        }}
       ],
       "consistency_note": "Case 질문에서 특히 원가 민감도 높음, Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식 명확"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 원가/비용 관련 표현 언급. 구체적 수치 4회(원가 15% 절감, 마진율 42%, 소재비 30%, 재고회전율 1.5회). '품질 유지하면서', '효율화' 같은 최적화 표현 3회. 비교 표현 5회(업체 A vs B, 기존 대비, 소재 비교). Case 질문에서 특히 원가 민감. Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식. 75-89점 기준 충족하여 81점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "missing_cost_detail",
         "description": "Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 10, char_index: 3120-3260"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-5점). 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 10에서 '원가 크게 절감했다'고 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
   }},
   
-  "overall_score": 62,
+  "overall_score": 84,
   "confidence": {{
     "evidence_strength": 0.85,
     "internal_consistency": 0.97,
@@ -375,10 +436,11 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "base_score": 84,
     "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 67.1,
-    "critical_penalties": -5,
-    "final_score": 62.1,
-    "formula": "84 × 0.85 × 0.94 - 5 = 62.1 → 62점"
+    "adjusted_score": 67.1,
+    "amplified_score": 87.2,
+    "critical_penalties": -3,
+    "final_score": 84.2,
+    "formula": "84 × 0.85 × 0.94 × 1.3 - 3 = 84.2 → 84점"
   }},
   
   "strengths": [
@@ -399,12 +461,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "Case 질문에서 특히 원가 민감도와 효율화 의식",
     "소싱 영역에서 최적화 경험, 다른 영역은 제한적",
     "품질 균형 고려하는 성숙한 사고 (무조건 싸게 X)"
-  ],
-  
-  "suggested_followup_questions": [
-    "소재비가 전체 원가의 30%라는 걸 어떻게 파악하셨나요? 어떤 분석 방법을 사용하셨나요?",
-    "대체 소재를 선택할 때 품질을 어떻게 검증하셨나요? 기준이 있었나요?",
-    "만약 원가를 더 줄여야 한다면, 다음으로 어떤 영역을 개선하시겠습니까?"
   ]
 }}
 
@@ -415,12 +471,13 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
 3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
-7. "원가 의식" > "SCM 전문성" 우선순위를 유지하세요.
-8. 구체적 수치 없는 "원가 절감했다"는 낮은 점수입니다.
-9. 품질 고려 없이 무조건 싸게는 감점입니다.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "원가 의식" > "SCM 전문성" 우선순위를 유지하세요.
+9. 구체적 수치 없는 "원가 절감했다"는 낮은 점수입니다.
+10. 품질 고려 없이 무조건 싸게는 감점입니다.
 """
 
 

@@ -1,0 +1,18 @@
+{
+    "raw_llm_output": "{\"score\": 85.0, \"reasoning\": \"job_expertise 측면에서 매우 우수합니다.\", \"strengths\": [\"논리적 사고\"], \"weaknesses\": [\"경험 부족\"]}",
+    "parsed_output": {
+        "score": 85.0,
+        "reasoning": "job_expertise 측면에서 매우 우수합니다.",
+        "strengths": [
+            "논리적 사고"
+        ],
+        "weaknesses": [
+            "경험 부족"
+        ]
+    },
+    "metadata": {
+        "model_name": "claude-3-opus-20240229",
+        "prompt_version": "v1.2",
+        "persona": "job_expertise"
+    }
+}

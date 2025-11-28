@@ -1,0 +1,16 @@
+{
+  "job_weights": {
+    "structured_thinking": 0.25,
+    "business_documentation": 0.2,
+    "financial_literacy": 0.2,
+    "industry_learning": 0.2,
+    "stakeholder_management": 0.15
+  },
+  "common_weights": {
+    "problem_solving": 0.25,
+    "organizational_fit": 0.2,
+    "growth_potential": 0.2,
+    "interpersonal_skills": 0.2,
+    "achievement_motivation": 0.15
+  }
+}

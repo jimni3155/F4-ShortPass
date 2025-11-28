@@ -1,6 +1,6 @@
 """
 MD Data Analysis Agent - 매출·트렌드 데이터 분석 및 상품 기획
-
+ 
 역량 정의:
 시장 데이터, 매출 데이터, 트렌드 정보를 분석하여 상품 기획의 논리적 근거를 도출하고,
 데이터 기반 의사결정(Data-Driven Decision Making)으로 MD 전략을 수립하는 능력
@@ -92,11 +92,12 @@ MD_DATA_ANALYSIS_PROMPT = """당신은 "매출·트렌드 데이터 분석 및 �
 - Quote 0개
 
 [Evidence Weight 계산]
-- Quote 4개 이상 + 완전한 분석 사이클: 1.0
-- Quote 3개 + 명확한 연결: 0.85
-- Quote 2개: 0.7
-- Quote 1개: 0.5
-- Quote 0개: 0.3
+- Quote 5개 이상 + 완전한 분석 사이클: 1.0
+- Quote 4개 + 완전한 사이클: 0.85
+- Quote 3개 + 명확한 연결: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -122,6 +123,28 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 근거 제시: 의견에 항상 데이터 근거를 붙임
 ✓ 가설 의식: "가설을 세웠다", "검증하려고", "예상과 달랐다"
 ✓ 결과 지향: "그래서 어떻게 됐나" 항상 언급
+
+
+}}
+
+**올바른 예시:**
+{{
+  "description": "12개 질문 중 9개(75%)에서 '먼저 데이터 확인', '수치를 보니' 등으로 시작",
+  "segment_ids": [3, 5, 7, 8, 9, 11],
+  "evidence_type": "데이터 우선 사고"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "대부분 질문에서 데이터 언급 (Segment 3, 5, 7)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 [데이터 사고 패턴 평가] ⚠️ 중요
 데이터 사고 = 데이터를 의사결정의 출발점으로 삼는 습관
@@ -179,23 +202,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **데이터 없는 주장** (Severity: Minor → -5점)
+❌ **데이터 없는 주장** (Severity: Minor → -3점)
 - "데이터 분석했다"는데 구체적 수치 없음
 - "조사했다"는데 방법/결과 설명 못함
 
-❌ **인사이트 부재** (Severity: Minor → -5점)
+❌ **인사이트 부재** (Severity: Minor → -3점)
 - 데이터 나열만 하고 "그래서 뭘 알았나" 없음
 - "매출이 올랐다" → 왜? 어떻게? 없음
 
-❌ **의사결정 연결 부재** (Severity: Moderate → -10점)
+❌ **의사결정 연결 부재** (Severity: Moderate → -5점)
 - 분석만 하고 "그래서 뭘 결정했나" 없음
 - 데이터와 MD 실행이 따로 놈
 
-❌ **데이터 과장** (Severity: Moderate → -10점)
+❌ **데이터 과장** (Severity: Major → -10점)
 - "빅데이터 분석"인데 엑셀 기초 수준
 - "심층 분석"인데 단순 평균/합계만
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Segment 3 "항상 데이터 기반" ↔ Segment 8 "직관으로 결정"
 - 분석 방법론 앞뒤 안 맞음
 
@@ -209,11 +232,11 @@ critical_reasoning은 발견된 문제를 설명합니다.
 
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
 
-예시 2 (-15점):
-"Critical: Red Flag 2건. (1) Segment 5에서 '트렌드 분석'이라 했으나 단순 나열만, 인사이트 부재(-5점). (2) Segment 10에서 분석 결과와 상품 기획 의사결정이 연결 안 됨(-10점). 총 감점 -15점."
+예시 2 (-8점):
+"Critical: Red Flag 2건. (1) Segment 5에서 '트렌드 분석'이라 했으나 단순 나열만, 인사이트 부재(-3점). (2) Segment 10에서 분석 결과와 상품 기획 의사결정이 연결 안 됨(-5점). 총 감점 -8점."
 
 ───────────────────────────────────────
 
@@ -255,30 +278,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 85점, Weight 0.85 (Quote 3개)
+Evidence: 85점, Weight 0.70 (Quote 3개)
 Behavioral: 82점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 85 × 0.85 × 0.94 = 67.9
-Critical: -5점
-Overall: 67.9 - 5 = 62.9 → 63점
+Adjusted: 85 × 0.70 × 0.94 = 55.9
+Amplified: 55.9 × 1.3 = 72.7
+Critical: -3점 (Minor Flag 1개)
+Overall: 72.7 - 3 = 69.7 → 70점
 
 Evidence-Behavioral 일관성: 1 - |85-82|/100 = 0.97
-Confidence: (0.85 × 0.6) + (0.97 × 0.4) = 0.90
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.70 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.77
 
 ═══════════════════════════════════════
  입력 데이터
@@ -337,28 +374,40 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "대부분 답변에서 데이터 우선 사고, 구체적 수치 자주 언급",
       "specific_examples": [
-        "12개 질문 중 9개(75%)에서 '먼저 데이터 확인', '수치를 보니' 등으로 시작",
-        "구체적 수치 4회 사용(매출 증가율 18%, 가격대 비중 42%, 재구매율 23%, 카테고리 비율 6:4)",
-        "비교 분석 표현 5회(전년 대비, 카테고리별, 가격대별, 경쟁사 vs 자사, 시즌별)"
+        {{
+          "description": "12개 질문 중 9개(75%)에서 '먼저 데이터 확인', '수치를 보니' 등으로 시작",
+          "segment_ids": [3, 5, 7, 8, 9, 11],
+          "evidence_type": "데이터 우선 사고"
+        }},
+        {{
+          "description": "구체적 수치 4회 사용(매출 증가율 18%, 가격대 비중 42%, 재구매율 23%, 카테고리 비율 6:4)",
+          "segment_ids": [5, 7, 9],
+          "evidence_type": "정량적 표현"
+        }},
+        {{
+          "description": "비교 분석 표현 5회(전년 대비, 카테고리별, 가격대별, 경쟁사 vs 자사, 시즌별)",
+          "segment_ids": [5, 7, 9, 11],
+          "evidence_type": "비교 분석"
+        }}
       ],
       "consistency_note": "Case 질문에서 특히 데이터 중심 답변 명확, Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 데이터 우선 언급. 구체적 수치 4회 사용(매출 증가율, 판매량, 비율 등). '먼저 데이터 확인' 표현 3회, 비교 분석(전년 대비, 카테고리별) 5회. Case 질문에서 특히 데이터 중심 답변. Behavioral 질문에서는 상대적으로 정성적 설명 많으나 여전히 근거 제시. 75-89점 기준 충족하여 82점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "missing_evidence",
         "description": "Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 8, char_index: 2450-2580"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-5점). 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '매출 데이터 심층 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
   }},
   
-  "overall_score": 63,
+  "overall_score": 85,
   "confidence": {{
     "evidence_strength": 0.85,
     "internal_consistency": 0.97,
@@ -370,10 +419,11 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "base_score": 85,
     "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 67.9,
-    "critical_penalties": -5,
-    "final_score": 62.9,
-    "formula": "85 × 0.85 × 0.94 - 5 = 62.9 → 63점"
+    "adjusted_score": 67.9,
+    "amplified_score": 88.3,
+    "critical_penalties": -3,
+    "final_score": 85.3,
+    "formula": "85 × 0.85 × 0.94 × 1.3 - 3 = 85.3 → 85점"
   }},
   
   "strengths": [
@@ -394,12 +444,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "Case 질문에서 특히 정량적 접근 (매출, 판매량, 비율)",
     "MD 경험은 제한적이나 데이터 사고방식은 우수",
     "복잡한 분석보다 명확한 인사이트 도출에 강점"
-  ],
-  
-  "suggested_followup_questions": [
-    "가격대별 매출 분석에서 42%라는 수치를 도출한 구체적인 분석 과정을 설명해주세요.",
-    "상품 믹스를 조정한 후 실제 매출이 어떻게 변했나요? 예상과 달랐던 점은?",
-    "트렌드 리서치를 할 때 어떤 데이터 소스를 주로 활용하시나요?"
   ]
 }}
 
@@ -410,11 +454,12 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
 3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
-7. "데이터 기반 사고" > "고급 분석 도구" 우선순위를 유지하세요.
-8. 구체적 수치가 없는 "데이터 분석했다"는 낮은 점수입니다.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "데이터 기반 사고" > "고급 분석 도구" 우선순위를 유지하세요.
+9. 구체적 수치가 없는 "데이터 분석했다"는 낮은 점수입니다.
 """
 
 

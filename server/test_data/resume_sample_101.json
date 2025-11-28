@@ -1,0 +1,120 @@
+{
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "email": "jiwon.kim@email.com",
+  "phone": "010-1234-5678",
+  "birth_year": 1997,
+  "gender": "F",
+
+  "education": [
+    {
+      "school": "서울대학교",
+      "major": "의류학과",
+      "degree": "학사",
+      "graduation_year": 2021,
+      "gpa": 3.8,
+      "gpa_scale": 4.5,
+      "honors": ["우등 졸업", "패션마케팅 학회장"]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "한섬 (현대백화점그룹)",
+      "position": "MD 어시스턴트",
+      "department": "여성 캐주얼 사업부",
+      "start_date": "2021-03",
+      "end_date": "2023-08",
+      "duration_months": 30,
+      "highlights": [
+        "여성 캐주얼 시즌 상품 믹스 최적화 프로젝트 담당",
+        "재고회전율 0.8회 → 1.2회 개선 (50% 향상)",
+        "판매/재고/트렌드 3축 데이터 분석 체계 구축",
+        "상의:하의 비율 조정으로 판매율 73% 달성",
+        "디자인팀-기획팀 협업 프로세스 개선"
+      ],
+      "skills_used": ["Excel 피벗", "Tableau", "판매 데이터 분석", "VMD 기획"]
+    },
+    {
+      "company": "한섬 (현대백화점그룹)",
+      "position": "MD",
+      "department": "여성 캐주얼 사업부",
+      "start_date": "2023-09",
+      "end_date": "2025-10",
+      "duration_months": 26,
+      "highlights": [
+        "원단 공급업체 재협상으로 소재비 42% → 35% 절감",
+        "마진율 35% → 38.5% 개선",
+        "신규 업체 테스트 및 품질/리드타임 검증 주도",
+        "발주량 조건 협상으로 추가 2% 할인 확보",
+        "시즌별 가격대 전략 수립 (3만원대 비중 조정)"
+      ],
+      "skills_used": ["원가 분석", "벤더 협상", "마진 관리", "시즌 기획"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "시즌 상품 믹스 최적화",
+      "role": "프로젝트 리더",
+      "period": "2022-09 ~ 2023-02",
+      "description": "여성 캐주얼 라인 재고회전율 개선 프로젝트",
+      "achievements": [
+        "판매율 73%, 회전율 1.2회 달성",
+        "베이직:디자인 비율 6:4 → 5:5 조정",
+        "고객 리뷰 300개 분석 기반 디자인 방향 제시"
+      ],
+      "data_driven": true
+    },
+    {
+      "name": "밸류체인 원가 최적화",
+      "role": "담당 MD",
+      "period": "2024-01 ~ 2024-06",
+      "description": "원단 공급망 재편 및 마진율 개선",
+      "achievements": [
+        "마진율 38.5% 달성 (목표 40% 대비 96%)",
+        "신규 업체 3곳 테스트 완료",
+        "품질/리드타임 리스크 관리 프로세스 수립"
+      ],
+      "data_driven": true
+    }
+  ],
+
+  "skills": {
+    "data_analysis": ["Excel (고급)", "Tableau", "Google Analytics", "SQL 기초"],
+    "business": ["상품 기획", "원가 분석", "VMD", "트렌드 분석"],
+    "collaboration": ["Slack", "Notion", "Jira", "Google Workspace"],
+    "languages": ["한국어 (원어민)", "영어 (비즈니스)"]
+  },
+
+  "certifications": [
+    {
+      "name": "유통관리사 2급",
+      "issuer": "대한상공회의소",
+      "date": "2020-11"
+    },
+    {
+      "name": "컴퓨터활용능력 1급",
+      "issuer": "대한상공회의소",
+      "date": "2019-08"
+    }
+  ],
+
+  "personality_keywords": ["데이터 기반 의사결정", "논리적 설득", "협업", "꼼꼼함", "실행력"],
+
+  "self_introduction": "4년간 패션 MD로서 데이터 기반 의사결정과 이해관계자 협업을 통해 성과를 만들어왔습니다. 재고회전율 50% 개선, 마진율 3.5%p 향상 등 정량적 성과를 달성했으며, 디자인팀과의 협업에서 데이터와 브랜드 정체성을 모두 살리는 절충안을 이끌어낸 경험이 있습니다.",
+
+  "strengths": [
+    "데이터 분석을 통한 문제 정의 및 해결",
+    "이해관계자 간 갈등 조율 및 합의 도출",
+    "원가/마진 관점의 밸류체인 최적화"
+  ],
+
+  "weaknesses": [
+    "리스크 관리 체계화 경험 부족",
+    "글로벌 소싱 경험 제한적"
+  ],
+
+  "portfolio_s3_url": null,
+  "created_at": "2025-11-22T00:00:00Z"
+}

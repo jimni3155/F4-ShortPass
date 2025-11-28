@@ -42,7 +42,7 @@ class JDPersonaService:
 
             # 1. 역량 분석
             competency_data = await self.competency_service.analyze_jd_competencies(jd_text)
-            print(f"📊 Extracted competencies: {len(competency_data['job_competencies'])} job-specific")
+            print(f" Extracted competencies: {len(competency_data['job_competencies'])} job-specific")
 
             # 2. 페르소나 생성
             persona_data = await self.competency_service.generate_persona_data(

@@ -7,7 +7,8 @@ from abc import ABC, abstractmethod
 from typing import Dict, Optional
 import json
 from datetime import datetime
-
+from services.storage.s3_service import S3Service
+from core import config # Import config
 
 class BaseAgent(ABC):
     """역량 평가 Agent 기본 클래스"""
@@ -30,6 +31,7 @@ class BaseAgent(ABC):
         self.competency_name = competency_name
         self.competency_display_name = competency_display_name
         self.competency_category = competency_category
+        self.s3_service = S3Service(bucket_name=config.S3_BUCKET_NAME, region_name=config.AWS_REGION) # Initialize S3Service
     
     @abstractmethod
     def get_prompt_template(self) -> str:
@@ -92,6 +94,10 @@ class BaseAgent(ABC):
             result["competency_display_name"] = self.competency_display_name
             result["competency_category"] = self.competency_category
             result["evaluated_at"] = datetime.now().isoformat()
+            
+            # Agent 실행 로그 S3에 저장
+            log_id = f"{self.competency_name}-{result['evaluated_at']}"
+            self.s3_service.save_agent_log(result, log_id)
             
             return result
             

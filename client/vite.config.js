@@ -17,9 +17,12 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@utils': path.resolve(__dirname, './src/utils'),
       '@mock': path.resolve(__dirname, './src/mock'),
+      '@data': path.resolve(__dirname, './src/data'),
     },
   },
   server: {
+    host: '0.0.0.0', // 외부 접속 허용
+    port: 5173,
     proxy: {
       '/api': {
         target: 'http://localhost:8000',

@@ -1,0 +1,98 @@
+{
+  "interview_id": "bottom_10_percent_interview_001",
+  "candidate_id": "poor_candidate_leeminho",
+  "conducted_at": "2025-01-15T16:00:00Z",
+  "total_duration_sec": 1200,
+  "segments": [
+    {
+      "segment_id": 1,
+      "segment_order": 1,
+      "question_text": "자기소개를 부탁드립니다.",
+      "answer_text": "안녕하세요. 이민호입니다. 대학에서 경영학을 전공했고요, 패션에 관심이 많아서 지원하게 됐습니다. 평소에 옷 입는 거 좋아하고, 친구들한테 스타일링 조언도 자주 해줬어요. 그래서 이 일이 잘 맞을 것 같아요.",
+      "answer_duration_sec": 25,
+      "char_index_start": 0,
+      "char_index_end": 134
+    },
+    {
+      "segment_id": 2,
+      "segment_order": 2,
+      "question_text": "데이터 분석이나 상품 기획 경험이 있으신가요? 구체적으로 어떤 프로젝트를 하셨는지 말씀해주세요.",
+      "answer_text": "음, 데이터 분석이요? 학교 수업에서 엑셀로 통계 과제는 해봤어요. 그냥 평균이나 그래프 그리는 정도였는데요. 상품 기획은 따로 해본 적은 없고, 그냥 제가 좋아하는 브랜드 보면서 '이런 제품 나오면 좋겠다' 생각은 많이 했어요. 실제로 뭘 만들어본 건 아니지만, 감은 있는 것 같아요.",
+      "answer_duration_sec": 35,
+      "char_index_start": 0,
+      "char_index_end": 181
+    },
+    {
+      "segment_id": 3,
+      "segment_order": 3,
+      "question_text": "어려운 문제를 해결했던 경험을 말씀해주세요. 어떤 과정으로 해결했나요?",
+      "answer_text": "어려운 문제요... 음, 생각이 잘 안 나는데요. 아, 조별 과제 할 때 팀원 한 명이 연락이 안 돼서 힘들었던 적이 있어요. 그래서 그냥 나머지 팀원들끼리 나눠서 했어요. 뭐 별로 어렵진 않았는데, 그 정도...?",
+      "answer_duration_sec": 30,
+      "char_index_start": 0,
+      "char_index_end": 142
+    },
+    {
+      "segment_id": 4,
+      "segment_order": 4,
+      "question_text": "조별 과제에서 의견 충돌이 있었나요? 있었다면 어떻게 해결했나요?",
+      "answer_text": "의견 충돌이요? 별로 없었어요. 다들 적당히 자기 파트 하고, 저도 제 거 하고. 굳이 말하자면 한 번 주제 정할 때 의견이 좀 달랐는데, 그냥 다수결로 정했어요. 저는 별로 신경 안 써서 그냥 따라갔어요.",
+      "answer_duration_sec": 25,
+      "char_index_start": 0,
+      "char_index_end": 138
+    },
+    {
+      "segment_id": 5,
+      "segment_order": 5,
+      "question_text": "목표를 세우고 달성했던 경험이 있나요? 어떻게 관리하셨는지 말씀해주세요.",
+      "answer_text": "목표요... 학점 잘 받으려고 열심히 공부했던 것 정도? 근데 특별히 계획을 세운 건 아니고, 그냥 시험 전에 벼락치기로 공부했어요. 결과는 뭐 평범했어요. 목표 관리 같은 건 특별히 안 했고요.",
+      "answer_duration_sec": 28,
+      "char_index_start": 0,
+      "char_index_end": 135
+    },
+    {
+      "segment_id": 6,
+      "segment_order": 6,
+      "question_text": "원가나 비용에 대해 생각해본 적 있나요? 어떤 식으로 접근하시겠어요?",
+      "answer_text": "원가요? 음, 잘 모르겠는데요. 그냥 싸게 만들면 되는 거 아닌가요? 근데 너무 싸면 품질이 안 좋을 것 같긴 한데... 뭐 그 정도요. 구체적으로는 잘 모르겠어요.",
+      "answer_duration_sec": 22,
+      "char_index_start": 0,
+      "char_index_end": 120
+    },
+    {
+      "segment_id": 7,
+      "segment_order": 7,
+      "question_text": "고객이나 마케팅에 대해 어떻게 생각하시나요? 경험이 있으신가요?",
+      "answer_text": "고객이요? 음, 그냥 좋은 제품 만들면 알아서 사지 않나요? 마케팅은 SNS에 올리고 광고하면 되는 거 아닌가 싶은데요. 경험은 없고요. 제 인스타에 옷 사진 올리는 정도?",
+      "answer_duration_sec": 25,
+      "char_index_start": 0,
+      "char_index_end": 127
+    },
+    {
+      "segment_id": 8,
+      "segment_order": 8,
+      "question_text": "팀워크나 협업 경험을 말씀해주세요.",
+      "answer_text": "팀워크요? 음, 조별 과제는 많이 했는데, 사실 저는 혼자 하는 게 더 편해요. 다른 사람들 의견 들으면 복잡해지고, 제 방식대로 하는 게 빠르거든요. 그래서 가능하면 혼자 할 수 있는 파트 맡았어요.",
+      "answer_duration_sec": 28,
+      "char_index_start": 0,
+      "char_index_end": 144
+    },
+    {
+      "segment_id": 9,
+      "segment_order": 9,
+      "question_text": "본인의 강점과 약점을 말씀해주세요. 약점을 어떻게 보완하고 계신가요?",
+      "answer_text": "강점은요, 옷 보는 눈이 있는 것 같아요. 친구들이 스타일 좋다고 해줘서요. 약점은... 음, 잘 모르겠는데요. 딱히 없는 것 같은데? 굳이 말하자면 아침에 일어나는 게 힘들어요. 그래서 오전 수업은 많이 빠졌어요. 보완은... 별로 안 하고 있어요.",
+      "answer_duration_sec": 32,
+      "char_index_start": 0,
+      "char_index_end": 172
+    },
+    {
+      "segment_id": 10,
+      "segment_order": 10,
+      "question_text": "패션 MD로서 중요하다고 생각하는 가치는 무엇인가요? 야근이나 마감 압박 상황은 어떻게 생각하시나요?",
+      "answer_text": "가치요? 음, 트렌디한 제품 만드는 거? 제가 좋아하는 스타일 추구하는 게 중요한 것 같아요. 야근은 솔직히 별로예요. 워라밸이 중요하다고 생각하거든요. 야근 많으면 힘들 것 같은데, 꼭 해야 하나요? 적당히 하면 안 되나요?",
+      "answer_duration_sec": 30,
+      "char_index_start": 0,
+      "char_index_end": 148
+    }
+  ]
+}

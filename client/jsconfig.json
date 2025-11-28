@@ -10,7 +10,8 @@
       "@constants/*": ["constants/*"],
       "@layout/*": ["layout/*"],
       "@lib/*": ["lib/*"],
-      "@mock/*": ["mock/*"]
+      "@mock/*": ["mock/*"],
+      "@data/*": ["mock/*"]
     }
   }
 }

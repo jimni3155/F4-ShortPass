@@ -2,13 +2,19 @@
 평가 API 엔드포인트 (DB 없이 메모리 저장)
 """
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Dict, Optional, List
 from datetime import datetime
+import logging
+import json
 from services.evaluation.evaluation_service import EvaluationService
+from db.database import get_db
+from models.interview import InterviewSession
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/evaluations")
+logger = logging.getLogger("uvicorn")
 
 # 메모리 저장소 (DB 대신)
 evaluations_store = {}
@@ -42,7 +48,6 @@ class EvaluationRequest(BaseModel):
     interview_id: int
     applicant_id: int
     job_id: int
-    transcript: Transcript
     job_weights: Optional[Dict[str, float]] = None
     common_weights: Optional[Dict[str, float]] = None
 
@@ -63,7 +68,8 @@ class EvaluationStatusResponse(BaseModel):
 @router.post("/", response_model=dict)
 async def create_evaluation(
     request: EvaluationRequest,
-    background_tasks: BackgroundTasks
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db)
 ):
     """
     평가 생성 및 백그라운드 실행
@@ -75,10 +81,19 @@ async def create_evaluation(
             "message": "평가가 시작되었습니다"
         }
     """
-    
+    logger.info(f"Creating evaluation for interview ID: {request.interview_id}")
     global evaluation_counter
     
     try:
+        # 면접 세션에서 transcript_s3_url 조회
+        session = db.query(InterviewSession).filter(InterviewSession.id == request.interview_id).first()
+        if not session:
+            raise HTTPException(status_code=404, detail=f"Interview session with id {request.interview_id} not found.")
+
+        # [테스트 모드] transcript_jiwon_101.json 직접 사용
+        # TODO: 나중에 실제 transcript 사용하도록 변경
+        transcript_s3_url = "LOCAL:transcript_jiwon_101"  # 로컬 파일 사용 플래그
+
         # 평가 ID 생성
         evaluation_counter += 1
         evaluation_id = evaluation_counter
@@ -124,7 +139,7 @@ async def create_evaluation(
             interview_id=request.interview_id,
             applicant_id=request.applicant_id,
             job_id=request.job_id,
-            transcript=request.transcript.dict(),
+            transcript_s3_url=transcript_s3_url,
             job_weights=job_weights,
             common_weights=common_weights
         )
@@ -144,7 +159,7 @@ async def create_evaluation(
 @router.get("/{evaluation_id}", response_model=EvaluationStatusResponse)
 async def get_evaluation_status(evaluation_id: int):
     """평가 상태 조회"""
-    
+    logger.info(f"Getting evaluation status for ID: {evaluation_id}")
     if evaluation_id not in evaluations_store:
         raise HTTPException(status_code=404, detail="평가를 찾을 수 없습니다")
     
@@ -166,7 +181,7 @@ async def get_evaluation_status(evaluation_id: int):
 @router.get("/{evaluation_id}/detail")
 async def get_evaluation_detail(evaluation_id: int):
     """평가 상세 결과 조회"""
-    
+    logger.info(f"Getting evaluation detail for ID: {evaluation_id}")
     if evaluation_id not in evaluations_store:
         raise HTTPException(status_code=404, detail="평가를 찾을 수 없습니다")
     
@@ -184,6 +199,8 @@ async def get_evaluation_detail(evaluation_id: int):
         "job_aggregation": data["job_aggregation_result"],
         "common_aggregation": data["common_aggregation_result"],
         "validation": data["validation_result"],
+        "analysis_summary": data.get("analysis_summary"),
+        "post_processing": data.get("post_processing"),
         "created_at": data["created_at"],
         "completed_at": data["completed_at"]
     }
@@ -194,7 +211,7 @@ async def get_evaluation_detail(evaluation_id: int):
 @router.get("/")
 async def get_all_evaluations():
     """전체 평가 목록 조회 (디버깅용)"""
-    
+    logger.info("Getting all evaluations")
     return {
         "total": len(evaluations_store),
         "evaluations": [
@@ -217,13 +234,34 @@ async def run_evaluation_background(
     interview_id: int,
     applicant_id: int,
     job_id: int,
-    transcript: Dict,
+    transcript_s3_url: str,
     job_weights: Dict[str, float],
     common_weights: Dict[str, float]
 ):
     """백그라운드에서 실행되는 평가 함수"""
-    
+
     try:
+        from core.config import S3_BUCKET_NAME, AWS_REGION
+        from services.storage.s3_service import S3Service
+        from pathlib import Path
+
+        # [테스트 모드] 로컬 파일 사용
+        if transcript_s3_url.startswith("LOCAL:"):
+            local_file = transcript_s3_url.split("LOCAL:")[1]
+            transcript_path = Path(__file__).resolve().parent.parent / "test_data" / f"{local_file}.json"
+            print(f"[테스트 모드] 로컬 transcript 사용: {transcript_path}")
+
+            with open(transcript_path, "r", encoding="utf-8") as f:
+                transcript = json.load(f)
+        else:
+            # S3에서 transcript 다운로드
+            s3_service = S3Service(bucket_name=S3_BUCKET_NAME, region_name=AWS_REGION)
+            s3_key = transcript_s3_url.split(f"s3://{S3_BUCKET_NAME}/")[1]
+            transcript = s3_service.download_json(s3_key)
+
+        if not transcript:
+            raise Exception(f"Failed to load transcript: {transcript_s3_url}")
+
         print(f"\n[백그라운드] Evaluation #{evaluation_id} 시작")
         
         # 평가 실행
@@ -244,6 +282,8 @@ async def run_evaluation_background(
             "job_aggregation_result": result["job_aggregation"],
             "common_aggregation_result": result["common_aggregation"],
             "validation_result": result["validation"],
+            "analysis_summary": result.get("analysis_summary"),
+            "post_processing": result.get("post_processing"),
             "completed_at": datetime.now().isoformat()
         })
         

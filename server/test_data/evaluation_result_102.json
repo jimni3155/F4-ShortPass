@@ -1,0 +1,3672 @@
+{
+  "evaluation_id": 45,
+  "interview_id": 102,
+  "applicant_id": 102,
+  "job_id": 1,
+  "transcript_s3_url": "s3://linkbig-ht-06-f4/transcripts/102_mock.json",
+  "agent_logs_s3_url": "s3://linkbig-ht-06-f4/logs/evaluations/102/102/20251124T083236_execution_logs.json",
+  "stage1_evidence_s3_url": "s3://linkbig-ht-06-f4/evaluations/102/20251124T083236/stage1_evidence.json",
+  "stage2_aggregator_s3_url": "s3://linkbig-ht-06-f4/evaluations/102/20251124T083236/stage2_aggregator.json",
+  "stage3_final_integration_s3_url": "s3://linkbig-ht-06-f4/evaluations/102/20251124T083236/stage3_final_integration.json",
+  "stage4_presentation_s3_url": "s3://linkbig-ht-06-f4/evaluations/102/20251124T083236/stage4_presentation_frontend.json",
+  "evaluation_run_ts": "20251124T083236",
+  "execution_logs": [
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 115.78,
+      "segments_processed": 24,
+      "resume_verified_count": 23,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 0,
+      "timestamp": "2025-11-24T08:38:28.917638"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 115.78,
+      "segments_processed": 24,
+      "resume_verified_count": 23,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 0,
+      "timestamp": "2025-11-24T08:38:28.917638"
+    },
+    {
+      "node": "final_integration",
+      "duration_seconds": 4.2,
+      "timestamp": "2025-11-24T08:38:33.121769",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 115.78,
+      "segments_processed": 24,
+      "resume_verified_count": 23,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 0,
+      "timestamp": "2025-11-24T08:38:28.917638"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_1",
+      "node": "batch_evaluation",
+      "duration_seconds": 236.33,
+      "competencies_evaluated": 10,
+      "success_count": 10,
+      "error_count": 0,
+      "timestamp": "2025-11-24T08:36:33.132118",
+      "status": "success"
+    },
+    {
+      "stage": "stage_2",
+      "node": "aggregator",
+      "duration_seconds": 115.78,
+      "segments_processed": 24,
+      "resume_verified_count": 23,
+      "overlap_adjustments": 0,
+      "low_confidence_count": 0,
+      "timestamp": "2025-11-24T08:38:28.917638"
+    },
+    {
+      "node": "final_integration",
+      "duration_seconds": 4.2,
+      "timestamp": "2025-11-24T08:38:33.121769",
+      "status": "success"
+    },
+    {
+      "node": "presentation_formatter",
+      "duration_seconds": 73.27,
+      "total_evidences_generated": 24,
+      "batch_llm_calls": 1,
+      "components_regenerated": [
+        "evidences",
+        "strengths",
+        "weaknesses",
+        "key_observations"
+      ],
+      "timestamp": "2025-11-24T08:39:46.394008"
+    }
+  ],
+  "segment_evaluations_with_resume": [
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 1,
+      "quote_text": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+      "relevance_note": "주도성 부족, 팀원 의존",
+      "quality_score": 0.5,
+      "overall_score": 55,
+      "score": 55,
+      "interview_confidence": 0.55,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 'MD 어시스턴트'로서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 수행했다고 명시하고 있으며, 데이터 분석은 선배님들이 주도했다고 언급하고 있습니다. 이로 인해 팀원들의 분석 자료를 보며 논의하는 역할이 일치합니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할.",
+            "relevance": "면접 답변의 '팀원들이 분석한 자료를 같이 보면서 논의'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "achievement_motivation",
+      "segment_id": 2,
+      "quote_text": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+      "relevance_note": "주체적 경험 부족, 선배 의존",
+      "quality_score": 0.5,
+      "overall_score": 55,
+      "score": 55,
+      "interview_confidence": 0.55,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 하였고, 데이터 분석은 선배님들이 주도했다고 명시하고 있습니다. 이로 인해 선배님에게 의존하여 결정 과정을 배우는 경험이 일치합니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 데이터 분석은 선배님들이 주도.",
+            "relevance": "면접 답변의 '선배님이 주로 결정하셨다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 10,
+      "quote_text": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+      "relevance_note": "학습 민첩성 (자기 주도적 학습)",
+      "quality_score": 0.8,
+      "overall_score": 70,
+      "score": 70,
+      "interview_confidence": 0.72,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있으며, 피벗 테이블과 SQL을 배우고 있다고 명시하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "relevance": "면접 답변의 '온라인 강의를 듣고 있다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 11,
+      "quote_text": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+      "relevance_note": "메타인지 (구체적 약점 인식 및 개선 계획)",
+      "quality_score": 0.85,
+      "overall_score": 70,
+      "score": 70,
+      "interview_confidence": 0.72,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'weaknesses' 섹션에서 정량적 데이터 분석 역량 부족을 명시하고 있으며, 이를 보완하기 위한 학습 계획도 언급하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "weaknesses",
+            "matched_content": "정량적 데이터 분석 역량 부족 (피벗, 통계, SQL 등)",
+            "relevance": "면접 답변의 '정량적 분석 역량'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "growth_potential",
+      "segment_id": 6,
+      "quote_text": "공모전에서 떨어졌을 때 피드백을 받아 약점을 보완했습니다.",
+      "relevance_note": "실패 경험 및 회복 과정",
+      "quality_score": 0.75,
+      "overall_score": 70,
+      "score": 70,
+      "interview_confidence": 0.72,
+      "resume_verification": {
+        "verified": false,
+        "strength": "none",
+        "reasoning": "지원자는 Resume에 공모전 관련 경험을 명시하지 않았으며, 해당 경험이 전혀 언급되지 않아 검증이 불가능합니다.",
+        "resume_matches": [],
+        "confidence_factors": {
+          "direct_evidence": false,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "none"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 5,
+      "quote_text": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+      "relevance_note": "경청 (먼저 들음, 이해 시도)",
+      "quality_score": 0.9,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '양쪽 의견을 모두 반영한 절충안'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 5,
+      "quote_text": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+      "relevance_note": "갈등 해결 (중재, Win-Win)",
+      "quality_score": 0.95,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '양쪽 의견을 모두 반영한 절충안'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 9,
+      "quote_text": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+      "relevance_note": "협업 (팀 우선, 개인 양보)",
+      "quality_score": 0.85,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'strengths' 섹션에서 팀 우선의 협업 마인드를 강조하고 있으며, 개인의 아이디어보다 팀의 의견을 중시하는 태도를 보이고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "strengths",
+            "matched_content": "협업 중심 마인드 (Win-Win)",
+            "relevance": "면접 답변의 '팀이 더 좋다고 하면 그게 맞다고 생각했다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "interpersonal_skill",
+      "segment_id": 11,
+      "quote_text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요",
+      "relevance_note": "배려, 협업",
+      "quality_score": 0.8,
+      "overall_score": 82,
+      "score": 82,
+      "interview_confidence": 0.85,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'strengths' 섹션에서 팀 분위기를 긍정적으로 조성하고, 팀원 간의 협업을 강조하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "strengths",
+            "matched_content": "팀 분위기 긍정적 조성 및 커뮤니케이션 촉진",
+            "relevance": "면접 답변의 '팀원 한 명이 힘들어해서 도와줬다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+      "relevance_note": "고객 우선, 정성적 인사이트",
+      "quality_score": 0.8,
+      "overall_score": 66,
+      "score": 66,
+      "interview_confidence": 0.64,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "relevance": "면접 답변의 '고객 리뷰 분석'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "organizational_fit",
+      "segment_id": 6,
+      "quote_text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+      "relevance_note": "피드백 수용, 구체적 개선",
+      "quality_score": 0.9,
+      "overall_score": 66,
+      "score": 66,
+      "interview_confidence": 0.64,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 상품 믹스 조정 경험을 언급하고 있으며, 피드백을 수용하고 개선한 사례가 일치합니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 피드백 수용 후 상품 믹스 조정.",
+            "relevance": "면접 답변의 '상품 믹스를 전면 수정'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 5,
+      "quote_text": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+      "relevance_note": "의사결정 (트레이드오프)",
+      "quality_score": 0.7,
+      "overall_score": 54,
+      "score": 54,
+      "interview_confidence": 0.53,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '양쪽 의견을 반영한 절충안'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "problem_solving",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+      "relevance_note": "창의적 해결 (정성적 인사이트)",
+      "quality_score": 0.6,
+      "overall_score": 54,
+      "score": 54,
+      "interview_confidence": 0.53,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "relevance": "면접 답변의 '고객 리뷰 분석'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+      "relevance_note": "고객 리뷰를 통한 정성적 인사이트 도출",
+      "quality_score": 0.7,
+      "overall_score": 67,
+      "score": 67,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "relevance": "면접 답변의 '고객 리뷰 분석'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "customer_journey_marketing",
+      "segment_id": 5,
+      "quote_text": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+      "relevance_note": "데이터 기반의 고객 이해 시도",
+      "quality_score": 0.6,
+      "overall_score": 67,
+      "score": 67,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 판매 데이터 근거로 조정한 경험을 언급하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 판매 데이터 근거로 조정.",
+            "relevance": "면접 답변의 '판매 데이터를 근거로 조정'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "md_data_analysis",
+      "segment_id": 9,
+      "quote_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+      "relevance_note": "정성적 분석 위주, 정량적 수치 부족",
+      "quality_score": 0.6,
+      "overall_score": 60,
+      "score": 60,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "relevance": "면접 답변의 '고객 리뷰 분석'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "md_data_analysis",
+      "segment_id": 10,
+      "quote_text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+      "relevance_note": "데이터 분석 역량 향상 노력",
+      "quality_score": 0.7,
+      "overall_score": 60,
+      "score": 60,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "relevance": "면접 답변의 '데이터 분석 온라인 강의를 듣고 있다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "segment_id": 5,
+      "quote_text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+      "relevance_note": "목표 설정, 데이터 기반 접근",
+      "quality_score": 0.7,
+      "overall_score": 62,
+      "score": 62,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '양쪽 의견을 반영한 절충안'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "seasonal_strategy_kpi",
+      "segment_id": 5,
+      "quote_text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+      "relevance_note": "전략 수립, 문제 해결",
+      "quality_score": 0.7,
+      "overall_score": 62,
+      "score": 62,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '양쪽 의견을 반영한 절충안'과 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+      "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+      "quality_score": 0.9,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '결과적으로 좋은 성과가 나왔다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+      "relevance_note": "Win-Win 합의, 절충안 도출",
+      "quality_score": 0.85,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '결과적으로 좋은 성과가 나왔다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "stakeholder_collaboration",
+      "segment_id": 5,
+      "quote_text": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+      "relevance_note": "결과 확인, 관계 유지",
+      "quality_score": 0.8,
+      "overall_score": 81,
+      "score": 81,
+      "interview_confidence": 0.9,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "relevance": "면접 답변의 '결과적으로 좋은 성과가 나왔다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "value_chain_optimization",
+      "segment_id": 3,
+      "quote_text": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+      "relevance_note": "관계 관리, 원가 절감 구체적 수치 없음",
+      "quality_score": 0.5,
+      "overall_score": 60,
+      "score": 60,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'projects' 섹션에서 원가 절감 프로젝트에 업체 관계 관리 역할을 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "projects",
+            "matched_content": "원가 절감 프로젝트 참여 | 업체 관계 관리 담당.",
+            "relevance": "면접 답변의 '업체 미팅할 때 관계 유지'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    },
+    {
+      "competency": "value_chain_optimization",
+      "segment_id": 8,
+      "quote_text": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+      "relevance_note": "협상 전략, 구체적 원가 절감 수치 없음",
+      "quality_score": 0.6,
+      "overall_score": 60,
+      "score": 60,
+      "interview_confidence": 0.68,
+      "resume_verification": {
+        "verified": true,
+        "strength": "high",
+        "reasoning": "지원자는 Resume의 'strengths' 섹션에서 장기 파트너십 관점의 관계 관리 능력을 강조하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+        "resume_matches": [
+          {
+            "resume_section": "strengths",
+            "matched_content": "장기 파트너십 관점의 관계 관리.",
+            "relevance": "면접 답변의 '협상은 win-win이 되어야 한다'와 직접 매칭."
+          }
+        ],
+        "confidence_factors": {
+          "direct_evidence": true,
+          "multiple_sources": false,
+          "time_consistency": true,
+          "detail_level": "high"
+        }
+      }
+    }
+  ],
+  "segment_overlap_adjustments": [],
+  "cross_competency_flags": [],
+  "aggregated_competencies": {
+    "achievement_motivation": {
+      "competency_name": "achievement_motivation",
+      "overall_score": 55,
+      "interview_confidence": 0.55,
+      "confidence_v2": 0.73,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+            "segment_id": 1,
+            "char_index": 100,
+            "relevance_note": "주도성 부족, 팀원 의존",
+            "quality_score": 0.5,
+            "char_length": 32,
+            "actual_transcript_text": "하진 않았는데, 회의에서 여러 의견을 조율하는 역할을 했습니다. 품절 리스크는... 솔직히 정확한 수치는 기억이 안 나는데, 팀에서 잘 관리했던 것 같아요. 저는 주로 팀 분위기를 좋게 유지하고 다들 의견 내기 편하"
+          },
+          {
+            "text": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+            "segment_id": 2,
+            "char_index": 50,
+            "relevance_note": "주체적 경험 부족, 선배 의존",
+            "quality_score": 0.5,
+            "char_length": 44,
+            "actual_transcript_text": "니다. 구체적인 공식이나 계산 방법은 솔직히 잘 모르겠어요. 근데 선배님이 하시는 걸 보면서 많이 배웠고, 나중에 제가 직접 해볼 기회가 있으면 열심히 공부해서 해보고 싶습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 주도성 기본 (팀원 의존, 선배 의존). 목표 난이도 낮음 (쉬운 목표, 도전적 목표 없음). 외적 동기 우세 ('배우면서 참여'). 책임감은 있으나 ('참여했다') 끝까지 완수 사례 불명확. Quote 2개. 75-89점 기준(중간 난이도, 내적 동기)에 미치지 못함. Fair 중하위 수준으로 60점."
+      },
+      "strengths": [
+        "기본적인 책임감 (참여했다)",
+        "팀원들과의 협업 경험"
+      ],
+      "weaknesses": [
+        "자발성 부족 (팀원 의존)",
+        "끈기 부족 (선배 의존)",
+        "도전적 목표 설정 부족"
+      ],
+      "key_observations": [
+        "자발적 도전 경험 부족",
+        "외적 동기 우세",
+        "도전적 목표 설정 부족"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 'MD 어시스턴트'로서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 수행했다고 명시하고 있으며, 데이터 분석은 선배님들이 주도했다고 언급하고 있습니다. 이로 인해 팀원들의 분석 자료를 보며 논의하는 역할이 일치합니다.",
+            "char_index": null,
+            "char_length": 32
+          },
+          {
+            "segment_id": 2,
+            "quote": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 데이터 분석은 선배님들이 주도.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 하였고, 데이터 분석은 선배님들이 주도했다고 명시하고 있습니다. 이로 인해 선배님에게 의존하여 결정 과정을 배우는 경험이 일치합니다.",
+            "char_index": null,
+            "char_length": 44
+          }
+        ]
+      }
+    },
+    "growth_potential": {
+      "competency_name": "growth_potential",
+      "overall_score": 70,
+      "interview_confidence": 0.72,
+      "confidence_v2": 0.79,
+      "segment_count": 3,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 75,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+            "segment_id": 10,
+            "char_index": 280,
+            "relevance_note": "학습 민첩성 (자기 주도적 학습)",
+            "quality_score": 0.8,
+            "char_length": 65,
+            "actual_transcript_text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요. 피벗 테이블이나 기본 통계는 배웠고, 지금은 SQL을 공부하고 있습니다. 아직 실무에 바로 적용할 수준은 아니지만, 6개월 정도 더 하면 기본적인 분석은 할 수 있을 것 같아요. 제가 부족한 걸 알고 있어서 더 열심히 하고 있습니다."
+          },
+          {
+            "text": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+            "segment_id": 11,
+            "char_index": 360,
+            "relevance_note": "메타인지 (구체적 약점 인식 및 개선 계획)",
+            "quality_score": 0.85,
+            "char_length": 57,
+            "actual_transcript_text": "제 약점은 분명히 정량적 분석 역량이에요. 데이터를 보고 빠르게 인사이트를 뽑아내는 건 아직 부족합니다. 그래서 의식적으로 숫자를 먼저 보려고 노력하고, 팀원들이 분석할 때 옆에서 배우고 있어요. 삼성물산에 입사하면 데이터 기반 의사결정이 더 중요할 텐데, 그 부분을 집중적으로 성장시키고 싶습니다. 선배님들한테 많이 여쭤보고, 필요하면 외부 교육도 받을 계획이에요. 제가 강점인 협업과 커뮤니케이션은 유지하면서, 약점인 분석 역량을 채워나가고 싶습니다."
+          },
+          {
+            "text": "공모전에서 떨어졌을 때 피드백을 받아 약점을 보완했습니다.",
+            "segment_id": 6,
+            "char_index": 300,
+            "relevance_note": "실패 경험 및 회복 과정",
+            "quality_score": 0.75,
+            "char_length": 32,
+            "actual_transcript_text": "끝까지 반대하신다면, 일단 제가 놓친 부분이 있는지 다시 생각해볼 것 같아요. 반대에는 이유가 있으니까요. 그래도 해결이 안 되면, 작은 규모로 테스트해보자고 제안할 것 같습니다. 예를 들어 한두 개 매장에서만 먼저 시도해보고 결과를 보는 거죠. 그러면 양쪽 다 리스크 없이 검증할 수 있으니까요. 에스컬레이션은 정말 마지막 수단이라고 생각해요. 실무자들끼리 해결하는 게 관계에도 좋고 속도도 빠르니까요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 학습 민첩성 기본 (온라인 강의로 데이터 분석 학습 중, 구체적 방법론). 실패 대응 단순 (공모전 탈락 경험, 피드백을 통한 약점 보완). 메타인지 중상 (약점 '정량적 분석', 개선 계획 '외부 교육'). Quote 3개. 75-89점 기준(중상 민첩성, 구체적 회복 과정)에 약간 미달하나 Fair 상위권으로 75점 산정."
+      },
+      "strengths": [
+        "학습 민첩성 기본 (온라인 강의로 데이터 분석 학습 중)",
+        "실패 직면 태도 (공모전 탈락 후 피드백 수용)",
+        "메타인지 중상 (약점/강점 인식, 개선 계획)",
+        "성장 마인드 명확 ('노력하면 개선할 수 있다')"
+      ],
+      "weaknesses": [
+        "초기 자기 인식 추상적 (구체화까지 시간 필요)",
+        "실패 심각성 중간 (공모전 탈락, 더 큰 좌절 경험 부족)",
+        "학습 속도 보통 (온라인 강의로 학습 중)"
+      ],
+      "key_observations": [
+        "신입 치고는 성장 마인드가 명확 (상위 50% 추정)",
+        "실패를 학습 기회로 인식하는 회복 탄력성",
+        "일부 학습에서 능동적 태도"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 10,
+            "quote": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있으며, 피벗 테이블과 SQL을 배우고 있다고 명시하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 65
+          },
+          {
+            "segment_id": 11,
+            "quote": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+            "resume_section": "weaknesses",
+            "matched_content": "정량적 데이터 분석 역량 부족 (피벗, 통계, SQL 등)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'weaknesses' 섹션에서 정량적 데이터 분석 역량 부족을 명시하고 있으며, 이를 보완하기 위한 학습 계획도 언급하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 57
+          }
+        ]
+      }
+    },
+    "interpersonal_skill": {
+      "competency_name": "interpersonal_skill",
+      "overall_score": 82,
+      "interview_confidence": 0.85,
+      "confidence_v2": 0.91,
+      "segment_count": 4,
+      "resume_verified_count": 4,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+            "segment_id": 5,
+            "char_index": 2100,
+            "relevance_note": "경청 (먼저 들음, 이해 시도)",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+            "segment_id": 5,
+            "char_index": 2250,
+            "relevance_note": "갈등 해결 (중재, Win-Win)",
+            "quality_score": 0.95,
+            "char_length": 38,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+            "segment_id": 9,
+            "char_index": 3500,
+            "relevance_note": "협업 (팀 우선, 개인 양보)",
+            "quality_score": 0.85,
+            "char_length": 39,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요",
+            "segment_id": 11,
+            "char_index": 4200,
+            "relevance_note": "배려, 협업",
+            "quality_score": 0.8,
+            "char_length": 31,
+            "actual_transcript_text": "제 약점은 분명히 정량적 분석 역량이에요. 데이터를 보고 빠르게 인사이트를 뽑아내는 건 아직 부족합니다. 그래서 의식적으로 숫자를 먼저 보려고 노력하고, 팀원들이 분석할 때 옆에서 배우고 있어요. 삼성물산에 입사하면 데이터 기반 의사결정이 더 중요할 텐데, 그 부분을 집중적으로 성장시키고 싶습니다. 선배님들한테 많이 여쭤보고, 필요하면 외부 교육도 받을 계획이에요. 제가 강점인 협업과 커뮤니케이션은 유지하면서, 약점인 분석 역량을 채워나가고 싶습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 갈등 해결 복잡도 중상 (팀 프로젝트에서 방향성 충돌, 5명 팀원, 중간 강도 갈등, 중재 후 합의 도출). 경청 깊이 중간 (각 팀원 의견 먼저 들음 + 입장 이해 시도 + 일부 의견 반영하여 절충안). 협업 태도 양호 (본인 아이디어 양보, 팀 목표 우선). 커뮤니케이션 효과성 (명확한 설명, 이해 확인). Quote 4개. 90-100점 기준(심각한 갈등, 다수 이해관계자, Win-Win)에는 미달하나 Good 상위권으로 82점 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
+          "specific_examples": [
+            {
+              "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "경청"
+            },
+            {
+              "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "갈등 직면"
+            },
+            {
+              "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+              "segment_ids": [
+                9,
+                11
+              ],
+              "evidence_type": "팀 우선"
+            },
+            {
+              "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "쌍방향 소통"
+            }
+          ],
+          "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 팀 프로젝트(3개)에서 경청 먼저 습관 ('먼저 들었다' 반복 언급). 갈등 반응 직면 시도 (회피하지 않고 대화로 해결, Segment 5, 9). 팀 우선 태도 명확 (본인 아이디어 양보 2회, '팀이 좋으면' 표현). 쌍방향 소통 (의견 제시 후 항상 '어떻게 생각하세요?' 확인). 90-100점 기준(모든 상황에서 완벽한 일관성, 심각한 갈등 조율)에는 미달하나 75-89점 충족. 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "conflict_avoidance",
+            "description": "Segment 8에서 '불편한 팀원 한 명은 그냥 피했다'며 일부 상황에서 갈등 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3100-3200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "갈등 해결 복잡도 중상 (5명 팀, 방향성 충돌, 중재 성공)",
+        "경청 깊이 중간 (이해 시도 + 의견 반영)",
+        "모든 팀 프로젝트에서 경청 먼저 습관",
+        "팀 우선 태도 명확 (개인 아이디어 양보 2회)",
+        "쌍방향 소통 습관 ('어떻게 생각하세요?' 확인)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 갈등 회피 (Segment 8, 불편한 팀원)",
+        "갈등 복잡도가 중상 수준 (심각한 갈등 경험 부족)",
+        "경청 후 행동 변화가 일부만 반영 (완전한 Win-Win 미달)"
+      ],
+      "key_observations": [
+        "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
+        "모든 팀 관계에서 일관된 경청 먼저 패턴",
+        "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 4,
+        "high_strength_count": 4,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 40
+          },
+          {
+            "segment_id": 5,
+            "quote": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 38
+          },
+          {
+            "segment_id": 9,
+            "quote": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+            "resume_section": "strengths",
+            "matched_content": "협업 중심 마인드 (Win-Win)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'strengths' 섹션에서 팀 우선의 협업 마인드를 강조하고 있으며, 개인의 아이디어보다 팀의 의견을 중시하는 태도를 보이고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 39
+          }
+        ]
+      }
+    },
+    "organizational_fit": {
+      "competency_name": "organizational_fit",
+      "overall_score": 66,
+      "interview_confidence": 0.64,
+      "confidence_v2": 0.78,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 68,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 3200,
+            "relevance_note": "고객 우선, 정성적 인사이트",
+            "quality_score": 0.8,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "피드백 수용, 구체적 개선",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": "끝까지 반대하신다면, 일단 제가 놓친 부분이 있는지 다시 생각해볼 것 같아요. 반대에는 이유가 있으니까요. 그래도 해결이 안 되면, 작은 규모로 테스트해보자고 제안할 것 같습니다. 예를 들어 한두 개 매장에서만 먼저 시도해보고 결과를 보는 거죠. 그러면 양쪽 다 리스크 없이 검증할 수 있으니까요. 에스컬레이션은 정말 마지막 수단이라고 생각해요. 실무자들끼리 해결하는 게 관계에도 좋고 속도도 빠르니까요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 패션 MD 문화 이해도 기본 (고객 우선 언급). 피드백 수용 의식은 있으나 ('처음엔 속상했지만') 구체적 사례 부족. 시즌 마감 압박 경험 없음. Quote 2개. 75-89점 기준(고객 우선 또는 목표 달성 명시, 개선 사례)에 미치지 못함. Fair 중상위 수준으로 68점."
+      },
+      "strengths": [
+        "고객 우선 의식 (고객 리뷰 분석에서 정성적 인사이트)",
+        "피드백 수용 의식 (비판 경험 + 구체적 개선 시도)",
+        "일부 경험에서 고객 만족 강조"
+      ],
+      "weaknesses": [
+        "과거 낮은 기준 의식 (80% 충분, 현재는 개선됨)",
+        "비판 수용 시 초기 불편함 표출 ('속상했다')",
+        "일부 경험에서 가치관 일관성 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 고객 우선 의식이 있음",
+        "피드백을 수용하려는 의지 존재",
+        "일부 경험에서 고객 만족 강조"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 6,
+            "quote": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 피드백 수용 후 상품 믹스 조정.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 상품 믹스 조정 경험을 언급하고 있으며, 피드백을 수용하고 개선한 사례가 일치합니다.",
+            "char_index": null,
+            "char_length": 40
+          }
+        ]
+      }
+    },
+    "problem_solving": {
+      "competency_name": "problem_solving",
+      "overall_score": 54,
+      "interview_confidence": 0.53,
+      "confidence_v2": 0.72,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "의사결정 (트레이드오프)",
+            "quality_score": 0.7,
+            "char_length": 38,
+            "actual_transcript_text": "은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "relevance_note": "창의적 해결 (정성적 인사이트)",
+            "quality_score": 0.6,
+            "char_length": 32,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 문제 복잡도 낮음 (디자인팀과의 의견 조율: 2개 변수). 구조적 분석 1단계 (의견 조율). 창의적 해결책 부족 (일반적 해결책). Quote 2개. 75-89점 기준(중간 복잡도, 2단계 분석)에 미치지 못함. Fair 중하위 수준으로 60점."
+      },
+      "strengths": [
+        "의사결정 시 트레이드오프 고려",
+        "일부 Case에서 '왜?' 먼저 묻는 시도",
+        "정성적 인사이트 공유"
+      ],
+      "weaknesses": [
+        "구조적 분석 깊이가 1단계로 제한적",
+        "문제 복잡도가 낮음",
+        "일부 답변에서 원인 분석 생략"
+      ],
+      "key_observations": [
+        "신입 치고는 일부 구조적 사고 시도 (상위 50% 추정)",
+        "Case Interview에서 일관된 문제해결 프로세스 부족",
+        "창의성과 실행 가능성의 균형 부족"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 38
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 32
+          }
+        ]
+      }
+    },
+    "customer_journey_marketing": {
+      "competency_name": "customer_journey_marketing",
+      "overall_score": 67,
+      "interview_confidence": 0.68,
+      "confidence_v2": 0.81,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 65,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "relevance_note": "고객 리뷰를 통한 정성적 인사이트 도출",
+            "quality_score": 0.7,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 150,
+            "relevance_note": "데이터 기반의 고객 이해 시도",
+            "quality_score": 0.6,
+            "char_length": 26,
+            "actual_transcript_text": " 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고,"
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 고객 중심 의식은 있으나 체계적 여정 설계 부족. 구체적 수치 없음. 단일 채널 마케팅 경험. Quote 2개. 75-89점 기준(수치 2개 이상)에 미달. Fair 중상위로 65점.",
+        "behavioral_score": 62,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 고객 중심 사고, 여정 의식 약함",
+          "specific_examples": [
+            "12개 질문 중 5개(42%)에서 '고객', '타겟', '경험' 등 고객 관련 표현 언급",
+            "'고객이 좋아할 것 같아서' 같은 추상적 표현 많음",
+            "여정 단계 의식 약함(1회만)"
+          ],
+          "consistency_note": "Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 언급"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 고객 언급. '고객이 좋아할 것 같아서' 같은 추상적 표현 많음. 여정 단계 의식 약함(1회만). 채널 통합보다는 단일 채널 중심. '우리 제품', '우리 브랜드' 같은 제품 중심 표현도 빈번. 60-74점 중간 수준으로 62점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "unclear_target",
+            "description": "Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3450-3580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "고객 리뷰를 통한 정성적 인사이트 도출",
+        "데이터 기반의 고객 이해 시도"
+      ],
+      "weaknesses": [
+        "일부 답변에서 타겟 불명확 ('모든 고객', Segment 11)",
+        "구체적 수치로 결과 측정 부족",
+        "여정 단계별 전략 부족"
+      ],
+      "key_observations": [
+        "고객 중심 사고는 있으나 체계적 여정 설계 부족",
+        "데이터 기반의 고객 이해 시도는 긍정적",
+        "타겟 고객 정의가 불명확하여 개선 필요"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 5,
+            "quote": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 판매 데이터 근거로 조정.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 판매 데이터 근거로 조정한 경험을 언급하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 26
+          }
+        ]
+      }
+    },
+    "md_data_analysis": {
+      "competency_name": "md_data_analysis",
+      "overall_score": 60,
+      "interview_confidence": 0.68,
+      "confidence_v2": 0.81,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "정성적 분석 위주, 정량적 수치 부족",
+            "quality_score": 0.6,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데"
+          },
+          {
+            "text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+            "segment_id": 10,
+            "char_index": 0,
+            "relevance_note": "데이터 분석 역량 향상 노력",
+            "quality_score": 0.7,
+            "char_length": 62,
+            "actual_transcript_text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요. 피벗 테이블이나 기본 통계는 배웠고, 지금은 SQL을 공부하고 있습니다. 아직 실무에 바로 적용할 수준"
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 정성적 분석 위주로 구체적 수치 부족. 데이터 분석 역량 향상 노력은 있으나, 구체적 수치 기반의 정량 분석이 부족하여 60점으로 산정.",
+        "behavioral_score": 65,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 데이터 언급, 정성적 분석 위주",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 5개(42%)에서 데이터 언급",
+              "segment_ids": [
+                3,
+                5,
+                7,
+                9,
+                11
+              ],
+              "evidence_type": "데이터 언급"
+            },
+            {
+              "description": "정성적 분석 위주로 구체적 수치 2회 사용",
+              "segment_ids": [
+                9,
+                10
+              ],
+              "evidence_type": "정성적 분석"
+            }
+          ],
+          "consistency_note": "데이터 언급은 있으나 정량적 분석 부족, 정성적 설명 위주"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 데이터 언급. 정성적 분석 위주로 구체적 수치 2회 사용. 데이터 의식은 있으나 실행이 부족하여 65점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_evidence",
+            "description": "Segment 9에서 '고객 리뷰 분석'이라 했으나 구체적 수치 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 0-380"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '고객 리뷰 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "데이터 분석 역량 향상 노력",
+        "정성적 분석에서 인사이트 도출 능력",
+        "데이터 기반 사고 의식"
+      ],
+      "weaknesses": [
+        "구체적 수치 기반의 정량 분석 부족",
+        "가설-검증 사이클 경험 부족",
+        "정성적 분석에서 구체성 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 데이터 기반 사고 의식 있음",
+        "정성적 분석에서 인사이트 도출 능력 보임",
+        "데이터 분석 역량 향상 노력 중"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 10,
+            "quote": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 62
+          }
+        ]
+      }
+    },
+    "seasonal_strategy_kpi": {
+      "competency_name": "seasonal_strategy_kpi",
+      "overall_score": 62,
+      "interview_confidence": 0.68,
+      "confidence_v2": 0.81,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "목표 설정, 데이터 기반 접근",
+            "quality_score": 0.7,
+            "char_length": 84,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 "
+          },
+          {
+            "text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "전략 수립, 문제 해결",
+            "quality_score": 0.7,
+            "char_length": 79,
+            "actual_transcript_text": "은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 목표 설정과 실행 경험은 있으나 체계적 모니터링 부족. KPI 언급은 있으나 구체적 수치 부족. 문제 대응보다는 예방 중심. Quote 2개. 75-89점 기준(KPI 2개 이상)에 미달. Fair 중하위로 60점."
+      },
+      "strengths": [
+        "목표 지향적 사고가 일부 질문에서 명확함",
+        "문제→원인→해결의 논리적 흐름 (1회)",
+        "데이터 기반 접근 시도"
+      ],
+      "weaknesses": [
+        "구체적 KPI 수치 부족",
+        "Plan B 또는 전략 수정 경험 부족",
+        "사후적 대응보다 선제적 모니터링 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 목표 관리 의식 명확 (상위 50% 추정)",
+        "Case 질문에서 체계적 문제해결 논리",
+        "시즌 전략 경험은 제한적이나 기본 사이클 이해",
+        "복잡한 KPI보다 핵심 지표 관리에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 84
+          },
+          {
+            "segment_id": 5,
+            "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 79
+          }
+        ]
+      }
+    },
+    "stakeholder_collaboration": {
+      "competency_name": "stakeholder_collaboration",
+      "overall_score": 81,
+      "interview_confidence": 0.9,
+      "confidence_v2": 0.94,
+      "segment_count": 3,
+      "resume_verified_count": 3,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 81,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+            "quality_score": 0.9,
+            "char_length": 84,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 "
+          },
+          {
+            "text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "segment_id": 5,
+            "char_index": 250,
+            "relevance_note": "Win-Win 합의, 절충안 도출",
+            "quality_score": 0.85,
+            "char_length": 79,
+            "actual_transcript_text": "렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+            "segment_id": 5,
+            "char_index": 350,
+            "relevance_note": "결과 확인, 관계 유지",
+            "quality_score": 0.8,
+            "char_length": 47,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 충돌 인식→설득→합의의 기본 사이클 명확. 구체적 수치 없음. 논리적 설득 경험 1개(디자인팀과의 협업). Quote 3개. 90-100점 기준(2개 이상 이해관계자)은 없으나, Good 구간 상위권. 상대 입장 이해('디자인팀은 브랜드 정체성') 명확하여 81점으로 산정.",
+        "behavioral_score": 78,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+              "segment_ids": [
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "협업 의식"
+            },
+            {
+              "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+              "segment_ids": [
+                5,
+                6,
+                8
+              ],
+              "evidence_type": "설득 커뮤니케이션"
+            },
+            {
+              "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+              "segment_ids": [
+                5,
+                8
+              ],
+              "evidence_type": "균형 의식"
+            },
+            {
+              "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+              "segment_ids": [
+                7
+              ],
+              "evidence_type": "관계 중시"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득' 등 협업 관련 표현 언급. 경청→공감→논리 패턴 4회('먼저 들어보고'→'이해한다'→'데이터로 설명'). '양쪽 다', 'Win-Win' 같은 균형 표현 3회. '장기적 관계' 언급 2회. Case 질문에서 특히 논리적 설득 명확. Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 배려. 75-89점 기준 충족하여 78점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "one_sided_persuasion",
+            "description": "Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3520-3650"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "이해관계자 입장 파악 ('디자인팀은 브랜드 정체성')",
+        "Win-Win 합의 도출 (디자인팀과의 절충안)",
+        "경청→공감→논리 패턴 (4회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 일방적 설득 강조 (Segment 11)",
+        "합의 후 결과/관계 확인 부족",
+        "2개 이상 이해관계자 동시 조정 경험 제한적"
+      ],
+      "key_observations": [
+        "신입 치고는 논리적 설득 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (충돌→입장→설득→합의)",
+        "상대 입장 이해 능력 우수 ('디자인팀은 브랜드 정체성')",
+        "감정보다는 논리 우선, 데이터 활용"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 84
+          },
+          {
+            "segment_id": 5,
+            "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 79
+          },
+          {
+            "segment_id": 5,
+            "quote": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 47
+          }
+        ]
+      }
+    },
+    "value_chain_optimization": {
+      "competency_name": "value_chain_optimization",
+      "overall_score": 60,
+      "interview_confidence": 0.68,
+      "confidence_v2": 0.81,
+      "segment_count": 2,
+      "resume_verified_count": 2,
+      "adjusted_by_overlap": false,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "relevance_note": "관계 관리, 원가 절감 구체적 수치 없음",
+            "quality_score": 0.5,
+            "char_length": 26,
+            "actual_transcript_text": "노력했어요. 실제로 업체 담당자분이 저한테 '덕분에 미팅이 편했다'고 말씀해주셨어요. 수치적으로 얼마나 개선됐는지는 정확히 모르지만, 팀에서 좋은 결과가 나왔다고 들었습니다."
+          },
+          {
+            "text": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+            "segment_id": 8,
+            "char_index": 250,
+            "relevance_note": "협상 전략, 구체적 원가 절감 수치 없음",
+            "quality_score": 0.6,
+            "char_length": 29,
+            "actual_transcript_text": " 높고, 품질 이슈도 적었습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 원가 의식은 있으나 체계적 분석 부족. 구체적 수치 없음. 단순 비용 절감 시도, 품질 고려 언급 없음. Quote 2개. 75-89점 기준(수치 2개 이상)에 미달. Fair 중하위로 60점.",
+        "behavioral_score": 63,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 원가 의식, 효율화 지향적 사고 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 5개(42%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+              "segment_ids": [
+                3,
+                5,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "원가 의식"
+            },
+            {
+              "description": "구체적 수치 2회(원가 10% 절감, 마진율)",
+              "segment_ids": [
+                7,
+                9
+              ],
+              "evidence_type": "숫자 의식"
+            }
+          ],
+          "consistency_note": "Case 질문에서 원가 민감도 높음, Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식 명확"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 원가 언급. 구체적 수치는 2회만(원가 10% 절감, 마진율). '싸게', '비용 줄이고' 같은 추상적 표현 많음. 품질 균형 고려 1회만. 효율화보다는 단순 비용 절감 중심. 60-74점 중간 수준으로 63점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_cost_detail",
+            "description": "Segment 3에서 '마진율 개선'이라 했으나 구체적 수치나 방법 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 3, char_index: 100-200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 3에서 '마진율 개선'이라 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "원가 의식이 일부 질문에서 명확함",
+        "협상에서 win-win 전략 사용"
+      ],
+      "weaknesses": [
+        "구체적 수치 없이 추상적 언급",
+        "밸류체인 전체보다는 특정 영역(소싱) 집중",
+        "프로세스 개선 경험 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 원가 의식이 일부 있음",
+        "Case 질문에서 원가 민감도와 효율화 의식",
+        "소싱 영역에서 최적화 경험, 다른 영역은 제한적"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 3,
+            "quote": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+            "resume_section": "projects",
+            "matched_content": "원가 절감 프로젝트 참여 | 업체 관계 관리 담당.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 원가 절감 프로젝트에 업체 관계 관리 역할을 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 26
+          },
+          {
+            "segment_id": 8,
+            "quote": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+            "resume_section": "strengths",
+            "matched_content": "장기 파트너십 관점의 관계 관리.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'strengths' 섹션에서 장기 파트너십 관점의 관계 관리 능력을 강조하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 29
+          }
+        ]
+      }
+    }
+  },
+  "final_score": 65.0,
+  "avg_confidence": 0.8,
+  "final_reliability": "high",
+  "reliability_note": "평균 Confidence V2: 0.80 | 모든 역량이 신뢰도 기준 충족",
+  "analysis_summary": null,
+  "post_processing": null,
+  "competency_details": {
+    "achievement_motivation": {
+      "overall_score": 55,
+      "confidence_v2": 0.73,
+      "weight": 0.1,
+      "weighted_contribution": 5.5,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+            "segment_id": 1,
+            "char_index": 100,
+            "relevance_note": "주도성 부족, 팀원 의존",
+            "quality_score": 0.5,
+            "char_length": 32,
+            "actual_transcript_text": "하진 않았는데, 회의에서 여러 의견을 조율하는 역할을 했습니다. 품절 리스크는... 솔직히 정확한 수치는 기억이 안 나는데, 팀에서 잘 관리했던 것 같아요. 저는 주로 팀 분위기를 좋게 유지하고 다들 의견 내기 편하"
+          },
+          {
+            "text": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+            "segment_id": 2,
+            "char_index": 50,
+            "relevance_note": "주체적 경험 부족, 선배 의존",
+            "quality_score": 0.5,
+            "char_length": 44,
+            "actual_transcript_text": "니다. 구체적인 공식이나 계산 방법은 솔직히 잘 모르겠어요. 근데 선배님이 하시는 걸 보면서 많이 배웠고, 나중에 제가 직접 해볼 기회가 있으면 열심히 공부해서 해보고 싶습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 주도성 기본 (팀원 의존, 선배 의존). 목표 난이도 낮음 (쉬운 목표, 도전적 목표 없음). 외적 동기 우세 ('배우면서 참여'). 책임감은 있으나 ('참여했다') 끝까지 완수 사례 불명확. Quote 2개. 75-89점 기준(중간 난이도, 내적 동기)에 미치지 못함. Fair 중하위 수준으로 60점."
+      },
+      "strengths": [
+        "기본적인 책임감 (참여했다)",
+        "팀원들과의 협업 경험"
+      ],
+      "weaknesses": [
+        "자발성 부족 (팀원 의존)",
+        "끈기 부족 (선배 의존)",
+        "도전적 목표 설정 부족"
+      ],
+      "key_observations": [
+        "자발적 도전 경험 부족",
+        "외적 동기 우세",
+        "도전적 목표 설정 부족"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 1,
+            "quote": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 'MD 어시스턴트'로서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 수행했다고 명시하고 있으며, 데이터 분석은 선배님들이 주도했다고 언급하고 있습니다. 이로 인해 팀원들의 분석 자료를 보며 논의하는 역할이 일치합니다.",
+            "char_index": null,
+            "char_length": 32
+          },
+          {
+            "segment_id": 2,
+            "quote": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 데이터 분석은 선배님들이 주도.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 하였고, 데이터 분석은 선배님들이 주도했다고 명시하고 있습니다. 이로 인해 선배님에게 의존하여 결정 과정을 배우는 경험이 일치합니다.",
+            "char_index": null,
+            "char_length": 44
+          }
+        ]
+      }
+    },
+    "growth_potential": {
+      "overall_score": 70,
+      "confidence_v2": 0.79,
+      "weight": 0.1,
+      "weighted_contribution": 7.0,
+      "resume_verified_count": 2,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 75,
+        "evidence_weight": 0.7,
+        "evidence_details": [
+          {
+            "text": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+            "segment_id": 10,
+            "char_index": 280,
+            "relevance_note": "학습 민첩성 (자기 주도적 학습)",
+            "quality_score": 0.8,
+            "char_length": 65,
+            "actual_transcript_text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요. 피벗 테이블이나 기본 통계는 배웠고, 지금은 SQL을 공부하고 있습니다. 아직 실무에 바로 적용할 수준은 아니지만, 6개월 정도 더 하면 기본적인 분석은 할 수 있을 것 같아요. 제가 부족한 걸 알고 있어서 더 열심히 하고 있습니다."
+          },
+          {
+            "text": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+            "segment_id": 11,
+            "char_index": 360,
+            "relevance_note": "메타인지 (구체적 약점 인식 및 개선 계획)",
+            "quality_score": 0.85,
+            "char_length": 57,
+            "actual_transcript_text": "제 약점은 분명히 정량적 분석 역량이에요. 데이터를 보고 빠르게 인사이트를 뽑아내는 건 아직 부족합니다. 그래서 의식적으로 숫자를 먼저 보려고 노력하고, 팀원들이 분석할 때 옆에서 배우고 있어요. 삼성물산에 입사하면 데이터 기반 의사결정이 더 중요할 텐데, 그 부분을 집중적으로 성장시키고 싶습니다. 선배님들한테 많이 여쭤보고, 필요하면 외부 교육도 받을 계획이에요. 제가 강점인 협업과 커뮤니케이션은 유지하면서, 약점인 분석 역량을 채워나가고 싶습니다."
+          },
+          {
+            "text": "공모전에서 떨어졌을 때 피드백을 받아 약점을 보완했습니다.",
+            "segment_id": 6,
+            "char_index": 300,
+            "relevance_note": "실패 경험 및 회복 과정",
+            "quality_score": 0.75,
+            "char_length": 32,
+            "actual_transcript_text": "끝까지 반대하신다면, 일단 제가 놓친 부분이 있는지 다시 생각해볼 것 같아요. 반대에는 이유가 있으니까요. 그래도 해결이 안 되면, 작은 규모로 테스트해보자고 제안할 것 같습니다. 예를 들어 한두 개 매장에서만 먼저 시도해보고 결과를 보는 거죠. 그러면 양쪽 다 리스크 없이 검증할 수 있으니까요. 에스컬레이션은 정말 마지막 수단이라고 생각해요. 실무자들끼리 해결하는 게 관계에도 좋고 속도도 빠르니까요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 학습 민첩성 기본 (온라인 강의로 데이터 분석 학습 중, 구체적 방법론). 실패 대응 단순 (공모전 탈락 경험, 피드백을 통한 약점 보완). 메타인지 중상 (약점 '정량적 분석', 개선 계획 '외부 교육'). Quote 3개. 75-89점 기준(중상 민첩성, 구체적 회복 과정)에 약간 미달하나 Fair 상위권으로 75점 산정."
+      },
+      "strengths": [
+        "학습 민첩성 기본 (온라인 강의로 데이터 분석 학습 중)",
+        "실패 직면 태도 (공모전 탈락 후 피드백 수용)",
+        "메타인지 중상 (약점/강점 인식, 개선 계획)",
+        "성장 마인드 명확 ('노력하면 개선할 수 있다')"
+      ],
+      "weaknesses": [
+        "초기 자기 인식 추상적 (구체화까지 시간 필요)",
+        "실패 심각성 중간 (공모전 탈락, 더 큰 좌절 경험 부족)",
+        "학습 속도 보통 (온라인 강의로 학습 중)"
+      ],
+      "key_observations": [
+        "신입 치고는 성장 마인드가 명확 (상위 50% 추정)",
+        "실패를 학습 기회로 인식하는 회복 탄력성",
+        "일부 학습에서 능동적 태도"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 10,
+            "quote": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있으며, 피벗 테이블과 SQL을 배우고 있다고 명시하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 65
+          },
+          {
+            "segment_id": 11,
+            "quote": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+            "resume_section": "weaknesses",
+            "matched_content": "정량적 데이터 분석 역량 부족 (피벗, 통계, SQL 등)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'weaknesses' 섹션에서 정량적 데이터 분석 역량 부족을 명시하고 있으며, 이를 보완하기 위한 학습 계획도 언급하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 57
+          }
+        ]
+      }
+    },
+    "interpersonal_skill": {
+      "overall_score": 82,
+      "confidence_v2": 0.91,
+      "weight": 0.1,
+      "weighted_contribution": 8.200000000000001,
+      "resume_verified_count": 4,
+      "segment_count": 4,
+      "perspectives": {
+        "evidence_score": 82,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+            "segment_id": 5,
+            "char_index": 2100,
+            "relevance_note": "경청 (먼저 들음, 이해 시도)",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+            "segment_id": 5,
+            "char_index": 2250,
+            "relevance_note": "갈등 해결 (중재, Win-Win)",
+            "quality_score": 0.95,
+            "char_length": 38,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+            "segment_id": 9,
+            "char_index": 3500,
+            "relevance_note": "협업 (팀 우선, 개인 양보)",
+            "quality_score": 0.85,
+            "char_length": 39,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "팀원 한 명이 힘들어해서 제가 그 파트를 같이 도와줬어요",
+            "segment_id": 11,
+            "char_index": 4200,
+            "relevance_note": "배려, 협업",
+            "quality_score": 0.8,
+            "char_length": 31,
+            "actual_transcript_text": "제 약점은 분명히 정량적 분석 역량이에요. 데이터를 보고 빠르게 인사이트를 뽑아내는 건 아직 부족합니다. 그래서 의식적으로 숫자를 먼저 보려고 노력하고, 팀원들이 분석할 때 옆에서 배우고 있어요. 삼성물산에 입사하면 데이터 기반 의사결정이 더 중요할 텐데, 그 부분을 집중적으로 성장시키고 싶습니다. 선배님들한테 많이 여쭤보고, 필요하면 외부 교육도 받을 계획이에요. 제가 강점인 협업과 커뮤니케이션은 유지하면서, 약점인 분석 역량을 채워나가고 싶습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 갈등 해결 복잡도 중상 (팀 프로젝트에서 방향성 충돌, 5명 팀원, 중간 강도 갈등, 중재 후 합의 도출). 경청 깊이 중간 (각 팀원 의견 먼저 들음 + 입장 이해 시도 + 일부 의견 반영하여 절충안). 협업 태도 양호 (본인 아이디어 양보, 팀 목표 우선). 커뮤니케이션 효과성 (명확한 설명, 이해 확인). Quote 4개. 90-100점 기준(심각한 갈등, 다수 이해관계자, Win-Win)에는 미달하나 Good 상위권으로 82점 산정.",
+        "behavioral_score": 79,
+        "behavioral_pattern": {
+          "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
+          "specific_examples": [
+            {
+              "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "경청"
+            },
+            {
+              "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+              "segment_ids": [
+                5,
+                9
+              ],
+              "evidence_type": "갈등 직면"
+            },
+            {
+              "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+              "segment_ids": [
+                9,
+                11
+              ],
+              "evidence_type": "팀 우선"
+            },
+            {
+              "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+              "segment_ids": [
+                5,
+                9,
+                11
+              ],
+              "evidence_type": "쌍방향 소통"
+            }
+          ],
+          "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 팀 프로젝트(3개)에서 경청 먼저 습관 ('먼저 들었다' 반복 언급). 갈등 반응 직면 시도 (회피하지 않고 대화로 해결, Segment 5, 9). 팀 우선 태도 명확 (본인 아이디어 양보 2회, '팀이 좋으면' 표현). 쌍방향 소통 (의견 제시 후 항상 '어떻게 생각하세요?' 확인). 90-100점 기준(모든 상황에서 완벽한 일관성, 심각한 갈등 조율)에는 미달하나 75-89점 충족. 79점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "conflict_avoidance",
+            "description": "Segment 8에서 '불편한 팀원 한 명은 그냥 피했다'며 일부 상황에서 갈등 회피",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 8, char_index: 3100-3200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "갈등 해결 복잡도 중상 (5명 팀, 방향성 충돌, 중재 성공)",
+        "경청 깊이 중간 (이해 시도 + 의견 반영)",
+        "모든 팀 프로젝트에서 경청 먼저 습관",
+        "팀 우선 태도 명확 (개인 아이디어 양보 2회)",
+        "쌍방향 소통 습관 ('어떻게 생각하세요?' 확인)"
+      ],
+      "weaknesses": [
+        "일부 상황에서 갈등 회피 (Segment 8, 불편한 팀원)",
+        "갈등 복잡도가 중상 수준 (심각한 갈등 경험 부족)",
+        "경청 후 행동 변화가 일부만 반영 (완전한 Win-Win 미달)"
+      ],
+      "key_observations": [
+        "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
+        "모든 팀 관계에서 일관된 경청 먼저 패턴",
+        "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 4,
+        "high_strength_count": 4,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 40
+          },
+          {
+            "segment_id": 5,
+            "quote": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 38
+          },
+          {
+            "segment_id": 9,
+            "quote": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+            "resume_section": "strengths",
+            "matched_content": "협업 중심 마인드 (Win-Win)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'strengths' 섹션에서 팀 우선의 협업 마인드를 강조하고 있으며, 개인의 아이디어보다 팀의 의견을 중시하는 태도를 보이고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 39
+          }
+        ]
+      }
+    },
+    "organizational_fit": {
+      "overall_score": 66,
+      "confidence_v2": 0.78,
+      "weight": 0.1,
+      "weighted_contribution": 6.6000000000000005,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 68,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 3200,
+            "relevance_note": "고객 우선, 정성적 인사이트",
+            "quality_score": 0.8,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "segment_id": 6,
+            "char_index": 2400,
+            "relevance_note": "피드백 수용, 구체적 개선",
+            "quality_score": 0.9,
+            "char_length": 40,
+            "actual_transcript_text": "끝까지 반대하신다면, 일단 제가 놓친 부분이 있는지 다시 생각해볼 것 같아요. 반대에는 이유가 있으니까요. 그래도 해결이 안 되면, 작은 규모로 테스트해보자고 제안할 것 같습니다. 예를 들어 한두 개 매장에서만 먼저 시도해보고 결과를 보는 거죠. 그러면 양쪽 다 리스크 없이 검증할 수 있으니까요. 에스컬레이션은 정말 마지막 수단이라고 생각해요. 실무자들끼리 해결하는 게 관계에도 좋고 속도도 빠르니까요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 패션 MD 문화 이해도 기본 (고객 우선 언급). 피드백 수용 의식은 있으나 ('처음엔 속상했지만') 구체적 사례 부족. 시즌 마감 압박 경험 없음. Quote 2개. 75-89점 기준(고객 우선 또는 목표 달성 명시, 개선 사례)에 미치지 못함. Fair 중상위 수준으로 68점."
+      },
+      "strengths": [
+        "고객 우선 의식 (고객 리뷰 분석에서 정성적 인사이트)",
+        "피드백 수용 의식 (비판 경험 + 구체적 개선 시도)",
+        "일부 경험에서 고객 만족 강조"
+      ],
+      "weaknesses": [
+        "과거 낮은 기준 의식 (80% 충분, 현재는 개선됨)",
+        "비판 수용 시 초기 불편함 표출 ('속상했다')",
+        "일부 경험에서 가치관 일관성 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 고객 우선 의식이 있음",
+        "피드백을 수용하려는 의지 존재",
+        "일부 경험에서 고객 만족 강조"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 6,
+            "quote": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 피드백 수용 후 상품 믹스 조정.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 상품 믹스 조정 경험을 언급하고 있으며, 피드백을 수용하고 개선한 사례가 일치합니다.",
+            "char_index": null,
+            "char_length": 40
+          }
+        ]
+      }
+    },
+    "problem_solving": {
+      "overall_score": 54,
+      "confidence_v2": 0.72,
+      "weight": 0.1,
+      "weighted_contribution": 5.4,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "의사결정 (트레이드오프)",
+            "quality_score": 0.7,
+            "char_length": 38,
+            "actual_transcript_text": "은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "relevance_note": "창의적 해결 (정성적 인사이트)",
+            "quality_score": 0.6,
+            "char_length": 32,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 문제 복잡도 낮음 (디자인팀과의 의견 조율: 2개 변수). 구조적 분석 1단계 (의견 조율). 창의적 해결책 부족 (일반적 해결책). Quote 2개. 75-89점 기준(중간 복잡도, 2단계 분석)에 미치지 못함. Fair 중하위 수준으로 60점."
+      },
+      "strengths": [
+        "의사결정 시 트레이드오프 고려",
+        "일부 Case에서 '왜?' 먼저 묻는 시도",
+        "정성적 인사이트 공유"
+      ],
+      "weaknesses": [
+        "구조적 분석 깊이가 1단계로 제한적",
+        "문제 복잡도가 낮음",
+        "일부 답변에서 원인 분석 생략"
+      ],
+      "key_observations": [
+        "신입 치고는 일부 구조적 사고 시도 (상위 50% 추정)",
+        "Case Interview에서 일관된 문제해결 프로세스 부족",
+        "창의성과 실행 가능성의 균형 부족"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 38
+          },
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 32
+          }
+        ]
+      }
+    },
+    "customer_journey_marketing": {
+      "overall_score": 67,
+      "confidence_v2": 0.81,
+      "weight": 0.15,
+      "weighted_contribution": 10.049999999999999,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 65,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "relevance_note": "고객 리뷰를 통한 정성적 인사이트 도출",
+            "quality_score": 0.7,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데 입을 데가 없다'는 리뷰가 많았는데, 이건 디자인은 좋지만 실용성이 부족하다는 뜻이잖아요. 이런 인사이트를 팀에 공유했고, 다른 분들이 데이터로 검증해주셔서 방향을 잡을 수 있었습니다. 숫자 분석은 솔직히 제 강점은 아니지만, 정성적 인사이트를 잘 뽑아내는 편이에요."
+          },
+          {
+            "text": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 150,
+            "relevance_note": "데이터 기반의 고객 이해 시도",
+            "quality_score": 0.6,
+            "char_length": 26,
+            "actual_transcript_text": " 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고,"
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 고객 중심 의식은 있으나 체계적 여정 설계 부족. 구체적 수치 없음. 단일 채널 마케팅 경험. Quote 2개. 75-89점 기준(수치 2개 이상)에 미달. Fair 중상위로 65점.",
+        "behavioral_score": 62,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 고객 중심 사고, 여정 의식 약함",
+          "specific_examples": [
+            "12개 질문 중 5개(42%)에서 '고객', '타겟', '경험' 등 고객 관련 표현 언급",
+            "'고객이 좋아할 것 같아서' 같은 추상적 표현 많음",
+            "여정 단계 의식 약함(1회만)"
+          ],
+          "consistency_note": "Behavioral 질문에서는 개인 경험 중심이나 여전히 고객 언급"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 고객 언급. '고객이 좋아할 것 같아서' 같은 추상적 표현 많음. 여정 단계 의식 약함(1회만). 채널 통합보다는 단일 채널 중심. '우리 제품', '우리 브랜드' 같은 제품 중심 표현도 빈번. 60-74점 중간 수준으로 62점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "unclear_target",
+            "description": "Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3450-3580"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '모든 고객을 위한 이벤트'라고 하여 타겟 불명확(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "고객 리뷰를 통한 정성적 인사이트 도출",
+        "데이터 기반의 고객 이해 시도"
+      ],
+      "weaknesses": [
+        "일부 답변에서 타겟 불명확 ('모든 고객', Segment 11)",
+        "구체적 수치로 결과 측정 부족",
+        "여정 단계별 전략 부족"
+      ],
+      "key_observations": [
+        "고객 중심 사고는 있으나 체계적 여정 설계 부족",
+        "데이터 기반의 고객 이해 시도는 긍정적",
+        "타겟 고객 정의가 불명확하여 개선 필요"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 5,
+            "quote": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 판매 데이터 근거로 조정.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 판매 데이터 근거로 조정한 경험을 언급하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 26
+          }
+        ]
+      }
+    },
+    "md_data_analysis": {
+      "overall_score": 60,
+      "confidence_v2": 0.81,
+      "weight": 0.15,
+      "weighted_contribution": 9.0,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "relevance_note": "정성적 분석 위주, 정량적 수치 부족",
+            "quality_score": 0.6,
+            "char_length": 60,
+            "actual_transcript_text": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다. 숫자보다는 고객분들이 어떤 감정으로 쓰셨는지, 어떤 기대가 있는지를 읽어내려고 했어요. 예를 들어 '예쁜데"
+          },
+          {
+            "text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+            "segment_id": 10,
+            "char_index": 0,
+            "relevance_note": "데이터 분석 역량 향상 노력",
+            "quality_score": 0.7,
+            "char_length": 62,
+            "actual_transcript_text": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요. 피벗 테이블이나 기본 통계는 배웠고, 지금은 SQL을 공부하고 있습니다. 아직 실무에 바로 적용할 수준"
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간에서 시작. 정성적 분석 위주로 구체적 수치 부족. 데이터 분석 역량 향상 노력은 있으나, 구체적 수치 기반의 정량 분석이 부족하여 60점으로 산정.",
+        "behavioral_score": 65,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 데이터 언급, 정성적 분석 위주",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 5개(42%)에서 데이터 언급",
+              "segment_ids": [
+                3,
+                5,
+                7,
+                9,
+                11
+              ],
+              "evidence_type": "데이터 언급"
+            },
+            {
+              "description": "정성적 분석 위주로 구체적 수치 2회 사용",
+              "segment_ids": [
+                9,
+                10
+              ],
+              "evidence_type": "정성적 분석"
+            }
+          ],
+          "consistency_note": "데이터 언급은 있으나 정량적 분석 부족, 정성적 설명 위주"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 데이터 언급. 정성적 분석 위주로 구체적 수치 2회 사용. 데이터 의식은 있으나 실행이 부족하여 65점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_evidence",
+            "description": "Segment 9에서 '고객 리뷰 분석'이라 했으나 구체적 수치 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 9, char_index: 0-380"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 9에서 '고객 리뷰 분석'이라 했으나 구체적 수치 언급 없음, 데이터 없는 주장(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "데이터 분석 역량 향상 노력",
+        "정성적 분석에서 인사이트 도출 능력",
+        "데이터 기반 사고 의식"
+      ],
+      "weaknesses": [
+        "구체적 수치 기반의 정량 분석 부족",
+        "가설-검증 사이클 경험 부족",
+        "정성적 분석에서 구체성 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 데이터 기반 사고 의식 있음",
+        "정성적 분석에서 인사이트 도출 능력 보임",
+        "데이터 분석 역량 향상 노력 중"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 9,
+            "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+            "resume_section": "experience",
+            "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 60
+          },
+          {
+            "segment_id": 10,
+            "quote": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+            "resume_section": "learning_in_progress",
+            "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 62
+          }
+        ]
+      }
+    },
+    "seasonal_strategy_kpi": {
+      "overall_score": 62,
+      "confidence_v2": 0.81,
+      "weight": 0.1,
+      "weighted_contribution": 6.2,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "목표 설정, 데이터 기반 접근",
+            "quality_score": 0.7,
+            "char_length": 84,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 "
+          },
+          {
+            "text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "segment_id": 5,
+            "char_index": 200,
+            "relevance_note": "전략 수립, 문제 해결",
+            "quality_score": 0.7,
+            "char_length": 79,
+            "actual_transcript_text": "은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 목표 설정과 실행 경험은 있으나 체계적 모니터링 부족. KPI 언급은 있으나 구체적 수치 부족. 문제 대응보다는 예방 중심. Quote 2개. 75-89점 기준(KPI 2개 이상)에 미달. Fair 중하위로 60점."
+      },
+      "strengths": [
+        "목표 지향적 사고가 일부 질문에서 명확함",
+        "문제→원인→해결의 논리적 흐름 (1회)",
+        "데이터 기반 접근 시도"
+      ],
+      "weaknesses": [
+        "구체적 KPI 수치 부족",
+        "Plan B 또는 전략 수정 경험 부족",
+        "사후적 대응보다 선제적 모니터링 보완 필요"
+      ],
+      "key_observations": [
+        "신입 치고는 목표 관리 의식 명확 (상위 50% 추정)",
+        "Case 질문에서 체계적 문제해결 논리",
+        "시즌 전략 경험은 제한적이나 기본 사이클 이해",
+        "복잡한 KPI보다 핵심 지표 관리에 강점"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 84
+          },
+          {
+            "segment_id": 5,
+            "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 79
+          }
+        ]
+      }
+    },
+    "stakeholder_collaboration": {
+      "overall_score": 81,
+      "confidence_v2": 0.94,
+      "weight": 0.05,
+      "weighted_contribution": 4.05,
+      "resume_verified_count": 3,
+      "segment_count": 3,
+      "perspectives": {
+        "evidence_score": 81,
+        "evidence_weight": 0.85,
+        "evidence_details": [
+          {
+            "text": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "relevance_note": "이해관계 파악, 각 부서 입장 이해, 충돌 인식",
+            "quality_score": 0.9,
+            "char_length": 84,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 "
+          },
+          {
+            "text": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "segment_id": 5,
+            "char_index": 250,
+            "relevance_note": "Win-Win 합의, 절충안 도출",
+            "quality_score": 0.85,
+            "char_length": 79,
+            "actual_transcript_text": "렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          },
+          {
+            "text": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+            "segment_id": 5,
+            "char_index": 350,
+            "relevance_note": "결과 확인, 관계 유지",
+            "quality_score": 0.8,
+            "char_length": 47,
+            "actual_transcript_text": "네, 디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다. 저는 먼저 디자인팀 입장을 충분히 들었어요. '왜 브랜드 정체성이 중요한지' 구체적으로 여쭤보니까 타당한 이유가 있더라고요. 그래서 양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요. 디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요. 물론 제 아이디어만은 아니고 다 같이 만든 결과입니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 75-89점(Good) 구간에서 시작. 충돌 인식→설득→합의의 기본 사이클 명확. 구체적 수치 없음. 논리적 설득 경험 1개(디자인팀과의 협업). Quote 3개. 90-100점 기준(2개 이상 이해관계자)은 없으나, Good 구간 상위권. 상대 입장 이해('디자인팀은 브랜드 정체성') 명확하여 81점으로 산정.",
+        "behavioral_score": 78,
+        "behavioral_pattern": {
+          "pattern_description": "대부분 답변에서 협업 지향적, 경청→공감→논리 패턴 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득', '합의' 등 협업 관련 표현 언급",
+              "segment_ids": [
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "협업 의식"
+            },
+            {
+              "description": "경청→공감→논리 패턴 4회('입장 물어봤다'→'이해한다'→'데이터로 설명')",
+              "segment_ids": [
+                5,
+                6,
+                8
+              ],
+              "evidence_type": "설득 커뮤니케이션"
+            },
+            {
+              "description": "'양쪽 다', '절충', 'Win-Win' 같은 균형 표현 3회",
+              "segment_ids": [
+                5,
+                8
+              ],
+              "evidence_type": "균형 의식"
+            },
+            {
+              "description": "'장기적으로 관계', '신뢰' 같은 관계 중시 표현 2회",
+              "segment_ids": [
+                7
+              ],
+              "evidence_type": "관계 중시"
+            }
+          ],
+          "consistency_note": "Case 질문에서 특히 논리적 설득 명확, Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 입장 배려"
+        },
+        "behavioral_reasoning": "Behavioral: 75-89점 구간. 전체 12개 질문 중 9개(75%)에서 '협업', '조율', '이해', '설득' 등 협업 관련 표현 언급. 경청→공감→논리 패턴 4회('먼저 들어보고'→'이해한다'→'데이터로 설명'). '양쪽 다', 'Win-Win' 같은 균형 표현 3회. '장기적 관계' 언급 2회. Case 질문에서 특히 논리적 설득 명확. Behavioral 질문에서는 감정적 표현도 있으나 여전히 상대 배려. 75-89점 기준 충족하여 78점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "one_sided_persuasion",
+            "description": "Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 11, char_index: 3520-3650"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 11에서 '제가 설득에 성공했다'며 일방적 설득 강조, 상대 입장 고려 없음(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "이해관계자 입장 파악 ('디자인팀은 브랜드 정체성')",
+        "Win-Win 합의 도출 (디자인팀과의 절충안)",
+        "경청→공감→논리 패턴 (4회)"
+      ],
+      "weaknesses": [
+        "일부 답변에서 일방적 설득 강조 (Segment 11)",
+        "합의 후 결과/관계 확인 부족",
+        "2개 이상 이해관계자 동시 조정 경험 제한적"
+      ],
+      "key_observations": [
+        "신입 치고는 논리적 설득 의식 명확 (상위 30% 추정)",
+        "Case 질문에서 특히 체계적 사고 (충돌→입장→설득→합의)",
+        "상대 입장 이해 능력 우수 ('디자인팀은 브랜드 정체성')",
+        "감정보다는 논리 우선, 데이터 활용"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 3,
+        "high_strength_count": 3,
+        "key_evidence": [
+          {
+            "segment_id": 5,
+            "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 84
+          },
+          {
+            "segment_id": 5,
+            "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 79
+          },
+          {
+            "segment_id": 5,
+            "quote": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+            "resume_section": "projects",
+            "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 47
+          }
+        ]
+      }
+    },
+    "value_chain_optimization": {
+      "overall_score": 60,
+      "confidence_v2": 0.81,
+      "weight": 0.05,
+      "weighted_contribution": 3.0,
+      "resume_verified_count": 2,
+      "segment_count": 2,
+      "perspectives": {
+        "evidence_score": 60,
+        "evidence_weight": 0.55,
+        "evidence_details": [
+          {
+            "text": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "relevance_note": "관계 관리, 원가 절감 구체적 수치 없음",
+            "quality_score": 0.5,
+            "char_length": 26,
+            "actual_transcript_text": "노력했어요. 실제로 업체 담당자분이 저한테 '덕분에 미팅이 편했다'고 말씀해주셨어요. 수치적으로 얼마나 개선됐는지는 정확히 모르지만, 팀에서 좋은 결과가 나왔다고 들었습니다."
+          },
+          {
+            "text": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+            "segment_id": 8,
+            "char_index": 250,
+            "relevance_note": "협상 전략, 구체적 원가 절감 수치 없음",
+            "quality_score": 0.6,
+            "char_length": 29,
+            "actual_transcript_text": " 높고, 품질 이슈도 적었습니다."
+          }
+        ],
+        "evidence_reasoning": "Evidence: 60-74점(Fair) 구간. 원가 의식은 있으나 체계적 분석 부족. 구체적 수치 없음. 단순 비용 절감 시도, 품질 고려 언급 없음. Quote 2개. 75-89점 기준(수치 2개 이상)에 미달. Fair 중하위로 60점.",
+        "behavioral_score": 63,
+        "behavioral_pattern": {
+          "pattern_description": "일부 답변에서 원가 의식, 효율화 지향적 사고 명확",
+          "specific_examples": [
+            {
+              "description": "12개 질문 중 5개(42%)에서 '원가', '비용', '마진', '효율' 등 관련 표현 언급",
+              "segment_ids": [
+                3,
+                5,
+                7,
+                8,
+                9
+              ],
+              "evidence_type": "원가 의식"
+            },
+            {
+              "description": "구체적 수치 2회(원가 10% 절감, 마진율)",
+              "segment_ids": [
+                7,
+                9
+              ],
+              "evidence_type": "숫자 의식"
+            }
+          ],
+          "consistency_note": "Case 질문에서 원가 민감도 높음, Behavioral 질문에서는 정성적 설명 많으나 여전히 비용 의식 명확"
+        },
+        "behavioral_reasoning": "Behavioral: 60-74점 구간. 12개 질문 중 5개(42%)에서 원가 언급. 구체적 수치는 2회만(원가 10% 절감, 마진율). '싸게', '비용 줄이고' 같은 추상적 표현 많음. 품질 균형 고려 1회만. 효율화보다는 단순 비용 절감 중심. 60-74점 중간 수준으로 63점.",
+        "critical_penalties": -3,
+        "red_flags": [
+          {
+            "flag_type": "missing_cost_detail",
+            "description": "Segment 3에서 '마진율 개선'이라 했으나 구체적 수치나 방법 언급 없음",
+            "severity": "minor",
+            "penalty": -3,
+            "evidence_reference": "segment_id: 3, char_index: 100-200"
+          }
+        ],
+        "critical_reasoning": "Critical: Red Flag 1건. Segment 3에서 '마진율 개선'이라 했으나 구체적 수치나 방법 언급 없음, 원가 없는 최적화(-3점). 총 감점 -3점."
+      },
+      "strengths": [
+        "원가 의식이 일부 질문에서 명확함",
+        "협상에서 win-win 전략 사용"
+      ],
+      "weaknesses": [
+        "구체적 수치 없이 추상적 언급",
+        "밸류체인 전체보다는 특정 영역(소싱) 집중",
+        "프로세스 개선 경험 부족"
+      ],
+      "key_observations": [
+        "신입 치고는 원가 의식이 일부 있음",
+        "Case 질문에서 원가 민감도와 효율화 의식",
+        "소싱 영역에서 최적화 경험, 다른 영역은 제한적"
+      ],
+      "resume_verification_summary": {
+        "verified_count": 2,
+        "high_strength_count": 2,
+        "key_evidence": [
+          {
+            "segment_id": 3,
+            "quote": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+            "resume_section": "projects",
+            "matched_content": "원가 절감 프로젝트 참여 | 업체 관계 관리 담당.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'projects' 섹션에서 원가 절감 프로젝트에 업체 관계 관리 역할을 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 26
+          },
+          {
+            "segment_id": 8,
+            "quote": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+            "resume_section": "strengths",
+            "matched_content": "장기 파트너십 관점의 관계 관리.",
+            "verification_strength": "high",
+            "reasoning": "지원자는 Resume의 'strengths' 섹션에서 장기 파트너십 관점의 관계 관리 능력을 강조하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+            "char_index": null,
+            "char_length": 29
+          }
+        ]
+      }
+    }
+  },
+  "low_confidence_summary": {
+    "total_low_confidence": 0,
+    "competencies": [],
+    "details": []
+  },
+  "collaboration_summary": {
+    "total_collaborations": 0,
+    "competencies_adjusted": [],
+    "adjustments": []
+  },
+  "presentation_result": {
+    "overall_summary": {
+      "final_score": 65.0,
+      "avg_confidence": 0.8,
+      "reliability": {
+        "level": "high",
+        "level_display": "높음",
+        "avg_confidence": 0.8,
+        "note": "평균 Confidence V2: 0.80 | 모든 역량이 신뢰도 기준 충족"
+      },
+      "overall_evaluation_summary": "지원자는 패션 MD 직무에 필요한 대부분의 역량을 고르게 갖추고 있습니다. 특히 대인관계 능력과 이해관계자 협업 역량이 우수하며, Resume에서도 관련 경험이 다수 확인되어 신뢰도가 높습니다. 성장 가능성 또한 뚜렷하여, 실패를 학습 기회로 삼는 태도와 데이터 분석 역량 향상 노력이 긍정적입니다. 다만 문제 해결 및 고객 여정 마케팅 역량이 상대적으로 낮아, 체계적인 접근 방식과 고객 중심 사고의 구체화가 필요할 것으로 보입니다. 전반적으로 신입 기준 상위권 수준이며, 입사 후 체계적인 교육과 멘토링을 통해 빠른 성장이 기대됩니다."
+    },
+    "score_breakdown": {
+      "final_score": 65.0,
+      "job_score": 64.6,
+      "common_score": 65.4,
+      "job_competencies": [
+        "customer_journey_marketing",
+        "md_data_analysis",
+        "seasonal_strategy_kpi",
+        "stakeholder_collaboration",
+        "value_chain_optimization"
+      ],
+      "common_competencies": [
+        "achievement_motivation",
+        "growth_potential",
+        "interpersonal_skill",
+        "organizational_fit",
+        "problem_solving"
+      ]
+    },
+    "competency_scores": [
+      {
+        "competency": "customer_journey_marketing",
+        "score": 67,
+        "weight": 0.15,
+        "contribution": 10.05,
+        "confidence_v2": 0.81
+      },
+      {
+        "competency": "md_data_analysis",
+        "score": 60,
+        "weight": 0.15,
+        "contribution": 9.0,
+        "confidence_v2": 0.81
+      },
+      {
+        "competency": "interpersonal_skill",
+        "score": 82,
+        "weight": 0.1,
+        "contribution": 8.2,
+        "confidence_v2": 0.91
+      },
+      {
+        "competency": "growth_potential",
+        "score": 70,
+        "weight": 0.1,
+        "contribution": 7.0,
+        "confidence_v2": 0.79
+      },
+      {
+        "competency": "organizational_fit",
+        "score": 66,
+        "weight": 0.1,
+        "contribution": 6.6,
+        "confidence_v2": 0.78
+      },
+      {
+        "competency": "seasonal_strategy_kpi",
+        "score": 62,
+        "weight": 0.1,
+        "contribution": 6.2,
+        "confidence_v2": 0.81
+      },
+      {
+        "competency": "achievement_motivation",
+        "score": 55,
+        "weight": 0.1,
+        "contribution": 5.5,
+        "confidence_v2": 0.73
+      },
+      {
+        "competency": "problem_solving",
+        "score": 54,
+        "weight": 0.1,
+        "contribution": 5.4,
+        "confidence_v2": 0.72
+      },
+      {
+        "competency": "stakeholder_collaboration",
+        "score": 81,
+        "weight": 0.05,
+        "contribution": 4.05,
+        "confidence_v2": 0.94
+      },
+      {
+        "competency": "value_chain_optimization",
+        "score": 60,
+        "weight": 0.05,
+        "contribution": 3.0,
+        "confidence_v2": 0.81
+      }
+    ],
+    "competency_details": {
+      "achievement_motivation": {
+        "competency_display_name": "성취/동기 역량",
+        "overall_score": 55,
+        "confidence_v2": 0.73,
+        "strengths": [
+          "기본적인 책임감이 있습니다.",
+          "팀원들과의 협업 경험이 풍부합니다."
+        ],
+        "weaknesses": [
+          "자발성이 부족합니다.",
+          "끈기가 부족합니다.",
+          "도전적인 목표 설정이 부족합니다."
+        ],
+        "key_observations": [
+          "자발적 도전 경험이 부족합니다.",
+          "외적 동기에 의존하는 경향이 있습니다.",
+          "도전적인 목표 설정이 필요합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 팀원들이 분석한 자료를 바탕으로 논의에 참여하며 팀 분위기를 유지하는 데 기여했습니다. 이는 책임감 있는 태도를 보여주지만, 주도적인 역할을 맡지 않았다는 점에서 자발성이 부족하다고 평가됩니다.",
+            "segment_id": 1,
+            "char_index": 100,
+            "char_length": 32,
+            "impact": "positive",
+            "evidence_type": "책임감, 협업"
+          },
+          {
+            "summary": "지원자는 선배의 결정 과정에 참여하며 배우는 자세를 보였으나, 주체적인 경험이 부족하여 선배에게 의존하는 경향이 있습니다.",
+            "segment_id": 2,
+            "char_index": 50,
+            "char_length": 44,
+            "impact": "negative",
+            "evidence_type": "주체적 경험 부족"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 1,
+              "quote": "저는 주로 팀원들이 분석한 자료를 같이 보면서 논의했어요.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 'MD 어시스턴트'로서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 수행했다고 명시하고 있으며, 데이터 분석은 선배님들이 주도했다고 언급하고 있습니다. 이로 인해 팀원들의 분석 자료를 보며 논의하는 역할이 일치합니다.",
+              "char_index": null,
+              "char_length": 32
+            },
+            {
+              "segment_id": 2,
+              "quote": "저희 팀에서 선배님이 주로 결정하셨는데, 저는 그 과정을 배우면서 참여했습니다.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 데이터 분석은 선배님들이 주도.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 팀 내에서 주로 커뮤니케이션 및 관계 관리 역할을 하였고, 데이터 분석은 선배님들이 주도했다고 명시하고 있습니다. 이로 인해 선배님에게 의존하여 결정 과정을 배우는 경험이 일치합니다.",
+              "char_index": null,
+              "char_length": 44
+            }
+          ]
+        },
+        "connected_summary": "지원자는 팀원들이 분석한 자료를 바탕으로 논의에 참여하며 팀 분위기를 유지하는 데 기여했습니다. 이는 책임감 있는 태도를 보여주는 긍정적인 면모입니다. 또한, 선배의 결정 과정에 참여하며 배우는 자세를 보였으나, 주체적인 경험이 부족하여 선배에게 의존하는 경향이 있습니다. 다만, 주도적인 역할을 맡지 않았다는 점에서 자발성이 부족하다고 평가됩니다."
+      },
+      "growth_potential": {
+        "competency_display_name": "성장 잠재력",
+        "overall_score": 70,
+        "confidence_v2": 0.79,
+        "strengths": [
+          "자기 주도적인 학습 태도를 보입니다.",
+          "실패를 학습 기회로 삼습니다.",
+          "약점과 강점을 인식하고 개선 계획을 세웁니다."
+        ],
+        "weaknesses": [
+          "초기 자기 인식이 추상적입니다.",
+          "더 큰 좌절 경험이 부족합니다.",
+          "학습 속도가 보통입니다."
+        ],
+        "key_observations": [
+          "신입 치고는 성장 마인드가 명확합니다.",
+          "실패를 학습 기회로 인식합니다.",
+          "일부 학습에서 능동적 태도를 보입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 데이터 분석 역량을 키우기 위해 온라인 강의를 듣고 있으며, 피벗 테이블과 기본 통계를 배우고 SQL을 공부 중입니다. 이는 자기 주도적인 학습 태도를 보여줍니다.",
+            "segment_id": 10,
+            "char_index": 280,
+            "char_length": 65,
+            "impact": "positive",
+            "evidence_type": "학습 민첩성"
+          },
+          {
+            "summary": "지원자는 자신의 약점인 정량적 분석 역량을 인식하고 이를 보완하기 위해 팀원들에게 배우고 외부 교육을 받을 계획을 세웠습니다.",
+            "segment_id": 11,
+            "char_index": 360,
+            "char_length": 57,
+            "impact": "positive",
+            "evidence_type": "메타인지"
+          },
+          {
+            "summary": "공모전에서 실패한 후 피드백을 받아 약점을 보완한 경험이 있습니다. 이는 실패를 학습 기회로 삼는 회복 탄력성을 보여줍니다.",
+            "segment_id": 6,
+            "char_index": 300,
+            "char_length": 32,
+            "impact": "positive",
+            "evidence_type": "회복 탄력성"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 10,
+              "quote": "데이터 분석을 배우기 위해 온라인 강의를 듣고 있습니다. 피벗 테이블과 기본 통계를 배웠고, SQL을 공부 중입니다.",
+              "resume_section": "learning_in_progress",
+              "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있으며, 피벗 테이블과 SQL을 배우고 있다고 명시하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 65
+            },
+            {
+              "segment_id": 11,
+              "quote": "제 약점은 정량적 분석 역량입니다. 이를 보완하기 위해 팀원들에게 배우고 외부 교육도 받을 계획입니다.",
+              "resume_section": "weaknesses",
+              "matched_content": "정량적 데이터 분석 역량 부족 (피벗, 통계, SQL 등)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'weaknesses' 섹션에서 정량적 데이터 분석 역량 부족을 명시하고 있으며, 이를 보완하기 위한 학습 계획도 언급하고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 57
+            }
+          ]
+        },
+        "connected_summary": "지원자는 데이터 분석 역량을 키우기 위해 온라인 강의를 듣고 있으며, 피벗 테이블과 기본 통계를 배우고 SQL을 공부 중입니다. 이는 자기 주도적인 학습 태도를 보여줍니다. 또한, 자신의 약점인 정량적 분석 역량을 인식하고 이를 보완하기 위해 팀원들에게 배우고 외부 교육을 받을 계획을 세웠습니다. 공모전에서 실패한 후 피드백을 받아 약점을 보완한 경험도 있으며, 이는 실패를 학습 기회로 삼는 회복 탄력성을 보여줍니다. 다만, 이러한 노력이 지속적으로 이루어져야 할 것입니다."
+      },
+      "interpersonal_skill": {
+        "competency_display_name": "대인관계 역량",
+        "overall_score": 82,
+        "confidence_v2": 0.91,
+        "strengths": [
+          "경청 능력이 뛰어납니다.",
+          "갈등 해결 능력을 보입니다.",
+          "협업과 배려를 중시합니다."
+        ],
+        "weaknesses": [
+          "일부 상황에서 갈등을 회피합니다.",
+          "심각한 갈등 경험이 부족합니다.",
+          "경청 후 행동 변화가 일부만 반영됩니다."
+        ],
+        "key_observations": [
+          "신입 치고는 경청 및 협업 의식이 명확합니다.",
+          "모든 팀 관계에서 일관된 경청 패턴을 보입니다.",
+          "팀 우선 태도가 행동으로 구체화됩니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 팀원들의 의견을 먼저 듣고 이해하려는 노력을 통해 경청 능력을 발휘했습니다. 이는 대인관계에서 중요한 요소로 작용합니다.",
+            "segment_id": 5,
+            "char_index": 2100,
+            "char_length": 40,
+            "impact": "positive",
+            "evidence_type": "경청"
+          },
+          {
+            "summary": "의견 충돌 상황에서 양쪽 의견을 반영한 절충안을 제안하여 갈등을 해결했습니다. 이는 중재 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 2250,
+            "char_length": 38,
+            "impact": "positive",
+            "evidence_type": "갈등 해결"
+          },
+          {
+            "summary": "팀원 한 명이 어려움을 겪을 때 지원자가 그 파트를 도와주며 협업과 배려를 보여주었습니다.",
+            "segment_id": 11,
+            "char_index": 4200,
+            "char_length": 31,
+            "impact": "positive",
+            "evidence_type": "협업, 배려"
+          },
+          {
+            "summary": "지원자는 불편한 팀원을 피하는 경향이 있어 일부 상황에서 갈등을 회피합니다.",
+            "segment_id": 8,
+            "char_index": 3100,
+            "char_length": 100,
+            "impact": "negative",
+            "evidence_type": "갈등 회피"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 4,
+          "high_strength_count": 4,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 40
+            },
+            {
+              "segment_id": 5,
+              "quote": "방향성 충돌이 있었는데, 양쪽 의견을 모두 반영한 절충안을 제안했어요",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 38
+            },
+            {
+              "segment_id": 9,
+              "quote": "제 아이디어가 아니었지만, 팀이 더 좋다고 하면 그게 맞다고 생각했어요",
+              "resume_section": "strengths",
+              "matched_content": "협업 중심 마인드 (Win-Win)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'strengths' 섹션에서 팀 우선의 협업 마인드를 강조하고 있으며, 개인의 아이디어보다 팀의 의견을 중시하는 태도를 보이고 있습니다. 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 39
+            }
+          ]
+        },
+        "connected_summary": "지원자는 팀원들의 의견을 먼저 듣고 이해하려는 노력을 통해 경청 능력을 발휘했으며, 이는 대인관계에서 중요한 요소로 작용합니다. 또한, 의견 충돌 상황에서 양쪽 의견을 반영한 절충안을 제안하여 갈등을 해결함으로써 중재 능력을 보여주었습니다. 아울러, 팀원 한 명이 어려움을 겪을 때 그 파트를 도와주며 협업과 배려를 실천했습니다. 다만, 불편한 팀원을 피하는 경향이 있어 일부 상황에서 갈등을 회피하는 모습을 보이기도 했습니다."
+      },
+      "organizational_fit": {
+        "competency_display_name": "조직 적합성",
+        "overall_score": 66,
+        "confidence_v2": 0.78,
+        "strengths": [
+          "고객 중심의 사고를 보입니다.",
+          "피드백을 수용하고 개선하려는 의지가 있습니다.",
+          "일부 경험에서 고객 만족을 강조합니다."
+        ],
+        "weaknesses": [
+          "과거 낮은 기준 의식이 있었습니다.",
+          "비판 수용 시 초기 불편함을 표출합니다.",
+          "일부 경험에서 가치관 일관성이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 치고는 고객 우선 의식이 있습니다.",
+          "피드백을 수용하려는 의지가 존재합니다.",
+          "일부 경험에서 고객 만족을 강조합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "지원자는 고객 리뷰 분석을 통해 정성적인 인사이트를 도출하고 이를 팀과 공유했습니다. 이는 고객 중심의 사고를 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 3200,
+            "char_length": 60,
+            "impact": "positive",
+            "evidence_type": "고객 중심"
+          },
+          {
+            "summary": "상품 믹스를 지적받은 후 전면 수정하여 개선한 경험이 있으며, 이는 피드백을 수용하고 개선하려는 의지를 보여줍니다.",
+            "segment_id": 6,
+            "char_index": 2400,
+            "char_length": 40,
+            "impact": "positive",
+            "evidence_type": "피드백 수용"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 60
+            },
+            {
+              "segment_id": 6,
+              "quote": "처음엔 속상했지만, 지적받은 상품 믹스를 전면 수정했더니 훨씬 좋아졌어요",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 피드백 수용 후 상품 믹스 조정.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 상품 믹스 조정 경험을 언급하고 있으며, 피드백을 수용하고 개선한 사례가 일치합니다.",
+              "char_index": null,
+              "char_length": 40
+            }
+          ]
+        },
+        "connected_summary": "지원자는 고객 리뷰 분석을 통해 정성적인 인사이트를 도출하고 이를 팀과 공유했습니다. 이는 고객 중심의 사고를 보여줍니다. 또한, 상품 믹스를 지적받은 후 전면 수정하여 개선한 경험이 있으며, 이는 피드백을 수용하고 개선하려는 의지를 나타냅니다. 이러한 경험들은 조직 적합성 측면에서 긍정적인 평가를 받을 수 있습니다."
+      },
+      "problem_solving": {
+        "competency_display_name": "문제 해결",
+        "overall_score": 54,
+        "confidence_v2": 0.72,
+        "strengths": [
+          "의사결정 시 트레이드오프를 고려합니다.",
+          "정성적 인사이트를 공유합니다."
+        ],
+        "weaknesses": [
+          "구조적 분석 깊이가 제한적입니다.",
+          "문제 복잡도가 낮습니다.",
+          "일부 답변에서 원인 분석이 생략됩니다."
+        ],
+        "key_observations": [
+          "신입 치고는 일부 구조적 사고 시도를 보입니다.",
+          "Case Interview에서 일관된 문제해결 프로세스가 부족합니다.",
+          "창의성과 실행 가능성의 균형이 부족합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시하여 문제를 해결했습니다. 이는 의사결정 시 트레이드오프를 고려한 사례입니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "char_length": 38,
+            "impact": "positive",
+            "evidence_type": "의사결정"
+          },
+          {
+            "summary": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유하여 창의적 해결을 시도했습니다. 이는 문제 해결에 대한 창의적 접근을 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "char_length": 32,
+            "impact": "positive",
+            "evidence_type": "창의적 해결"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시했습니다.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 중재자 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 38
+            },
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 분석에서 정성적인 인사이트를 팀에 공유했습니다.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 32
+            }
+          ]
+        },
+        "connected_summary": "지원자는 디자인팀과의 의견 충돌에서 양쪽 의견을 반영한 절충안을 제시하여 문제를 해결했습니다. 이는 의사결정 시 트레이드오프를 고려한 사례로, 문제 해결 능력을 잘 보여줍니다. 또한, 고객 리뷰 분석을 통해 얻은 정성적인 인사이트를 팀에 공유하여 창의적 해결을 시도했습니다. 이러한 접근은 문제 해결에 대한 창의적 접근을 보여주며, 다양한 상황에서의 유연한 대처 능력을 입증합니다."
+      },
+      "customer_journey_marketing": {
+        "competency_display_name": "고객 여정 마케팅",
+        "overall_score": 67,
+        "confidence_v2": 0.81,
+        "strengths": [
+          "고객 리뷰를 통한 정성적 인사이트를 도출합니다.",
+          "데이터 기반의 고객 이해를 시도합니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 타겟이 불명확합니다.",
+          "구체적 수치로 결과 측정이 부족합니다.",
+          "여정 단계별 전략이 부족합니다."
+        ],
+        "key_observations": [
+          "고객 중심 사고는 있으나 체계적 여정 설계가 부족합니다.",
+          "데이터 기반의 고객 이해 시도는 긍정적입니다.",
+          "타겟 고객 정의가 불명확하여 개선이 필요합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "고객 리뷰 분석을 통해 정성적인 인사이트를 도출하여 팀과 공유했습니다. 이는 고객 중심의 사고를 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 300,
+            "char_length": 60,
+            "impact": "positive",
+            "evidence_type": "고객 중심"
+          },
+          {
+            "summary": "판매 데이터를 근거로 고객 이해를 시도했으나, 구체적 수치가 부족하여 체계적인 여정 설계는 미흡합니다.",
+            "segment_id": 5,
+            "char_index": 150,
+            "char_length": 26,
+            "impact": "negative",
+            "evidence_type": "데이터 기반 이해"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 60
+            },
+            {
+              "segment_id": 5,
+              "quote": "저희는 판매 데이터를 근거로 조정을 원했습니다.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 판매 데이터 근거로 조정.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 판매 데이터 근거로 조정한 경험을 언급하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 26
+            }
+          ]
+        },
+        "connected_summary": "지원자는 고객 리뷰 분석을 통해 정성적인 인사이트를 도출하여 팀과 공유함으로써 고객 중심의 사고를 보여주었습니다. 또한, 판매 데이터를 근거로 고객 이해를 시도했습니다. 그러나 구체적인 수치가 부족하여 체계적인 여정 설계에는 다소 미흡한 점이 있었습니다."
+      },
+      "md_data_analysis": {
+        "competency_display_name": "MD 데이터 분석",
+        "overall_score": 60,
+        "confidence_v2": 0.81,
+        "strengths": [
+          "데이터 분석 역량 향상을 위해 노력합니다.",
+          "정성적 분석에서 인사이트 도출 능력이 있습니다.",
+          "데이터 기반 사고 의식이 있습니다."
+        ],
+        "weaknesses": [
+          "구체적 수치 기반의 정량 분석이 부족합니다.",
+          "가설-검증 사이클 경험이 부족합니다.",
+          "정성적 분석에서 구체성이 보완이 필요합니다."
+        ],
+        "key_observations": [
+          "신입 치고는 데이터 기반 사고 의식이 있습니다.",
+          "정성적 분석에서 인사이트 도출 능력을 보입니다.",
+          "데이터 분석 역량 향상을 위해 노력 중입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "고객 리뷰 분석에서 정성적인 느낌을 파악하여 인사이트를 도출했습니다. 이는 정성적 분석 능력을 보여줍니다.",
+            "segment_id": 9,
+            "char_index": 0,
+            "char_length": 60,
+            "impact": "positive",
+            "evidence_type": "정성적 분석"
+          },
+          {
+            "summary": "엑셀과 데이터 분석 역량 향상을 위해 온라인 강의를 듣고 있으며, 이는 데이터 기반 사고 의식을 보여줍니다.",
+            "segment_id": 10,
+            "char_index": 0,
+            "char_length": 62,
+            "impact": "positive",
+            "evidence_type": "데이터 분석 노력"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 9,
+              "quote": "고객 리뷰 분석은 팀 프로젝트로 진행했어요. 저는 리뷰를 읽으면서 정성적인 느낌을 파악하는 역할을 했습니다.",
+              "resume_section": "experience",
+              "matched_content": "MD 어시스턴트 | 고객 리뷰 모니터링 및 요약 보고.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'experience' 섹션에서 고객 리뷰 모니터링 및 요약 보고를 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 60
+            },
+            {
+              "segment_id": 10,
+              "quote": "솔직히 엑셀이나 데이터 분석은 아직 많이 부족합니다. 그래서 퇴근 후에 데이터 분석 온라인 강의를 듣고 있어요.",
+              "resume_section": "learning_in_progress",
+              "matched_content": "데이터 분석 (Excel 고급, SQL) | 온라인 강의 (패스트캠퍼스)",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'learning_in_progress' 섹션에서 데이터 분석 관련 온라인 강의를 듣고 있다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 62
+            }
+          ]
+        },
+        "connected_summary": "지원자는 고객 리뷰 분석에서 정성적인 느낌을 파악하여 인사이트를 도출했습니다. 이는 정성적 분석 능력을 보여줍니다. 또한, 엑셀과 데이터 분석 역량 향상을 위해 온라인 강의를 듣고 있으며, 이는 데이터 기반 사고 의식을 보여줍니다. 다만, 이러한 노력이 실무에 어떻게 적용될지는 추가적인 경험이 필요할 수 있습니다."
+      },
+      "seasonal_strategy_kpi": {
+        "competency_display_name": "시즌 전략 KPI",
+        "overall_score": 62,
+        "confidence_v2": 0.81,
+        "strengths": [
+          "목표 지향적 사고가 명확합니다.",
+          "문제→원인→해결의 논리적 흐름을 보입니다.",
+          "데이터 기반 접근을 시도합니다."
+        ],
+        "weaknesses": [
+          "구체적 KPI 수치가 부족합니다.",
+          "Plan B 또는 전략 수정 경험이 부족합니다.",
+          "사후적 대응보다 선제적 모니터링이 필요합니다."
+        ],
+        "key_observations": [
+          "신입 치고는 목표 관리 의식이 명확합니다.",
+          "Case 질문에서 체계적 문제해결 논리를 보입니다.",
+          "시즌 전략 경험은 제한적이나 기본 사이클을 이해합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "디자인팀과의 의견 차이에서 데이터 기반의 접근을 통해 목표를 설정하고 전략을 수립했습니다. 이는 목표 지향적 사고를 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 84,
+            "impact": "positive",
+            "evidence_type": "목표 설정"
+          },
+          {
+            "summary": "양쪽 의견을 반영한 절충안을 제시하여 전략을 수립했으나, 체계적 모니터링과 구체적 KPI 수치가 부족합니다.",
+            "segment_id": 5,
+            "char_index": 200,
+            "char_length": 79,
+            "impact": "negative",
+            "evidence_type": "전략 수립"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 84
+            },
+            {
+              "segment_id": 5,
+              "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 79
+            }
+          ]
+        },
+        "connected_summary": "지원자는 디자인팀과의 의견 차이에서 데이터 기반의 접근을 통해 목표를 설정하고 전략을 수립하여 목표 지향적 사고를 보여주었습니다. 또한, 양쪽 의견을 반영한 절충안을 제시하여 전략을 수립했습니다. 그러나 체계적 모니터링과 구체적 KPI 수치가 부족한 점은 아쉬운 부분입니다."
+      },
+      "stakeholder_collaboration": {
+        "competency_display_name": "이해관계자 협업",
+        "overall_score": 81,
+        "confidence_v2": 0.94,
+        "strengths": [
+          "이해관계자 입장을 파악합니다.",
+          "Win-Win 합의를 도출합니다.",
+          "경청→공감→논리 패턴을 보입니다."
+        ],
+        "weaknesses": [
+          "일부 답변에서 일방적 설득을 강조합니다.",
+          "합의 후 결과/관계 확인이 부족합니다.",
+          "2개 이상 이해관계자 동시 조정 경험이 제한적입니다."
+        ],
+        "key_observations": [
+          "신입 치고는 논리적 설득 의식이 명확합니다.",
+          "Case 질문에서 체계적 사고를 보입니다.",
+          "상대 입장 이해 능력이 우수합니다."
+        ],
+        "evidences": [
+          {
+            "summary": "디자인팀과의 협업에서 양쪽 의견을 반영한 절충안을 제시하여 Win-Win 합의를 도출했습니다. 이는 이해관계자 입장을 고려한 협업 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 0,
+            "char_length": 84,
+            "impact": "positive",
+            "evidence_type": "이해관계자 협업"
+          },
+          {
+            "summary": "디자인팀과의 협업에서 상대 입장을 이해하고 논리적으로 설득하여 관계를 유지했습니다. 이는 논리적 설득 능력을 보여줍니다.",
+            "segment_id": 5,
+            "char_index": 250,
+            "char_length": 79,
+            "impact": "positive",
+            "evidence_type": "논리적 설득"
+          },
+          {
+            "summary": "일부 상황에서 일방적 설득을 강조하여 상대 입장을 고려하지 않는 경향이 있습니다.",
+            "segment_id": 11,
+            "char_index": 3520,
+            "char_length": 130,
+            "impact": "negative",
+            "evidence_type": "일방적 설득"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 3,
+          "high_strength_count": 3,
+          "key_evidence": [
+            {
+              "segment_id": 5,
+              "quote": "디자인팀과 베이직:디자인 비율로 의견 차이가 있었어요. 디자인팀은 브랜드 정체성을 중요하게 생각하셨고, 저희는 판매 데이터를 근거로 조정을 원했습니다.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 84
+            },
+            {
+              "segment_id": 5,
+              "quote": "양쪽 의견을 모두 반영한 절충안을 제시했습니다. 핵심 시그니처 아이템은 디자인팀 방향대로 가고, 볼륨 아이템만 베이직 비중을 높이는 거였어요.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 79
+            },
+            {
+              "segment_id": 5,
+              "quote": "디자인팀도 '이렇게 정리해주니 명확하다'고 하셨고, 결과적으로 좋은 성과가 나왔어요.",
+              "resume_section": "projects",
+              "matched_content": "디자인팀-MD팀 협업 프로세스 개선 | 양쪽 의견을 모두 반영한 절충안 제시.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 디자인팀과 MD팀 간의 의견 차이를 조율한 경험을 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 47
+            }
+          ]
+        },
+        "connected_summary": "지원자는 디자인팀과의 협업에서 양쪽 의견을 반영한 절충안을 제시하여 Win-Win 합의를 도출했습니다. 이는 이해관계자 입장을 고려한 협업 능력을 보여줍니다. 또한, 상대 입장을 이해하고 논리적으로 설득하여 관계를 유지한 경험은 논리적 설득 능력을 잘 나타냅니다. 그러나 일부 상황에서는 일방적 설득을 강조하여 상대 입장을 충분히 고려하지 않는 경향이 있었습니다."
+      },
+      "value_chain_optimization": {
+        "competency_display_name": "가치사슬 최적화",
+        "overall_score": 60,
+        "confidence_v2": 0.81,
+        "strengths": [
+          "원가 의식이 명확합니다.",
+          "협상에서 win-win 전략을 사용합니다."
+        ],
+        "weaknesses": [
+          "구체적 수치 없이 추상적 언급이 많습니다.",
+          "밸류체인 전체보다는 특정 영역에 집중합니다.",
+          "프로세스 개선 경험이 부족합니다."
+        ],
+        "key_observations": [
+          "신입 치고는 원가 의식이 일부 있습니다.",
+          "Case 질문에서 원가 민감도와 효율화 의식을 보입니다.",
+          "소싱 영역에서 최적화 경험이 있으나 다른 영역은 제한적입니다."
+        ],
+        "evidences": [
+          {
+            "summary": "업체 미팅에서 관계를 유지하며 협상 전략을 사용했으나, 구체적 원가 절감 수치가 부족합니다.",
+            "segment_id": 3,
+            "char_index": 100,
+            "char_length": 26,
+            "impact": "positive",
+            "evidence_type": "관계 관리"
+          },
+          {
+            "summary": "협상은 win-win이 되어야 한다고 생각하며 전략을 사용했으나, 구체적 원가 절감 수치가 부족합니다.",
+            "segment_id": 8,
+            "char_index": 250,
+            "char_length": 29,
+            "impact": "positive",
+            "evidence_type": "협상 전략"
+          }
+        ],
+        "resume_verification_summary": {
+          "verified_count": 2,
+          "high_strength_count": 2,
+          "key_evidence": [
+            {
+              "segment_id": 3,
+              "quote": "업체 미팅할 때 관계 유지하는 역할을 했습니다.",
+              "resume_section": "projects",
+              "matched_content": "원가 절감 프로젝트 참여 | 업체 관계 관리 담당.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'projects' 섹션에서 원가 절감 프로젝트에 업체 관계 관리 역할을 수행했다고 명시하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 26
+            },
+            {
+              "segment_id": 8,
+              "quote": "협상은 win-win이 되어야 오래 간다고 생각해요.",
+              "resume_section": "strengths",
+              "matched_content": "장기 파트너십 관점의 관계 관리.",
+              "verification_strength": "high",
+              "reasoning": "지원자는 Resume의 'strengths' 섹션에서 장기 파트너십 관점의 관계 관리 능력을 강조하고 있으며, 이로 인해 면접 답변과의 일치성이 높습니다.",
+              "char_index": null,
+              "char_length": 29
+            }
+          ]
+        },
+        "connected_summary": "지원자는 업체 미팅에서 관계를 유지하며 협상 전략을 사용했습니다. 협상은 win-win이 되어야 한다고 생각하여 전략을 활용했으나, 구체적인 원가 절감 수치가 부족했습니다. 다만, 이러한 경험을 통해 협상에서의 관계 유지와 전략적 접근의 중요성을 깊이 이해하게 되었습니다."
+      }
+    }
+  },
+  "started_at": "2025-11-24T08:32:36.804935",
+  "completed_at": "2025-11-24T08:39:46.881453"
+}

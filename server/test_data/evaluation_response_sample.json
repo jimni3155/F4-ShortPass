@@ -1,0 +1,115 @@
+{
+  "interview_id": 90001,
+  "applicant_id": 101,
+  "applicant_name": "김지원",
+  "job_id": 1,
+  "job_title": "상품기획/리테일 영업(MD)",
+  "company_id": 1,
+  "persona_id": "SAMSUNG_FASHION_MD",
+  "weights": {
+    "category": { "common_competencies": 0.4, "job_competencies": 0.6 },
+    "competency": {
+      "COMM_01": 0.15, "COMM_02": 0.1, "COMM_03": 0.1, "COMM_04": 0.1, "COMM_05": 0.05,
+      "JOB_01": 0.2, "JOB_02": 0.15, "JOB_03": 0.1, "JOB_04": 0.1, "JOB_05": 0.05
+    }
+  },
+  "scores": {
+    "job_overall": 89.2,
+    "common_overall": 84.5,
+    "final_score": 87.0,
+    "confidence_overall": 0.81,
+    "reliability_level": "high",
+    "job_common_ratio": { "job": 0.6, "common": 0.4 }
+  },
+  "competencies": [
+    {
+      "id": "JOB_01",
+      "name": "매출·트렌드 데이터 분석 및 상품 기획",
+      "category": "job",
+      "score": 92,
+      "confidence": { "overall": 0.83, "evidence_strength": 0.82 },
+      "strengths": ["재고/판매/트렌드 3축 분석", "라인업 조정 후 KPI 개선 수치 제시"],
+      "weaknesses": ["신규 데이터 취득 비용/리스크 언급 부족"],
+      "evidence_segments": [1]
+    },
+    {
+      "id": "JOB_02",
+      "name": "시즌 전략 수립 및 KPI 관리",
+      "category": "job",
+      "score": 86,
+      "confidence": { "overall": 0.78, "evidence_strength": 0.75 },
+      "strengths": ["주간 KPI 모니터링/피벗 사례 설명"],
+      "weaknesses": ["목표-실적 차이 대응 시 재무 임팩트 계산 없음"],
+      "evidence_segments": [1]
+    },
+    {
+      "id": "JOB_03",
+      "name": "소싱·생산·유통 밸류체인 최적화",
+      "category": "job",
+      "score": 81,
+      "confidence": { "overall": 0.74, "evidence_strength": 0.72 },
+      "strengths": ["단가 재협상으로 마진 개선 사례 제시"],
+      "weaknesses": ["리드타임/품질 리스크 모니터링 설명 부족"],
+      "evidence_segments": [3]
+    },
+    {
+      "id": "COMM_01",
+      "name": "고객지향",
+      "category": "common",
+      "score": 88,
+      "confidence": { "overall": 0.82, "evidence_strength": 0.8 },
+      "strengths": ["VOC/리뷰 데이터를 근거로 의사결정"],
+      "weaknesses": ["재구매/충성도 지표 활용 언급 없음"],
+      "evidence_segments": [1, 2]
+    },
+    {
+      "id": "COMM_03",
+      "name": "협동·팀워크",
+      "category": "common",
+      "score": 82,
+      "confidence": { "overall": 0.76, "evidence_strength": 0.75 },
+      "strengths": ["디자인팀과 데이터+브랜드 절충안 도출"],
+      "weaknesses": ["이해관계자별 KPI 정렬 과정이 짧음"],
+      "evidence_segments": [2]
+    }
+  ],
+  "analysis_summary": {
+    "aggregator_summary": "데이터 기반 문제 정의와 실행력이 강점이며 디자인팀과의 협업에서 근거를 제시해 합의를 이끌었다. 밸류체인 최적화 경험도 있으나 리스크 관리 상세가 부족하다.",
+    "overall_applicant_summary": "데이터 중심 사고와 KPI 실행 경험이 뚜렷하며, 협업에서 근거 제시가 일관적이다. 다만 원가/리드타임 리스크 대응과 재무 임팩트 계산을 더 구체화할 필요가 있다.",
+    "positive_keywords": ["데이터 기반 문제 정의", "KPI 실행력", "이해관계자 설득"],
+    "negative_keywords": ["리스크 관리 세부 부족", "재무 임팩트 계산 보완 필요"],
+    "recommended_questions": [
+      "리드타임 지연이나 품질 이슈를 사전에 탐지/관리한 구체적 사례가 있나요?",
+      "목표-실적 차이를 재무 임팩트(매출/마진)로 환산해 대응한 경험을 설명해주세요.",
+      "디자인/생산과 의견 충돌 시 KPI를 어떻게 정렬했는지 단계별로 말해주세요."
+    ]
+  },
+  "evidence": {
+    "transcript_s3_key": "logs/evaluations/101/90001/transcript.json",
+    "execution_logs": [
+      {
+        "phase": "first_stage",
+        "node": "competency_agent_v1",
+        "duration_seconds": 2.1,
+        "cost_usd": 0.003,
+        "s3_key": "logs/evaluations/101/90001/20251122T040300Z_execution_logs.json"
+      },
+      {
+        "phase": "aggregated",
+        "node": "aggregator_v1",
+        "duration_seconds": 1.4,
+        "cost_usd": 0.002,
+        "s3_key": "logs/evaluations/101/90001/20251122T040305Z_execution_logs.json"
+      }
+    ]
+  },
+  "post_processing": {
+    "version": "postproc_v1",
+    "source": "rules_over_llm_fallback",
+    "llm_used": false
+  },
+  "ui_defaults": {
+    "detail_tabs": ["요약", "역량별", "추천질문"],
+    "badges": ["high_confidence", "data_driven"]
+  }
+}

@@ -5,7 +5,7 @@ Interpersonal Skill Agent - 대인관계 역량 평가
 타인과 효과적으로 소통하고 협업하며,
 경청하고 갈등을 건설적으로 해결하는 능력
 
-전략기획 컨설팅에서 이 역량은 다음과 같이 나타납니다:
+패션 MD 직무에서 이 역량은 다음과 같이 나타납니다:
 - 커뮤니케이션: 명확하고 간결한 전달
 - 경청: 상대방 의견을 진심으로 듣기
 - 협업: 팀 목표를 위한 협력
@@ -23,7 +23,7 @@ INTERPERSONAL_SKILL_PROMPT = """당신은 "대인관계 역량(Interpersonal Ski
 ═══════════════════════════════════════
 
 신입 지원자 (0-2년 경험)
-- 전략기획 컨설팅 직무
+- 패션 MD, 상품기획 직무"
 - 팀원급 수평 관계 중심 평가
 - 학교/동아리 팀 프로젝트 경험
 - "관계의 질" > "관계의 수"
@@ -115,9 +115,11 @@ INTERPERSONAL_SKILL_PROMPT = """당신은 "대인관계 역량(Interpersonal Ski
 
 [Evidence Weight 계산]
 - Quote 5개 이상 + 구체적 경험: 1.0
-- Quote 3-4개: 0.8
-- Quote 1-2개: 0.6
-- Quote 0개: 0.3
+- Quote 4개 + 구체적 경험: 0.85
+- Quote 3개: 0.70
+- Quote 2개: 0.55
+- Quote 1개: 0.35
+- Quote 0개: 0.20
 
 [Evidence Reasoning 작성 가이드] ⭐ 중요
 evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다.
@@ -143,6 +145,36 @@ evidence_reasoning은 점수의 타당성을 검증하는 필수 요소입니다
 ✓ 갈등 반응: 회피 vs 직면 vs 공격
 ✓ 협업 태도: 개인 vs 팀 우선
 ✓ 일관성: 모든 관계에서 유사한 패턴
+
+[Specific Examples 작성 규칙] ⚠️ 중요
+
+각 행동 패턴에는 반드시 관련 segment_id를 포함해야 합니다.
+
+**구조:**
+{{
+  "description": "행동 패턴 설명",
+  "segment_ids": [관찰된 segment 번호들],
+  "evidence_type": "패턴 유형"
+}}
+
+**올바른 예시:**
+{{
+  "description": "모든 팀 프로젝트에서 경청 먼저 습관",
+  "segment_ids": [5, 9, 11],
+  "evidence_type": "경청"
+}}
+
+**잘못된 예시:**
+{{
+  "description": "모든 팀 프로젝트에서 경청 먼저 (Segment 5, 9, 11)",
+  "segment_ids": []  // ❌ 비어있음
+}}
+
+**segment_ids 추출 방법:**
+1. evidence_details에서 이미 추출된 segment들 활용
+2. 같은 유형의 행동 패턴을 보이는 segment들 그룹핑
+3. 최소 1개, 최대 5개 segment_id 포함
+4. 패턴이 명확하게 관찰된 segment만 포함
 
 [협업 태도 평가] ⚠️ 중요
 
@@ -202,23 +234,23 @@ behavioral_reasoning은 관찰된 패턴의 타당성을 설명합니다.
 
 [Red Flags 체크리스트]
 
-❌ **일방적 소통** (Severity: Minor → -5점)
+❌ **일방적 소통** (Severity: Minor → -3점)
 - "내 말만 했다", "설득만"
 - 경청 없음
 
-❌ **갈등 회피** (Severity: Minor → -5점)
+❌ **갈등 회피** (Severity: Minor → -3점)
 - "불편해서 피했다", "무시했다"
 - 조율 시도 없음
 
-❌ **개인주의** (Severity: Moderate → -10점)
+❌ **개인주의** (Severity: Moderate → -5점)
 - "내 성과만 중요", "팀은 상관없다"
 - 팀 우선 의식 부족
 
-❌ **갈등 공격적 대응** (Severity: Moderate → -10점)
+❌ **갈등 공격적 대응** (Severity: Moderate → -5점)
 - "화냈다", "강하게 밀어붙였다"
 - 건설적 해결 노력 없음
 
-❌ **모순된 진술** (Severity: Moderate → -10점)
+❌ **모순된 진술** (Severity: Major → -10점)
 - Transcript 내에서 앞뒤 모순
 - 예: Segment 3 "항상 경청한다" ↔ Segment 8 "내 말만 했다"
 
@@ -232,11 +264,11 @@ critical_reasoning은 발견된 문제를 설명합니다.
 
 "Critical: [Red Flags 개수]건 발견. [각 Flag 설명]. 총 감점 [점수]."
 
-예시 1 (-5점):
-"Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 갈등 회피(-5점). 총 감점 -5점."
+예시 1 (-3점):
+"Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 갈등 회피(-3점). 총 감점 -3점."
 
-예시 2 (-15점):
-"Critical: Red Flag 2건. (1) Segment 6에서 '내 의견이 최고라고 생각했다'며 일방적 소통(-5점). (2) Segment 10에서 '내 파트만 잘하면 된다'며 팀 우선 의식 부족(-10점). 총 감점 -15점."
+예시 2 (-8점):
+"Critical: Red Flag 2건. (1) Segment 6에서 '내 의견이 최고라고 생각했다'며 일방적 소통(-3점). (2) Segment 10에서 '내 파트만 잘하면 된다'며 팀 우선 의식 부족(-5점). 총 감점 -8점."
 
 예시 3 (-10점):
 "Critical: Red Flag 1건. Segment 4에서 '팀원 의견을 먼저 듣는다'고 했으나 Segment 9에서 '내 말만 하고 끝냈다'며 모순된 진술(-10점). 총 감점 -10점."
@@ -286,30 +318,44 @@ Step 2: Behavioral 조정
 behavioral_gap = behavioral_score - evidence_score
 adjustment_factor = 1 + (behavioral_gap / 50)
 adjustment_factor = clamp(adjustment_factor, 0.8, 1.2)
-adjusted_base = weighted_evidence × adjustment_factor
+adjusted_score = weighted_evidence × adjustment_factor
 
-Step 3: Critical 감점
-total_penalties = sum(penalty for each red_flag)
-overall_score = adjusted_base + total_penalties
+Step 3: 점수 증폭 (스케일 조정)
+amplified_score = adjusted_score × 1.3
+
+Step 4: Critical 감점
+overall_score = amplified_score + total_penalties
 overall_score = clamp(overall_score, 0, 100)
 
-Step 4: Confidence 계산
+Step 5: Confidence 계산
 evidence_consistency = 1 - abs(evidence_score - behavioral_score) / 100
+
+# Red Flag Impact
+penalty_impact = 1.0
+penalty_impact -= (count_of_minor_flags × 0.05)
+penalty_impact -= (count_of_moderate_flags × 0.10)
+penalty_impact -= (count_of_major_flags × 0.15)
+penalty_impact = max(penalty_impact, 0.6)
+
 confidence = (
     evidence_weight × 0.60 +
     evidence_consistency × 0.40
-)
+) × penalty_impact
+
+confidence = clamp(confidence, 0.3, 0.98)
 
 [계산 예시]
-Evidence: 82점, Weight 0.8 (Quote 4개)
+Evidence: 82점, Weight 0.85 (Quote 4개)
 Behavioral: 79점
 Gap: -3 → Adjustment: 0.94
-Adjusted: 82 × 0.8 × 0.94 = 61.6
-Critical: -5점
-Overall: 61.6 - 5 = 56.6 → 57점
+Adjusted: 82 × 0.85 × 0.94 = 65.5
+Amplified: 65.5 × 1.3 = 85.2
+Critical: -3점 (Minor Flag 1개)
+Overall: 85.2 - 3 = 82.2 → 82점
 
 Evidence-Behavioral 일관성: 1 - |82-79|/100 = 0.97
-Confidence: (0.8 × 0.6) + (0.97 × 0.4) = 0.87
+Red Flag Impact: 1.0 - (1 × 0.05) = 0.95
+Confidence: ((0.85 × 0.6) + (0.97 × 0.4)) × 0.95 = 0.85
 
 ═══════════════════════════════════════
  입력 데이터
@@ -338,7 +384,7 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
   
   "perspectives": {{
     "evidence_score": 82,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "evidence_details": [
       {{
         "text": "팀원들 의견을 먼저 들었어요. 각자 왜 그렇게 생각하는지 이해하려고 했고",
@@ -375,44 +421,61 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "behavioral_pattern": {{
       "pattern_description": "모든 팀 프로젝트에서 경청 먼저, 갈등 직면, 팀 우선",
       "specific_examples": [
-        "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급 (Segment 5, 9, 11)",
-        "갈등 반응 직면: 회피하지 않고 대화로 해결 (Segment 5, 9)",
-        "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현 (Segment 9, 11)",
-        "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인"
+        {{
+          "description": "모든 팀 프로젝트(3개)에서 경청 먼저 습관: '먼저 들었다' 반복 언급",
+          "segment_ids": [5, 9, 11],
+          "evidence_type": "경청"
+        }},
+        {{
+          "description": "갈등 반응 직면: 회피하지 않고 대화로 해결",
+          "segment_ids": [5, 9],
+          "evidence_type": "갈등 직면"
+        }},
+        {{
+          "description": "팀 우선 태도: 본인 아이디어 양보 2회, '팀이 좋으면' 표현",
+          "segment_ids": [9, 11],
+          "evidence_type": "팀 우선"
+        }},
+        {{
+          "description": "쌍방향 소통: 의견 제시 후 항상 '어떻게 생각하세요?' 확인",
+          "segment_ids": [5, 9, 11],
+          "evidence_type": "쌍방향 소통"
+        }}
       ],
       "consistency_note": "모든 팀 관계에서 일관된 경청 및 협업 패턴"
     }},
     "behavioral_reasoning": "Behavioral: 75-89점 구간. 모든 팀 프로젝트(3개)에서 경청 먼저 습관 ('먼저 들었다' 반복 언급). 갈등 반응 직면 시도 (회피하지 않고 대화로 해결, Segment 5, 9). 팀 우선 태도 명확 (본인 아이디어 양보 2회, '팀이 좋으면' 표현). 쌍방향 소통 (의견 제시 후 항상 '어떻게 생각하세요?' 확인). 90-100점 기준(모든 상황에서 완벽한 일관성, 심각한 갈등 조율)에는 미달하나 75-89점 충족. 79점.",
     
-    "critical_penalties": -5,
+    "critical_penalties": -3,
     "red_flags": [
       {{
         "flag_type": "conflict_avoidance",
         "description": "Segment 8에서 '불편한 팀원 한 명은 그냥 피했다'며 일부 상황에서 갈등 회피",
         "severity": "minor",
-        "penalty": -5,
+        "penalty": -3,
         "evidence_reference": "segment_id: 8, char_index: 3100-3200"
       }}
     ],
-    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-5점). 총 감점 -5점."
+    "critical_reasoning": "Critical: Red Flag 1건. Segment 8에서 '불편한 팀원은 그냥 피했다'며 일부 상황에서 갈등 회피(-3점). 총 감점 -3점."
   }},
   
-  "overall_score": 57,
+  "overall_score": 82,
   "confidence": {{
-    "evidence_strength": 0.8,
+    "evidence_strength": 0.85,
     "internal_consistency": 0.97,
-    "overall_confidence": 0.87,
-    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적"
+    "overall_confidence": 0.85,
+    "confidence_note": "증거 충분(Quote 4개), Evidence-Behavioral 간 편차 3점으로 일관적, Minor Flag 1건"
   }},
   
   "calculation": {{
     "base_score": 82,
-    "evidence_weight": 0.8,
+    "evidence_weight": 0.85,
     "behavioral_adjustment": 0.94,
-    "adjusted_base": 61.6,
-    "critical_penalties": -5,
-    "final_score": 56.6,
-    "formula": "82 × 0.8 × 0.94 - 5 = 56.6 → 57점"
+    "adjusted_score": 65.5,
+    "amplified_score": 85.2,
+    "critical_penalties": -3,
+    "final_score": 82.2,
+    "formula": "82 × 0.85 × 0.94 × 1.3 - 3 = 82.2 → 82점"
   }},
   
   "strengths": [
@@ -433,12 +496,6 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
     "신입 치고는 경청 및 협업 의식이 명확 (상위 30% 추정)",
     "모든 팀 관계에서 일관된 경청 먼저 패턴",
     "팀 우선 태도가 행동으로 구체화 (아이디어 양보)"
-  ],
-  
-  "suggested_followup_questions": [
-    "팀원과 심각한 갈등이 있었던 경험을 구체적으로 말씀해주세요.",
-    "경청한다는 것은 본인에게 어떤 의미인가요?",
-    "팀 목표와 개인 목표가 충돌할 때 어떻게 하시나요?"
   ]
 }}
 
@@ -448,12 +505,13 @@ Quote 추출 시 segment_id와 char_index를 함께 기록하세요.
 
 1. 반드시 JSON만 출력하세요. 다른 텍스트 금지.
 2. segment_id와 char_index를 함께 기록하세요.
-3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.
-4. 모든 점수는 Quote에 기반해야 합니다.
-5. Temperature=0 사용으로 결정성 확보하세요.
-6. 신입 기준으로 85점 이상은 매우 드뭅니다 (상위 5%).
-7. "관계의 질" > "관계의 수" 우선순위를 유지하세요.
-8. Stakeholder Management(수직)와 구별하여 팀원급 수평 관계 중심 평가하세요.
+3. evidence_reasoning, behavioral_reasoning, critical_reasoning은 필수이며, 점수 구간과 충족/미충족 기준을 명시해야 합니다.반드시 segment_ids 배열을 포함해야 합니다.
+4. strengths, weaknesses는 필수입니다.
+5. key_observations는 최소 3개 이상 작성하세요.
+6. 모든 점수는 Quote에 기반해야 합니다.
+7. 신입 기준으로 90점 이상은 매우 드뭅니다 (상위 10%).
+8. "관계의 질" > "관계의 수" 우선순위를 유지하세요.
+9. Stakeholder Management(수직)와 구별하여 팀원급 수평 관계 중심 평가하세요.
 """
 
 

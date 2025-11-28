@@ -1,6 +1,7 @@
 import API_V1 from '../lib/apiConfig';
 
 export const saveCandidate = async (candidateData, portfolioPdfFile) => {
+    console.log('Saving candidate with data:', candidateData);
     const formData = new FormData();
   
     // 텍스트 데이터를 FormData에 추가
@@ -25,12 +26,15 @@ export const saveCandidate = async (candidateData, portfolioPdfFile) => {
   
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('Error response from server:', errorData);
         throw new Error(
           errorData.detail || `HTTP error! Status: ${response.status}`
         );
       }
   
-      return await response.json();
+      const responseData = await response.json();
+      console.log('Successfully saved candidate:', responseData);
+      return responseData;
     } catch (error) {
       console.error('Error saving candidate:', error);
       throw error;

@@ -1,0 +1,21 @@
+{
+    "interview_id": "interview_1234",
+    "dialogue": [
+        {
+            "speaker": "interviewer",
+            "text": "자기소개 부탁드립니다."
+        },
+        {
+            "speaker": "applicant",
+            "text": "네, 안녕하세요. 저는 OOO입니다."
+        },
+        {
+            "speaker": "interviewer",
+            "text": "가장 자신있는 프로젝트는 무엇인가요?"
+        },
+        {
+            "speaker": "applicant",
+            "text": "네, 그것은 OOO 프로젝트입니다..."
+        }
+    ]
+}

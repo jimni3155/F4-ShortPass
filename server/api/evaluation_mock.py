@@ -1,0 +1,147 @@
+from fastapi import APIRouter, HTTPException
+from typing import Dict, Any
+import logging
+
+# The data is copied from client/src/mock/CompanyMatchingResults.js
+MOCK_EVALUATION_RESULTS = {
+  "company_id": 2,
+  "company_name": '캐럿글로벌 (CARROT Global)',
+  "job_title": 'HRD 컨설턴트 (신입/경력)',
+  "department": '기업교육컨설팅본부',
+  "recruitment_period": '2025.11.03–11.17',
+  "total_applicants": 63,
+  "completed_evaluations": 45,
+  "average_score": 78.6,
+  "applicants": [
+    {
+      "rank": 1,
+      "applicant_id": 1,
+      "applicant_name": '이서준',
+      "track": 'HRD 컨설턴트',
+      "interview_date": '2025-11-05',
+      "total_score": 91,
+      "strengths": '논리적 사고, 고객 대응',
+      "weaknesses": '비즈니스 감각',
+      "ai_comment":
+        '구조적인 사고와 응대 능력이 우수하며, 복잡한 문제를 단계적으로 해결했습니다. 산업 트렌드 인식이 조금 더 강화되면 좋겠습니다.',
+      "priority_review": True,
+    },
+    {
+      "rank": 2,
+      "applicant_id": 2,
+      "applicant_name": '김다은',
+      "track": 'HRD 컨설턴트',
+      "interview_date": '2025-11-08',
+      "total_score": 88,
+      "strengths": '커뮤니케이션, 문제 해결력',
+      "weaknesses": '고객 니즈 분석',
+      "ai_comment":
+        '고객 사례를 바탕으로 명확한 해결방안을 제시했으며, 논리 전개가 깔끔합니다. 다만 고객 요구사항을 더 깊이 탐색하는 질문이 보완되면 좋겠습니다.',
+      "priority_review": True,
+    },
+    {
+      "rank": 3,
+      "applicant_id": 3,
+      "applicant_name": '송유진',
+      "track": '일본사업 매니저',
+      "interview_date": '2025-11-03',
+      "total_score": 86,
+      "strengths": '외국어 능력, 커뮤니케이션',
+      "weaknesses": '세부 실행 전략',
+      "ai_comment":
+        '유창한 일본어 커뮤니케이션과 다문화 이해도가 돋보입니다. 실행 계획을 수치화하면 더 좋겠습니다.',
+      "priority_review": True,
+    },
+    {
+      "rank": 4,
+      "applicant_id": 4,
+      "applicant_name": '박현우',
+      "track": 'HRD 컨설턴트',
+      "interview_date": '2025-11-07',
+      "total_score": 83,
+      "strengths": '데이터 활용, 실행력',
+      "weaknesses": '프레젠테이션',
+      "ai_comment":
+        '제안서 구성에 구체적 수치를 반영하며 실행 방안이 명확합니다. 다만 발표 시 전달력과 설득력이 다소 부족했습니다.',
+      "priority_review": False,
+    },
+    {
+      "rank": 5,
+      "applicant_id": 5,
+      "applicant_name": '김하린',
+      "track": '교수운영팀',
+      "interview_date": '2025-11-04',
+      "total_score": 79,
+      "strengths": '프로세스 이해, 문제 분석',
+      "weaknesses": '리더십',
+      "ai_comment":
+        '업무 프로세스 전반의 이해도는 높았지만, 주도적 역할 수행에 대한 사례가 부족했습니다.',
+      "priority_review": False,
+    },
+    {
+      "rank": 6,
+      "applicant_id": 6,
+      "applicant_name": '최예린',
+      "track": '교육운영 매니저',
+      "interview_date": '2025-11-06',
+      "total_score": 75,
+      "strengths": '일정 관리, 협업',
+      "weaknesses": '의사소통',
+      "ai_comment":
+        '조직 내 협업 경험을 명확히 제시했으나, 커뮤니케이션 과정에서 구체적 예시 제시가 부족했습니다.',
+      "priority_review": False,
+    },
+    {
+      "rank": 7,
+      "applicant_id": 7,
+      "applicant_name": '정민재',
+      "track": 'HRD 컨설턴트',
+      "interview_date": '2025-11-04',
+      "total_score": 72,
+      "strengths": '분석력',
+      "weaknesses": '실무 응용력',
+      "ai_comment":
+        '분석적 접근은 좋았으나 실무 적용 단계에서 구체성이 부족했습니다.',
+      "priority_review": False,
+    },
+    {
+      "rank": 8,
+      "applicant_id": 8,
+      "applicant_name": '장준호',
+      "track": 'HRD 컨설턴트',
+      "interview_date": '2025-11-03',
+      "total_score": 69,
+      "strengths": '열정, 자기 주도성',
+      "weaknesses": '체계적 사고',
+      "ai_comment":
+        '면접에서 적극적인 태도를 보였으나, 답변 구조가 다소 산만했습니다.',
+      "priority_review": False,
+    },
+  ],
+}
+
+
+router = APIRouter()
+logger = logging.getLogger("uvicorn")
+
+@router.get("/evaluations/mock/{applicant_id}", response_model=Dict[str, Any])
+async def get_mock_evaluation_by_applicant_id(applicant_id: int):
+    """
+    지정된 applicant_id에 대한 모의(mock) 평가 상세 데이터를 반환합니다.
+    """
+    logger.info(f"Getting mock evaluation for applicant ID: {applicant_id}")
+    for applicant in MOCK_EVALUATION_RESULTS["applicants"]:
+        if applicant["applicant_id"] == applicant_id:
+            # For a more detailed page, you might want to add more data here
+            # For now, just returning the applicant's data
+            return applicant
+    
+    raise HTTPException(status_code=404, detail="해당 ID의 지원자를 찾을 수 없습니다.")
+
+@router.get("/evaluations/mock", response_model=Dict[str, Any])
+async def get_all_mock_evaluations():
+    """
+    전체 모의(mock) 평가 데이터를 반환합니다. (목록 페이지용)
+    """
+    logger.info("Getting all mock evaluations")
+    return MOCK_EVALUATION_RESULTS

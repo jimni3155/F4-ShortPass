@@ -1,5 +1,5 @@
 # server/models/evaluation.py
-from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, Index, JSON, Text
+from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, Index, JSON, Text, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from db.database import Base
@@ -23,15 +23,57 @@ class Evaluation(Base):
     normalized_score = Column(Float, nullable=True, index=True)  # 표준화 점수 (편향 방지)
     weighted_score = Column(Float, nullable=False)
     confidence_score = Column(Float, nullable=False)
+    evaluation_status = Column(String(50), nullable=False, default="completed", server_default="completed")
     
+
+    # ===== 6개 고정 역량 점수 (JSON in RDS) =====
+    job_expertise = Column(JSON, nullable=True)  # 직무 전문성
+    analytical = Column(JSON, nullable=True)  # 분석력
+    execution = Column(JSON, nullable=True)  # 실행력
+    relationship_building = Column("relationship", JSON, nullable=True)  # 관계 구축 (고객 집착) - DB 컬럼명: relationship
+    resilience = Column(JSON, nullable=True)  # 회복탄력성 (학습 태도)
+    influence = Column(JSON, nullable=True)  # 영향력
+
+    # ===== 기타 역량 점수 (JSON) =====
+    problem_solving = Column(JSON, nullable=True)
+    organizational_fit = Column(JSON, nullable=True)
+    growth_potential = Column(JSON, nullable=True)
+    interpersonal_skills = Column(JSON, nullable=True)
+    achievement_motivation = Column(JSON, nullable=True)
+    structured_thinking = Column(JSON, nullable=True)
+    business_documentation = Column(JSON, nullable=True)
+    financial_literacy = Column(JSON, nullable=True)
+    industry_learning = Column(JSON, nullable=True)
+    stakeholder_management = Column(JSON, nullable=True)
+
+    # ===== 통합 점수 (JSON) =====
+    job_aggregation = Column(JSON, nullable=True)
+    common_aggregation = Column(JSON, nullable=True)
+
+    # ===== Fit 분석 =====
+    job_requirement_fit_score = Column(Float, nullable=True)
+    fit_analysis = Column(JSON, nullable=True)
+    expected_onboarding_duration = Column(Text, nullable=True)
+    onboarding_support_needed = Column(JSON, nullable=True)
+    key_insights = Column(JSON, nullable=True)
+
+
     # ===== 상세 결과 (JSON) =====
-    competency_scores = Column(JSON, nullable=False)
-    individual_evaluations = Column(JSON, nullable=False)
-    aggregated_evaluation = Column(JSON, nullable=False)
-    match_result = Column(JSON, nullable=False)
-    
-    # ===== 근거 저장 (추가) =====
-    reasoning_log = Column(JSON, nullable=True)  # AI 추론 과정 로그
+
+    competency_scores = Column(JSON, nullable=True)
+    individual_evaluations = Column(JSON, nullable=True)
+    aggregated_evaluation = Column(JSON, nullable=True)
+    match_result = Column(JSON, nullable=True)
+    validation_result = Column(JSON, nullable=True)  # 신뢰도 검증 결과
+
+    # ===== S3 참조 (Claim Check Pattern) =====
+    transcript_s3_url = Column(Text, nullable=True) # S3 transcript 경로
+    agent_logs_s3_url = Column(Text, nullable=True)  # S3 execution logs 경로
+    evidence_s3_url = Column(Text, nullable=True) # S3 filtered evidence 경로
+
+    # ===== 근거 저장 (레거시) =====
+    reasoning_log = Column(JSON, nullable=True)  # AI 추론 과정 로그 (레거시)
+
     """
     {
         "job_expertise": {
